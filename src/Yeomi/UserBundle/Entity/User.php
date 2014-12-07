@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * User
  *
  * @ORM\Table("user")
- * @ORM\Entity(repositoryClass="Yeomi\UserBundle\Entity\UserRepository")
+ * @ORM\Entity(repositoryClass="Yeomi\UserBundle\Repository\UserRepository")
  */
 class User implements UserInterface
 {

@@ -7,6 +7,39 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+
+
+        {% block header %}
+            <div style="background: yellowgreen">
+            {% block menu_left %}
+                <ul>
+                    <li><a href="">Menu</a></li>
+                    <li><a href="">Recherche</a></li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{ url("logout") }}">{{ app.user.username }} - Deconnexion</a></li>
+                    {% else %}
+                        <li><a href="{{ url("login") }}">Se connecter</a></li>
+                    {% endif %}
+                </ul>
+            {% endblock %}
+
+            {% block logo %}
+                <a href="{{ url("yeomi_post_index") }}">
+                    <h1>Tpaschiche</h1>
+                </a>
+            {% endblock %}
+
+            {% block menu_right %}
+                <ul>
+                    <li><a href="{{ url("yeomi_post_create") }}">Propose un défi</a></li>
+                    <li><a href="{{ url("yeomi_post_create") }}">Partage tes histoires</a></li>
+                </ul>
+            {% endblock %}
+            </div>
+        {% endblock %}
+
+
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

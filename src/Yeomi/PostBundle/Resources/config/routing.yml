@@ -1,0 +1,7 @@
+yeomi_post_index:
+    path:     /
+    defaults: { _controller: YeomiPostBundle:Main:index }
+
+yeomi_post_create:
+    path:     /create
+    defaults: { _controller: YeomiPostBundle:Main:create }

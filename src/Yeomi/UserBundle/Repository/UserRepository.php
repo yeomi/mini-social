@@ -1,6 +1,6 @@
 <?php
 
-namespace Yeomi\UserBundle\Entity;
+namespace Yeomi\UserBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
