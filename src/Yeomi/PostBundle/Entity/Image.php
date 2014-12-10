@@ -4,7 +4,7 @@ namespace Yeomi\PostBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Image
@@ -52,6 +52,11 @@ class Image
      * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
+
+    /**
+     * @var UploadedFile
+     */
+    private $file;
 
 
     /**
@@ -155,4 +160,51 @@ class Image
     {
         return $this->post;
     }
+
+    /**
+     * Get file
+     *
+     * @return \Symfony\Component\HttpFoundation\File\UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Symfony\Component\HttpFoundation\File\UploadedFile
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    public function upload()
+    {
+        if(null == $this->file) {
+            return;
+        }
+
+        $name = $this->file->getClientOriginalName();
+
+        $this->file->move($this->getUploadRootDir(), $name);
+
+        $this->value = $name;
+        $this->alt = $name;
+        $this->title = $name;
+
+    }
+
+    public function getUploadDir()
+    {
+        return "uploads/img";
+    }
+
+    public function getUploadRootDir()
+    {
+        return __DIR__ . "/../../../../web/" . $this->getUploadDir();
+    }
+
 }

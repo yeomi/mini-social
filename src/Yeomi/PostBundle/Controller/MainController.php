@@ -32,11 +32,24 @@ class MainController extends Controller
     {
         $post = new Post();
 
+        $imgAllow = 3;
+        $images = array();
+
+        for ($i = 0; $i<$imgAllow; $i++) {
+            $images[$i] = new Image();
+            $post->addImage($images[$i]);
+        }
+
         $form = $this->createForm(new PostType(), $post);
 
         if($form->handleRequest($request)->isValid()) {
-
-            $categories = $post->getCategories();
+            foreach($images as $img) {
+                if($img->getFile()) {
+                    $img->upload();
+                } else {
+                    $post->removeImage($img);
+                }
+            }
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($post);
             $manager->flush();

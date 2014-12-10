@@ -23,7 +23,11 @@ class PostType extends AbstractType
                 "property" => "name",
             ))
 
-            //->add("images", new ImageType())
+            ->add('images', 'collection', array(
+                'type' => new ImageType(),
+                'allow_add' => false,
+                'allow_delete' => false,
+            ))
             ->add('published', 'checkbox')
             ->add('save', "submit")
         ;

@@ -234,6 +234,7 @@ class Post
     public function addImage(\Yeomi\PostBundle\Entity\Image $images)
     {
         $this->images[] = $images;
+        $images->setPost($this);
 
         return $this;
     }
