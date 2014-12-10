@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PostType extends AbstractType
+class CategoryType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,15 +15,10 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text')
-            ->add('content', 'textarea')
-            ->add('published', 'checkbox')
-            ->add("categories", "entity", array(
-                "class" => "YeomiPostBundle:Category",
-                "property" => "name",
-            ))
-            ->add('published', 'checkbox')
-            ->add('save', "submit")
+            ->add('name', 'text')
+            ->add('slug', 'text')
+            ->add('description', 'textarea')
+            ->add('save', 'submit')
         ;
     }
     
@@ -33,7 +28,7 @@ class PostType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Yeomi\PostBundle\Entity\Post',
+            'data_class' => 'Yeomi\PostBundle\Entity\Category'
         ));
     }
 
@@ -42,6 +37,6 @@ class PostType extends AbstractType
      */
     public function getName()
     {
-        return 'yeomi_postbundle_post';
+        return 'yeomi_postbundle_category';
     }
 }

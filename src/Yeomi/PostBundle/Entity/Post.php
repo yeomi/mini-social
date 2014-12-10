@@ -25,9 +25,23 @@ class Post
     /**
      * @var ArrayCollection
      *
+     * @ORM\ManyToMany(targetEntity="Yeomi\PostBundle\Entity\Category", inversedBy="posts")
+     */
+    private $categories;
+
+    /**
+     * @var ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Image", mappedBy="post", cascade={"persist"})
      */
     private $images;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     */
+    private $title;
 
     /**
      * @var string
@@ -46,14 +60,17 @@ class Post
     /**
      * @var boolean
      *
-     * @ORM\Column(name="published", type="boolean")
+     * @ORM\Column(name="published", type="boolean", nullable=true)
      */
     private $published;
-
-
+    /**
+     * Constructor
+     */
     public function __construct()
     {
-        $this->created = new \DateTime();
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setCreated(new \DateTime());
     }
 
     /**
@@ -64,6 +81,29 @@ class Post
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Post
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**
@@ -136,6 +176,38 @@ class Post
     }
 
     /**
+     * Add categories
+     *
+     * @param \Yeomi\PostBundle\Entity\Category $categories
+     * @return Post
+     */
+    public function addCategory(\Yeomi\PostBundle\Entity\Category $category)
+    {
+        $this->categories[] = $category;
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \Yeomi\PostBundle\Entity\Category $categories
+     */
+    public function removeCategory(\Yeomi\PostBundle\Entity\Category $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
      * Add images
      *
      * @param \Yeomi\PostBundle\Entity\Image $images
@@ -144,7 +216,6 @@ class Post
     public function addImage(\Yeomi\PostBundle\Entity\Image $images)
     {
         $this->images[] = $images;
-        $images->setPost($this);
 
         return $this;
     }

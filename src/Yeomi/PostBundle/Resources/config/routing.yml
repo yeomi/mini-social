@@ -2,6 +2,11 @@ yeomi_post_index:
     path:     /
     defaults: { _controller: YeomiPostBundle:Main:index }
 
-yeomi_post_create:
-    path:     /create
-    defaults: { _controller: YeomiPostBundle:Main:create }
+yeomi_post_add_post:
+    path:     /add/post
+    defaults: { _controller: YeomiPostBundle:Main:addPost }
+
+
+yeomi_post_add_category:
+    path:     /add/category
+    defaults: { _controller: YeomiPostBundle:Main:addCategory }

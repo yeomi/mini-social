@@ -25,7 +25,7 @@ class Category
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Yeomi\PostBundle\Entity\Post")
+     * @ORM\ManyToMany(targetEntity="Yeomi\PostBundle\Entity\Post", mappedBy="categories")
      */
     private $posts;
 
@@ -49,7 +49,13 @@ class Category
      * @ORM\Column(name="description", type="text")
      */
     private $description;
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -128,13 +134,6 @@ class Category
     public function getDescription()
     {
         return $this->description;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
