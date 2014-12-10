@@ -22,6 +22,8 @@ class PostType extends AbstractType
                 "class" => "YeomiPostBundle:Category",
                 "property" => "name",
             ))
+
+            //->add("images", new ImageType())
             ->add('published', 'checkbox')
             ->add('save', "submit")
         ;

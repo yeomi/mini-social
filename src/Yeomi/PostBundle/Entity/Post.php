@@ -208,6 +208,24 @@ class Post
     }
 
     /**
+     * Set categories
+     * @param \Doctrine\Common\Collections\Collection $categories
+     *
+     * @return Post
+     */
+    public function setCategories($categories)
+    {
+
+        if(!is_array($categories))
+        {
+            $categories = array($categories);
+        }
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
      * Add images
      *
      * @param \Yeomi\PostBundle\Entity\Image $images
