@@ -43,18 +43,11 @@ class MainController extends Controller
         $form = $this->createForm(new PostType(), $post);
 
         if($form->handleRequest($request)->isValid()) {
-            foreach($images as $img) {
-                if($img->getFile()) {
-                    $img->upload();
-                } else {
-                    $post->removeImage($img);
-                }
-            }
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($post);
             $manager->flush();
 
-            //return $this->redirect($this->generateUrl("yeomi_post_index"));
+            return $this->redirect($this->generateUrl("yeomi_post_index"));
         }
 
 

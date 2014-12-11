@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="Yeomi\PostBundle\Repository\PostRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Post
 {
@@ -257,5 +258,19 @@ class Post
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function deleteEmptyImage() {
+
+        foreach ($this->getImages() as $image) {
+            if($image->getFile()) {
+            } else {
+                $this->removeImage($image);
+            }
+        }
     }
 }

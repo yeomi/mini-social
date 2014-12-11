@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @ORM\Table(name="image")
  * @ORM\Entity(repositoryClass="Yeomi\PostBundle\Repository\ImageRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Image
 {
@@ -57,6 +58,11 @@ class Image
      * @var UploadedFile
      */
     private $file;
+
+    /**
+     * @var string
+     */
+    private $tempFilename;
 
 
     /**
@@ -178,23 +184,73 @@ class Image
      */
     public function setFile(UploadedFile $file = null)
     {
+
         $this->file = $file;
+
+        if ($this->value != null) {
+            $this->tempFilename = $this->value;
+
+            $this->value = null;
+            $this->alt = null;
+            $this->title = null;
+        }
     }
 
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+
+        if (null == $this->file) {
+            return;
+        }
+
+        $this->value = $this->file->guessExtension();
+        $this->alt = $this->file->getClientOriginalName();
+        $this->title = $this->file->getClientOriginalName();
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
     public function upload()
     {
         if(null == $this->file) {
             return;
         }
 
-        $name = $this->file->getClientOriginalName();
+        if ($this->tempFilename != null) {
+            $oldFile = $this->getUploadRootDir() . "/" . $this->id . "." . $this->tempFilename;
+            if (file_exists($oldFile)) {
+                unlink($oldFile);
+            }
+        }
 
-        $this->file->move($this->getUploadRootDir(), $name);
+        $this->file->move(
+            $this->getUploadRootDir(),
+            $this->id . "." . $this->value
+        );
+    }
 
-        $this->value = $name;
-        $this->alt = $name;
-        $this->title = $name;
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemoveUpload()
+    {
+        $this->tempFilename = $this->getUploadRootDir() . "/" . $this->id . "." . $this->value;
+    }
 
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if(file_exists($this->tempFilename)) {
+            unlink($this->tempFilename);
+        }
     }
 
     public function getUploadDir()
