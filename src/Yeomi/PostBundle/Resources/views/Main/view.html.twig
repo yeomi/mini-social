@@ -1,0 +1,17 @@
+{% extends("YeomiPostBundle::layout.html.twig") %}
+
+
+{% block body %}
+
+    <table>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.content }}</td>
+                {% for image in post.images %}
+                    <td><img style="width:100px; height: auto;" src="{{ asset('uploads/img/' ~ image.id ~ '.' ~ image.value) }}" alt=""/></td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

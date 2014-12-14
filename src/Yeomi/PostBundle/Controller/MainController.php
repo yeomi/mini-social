@@ -28,6 +28,16 @@ class MainController extends Controller
         ));
     }
 
+    public function viewAction()
+    {
+
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findAll();
+
+        return $this->render("YeomiPostBundle:Main:view.html.twig", array(
+            "posts" => $posts
+        ));
+    }
+
     public function addPostAction(Request $request)
     {
         $post = new Post();
