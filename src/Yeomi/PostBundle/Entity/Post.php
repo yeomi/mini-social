@@ -33,7 +33,7 @@ class Post
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Image", mappedBy="post", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Image", mappedBy="post", cascade={"persist", "remove"})
      */
     private $images;
 
@@ -273,4 +273,5 @@ class Post
             }
         }
     }
+
 }

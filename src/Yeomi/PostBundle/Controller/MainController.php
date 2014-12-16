@@ -89,4 +89,34 @@ class MainController extends Controller
         ));
     }
 
+    public function editAction(Request $request, $id)
+    {
+        $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->find($id);
+
+        $form = $this->createForm(new PostType(), $post);
+
+        if($form->handleRequest($request)->isValid()) {
+
+            $manager = $this->getDoctrine()->getManager();
+            $manager->flush();
+
+            //return $this->redirect($this->generateUrl("yeomi_post_index"));
+        }
+
+
+        return $this->render("YeomiPostBundle:Main:addPost.html.twig", array(
+            "form" => $form->createView(),
+        ));
+    }
+
+    public function deleteAction(Request $request, $id)
+    {
+        $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->find($id);
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($post);
+        $manager->flush();
+
+        return $this->redirect($this->generateUrl("yeomi_post_view"));
+    }
 }

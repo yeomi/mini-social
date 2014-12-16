@@ -6,6 +6,13 @@ yeomi_post_add_post:
     path:     /add/post
     defaults: { _controller: YeomiPostBundle:Main:addPost }
 
+yeomi_post_edit_post:
+    path:     /edit/post/{id}
+    defaults: { _controller: YeomiPostBundle:Main:edit }
+
+yeomi_post_delete_post:
+    path:     /delete/post/{id}
+    defaults: { _controller: YeomiPostBundle:Main:delete }
 
 yeomi_post_add_category:
     path:     /add/category

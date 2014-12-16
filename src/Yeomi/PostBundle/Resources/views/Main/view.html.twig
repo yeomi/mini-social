@@ -11,6 +11,9 @@
                 {% for image in post.images %}
                     <td><img style="width:100px; height: auto;" src="{{ asset('uploads/img/' ~ image.id ~ '.' ~ image.value) }}" alt=""/></td>
                 {% endfor %}
+
+                <td><a href="{{ path("yeomi_post_edit_post", {'id': post.id}) }}">Edit</a></td>
+                <td><a href="{{ path("yeomi_post_delete_post", {'id': post.id}) }}">Delete</a></td>
             </tr>
         {% endfor %}
     </table>
