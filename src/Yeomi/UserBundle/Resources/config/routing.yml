@@ -1,3 +1,7 @@
 yeomi_user_test:
     path:     /test
     defaults: { _controller: YeomiUserBundle:Main:test }
+
+yeomi_user_register:
+    path:     /register
+    defaults: { _controller: YeomiUserBundle:Main:register }

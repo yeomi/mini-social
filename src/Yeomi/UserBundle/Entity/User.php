@@ -78,9 +78,9 @@ class User implements UserInterface
     public function __construct()
     {
         $this->roles = new ArrayCollection();
-        $this->created = new \DateTime();
+        $this->setCreated(new \DateTime());
+        $this->setSalt("");
     }
-
     /**
      * Get id
      *
