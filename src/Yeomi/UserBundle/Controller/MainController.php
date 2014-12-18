@@ -10,6 +10,7 @@ namespace Yeomi\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Yeomi\UserBundle\Entity\User;
 use Yeomi\UserBundle\Form\UserType;
@@ -19,6 +20,19 @@ class MainController extends Controller
 
     public function testAction()
     {
+
+        /*
+        $message = \Swift_Message::newInstance()
+            ->setSubject("Hello")
+            ->setFrom("contact.yeomi@gmail.com")
+            ->setTo("gabriel@henao.fr")
+            ->setBody("You should see me somewhere..");
+        ;
+
+        $this->get("mailer")->send($message);
+         */
+
+        
         return $this->render("YeomiUserBundle:Main:test.html.twig", array(
             "testVar" => 12,
         ));
@@ -55,6 +69,8 @@ class MainController extends Controller
         if ($form->handleRequest($request)->isValid()) {
 
             $manager = $this->getDoctrine()->getManager();
+            $manager->persist($user);
+            $manager->flush();
 
         }
 
