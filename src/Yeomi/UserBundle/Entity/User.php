@@ -47,13 +47,6 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
-     */
-    private $salt;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
      */
     private $email;
@@ -64,6 +57,13 @@ class User implements UserInterface
      * @ORM\Column(name="created", type="datetime")
      */
     private $created;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status;
 
     /**
      * @var \DateTime
@@ -79,7 +79,7 @@ class User implements UserInterface
     {
         $this->roles = new ArrayCollection();
         $this->setCreated(new \DateTime());
-        $this->setSalt("");
+        $this->setStatus(0);
     }
     /**
      * Get id
@@ -122,7 +122,7 @@ class User implements UserInterface
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = hash("sha512", $password);
 
         return $this;
     }
@@ -137,18 +137,6 @@ class User implements UserInterface
         return $this->password;
     }
 
-    /**
-     * Set salt
-     *
-     * @param string $salt
-     * @return User
-     */
-    public function setSalt($salt)
-    {
-        $this->salt = $salt;
-
-        return $this;
-    }
 
     /**
      * Get salt
@@ -157,7 +145,7 @@ class User implements UserInterface
      */
     public function getSalt()
     {
-        return $this->salt;
+        return NULL;
     }
 
     /**
@@ -276,5 +264,28 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return User
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

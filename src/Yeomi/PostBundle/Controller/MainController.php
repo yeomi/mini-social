@@ -119,4 +119,10 @@ class MainController extends Controller
 
         return $this->redirect($this->generateUrl("yeomi_post_view"));
     }
+
+    public function resetPasswordAction(Request $request)
+    {
+     
+        return $this->redirect($this->generateUrl("yeomi_post_view"));
+    }
 }

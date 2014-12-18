@@ -5,3 +5,15 @@ yeomi_user_test:
 yeomi_user_register:
     path:     /register
     defaults: { _controller: YeomiUserBundle:Main:register }
+
+yeomi_user_validate:
+    path:     /validate/{id}/{token}
+    defaults: { _controller: YeomiUserBundle:Main:validate }
+
+yeomi_user_send_mail_validation:
+    path:     /send/mail
+    defaults: { _controller: YeomiUserBundle:Main:validate }
+
+yeomi_user_password_reset:
+    path:     /user/reset
+    defaults: { _controller: YeomiUserBundle:Main:resetPassword }

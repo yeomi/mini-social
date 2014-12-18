@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="Yeomi\PostBundle\Repository\PostRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Post
 {
@@ -32,7 +33,7 @@ class Post
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Image", mappedBy="post", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Image", mappedBy="post", cascade={"persist", "remove"})
      */
     private $images;
 
@@ -70,6 +71,7 @@ class Post
     {
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setCreated(new \DateTime());
     }
 
     /**
@@ -180,10 +182,9 @@ class Post
      * @param \Yeomi\PostBundle\Entity\Category $categories
      * @return Post
      */
-    public function addCategory(\Yeomi\PostBundle\Entity\Category $categories)
+    public function addCategory(\Yeomi\PostBundle\Entity\Category $category)
     {
-        $this->categories[] = $categories;
-
+        $this->categories[] = $category;
         return $this;
     }
 
@@ -192,9 +193,9 @@ class Post
      *
      * @param \Yeomi\PostBundle\Entity\Category $categories
      */
-    public function removeCategory(\Yeomi\PostBundle\Entity\Category $categories)
+    public function removeCategory(\Yeomi\PostBundle\Entity\Category $category)
     {
-        $this->categories->removeElement($categories);
+        $this->categories->removeElement($category);
     }
 
     /**
@@ -208,6 +209,24 @@ class Post
     }
 
     /**
+     * Set categories
+     * @param \Doctrine\Common\Collections\Collection $categories
+     *
+     * @return Post
+     */
+    public function setCategories($categories)
+    {
+
+        if(!is_array($categories))
+        {
+            $categories = array($categories);
+        }
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
      * Add images
      *
      * @param \Yeomi\PostBundle\Entity\Image $images
@@ -216,6 +235,7 @@ class Post
     public function addImage(\Yeomi\PostBundle\Entity\Image $images)
     {
         $this->images[] = $images;
+        $images->setPost($this);
 
         return $this;
     }
@@ -239,4 +259,19 @@ class Post
     {
         return $this->images;
     }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function deleteEmptyImage() {
+
+        foreach ($this->getImages() as $image) {
+            if($image->getFile()) {
+            } else {
+                $this->removeImage($image);
+            }
+        }
+    }
+
 }

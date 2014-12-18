@@ -27,24 +27,27 @@ class LoadUsers implements FixtureInterface {
         $users = array(
             'bindou' => array(
                 'email' => 'bindou@bin.fr',
-                'password' => '1234',
+                'password' => hash('sha512', '1234'),
             ),
             'bumbo' => array(
                 'email' => 'boumboum@bumb.fr',
-                'password' => '1234',
+                'password' => hash('sha512', '1234'),
             ),
             'damour' => array(
                 'email' => 'damour@binbumb.fr',
-                'password' => '1234',
+                'password' => hash('sha512', '1234'),
             )
         );
 
 
         $roleA = new Role();
-        $roleA->setName('Authenticated User')
-            ->setSlug('ROLE_USER');
+        $roleA->setName('Unvalidate User')
+            ->setSlug('ROLE_UNVALIDATE');
         $roleB = new Role();
-        $roleB->setName('Premium User')
+        $roleB->setName('Authenticated User')
+            ->setSlug('ROLE_USER');
+        $roleC = new Role();
+        $roleC->setName('Premium User')
             ->setSlug('ROLE_USER_PREMIUM');
 
         foreach ($users as $username => $userData) {
@@ -57,6 +60,7 @@ class LoadUsers implements FixtureInterface {
                 ->addRole($roleA)
                 ->addRole($roleB);
 
+            $manager->persist($roleC);
             $manager->persist($user);
         }
 
