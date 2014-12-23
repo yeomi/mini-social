@@ -38,6 +38,13 @@ class Post
     private $images;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Comment", mappedBy="post", cascade={"remove"})
+     */
+    private $comments;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
@@ -50,6 +57,14 @@ class Post
      * @ORM\Column(name="content", type="text")
      */
     private $content;
+
+    /**
+     * @var \Yeomi\PostBundle\Entity\Type
+     *
+     * @ORM\ManyToOne(targetEntity="Yeomi\PostBundle\Entity\Type", inversedBy="posts")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
 
     /**
      * @var \DateTime
@@ -274,4 +289,60 @@ class Post
         }
     }
 
+
+    /**
+     * Set type
+     *
+     * @param \Yeomi\PostBundle\Entity\Type $type
+     * @return Post
+     */
+    public function setType(\Yeomi\PostBundle\Entity\Type $type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Yeomi\PostBundle\Entity\Type 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \Yeomi\PostBundle\Entity\Comment $comments
+     * @return Post
+     */
+    public function addComment(\Yeomi\PostBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Yeomi\PostBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Yeomi\PostBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
 }

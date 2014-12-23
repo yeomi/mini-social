@@ -11,8 +11,11 @@ namespace Yeomi\PostBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Yeomi\PostBundle\Entity\Category;
+use Yeomi\PostBundle\Entity\Comment;
 use Yeomi\PostBundle\Form\CategoryType;
+use Yeomi\PostBundle\Form\CommentType;
 use Yeomi\PostBundle\Form\PostType;
 use Yeomi\PostBundle\Entity\Post;
 use Yeomi\PostBundle\Entity\Image;
@@ -38,9 +41,27 @@ class MainController extends Controller
         ));
     }
 
-    public function addPostAction(Request $request)
+    public function viewFullAction($id)
+    {
+
+        $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->find($id);
+
+        return $this->render("YeomiPostBundle:Main:viewFull.html.twig", array(
+            "post" => $post
+        ));
+    }
+
+
+    public function addPostAction(Request $request, $type)
     {
         $post = new Post();
+        $type = $this->getDoctrine()->getRepository("YeomiPostBundle:Type")->findOneBy(array("slug" => $type));
+
+        if(is_null($type)) {
+            throw New NotFoundHttpException("Cette page n'existe pas, veuillez vérifier l'url");
+        }
+
+        $post->setType($type);
 
         $imgAllow = 3;
         $images = array();
@@ -67,6 +88,25 @@ class MainController extends Controller
     }
 
 
+    public function addCommentAction (Request $request, $id)
+    {
+        $comment = new Comment();
+        $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->find($id);
+
+        $comment->setPost($post);
+
+        $form = $this->createForm(new CommentType(), $comment);
+
+        if ($form->handleRequest($request)->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($comment);
+            $manager->flush();
+        }
+
+        return $this->render("YeomiPostBundle:Main:addComment.html.twig", array(
+           "form" => $form->createView(),
+        ));
+    }
 
     public function addCategoryAction(Request $request)
     {

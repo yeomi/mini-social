@@ -4,7 +4,6 @@
 {% block body %}
 
     <table>
-        {% for post in posts %}
             <tr>
                 <td><a href="{{ path("yeomi_post_view_full", {"id" : post.id}) }}">{{ post.title }}</a></td>
                 <td>{{ post.content }}</td>
@@ -15,6 +14,10 @@
                 <td><a href="{{ path("yeomi_post_edit_post", {'id': post.id}) }}">Edit</a></td>
                 <td><a href="{{ path("yeomi_post_delete_post", {'id': post.id}) }}">Delete</a></td>
             </tr>
-        {% endfor %}
     </table>
+
+
+    {% block comment %}
+        {{ render(controller("YeomiPostBundle:Main:addComment", {"request": app.request, "id" : post.id})) }}
+    {% endblock %}
 {% endblock %}

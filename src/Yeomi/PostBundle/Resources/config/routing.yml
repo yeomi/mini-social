@@ -3,7 +3,7 @@ yeomi_post_index:
     defaults: { _controller: YeomiPostBundle:Main:index }
 
 yeomi_post_add_post:
-    path:     /add/post
+    path:     /add/{type}
     defaults: { _controller: YeomiPostBundle:Main:addPost }
 
 yeomi_post_edit_post:
@@ -22,3 +22,8 @@ yeomi_post_view:
     path:     /all/post
     defaults: { _controller: YeomiPostBundle:Main:view }
 
+yeomi_post_view_full:
+    path:     /post/{id}
+    defaults: { _controller: YeomiPostBundle:Main:viewFull }
+    requirements:
+        id: \d+
