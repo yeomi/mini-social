@@ -19,6 +19,7 @@
                         <li><a href="{{ url("logout") }}">{{ app.user.username }} - Deconnexion</a></li>
                     {% else %}
                         <li><a href="{{ url("login") }}">Se connecter</a></li>
+                        <li><a href="{{ url("yeomi_user_register") }}">Créer un compte</a></li>
                     {% endif %}
                 </ul>
             {% endblock %}

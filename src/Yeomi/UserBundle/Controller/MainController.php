@@ -79,6 +79,31 @@ class MainController extends Controller
         $this->get("mailer")->send($message);
     }
 
+    public function sendResetPasswordValidation(User $user)
+    {
+        $body = "Bonjour " . $user->getUsername() . "\n"
+            . "Vous avez fait une demande pour regenerer un mot de passe,\n"
+            . "Pour ce faire cliquez ici : \n"
+            . $this->generateUrl(
+                "yeomi_reset_password_validate",
+                array(
+                    "token" => $this->generateValidationToken($user->getUsername(), $user->getPassword()),
+                    "id" => $user->getId(),
+                ),
+                UrlGeneratorInterface::ABSOLUTE_URL
+            );
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject("Hello")
+            ->setFrom("contact.yeomi@gmail.com")
+            //->setTo($user->getEmail())
+            ->setTo("gabriel@henao.fr")
+            ->setBody($body);
+        ;
+
+        $this->get("mailer")->send($message);
+    }
+
     public function generateValidationToken($username, $password)
     {
         return hash("sha1", $username . $password);
@@ -122,15 +147,83 @@ class MainController extends Controller
 
         if($validationToken == $token) {
 
-            if($user->getStatus() == 1) {
+            if($user->checkRoleExist("ROLE_USER")) {
                 return new Response("Ce compte à déjà été validé");
             }
 
-            $user->setStatus(1);
+            $role = $manager->getRepository("YeomiUserBundle:Role")->findOneBy(array("slug" => "ROLE_USER"));
+
+            $user->removeRoleBySlug("ROLE_UNVALIDATE");
+            $user->addRole($role);
             $manager->flush();
             return new Response("Felicitations, vous pouvez à présent vous connecter et commencer à profiter du site !");
         }
 
         return new Response("Erreur d'authentification");
     }
+
+    public function resetPasswordAction(Request $request)
+    {
+        if ($request->isMethod("POST")) {
+
+            if (!filter_var($request->request->get("email_given"), FILTER_VALIDATE_EMAIL)) {
+                return new Response("This ain't no email address");
+            }
+
+            $email = $request->request->get("email_given");
+            $user = $this->getDoctrine()->getRepository("YeomiUserBundle:User")->findOneBy(array("email" => $email));
+
+            if (is_null($user)) {
+                return new Response("Cet adresse email n'est associé à aucun compte, vous pouvez cependant crée un compte");
+            }
+
+            $manager = $this->getDoctrine()->getManager();
+
+            $this->sendResetPasswordValidation($user);
+
+            $user->setPasswordOutdated(true);
+            $manager->flush();
+
+        }
+        return $this->render("YeomiUserBundle:Main:resetPassword.html.twig", array(
+
+        ));
+    }
+
+    public function resetPasswordValidateAction($id, $token)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $user = $manager->getRepository("YeomiUserBundle:User")->find($id);
+
+        $validationToken = $this->generateValidationToken($user->getUsername(), $user->getPassword());
+
+        if (!$user->getPasswordOutdated()) {
+            return new Response("Your password has already been set");
+        }
+
+        if($validationToken == $token) {
+            $oldPassword = $user->getPassword();
+            $newPassword = hash("crc32", $oldPassword);
+            $user->setPassword($newPassword);
+            $user->setPasswordOutdated(false);
+            $manager->flush();
+
+            $body = "Bonjour " . $user->getUsername() . "\n"
+                . "Nouveau mot de passe :\n"
+                . $newPassword;
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject("Hello")
+                ->setFrom("contact.yeomi@gmail.com")
+                //->setTo($user->getEmail())
+                ->setTo("gabriel@henao.fr")
+                ->setBody($body);
+            ;
+
+            $this->get("mailer")->send($message);
+        }
+
+        return new Response("New password reset");
+    }
+
 }

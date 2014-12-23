@@ -14,6 +14,10 @@ yeomi_user_send_mail_validation:
     path:     /send/mail
     defaults: { _controller: YeomiUserBundle:Main:validate }
 
+yeomi_reset_password_validate:
+    path:     /reset-password/{id}/{token}
+    defaults: { _controller: YeomiUserBundle:Main:resetPasswordValidate }
+
 yeomi_user_password_reset:
     path:     /user/reset
     defaults: { _controller: YeomiUserBundle:Main:resetPassword }

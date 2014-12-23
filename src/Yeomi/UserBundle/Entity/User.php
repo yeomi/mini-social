@@ -66,6 +66,13 @@ class User implements UserInterface
     private $status;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="password_outdated", type="boolean")
+     */
+    private $passwordOutdated;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="last_login", type="datetime", nullable=true)
@@ -79,6 +86,7 @@ class User implements UserInterface
     {
         $this->roles = new ArrayCollection();
         $this->setCreated(new \DateTime());
+        $this->setPasswordOutdated(false);
         $this->setStatus(0);
     }
     /**
@@ -241,9 +249,23 @@ class User implements UserInterface
     }
 
     /**
+     * Remove roles by slug
+     *
+     * @param string
+     */
+    public function removeRoleBySlug($slug)
+    {
+        foreach ($this->roles as $role) {
+            if ($role->getSlug() == $slug) {
+                $this->roles->removeElement($role);
+            }
+        }
+    }
+
+    /**
      * Get roles
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Array
      */
     public function getRoles()
     {
@@ -253,6 +275,13 @@ class User implements UserInterface
             $roles []= $role->getSlug();
         }
         return $roles;
+    }
+
+    public function checkRoleExist($slug) {
+
+        $roles = $this->getRoles();
+
+        return in_array($slug, $roles);
     }
 
     /**
@@ -287,5 +316,28 @@ class User implements UserInterface
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set passwordOutdated
+     *
+     * @param boolean $passwordOutdated
+     * @return User
+     */
+    public function setPasswordOutdated($passwordOutdated)
+    {
+        $this->passwordOutdated = $passwordOutdated;
+
+        return $this;
+    }
+
+    /**
+     * Get passwordOutdated
+     *
+     * @return boolean 
+     */
+    public function getPasswordOutdated()
+    {
+        return $this->passwordOutdated;
     }
 }

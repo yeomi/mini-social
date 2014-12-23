@@ -66,6 +66,13 @@ class User implements UserInterface
     private $status;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="password_outdated", type="boolean")
+     */
+    private $passwordOutdated;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="last_login", type="datetime", nullable=true)
@@ -79,6 +86,7 @@ class User implements UserInterface
     {
         $this->roles = new ArrayCollection();
         $this->setCreated(new \DateTime());
+        $this->setStatus(0);
     }
     /**
      * Get id
@@ -240,9 +248,23 @@ class User implements UserInterface
     }
 
     /**
+     * Remove roles by slug
+     *
+     * @param string
+     */
+    public function removeRoleBySlug($slug)
+    {
+        foreach ($this->roles as $role) {
+            if ($role->getSlug() == $slug) {
+                $this->roles->removeElement($role);
+            }
+        }
+    }
+
+    /**
      * Get roles
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Array
      */
     public function getRoles()
     {
@@ -254,6 +276,13 @@ class User implements UserInterface
         return $roles;
     }
 
+    public function checkRoleExist($slug) {
+
+        $roles = $this->getRoles();
+
+        return in_array($slug, $roles);
+    }
+
     /**
      * Removes sensitive data from the user.
      *
@@ -263,5 +292,28 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return User
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }
