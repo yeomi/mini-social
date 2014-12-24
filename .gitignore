@@ -8,6 +8,7 @@
 /build/
 /vendor/
 /bin/
+/web/uploads/
 /composer.phar
 /app/config/
 .DS_Store

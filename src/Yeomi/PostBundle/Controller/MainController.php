@@ -105,7 +105,7 @@ class MainController extends Controller
         $comment = new Comment();
 
         $comment->setUser($user);
-        
+
         $imgAllow = 3;
         $images = array();
 
