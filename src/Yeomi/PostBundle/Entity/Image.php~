@@ -25,13 +25,20 @@ class Image
     private $id;
 
     /**
-     * @var ArrayCollection
+     * @var \Yeomi\PostBundle\Entity\Post
      *
      * @ORM\ManyToOne(targetEntity="Yeomi\PostBundle\Entity\Post", inversedBy="images")
-     * @ORM\JoinColumn(nullable=false)
      *
      */
     private $post;
+
+    /**
+     * @var \Yeomi\PostBundle\Entity\Comment
+     *
+     * @ORM\ManyToOne(targetEntity="Yeomi\PostBundle\Entity\Comment", inversedBy="images")
+     *
+     */
+    private $comment;
 
     /**
      * @var string
@@ -64,6 +71,10 @@ class Image
      */
     private $tempFilename;
 
+    /**
+     * @var string
+     */
+    private $entityType;
 
     /**
      * Get id
@@ -152,6 +163,7 @@ class Image
      */
     public function setPost(\Yeomi\PostBundle\Entity\Post $post)
     {
+        $this->entityType = "post";
         $this->post = $post;
 
         return $this;
@@ -255,7 +267,8 @@ class Image
 
     public function getUploadDir()
     {
-        return "uploads/img";
+
+        return "uploads/img/" . $this->entityType;
     }
 
     public function getUploadRootDir()
@@ -263,4 +276,28 @@ class Image
         return __DIR__ . "/../../../../web/" . $this->getUploadDir();
     }
 
+
+    /**
+     * Set comment
+     *
+     * @param \Yeomi\PostBundle\Entity\Comment $comment
+     * @return Image
+     */
+    public function setComment(\Yeomi\PostBundle\Entity\Comment $comment = null)
+    {
+        $this->entityType = "comment";
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Yeomi\PostBundle\Entity\Comment 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
 }

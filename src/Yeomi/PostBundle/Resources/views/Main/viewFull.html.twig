@@ -8,7 +8,7 @@
                 <td><a href="{{ path("yeomi_post_view_full", {"id" : post.id}) }}">{{ post.title }}</a></td>
                 <td>{{ post.content }}</td>
                 {% for image in post.images %}
-                    <td><img style="width:100px; height: auto;" src="{{ asset('uploads/img/' ~ image.id ~ '.' ~ image.value) }}" alt=""/></td>
+                    <td><img style="width:100px; height: auto;" src="{{ asset('uploads/img/post/' ~ image.id ~ '.' ~ image.value) }}" alt=""/></td>
                 {% endfor %}
 
                 <td><a href="{{ path("yeomi_post_edit_post", {'id': post.id}) }}">Edit</a></td>
@@ -16,8 +16,24 @@
             </tr>
     </table>
 
+        <em>Written by {% if  post.user %}{{ post.user.username }}{% else %}anonyme{% endif %} on the {{ post.created|date("d/m/y \\à G\\hi") }}</em>
 
     {% block comment %}
-        {{ render(controller("YeomiPostBundle:Main:addComment", {"request": app.request, "id" : post.id})) }}
+        <div>
+            {{ render(controller("YeomiPostBundle:Main:addComment", {"request": app.request, "id" : post.id})) }}
+        </div>
+
+        <h4>{{ post.comments|length }} Commentaires</h4>
+        {% for comment in post.comments %}
+            <fieldset>
+                <h3>{{ comment.title }}</h3>
+                <p>{{ comment.content }}</p>
+                {% for image in comment.images %}
+                    <img style="width:100px; height: auto;" src="{{ asset('uploads/img/comment/' ~ image.id ~ '.' ~ image.value) }}" alt=""/>
+                {% endfor %}
+                <em>Written by {% if  comment.user %}{{ comment.user.username }}{% else %}anonyme{% endif %} on the {{ comment.created|date("d/m/y \\à G\\hi") }}</em>
+            </fieldset>
+        {% endfor %}
+
     {% endblock %}
 {% endblock %}

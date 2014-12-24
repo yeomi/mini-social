@@ -31,6 +31,20 @@ class User implements UserInterface
     private $roles;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Post", mappedBy="user")
+     */
+    private $posts;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Comment", mappedBy="user")
+     */
+    private $comments;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)

@@ -3,12 +3,14 @@
 namespace Yeomi\PostBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Comment
  *
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="Yeomi\PostBundle\Repository\CommentRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Comment
 {
@@ -22,12 +24,26 @@ class Comment
     private $id;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Image", mappedBy="comment", cascade={"persist", "remove"})
+     */
+    private $images;
+
+    /**
      * @var \Yeomi\PostBundle\Entity\Post
      *
      * @ORM\ManyToOne(targetEntity="Yeomi\PostBundle\Entity\Post", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $post;
+
+    /**
+     * @var \Yeomi\UserBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="Yeomi\UserBundle\Entity\User", inversedBy="posts")
+     */
+    private $user;
 
     /**
      * @var string
@@ -62,6 +78,7 @@ class Comment
     {
         $this->setCreated(new \DateTime());
         $this->setPublished(true);
+        $this->images = new ArrayCollection();
     }
     /**
      * Get id
@@ -186,5 +203,76 @@ class Comment
     public function getPost()
     {
         return $this->post;
+    }
+
+    /**
+     * Add images
+     *
+     * @param \Yeomi\PostBundle\Entity\Image $images
+     * @return Comment
+     */
+    public function addImage(\Yeomi\PostBundle\Entity\Image $images)
+    {
+        $this->images[] = $images;
+        $images->setComment($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param \Yeomi\PostBundle\Entity\Image $images
+     */
+    public function removeImage(\Yeomi\PostBundle\Entity\Image $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function deleteEmptyImage() {
+
+        foreach ($this->getImages() as $image) {
+            if($image->getFile()) {
+            } else {
+                $this->removeImage($image);
+            }
+        }
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Yeomi\UserBundle\Entity\User $user
+     * @return Comment
+     */
+    public function setUser(\Yeomi\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Yeomi\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

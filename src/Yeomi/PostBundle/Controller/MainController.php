@@ -19,6 +19,7 @@ use Yeomi\PostBundle\Form\CommentType;
 use Yeomi\PostBundle\Form\PostType;
 use Yeomi\PostBundle\Entity\Post;
 use Yeomi\PostBundle\Entity\Image;
+use Symfony\Component\HttpFoundation\Response;
 
 class MainController extends Controller
 {
@@ -56,6 +57,11 @@ class MainController extends Controller
     {
         $post = new Post();
         $type = $this->getDoctrine()->getRepository("YeomiPostBundle:Type")->findOneBy(array("slug" => $type));
+        $user = $this->getUser();
+
+        if(!is_null($user)) {
+            $post->setUser($user);
+        }
 
         if(is_null($type)) {
             throw New NotFoundHttpException("Cette page n'existe pas, veuillez vérifier l'url");
@@ -90,7 +96,24 @@ class MainController extends Controller
 
     public function addCommentAction (Request $request, $id)
     {
+
+        if (!$this->get("security.context")->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            return new Response("You need to have an account ...");
+        }
+
+        $user = $this->getUser();
         $comment = new Comment();
+
+        $comment->setUser($user);
+        
+        $imgAllow = 3;
+        $images = array();
+
+        for ($i = 0; $i<$imgAllow; $i++) {
+            $images[$i] = new Image();
+            $comment->addImage($images[$i]);
+        }
+
         $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->find($id);
 
         $comment->setPost($post);

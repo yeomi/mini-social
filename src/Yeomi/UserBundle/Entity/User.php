@@ -31,6 +31,20 @@ class User implements UserInterface
     private $roles;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Post", mappedBy="user")
+     */
+    private $posts;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Comment", mappedBy="user")
+     */
+    private $comments;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
@@ -339,5 +353,71 @@ class User implements UserInterface
     public function getPasswordOutdated()
     {
         return $this->passwordOutdated;
+    }
+
+    /**
+     * Add posts
+     *
+     * @param \Yeomi\PostBundle\Entity\Post $posts
+     * @return User
+     */
+    public function addPost(\Yeomi\PostBundle\Entity\Post $posts)
+    {
+        $this->posts[] = $posts;
+
+        return $this;
+    }
+
+    /**
+     * Remove posts
+     *
+     * @param \Yeomi\PostBundle\Entity\Post $posts
+     */
+    public function removePost(\Yeomi\PostBundle\Entity\Post $posts)
+    {
+        $this->posts->removeElement($posts);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \Yeomi\PostBundle\Entity\Comment $comments
+     * @return User
+     */
+    public function addComment(\Yeomi\PostBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Yeomi\PostBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Yeomi\PostBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

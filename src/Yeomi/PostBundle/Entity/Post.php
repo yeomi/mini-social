@@ -67,6 +67,13 @@ class Post
     private $type;
 
     /**
+     * @var \Yeomi\UserBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="Yeomi\UserBundle\Entity\User", inversedBy="posts")
+     */
+    private $user;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime")
@@ -344,5 +351,28 @@ class Post
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Yeomi\UserBundle\Entity\User $user
+     * @return Post
+     */
+    public function setUser(\Yeomi\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Yeomi\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

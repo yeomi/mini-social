@@ -27,15 +27,15 @@ class LoadUsers implements FixtureInterface {
         $users = array(
             'bindou' => array(
                 'email' => 'bindou@bin.fr',
-                'password' => hash('sha512', '1234'),
+                'password' => '1234',
             ),
             'bumbo' => array(
                 'email' => 'boumboum@bumb.fr',
-                'password' => hash('sha512', '1234'),
+                'password' => '1234',
             ),
             'damour' => array(
                 'email' => 'damour@binbumb.fr',
-                'password' => hash('sha512', '1234'),
+                'password' => '1234',
             )
         );
 
