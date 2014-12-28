@@ -1,0 +1,64 @@
+.page-index
+{
+  .wrapper-width.home-ban
+  {
+    background-image: url(../img/bg-home.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center -5rem;
+    position: relative;
+    &:after
+    {
+      z-index: 1;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+    }
+  }
+  #home-ban
+  {
+    position: relative;
+    z-index: 3;
+    height: 33.6rem;
+    color: $thirdFontColor;
+    @include setContainer();
+    padding: 2rem 0;
+    text-align: center;
+    span
+    {
+      display: block;
+      text-align: center;
+    }
+    .top
+    {
+      font-size: 2.2rem;
+      text-transform: uppercase;
+      margin: 3rem 0 2rem 0;
+    }
+    .middle
+    {
+      font-size: 4.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .bottom
+    {
+      font-size: 3.2rem;
+    }
+    .btn.big.register
+    {
+      margin-top: 3.8rem;
+      background-color: $lighterColor;
+      display: inline-block;
+      font-size: 2.3rem;
+      color: $thirdFontColor;
+      padding: 0.8rem 2rem;
+      border-radius: 0.5rem;
+      @include boxShadow(0 .4rem 0 #003662);
+    }
+  }
+}

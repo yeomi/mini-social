@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Menu in English</source>
+                <target>Menu en francais</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Search</source>
+                <target>Recherche</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Logout</source>
+                <target>Déconnexion</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Login</source>
+                <target>Se connecter</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Suggest a challenge</source>
+                <target>Propose un défi</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Share a story</source>
+                <target>Partage tes histoires</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Register</source>
+                <target>S'inscrire</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Get Connected</source>
+                <target>Se connecter</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Username</source>
+                <target>Pseudo</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Remember me</source>
+                <target>Se souvenir de moi</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Forgot your password ?</source>
+                <target>Mot de passe oublié ?</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Connection</source>
+                <target>Connexion</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

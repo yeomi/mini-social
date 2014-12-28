@@ -1,26 +1,37 @@
 {% extends("YeomiUserBundle::layout.html.twig") %}
 
 {% block body %}
-    {# S'il y a une erreur, on l'affiche dans un joli cadre #}
-    {% if error %}
-        <div class="alert alert-danger">{{ error.message }}</div>
-    {% endif %}
+    <div class="page-login">
+        <div class="container">
+            <aside class="illustration">
+            </aside>
 
-    {# Le formulaire, avec URL de soumission vers la route « login_check » comme on l'a vu #}
-    <form action="{{ path('login_check') }}" method="post">
-        <label for="username">Login :</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+            <section>
+                <h3>{% trans %}Get Connected{% endtrans %}</h3>
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="_password" />
-        <br>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.message }}</div>
+                {% endif %}
 
-        <input type="checkbox" id="remember_me" name="_remember_me" checked />
-        <label for="remember_me">Keep me logged in</label>
-        <br>
-        <a href="{{ path('yeomi_user_password_reset') }}">Forgot My password ...</a>
-        <br>
-        <input type="submit" value="Connexion" />
-    </form>
+                <form id="login-form" action="{{ path('login_check') }}" method="post">
+                    <label for="username">{% trans %}Username{% endtrans %}</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" />
 
+                    <label for="password">{% trans %}Password{% endtrans %}</label>
+                    <input type="password" id="password" name="_password" />
+                    <br>
+
+                    <input type="checkbox" id="remember_me" name="_remember_me" checked />
+                    <label class="remember_me" for="remember_me">{% trans %}Remember me{% endtrans %}</label>
+
+                    <input class="btn login" type="submit" value="{% trans %}Connection{% endtrans %}" />
+                    <a class="link-forgot-password" href="{{ path('yeomi_user_password_reset') }}">{% trans %}Forgot your password ?{% endtrans %}</a>
+
+                </form>
+
+                <h3>{% trans %}Not registered yet ?{% endtrans %}</h3>
+                <a class="btn register" href="{{ path("yeomi_user_register") }}">{% trans %}Register{% endtrans %}</a>
+            </section>
+        </div>
+    </div>
 {% endblock %}

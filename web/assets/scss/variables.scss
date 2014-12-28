@@ -1,0 +1,38 @@
+/* LAYOUT */
+$maxPageWidth: 120rem;
+
+/* COLORS */
+$lighterColor: #1293f1;
+$darkerColor: #175da3;
+$bgColor: #e4e4e4;
+
+$fontColor: #3e3e3e;
+$secondFontColor: #818181;
+$thirdFontColor: #fff;
+/* FONT */
+$mainFont: "NewCicleFina", sans-serif;
+$mainFontBold: "NewCicleGordita", sans-serif;
+$titleFont: "great_vibesregular", 'NewCicleGordita', sans-serif;
+
+/* MIXINS */
+@mixin transition($arg)
+{
+  -o-transition : $arg;
+  -moz-transition : $arg;
+  -webkit-transition : $arg;
+  transition : $arg;
+}
+
+@mixin boxShadow($arg)
+{
+  -webkit-box-shadow: $arg;
+  box-shadow: $arg;
+}
+
+
+@mixin setContainer()
+{
+  max-width: $maxPageWidth;
+  margin: auto;
+}
+

@@ -2,6 +2,19 @@
 
 
 {% block body %}
+    <div class="page-index">
+    {% block headerBan %}
+        <div class="wrapper-width home-ban">
+            <aside id="home-ban" class="top-ban">
 
-     This is homepage
+                <span class="top">Une envie, un partage, un défi...</span>
+                <span class="middle">Tpaschiche de faire un selfie dans un lieu insolite !</span>
+                <span class="bottom">Rejoignez Tpaschiche pour le partage et l'entraide.</span>
+
+                <a class="btn big register" href="{{ path("yeomi_user_register") }}">{% trans %}Register{% endtrans %}</a>
+
+            </aside>
+        </div>
+    {% endblock %}
+    </div>
 {% endblock %}

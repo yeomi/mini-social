@@ -2,41 +2,47 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <title>{% block title %} - Tpaschiche - {% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset("assets/css/global.css") }}"/>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
     </head>
     <body>
 
 
         {% block header %}
-            <div style="background: yellowgreen">
-            {% block menu_left %}
-                <ul>
-                    <li><a href="">Menu</a></li>
-                    <li><a href="">Recherche</a></li>
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li><a href="{{ url("logout") }}">{{ app.user.username }} - Deconnexion</a></li>
-                    {% else %}
-                        <li><a href="{{ url("login") }}">Se connecter</a></li>
-                        <li><a href="{{ url("yeomi_user_register") }}">Créer un compte</a></li>
-                    {% endif %}
-                </ul>
-            {% endblock %}
+            <div class="wrapper-width site-header">
+                <header id="site-header">
+                {% block menu_left %}
+                    <nav class="main-nav left">
+                        <ul>
+                            <li><a href="" class="menu-toggle">☰</a></li>
+                            <li><a href="" class="btn search">{% trans %}Search{% endtrans %}</a></li>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <li><a class="log-btn btn logout" href="{{ url("logout") }}">{{ app.user.username }} - {% trans %}Logout{% endtrans %}</a></li>
+                            {% else %}
+                                <li><a class="log-btn btn login" href="{{ url("login") }}">{% trans %}Login{% endtrans %}</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endblock %}
 
-            {% block logo %}
-                <a href="{{ url("yeomi_post_index") }}">
-                    <h1>Tpaschiche</h1>
-                </a>
-            {% endblock %}
+                {% block logo %}
+                    <a id="main-logo" href="{{ url("yeomi_post_index") }}">
+                        <img src="{{ asset('assets/img/main-logo.jpg') }}" alt="Tpaschiche"/>
+                    </a>
+                {% endblock %}
 
-            {% block menu_right %}
-                <ul>
-                    <li><a href="{{ url("yeomi_post_add_post", {"type": "defi"}) }}">Propose un défi</a></li>
-                    <li><a href="{{ url("yeomi_post_add_post", {"type": "histoire"}) }}">Partage tes histoires</a></li>
-                    <li><a href="{{ url("yeomi_post_view") }}">Tous voir</a></li>
-                </ul>
-            {% endblock %}
+                {% block menu_right %}
+                    <nav class="main-nav right">
+                        <ul>
+                            <li><a class="btn new-challenge add-btn" href="{{ url("yeomi_post_add_post", {"type": "defi"}) }}">{% trans %}Suggest a challenge{% endtrans %}</a></li>
+                            <li><a class="btn new-story add-btn" href="{{ url("yeomi_post_add_post", {"type": "histoire"}) }}">{% trans %}Share a story{% endtrans %}</a></li>
+                        </ul>
+                    </nav>
+                {% endblock %}
+                </header>
             </div>
         {% endblock %}
 
