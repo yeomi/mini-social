@@ -13,3 +13,4 @@
 /app/config/
 .DS_Store
 .idea/
+web/assets/.sass-cache/
