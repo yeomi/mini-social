@@ -16,5 +16,48 @@
             </aside>
         </div>
     {% endblock %}
+
+    {% block homeViews %}
+
+        <div class="index-menu">
+            <div class="tab defi"><a href="">Les défis</a></div>
+            <div class="tab histoire"><a href="">Les histoires</a></div>
+        </div>
+
+        {% for defi in defis %}
+            <div class="defi list-view">
+
+                <div class="left">
+                    <div class="content">{{ defi.content }}</div>
+                    <p class="details">
+                        <span class="post-date">{{ defi.created|date("d/m/y \\à G\\hi") }}</span>
+                        <a href="">{% if  defi.user %}{{ defi.user.username }}{% else %}anonyme{% endif %}</a> -
+                        <a href="">{{ defi.categories[0].name }}</a>
+                    </p>
+                </div>
+                {% if defi.images[0] is defined %}
+                <div class="right">
+                    <a class="image" href="">
+                        <img src="{{ asset('uploads/img/post/' ~ defi.images[0].id ~ '.' ~ defi.images[0].value) }}" alt=""/>
+                    </a>
+                </div>
+                {% endif %}
+
+                <div class="actions-btn">
+                    <input type="button" value="I like your challenge (12)"/>
+                    <input type="button" value="It sucks... (5)"/>
+                    <a href="">(10)</a>
+                    <a href="">Share</a>
+
+                    <a href="{{ path("yeomi_post_view_full", {"id": defi.id}) }}">Read</a>
+                </div>
+
+
+            </div>
+
+        {% endfor %}
+
+    {% endblock %}
+
     </div>
 {% endblock %}

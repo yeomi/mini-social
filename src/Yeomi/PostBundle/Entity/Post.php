@@ -220,6 +220,7 @@ class Post
         $this->categories->removeElement($category);
     }
 
+
     /**
      * Get categories
      *

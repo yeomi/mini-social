@@ -27,8 +27,10 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        return $this->render("YeomiPostBundle:Main:index.html.twig", array(
+        $defis = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findDefis();
 
+        return $this->render("YeomiPostBundle:Main:index.html.twig", array(
+            "defis" => $defis,
         ));
     }
 

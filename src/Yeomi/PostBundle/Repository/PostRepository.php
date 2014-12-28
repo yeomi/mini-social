@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+
+    public function findDefis()
+    {
+        $query = $this->createQueryBuilder("p")
+            ->innerJoin("p.type", "t")
+            ->where("t.slug = 'defi'")
+            ->getQuery();
+
+        return $query->getResult();
+
+    }
 }

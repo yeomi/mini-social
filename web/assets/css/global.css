@@ -164,7 +164,7 @@ header#site-header {
     background-size: 63.7rem auto; }
   .page-login section {
     float: right;
-    width: 24rem;
+    width: 25.2rem;
     margin-right: 10rem;
     margin-top: 2rem; }
     .page-login section h3 {
@@ -200,5 +200,8 @@ header#site-header {
       display: block;
       color: #1293f1;
       margin-bottom: 3rem; }
+
+.list-view {
+  background-color: #fff; }
 
 /*# sourceMappingURL=global.css.map */
