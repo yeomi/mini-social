@@ -58,6 +58,10 @@
                 <source>Not registered yet ?</source>
                 <target>Pas encore de compte ?</target>
             </trans-unit>
+            <trans-unit id="15">
+                <source>Read More</source>
+                <target>Lire la suite</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

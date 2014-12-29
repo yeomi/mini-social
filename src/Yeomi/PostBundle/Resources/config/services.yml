@@ -1,4 +1,5 @@
 services:
-#    yeomi_post.example:
-#        class: Yeomi\PostBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    yeomi_post.truncate:
+        class: Yeomi\PostBundle\Tools\YeomiTruncate
+        tags:
+            -  { name : twig.extension }

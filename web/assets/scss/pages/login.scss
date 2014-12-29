@@ -4,7 +4,6 @@
   .container
   {
     overflow: hidden;
-    @include setContainer();
     padding: 5rem 0;
   }
 
@@ -21,7 +20,7 @@
   section
   {
     float: right;
-    width: 25.2rem;
+    width: 27.2rem;
     margin-right: 10rem;
     margin-top: 2rem;
     h3
@@ -64,6 +63,7 @@
       font-size: 1.5rem;
       margin: 1rem 0;
       display: inline-block;
+      cursor: pointer;
     }
     .link-forgot-password
     {

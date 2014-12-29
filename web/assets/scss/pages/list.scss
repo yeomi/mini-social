@@ -1,4 +1,100 @@
 .list-view
 {
+  position: relative;
+  border: 1px solid #d7d7d7;
   background-color: $thirdFontColor;
+  padding: 2rem;
+  &:before
+  {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: .9rem;
+    height: 8rem;
+    background-color: $darkerColor;
+
+  }
+  .content
+  {
+    font-size:1.5rem;
+    margin-bottom: 0.5rem;
+    height: 9rem;
+  }
+  .details
+  {
+    font-size: 1.3rem;
+    color: $darkerColor;
+    .post-date { color: #9f9f9f;}
+    a { color: $darkerColor;}
+
+  }
+  table
+  {
+    width: 100%;
+    td { vertical-align: top; }
+  }
+
+  .right
+  {
+    text-align: right;
+    img
+    {
+      width: 9rem;
+      height: 9rem;
+      border-radius: 0.3rem;
+      margin-left: 2rem;
+    }
+  }
+  .actions-btn
+  {
+    margin-top: 1.8rem;
+    input[type="button"]
+    {
+      margin-right: .6rem;
+      border: 1px solid $darkerColor;
+      background: transparent;
+      font-family: $font;
+      color: $darkerColor;
+      font-size: 1.2rem;
+      padding: .5rem 1rem;
+      cursor: pointer;
+      border-radius: .4rem;
+      &:hover
+      {
+        color: $thirdFontColor;
+        background: $darkerColor;
+      }
+    }
+
+    a
+    {
+      margin: .7rem;
+    }
+    .comments
+    {
+      color: #747474;
+      font-size: 1.1rem;
+      padding-left: 2.2rem;
+      background-image: url(../img/bubble-icone.png);
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 1.9rem auto;
+      line-height: 3.5rem;
+    }
+    .share
+    {
+      padding-left: 1.7rem;
+      background-image: url(../img/share-icone.png);
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 1.7rem auto;
+    }
+    .readmore
+    {
+      float: right;
+      text-decoration: underline;
+      font-size: 1.5rem;
+    }
+  }
 }
