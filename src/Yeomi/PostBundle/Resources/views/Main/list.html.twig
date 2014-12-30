@@ -1,0 +1,42 @@
+{% for post in posts %}
+
+    <div class="defi list-view">
+
+        <table>
+            <tr>
+                <td class="left">
+                    <div class="content">{{ truncatePost(post.content, 200) }}</div>
+                </td>
+
+                {% if post.images[0] is defined %}
+                    <td class="right">
+                        <a class="image" href="">
+                            <img src="{{ asset('uploads/img/post/' ~ post.images[0].id ~ '.' ~ post.images[0].value) }}" alt=""/>
+                        </a>
+                    </td>
+                {% endif %}
+            </tr>
+
+            <tr>
+                <td class="details" colspan="2">
+                    <span class="post-date">{{ post.created|date("d/m/y \\à G\\hi") }}</span>
+                    <a href="">{% if  post.user %}{{ post.user.username }}{% else %}anonyme{% endif %}</a> -
+                    <a href="">{{ post.categories[0].name }}</a>
+
+                </td>
+            </tr>
+        </table>
+
+        <div class="actions-btn">
+            <input type="button" value="I like your challenge (12)"/>
+            <input type="button" value="It sucks... (5)"/>
+            <a class="comments" href="">(10)</a>
+            <a class="share" href=""></a>
+
+            <a class="readmore" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">{% trans %}Read More{% endtrans %}</a>
+        </div>
+
+
+    </div>
+
+{% endfor %}

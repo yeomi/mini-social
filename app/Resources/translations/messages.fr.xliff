@@ -62,6 +62,10 @@
                 <source>Read More</source>
                 <target>Lire la suite</target>
             </trans-unit>
+            <trans-unit id="16">
+                <source>See more posts</source>
+                <target>Voir plus de publications</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

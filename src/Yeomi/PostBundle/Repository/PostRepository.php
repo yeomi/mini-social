@@ -3,6 +3,7 @@
 namespace Yeomi\PostBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * PostRepository
@@ -13,14 +14,24 @@ use Doctrine\ORM\EntityRepository;
 class PostRepository extends EntityRepository
 {
 
-    public function findDefis()
+    public function findByTypeSlug($type, $limit, $offset)
     {
         $query = $this->createQueryBuilder("p")
             ->innerJoin("p.type", "t")
-            ->where("t.slug = 'defi'")
+            ->where("t.slug = :type")
+            ->setParameter("type", $type)
+            ->leftJoin("p.images", "img")
+            ->leftJoin("p.user", "user")
+            ->innerJoin("p.categories", "cat")
+            ->addSelect("img")
+            ->addSelect("user")
+            ->addSelect("cat")
+            ->orderBy("p.created", "DESC")
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
             ->getQuery();
 
-        return $query->getResult();
+        return new Paginator($query, true);
 
     }
 }

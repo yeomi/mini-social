@@ -41,7 +41,7 @@ class Comment
     /**
      * @var \Yeomi\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="Yeomi\UserBundle\Entity\User", inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity="Yeomi\UserBundle\Entity\User", inversedBy="comments")
      */
     private $user;
 

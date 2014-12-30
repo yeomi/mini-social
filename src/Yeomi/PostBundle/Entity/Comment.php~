@@ -41,7 +41,7 @@ class Comment
     /**
      * @var \Yeomi\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="Yeomi\UserBundle\Entity\User", inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity="Yeomi\UserBundle\Entity\User", inversedBy="comments")
      */
     private $user;
 
@@ -251,5 +251,28 @@ class Comment
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Yeomi\UserBundle\Entity\User $user
+     * @return Comment
+     */
+    public function setUser(\Yeomi\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Yeomi\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

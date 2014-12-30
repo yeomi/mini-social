@@ -27,11 +27,22 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        $defis = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findDefis();
+        $defis = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug("histoire", 2, 0);
 
         return $this->render("YeomiPostBundle:Main:index.html.twig", array(
             "defis" => $defis,
         ));
+    }
+
+
+    public function listAction($type, $limit = 3, $offset = 0)
+    {
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug($type, $limit, $offset);
+
+        return $this->render("YeomiPostBundle:Main:list.html.twig", array(
+            "posts" => $posts,
+        ));
+
     }
 
     public function viewAction()

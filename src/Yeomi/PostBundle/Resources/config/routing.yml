@@ -27,3 +27,11 @@ yeomi_post_view_full:
     defaults: { _controller: YeomiPostBundle:Main:viewFull }
     requirements:
         id: \d+
+
+yeomi_post_view_list:
+    path:     /list/{type}/{limit}/{offset}
+    defaults: { _controller: YeomiPostBundle:Main:list, limit: 3, offset: 0 }
+    requirements:
+        type: defi|histoire
+        limit: \d+
+        offset: \d+

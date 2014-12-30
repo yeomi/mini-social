@@ -20,57 +20,34 @@
     {% block homeViews %}
 
         <div class="container">
-            <div class="column-container">
+            <div class="left column-container">
                 <div class="index-menu">
-                    <div class="tab defi active"><a href="">Les défis</a></div>
-                    <div class="tab histoire"><a href="">Les histoires</a></div>
+                    <div class="tab defi active"><a class="loader-list" data-target="{{ path("yeomi_post_view_list", {"type": "defi"}) }}" href="">Les défis</a></div>
+                    <div class="tab histoire"><a class="loader-list" data-target="{{ path("yeomi_post_view_list", {"type": "histoire"}) }}" href="">Les histoires</a></div>
                 </div>
 
-                {% for defi in defis %}
+                <div class="ajax-wrapper">
+                    {{ render(controller("YeomiPostBundle:Main:list", {"type": "defi"})) }}
+                </div>
+                <div class="more-posts">
+                    <a href="">{% trans %}See more posts{% endtrans %}</a>
+                </div>
+            </div>
 
-                    <div class="defi list-view">
+            <div class="right column-container">
+                <div class="index-menu">
+                    <div class="tab defi active"><a class="loader-list" data-target="{{ path("yeomi_post_view_list", {"type": "defi"}) }}" href="">Les + populaires</a></div>
+                    <div class="tab histoire"><a class="loader-list" data-target="{{ path("yeomi_post_view_list", {"type": "histoire"}) }}" href="">Les + récents</a></div>
+                </div>
 
-                        <table>
-                            <tr>
-                                <td class="left">
-                                    <div class="content">{{ truncatePost(defi.content, 200) }}</div>
-                                </td>
-
-                                {% if defi.images[0] is defined %}
-                                <td class="right">
-                                    <a class="image" href="">
-                                        <img src="{{ asset('uploads/img/post/' ~ defi.images[0].id ~ '.' ~ defi.images[0].value) }}" alt=""/>
-                                    </a>
-                                </td>
-                                {% endif %}
-                            </tr>
-
-                            <tr>
-                                <td class="details" colspan="2">
-                                    <span class="post-date">{{ defi.created|date("d/m/y \\à G\\hi") }}</span>
-                                    <a href="">{% if  defi.user %}{{ defi.user.username }}{% else %}anonyme{% endif %}</a> -
-                                    <a href="">{{ defi.categories[0].name }}</a>
-
-                                </td>
-                            </tr>
-                        </table>
-
-                        <div class="actions-btn">
-                            <input type="button" value="I like your challenge (12)"/>
-                            <input type="button" value="It sucks... (5)"/>
-                            <a class="comments" href="">(10)</a>
-                            <a class="share" href=""></a>
-
-                            <a class="readmore" href="{{ path("yeomi_post_view_full", {"id": defi.id}) }}">{% trans %}Read More{% endtrans %}</a>
-                        </div>
-
-
-                    </div>
-
-                {% endfor %}
+                <div class="ajax-wrapper">
+                    {{ render(controller("YeomiPostBundle:Main:list", {"type": "defi"})) }}
+                </div>
+                <div class="more-posts">
+                    <a href="">{% trans %}See more posts{% endtrans %}</a>
+                </div>
             </div>
         </div>
-
     {% endblock %}
 
     </div>
