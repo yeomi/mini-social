@@ -11,6 +11,13 @@
     <body>
 
 
+        {% block popups %}
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") == false %}
+            {{ render(controller("YeomiUserBundle:Main:login")) }}
+        {% endif %}
+        {% endblock %}
+
         {% block header %}
             <div class="wrapper-width site-header">
                 <header id="site-header">
@@ -22,7 +29,7 @@
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <li><a class="log-btn btn logout" href="{{ url("logout") }}">{{ app.user.username }} - {% trans %}Logout{% endtrans %}</a></li>
                             {% else %}
-                                <li><a class="log-btn btn login" href="{{ url("login") }}">{% trans %}Login{% endtrans %}</a></li>
+                                <li><a class="log-btn btn login yeomi-popup-link" data-popup="login" {{ url("login") }}">{% trans %}Login{% endtrans %}</a></li>
                             {% endif %}
                         </ul>
                     </nav>
@@ -52,6 +59,7 @@
         {% block javascripts %}
             <script src="{{ asset("assets/js/jquery-1.11.2.js") }}"></script>
             <script src="{{ asset("bundles/yeomipost/js/script.js") }}"></script>
+            <script src="{{ asset("assets/js/script.js") }}"></script>
         {% endblock %}
     </body>
 </html>

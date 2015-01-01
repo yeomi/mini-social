@@ -18,3 +18,27 @@ a
 {
   @include setContainer();
 }
+
+.pop-up-wrapper
+{
+  display: none;
+  &.visible
+  {
+    display: block;
+  }
+}
+
+
+.popup-arrow
+{
+  display: block;
+  position: absolute;
+  width: 3.2rem;
+  height: 1.6rem;
+  background-image: url(../img/arrowtop-login.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 6;
+  background-size: 100%;
+
+}

@@ -34,7 +34,6 @@ class MainController extends Controller
 
     public function loginAction(Request $request)
     {
-
         if ($this->get("security.context")->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             return $this->redirect($this->generateUrl("yeomi_user_test"));
         }
@@ -48,8 +47,10 @@ class MainController extends Controller
             $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
         }
 
-        return $this->render("YeomiUserBundle:Main:login.html.twig", array(
-            "last_username" => $session->get(SecurityContextInterface::LAST_USERNAME),
+        $template = $request->getPathInfo() == "/_fragment" ? "YeomiUserBundle:Main:loginBlock.html.twig" : "YeomiUserBundle:Main:login.html.twig";
+
+        return $this->render($template, array(
+            "last_username" => $session->get(SecurityContextInterface::AUTHENTICATION_ERROR),
             "error" => $error,
         ));
     }

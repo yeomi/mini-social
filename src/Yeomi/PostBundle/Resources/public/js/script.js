@@ -7,7 +7,7 @@ $(function() {
 
 
   $(".loader-list").click(function() {
-    
+
     var target = $(this).data("target");
     lastTarget = target;
     offset = quantity;
