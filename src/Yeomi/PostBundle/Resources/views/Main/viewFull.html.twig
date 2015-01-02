@@ -2,7 +2,6 @@
 
 
 {% block body %}
-
     <table>
             <tr>
                 <td><a href="{{ path("yeomi_post_view_full", {"id" : post.id}) }}">{{ post.title }}</a></td>
@@ -15,7 +14,10 @@
                 <td><a href="{{ path("yeomi_post_delete_post", {'id': post.id}) }}">Delete</a></td>
             </tr>
     </table>
-
+        <fieldset>
+            <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "like"}) }}" >J'aime(<span>{{ post.likes.positives }}</span>)</a>
+            <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "hate"}) }}" >J'aime pas(<span>{{ post.likes.negatives }}</span>)</a>
+        </fieldset>
         <em>Written by {% if  post.user %}{{ post.user.username }}{% else %}anonyme{% endif %} on the {{ post.created|date("d/m/y \\à G\\hi") }}</em>
 
     {% block comment %}
@@ -36,4 +38,5 @@
         {% endfor %}
 
     {% endblock %}
+
 {% endblock %}

@@ -46,6 +46,12 @@ class Comment
     private $user;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Vote", mappedBy="comment")
+     */
+    private $votes;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="content", type="text")
@@ -274,5 +280,38 @@ class Comment
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add votes
+     *
+     * @param \Yeomi\PostBundle\Entity\Vote $votes
+     * @return Comment
+     */
+    public function addVote(\Yeomi\PostBundle\Entity\Vote $votes)
+    {
+        $this->votes[] = $votes;
+
+        return $this;
+    }
+
+    /**
+     * Remove votes
+     *
+     * @param \Yeomi\PostBundle\Entity\Vote $votes
+     */
+    public function removeVote(\Yeomi\PostBundle\Entity\Vote $votes)
+    {
+        $this->votes->removeElement($votes);
+    }
+
+    /**
+     * Get votes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVotes()
+    {
+        return $this->votes;
     }
 }

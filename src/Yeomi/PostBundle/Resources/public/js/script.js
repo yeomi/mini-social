@@ -30,7 +30,6 @@ $(function() {
   $(".loader-list").eq(0).click();
 
   $(".more-posts").click(function() {
-    console.log(lastTarget);
 
     $.ajax({
       url: lastTarget + "/" + quantity + "/" + offset,

@@ -45,6 +45,12 @@ class User implements UserInterface
     private $comments;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Vote", mappedBy="user")
+     */
+    private $votes;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
@@ -419,5 +425,38 @@ class User implements UserInterface
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Add votes
+     *
+     * @param \Yeomi\PostBundle\Entity\Vote $votes
+     * @return User
+     */
+    public function addVote(\Yeomi\PostBundle\Entity\Vote $votes)
+    {
+        $this->votes[] = $votes;
+
+        return $this;
+    }
+
+    /**
+     * Remove votes
+     *
+     * @param \Yeomi\PostBundle\Entity\Vote $votes
+     */
+    public function removeVote(\Yeomi\PostBundle\Entity\Vote $votes)
+    {
+        $this->votes->removeElement($votes);
+    }
+
+    /**
+     * Get votes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVotes()
+    {
+        return $this->votes;
     }
 }

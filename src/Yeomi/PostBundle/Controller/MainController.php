@@ -20,6 +20,7 @@ use Yeomi\PostBundle\Form\PostType;
 use Yeomi\PostBundle\Entity\Post;
 use Yeomi\PostBundle\Entity\Image;
 use Symfony\Component\HttpFoundation\Response;
+use Yeomi\PostBundle\Entity\Vote;
 
 class MainController extends Controller
 {
@@ -58,8 +59,7 @@ class MainController extends Controller
     public function viewFullAction($id)
     {
 
-        $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->find($id);
-
+        $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getPostComplete($id);
         return $this->render("YeomiPostBundle:Main:viewFull.html.twig", array(
             "post" => $post
         ));

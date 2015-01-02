@@ -35,3 +35,11 @@ yeomi_post_view_list:
         type: defi|histoire
         limit: \d+
         offset: \d+
+
+yeomi_post_vote_ajax:
+    path:     /vote/{entityType}/{entityId}/{type}
+    defaults: { _controller: YeomiPostBundle:Vote:vote}
+    requirements:
+        entityType: post|comment
+        entityId: \d+
+        type: like|hate

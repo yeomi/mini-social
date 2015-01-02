@@ -45,6 +45,11 @@ class Post
     private $comments;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Vote", mappedBy="post")
+     */
+    private $votes;
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
@@ -375,5 +380,61 @@ class Post
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add votes
+     *
+     * @param \Yeomi\PostBundle\Entity\Vote $votes
+     * @return Post
+     */
+    public function addVote(\Yeomi\PostBundle\Entity\Vote $votes)
+    {
+        $this->votes[] = $votes;
+
+        return $this;
+    }
+
+    /**
+     * Remove votes
+     *
+     * @param \Yeomi\PostBundle\Entity\Vote $votes
+     */
+    public function removeVote(\Yeomi\PostBundle\Entity\Vote $votes)
+    {
+        $this->votes->removeElement($votes);
+    }
+
+    /**
+     * Get votes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
+
+    /**
+     * Get likes
+     *
+     * @return Array
+     */
+    public function getLikes()
+    {
+        $positives = 0;
+        $negatives = 0;
+        foreach($this->votes as $vote) {
+            if ($vote->getPositive()) {
+                $positives++;
+            } elseif ($vote->getNegative()) {
+                $negatives++;
+            }
+        }
+
+        return array(
+            "positives" => $positives,
+            "negatives" => $negatives,
+        );
     }
 }

@@ -1,0 +1,217 @@
+<?php
+
+namespace Yeomi\PostBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Vote
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Yeomi\PostBundle\Repository\VoteRepository")
+ */
+class Vote
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \Yeomi\UserBundle\Entity\User
+     * @ORM\ManyToOne(targetEntity="Yeomi\UserBundle\Entity\User", inversedBy="votes")
+     */
+    private $user;
+
+    /**
+     * @var \Yeomi\PostBundle\Entity\Comment
+     * @ORM\ManyToOne(targetEntity="Yeomi\PostBundle\Entity\Comment", inversedBy="votes")
+     */
+    private $comment;
+
+    /**
+     * @var \Yeomi\PostBundle\Entity\Post
+     * @ORM\ManyToOne(targetEntity="Yeomi\PostBundle\Entity\Post", inversedBy="votes")
+     */
+    private $post;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="positive", type="boolean")
+     */
+    private $positive;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="negative", type="boolean")
+     */
+    private $negative;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime")
+     */
+    private $created;
+
+
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+        $this->setNegative(false);
+        $this->setPositive(false);
+    }
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Vote
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set positive
+     *
+     * @param boolean $positive
+     * @return Vote
+     */
+    public function setPositive($positive)
+    {
+        $this->positive = $positive;
+
+        return $this;
+    }
+
+    /**
+     * Get positive
+     *
+     * @return boolean 
+     */
+    public function getPositive()
+    {
+        return $this->positive;
+    }
+
+    /**
+     * Set negative
+     *
+     * @param boolean $negative
+     * @return Vote
+     */
+    public function setNegative($negative)
+    {
+        $this->negative = $negative;
+
+        return $this;
+    }
+
+    /**
+     * Get negative
+     *
+     * @return boolean 
+     */
+    public function getNegative()
+    {
+        return $this->negative;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Yeomi\UserBundle\Entity\User $user
+     * @return Vote
+     */
+    public function setUser(\Yeomi\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Yeomi\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param \Yeomi\PostBundle\Entity\Comment $comment
+     * @return Vote
+     */
+    public function setComment(\Yeomi\PostBundle\Entity\Comment $comment = null)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Yeomi\PostBundle\Entity\Comment 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set post
+     *
+     * @param \Yeomi\PostBundle\Entity\Post $post
+     * @return Vote
+     */
+    public function setPost(\Yeomi\PostBundle\Entity\Post $post = null)
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return \Yeomi\PostBundle\Entity\Post 
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+}
