@@ -13,7 +13,11 @@ $(function() {
       context: document.body,
       success: function(data){
         console.log(data);
-        addOne(btn);
+        if(data == "add") {
+          addOne(btn);
+        } else if(data == "remove") {
+          removeOne(btn);
+        }
       }
     })
 
@@ -21,10 +25,19 @@ $(function() {
 
   });
 
+
+
+  function removeOne(btn)
+  {
+    var cur = btn.find("span").html();
+    cur--;
+    btn.find("span").html(cur);
+  }
+
   function addOne(btn)
   {
     var cur = btn.find("span").html();
-    cur++
+    cur++;
     btn.find("span").html(cur);
   }
 

@@ -42,4 +42,4 @@ yeomi_post_vote_ajax:
     requirements:
         entityType: post|comment
         entityId: \d+
-        type: like|hate
+        type: positive|negative
