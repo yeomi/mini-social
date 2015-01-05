@@ -36,6 +36,13 @@ yeomi_post_view_list:
         limit: \d+
         offset: \d+
 
+yeomi_post_view_list_popular:
+    path:     /list-popular/{limit}/{offset}
+    defaults: { _controller: YeomiPostBundle:Main:listPopular, limit: 3, offset: 0 }
+    requirements:
+        limit: \d+
+        offset: \d+
+
 yeomi_post_vote_ajax:
     path:     /vote/{entityType}/{entityId}/{type}
     defaults: { _controller: YeomiPostBundle:Vote:vote}
@@ -43,3 +50,10 @@ yeomi_post_vote_ajax:
         entityType: post|comment
         entityId: \d+
         type: positive|negative
+
+yeomi_post_test:
+    path:     /test
+    defaults: { _controller: YeomiPostBundle:Main:test, limit: 3, offset: 0 }
+    requirements:
+        limit: \d+
+        offset: \d+

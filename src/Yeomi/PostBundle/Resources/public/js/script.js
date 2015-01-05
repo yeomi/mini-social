@@ -1,46 +1,49 @@
 $(function() {
 
-  var wrapper = $(".ajax-wrapper");
   var quantity = 2;
-  var lastTarget;
-  var offset = quantity;
-
 
   $(".loader-list").click(function() {
 
+    var container = $(this).closest(".column-container");
+    var wrapper = container.find(".ajax-wrapper");
     var target = $(this).data("target");
-    lastTarget = target;
-    offset = quantity;
+    var offset = $(this).parent().parent().data("offset");
+
     $.ajax({
-      url: target + "/" + quantity,
+      url: target + "/" + (quantity + offset),
       type: "POST",
       context: document.body,
       success: function(data){
         $(wrapper).html(data);
       }
-    })
+    });
 
-    $(".loader-list").parent().removeClass("active");
+    container.find(".tab").removeClass("active");
     $(this).parent().addClass("active");
 
     return false;
 
   });
 
-  $(".loader-list").eq(0).click();
+  $(".loader-list:even").click();
 
   $(".more-posts").click(function() {
 
+    var container = $(this).closest(".column-container");
+    var wrapper = container.find(".ajax-wrapper");
+    var target = container.find(".tab.active .loader-list").data("target");
+    var offset = container.find(".index-menu").data("offset");
+    offset += quantity;
+    container.find(".index-menu").data("offset", offset);
+
     $.ajax({
-      url: lastTarget + "/" + quantity + "/" + offset,
+      url: target + "/" + quantity + "/" + offset,
       type: "POST",
       context: document.body,
       success: function(data){
         $(wrapper).append(data);
       }
     });
-
-    offset += quantity;
 
     return false;
   });

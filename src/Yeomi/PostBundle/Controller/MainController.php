@@ -46,6 +46,24 @@ class MainController extends Controller
 
     }
 
+    public function testAction($limit = 3, $offset = 0)
+    {
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findPopularPost($limit, $offset);
+
+        return $this->render("YeomiPostBundle:Main:test.html.twig", array(
+            "posts" => $posts,
+        ));
+    }
+
+    public function listPopularAction($limit = 3, $offset = 0)
+    {
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findPopularPost($limit, $offset);
+
+        return $this->render("YeomiPostBundle:Main:list.html.twig", array(
+            "posts" => $posts,
+        ));
+    }
+
     public function viewAction()
     {
 

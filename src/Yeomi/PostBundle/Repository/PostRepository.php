@@ -37,6 +37,27 @@ class PostRepository extends EntityRepository
 
     }
 
+    public function findPopularPost($limit, $offset)
+    {
+        $query = $this->createQueryBuilder("p")
+            ->innerJoin("p.type", "t")
+            ->leftJoin("p.images", "img")
+            ->leftJoin("p.user", "user")
+            ->leftJoin("p.votes", "votes")
+            ->innerJoin("p.categories", "cat")
+            ->addSelect("img")
+            ->addSelect("user")
+            ->addSelect("COUNT(votes)")
+            ->addSelect("cat")
+            ->orderBy("p.created", "DESC")
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery();
+
+        return new Paginator($query, true);
+
+    }
+
     public function getPostComplete($id)
     {
         $query = $this->createQueryBuilder("p")
