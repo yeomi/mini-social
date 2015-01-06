@@ -91,6 +91,14 @@ class Post
      * @ORM\Column(name="published", type="boolean", nullable=true)
      */
     private $published;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_action", type="datetime", nullable=true)
+     */
+    private $lastAction;
+
     /**
      * Constructor
      */
@@ -413,5 +421,28 @@ class Post
     public function getVotes()
     {
         return $this->votes;
+    }
+
+    /**
+     * Get likes
+     *
+     * @return Array
+     */
+    public function getLikes()
+    {
+        $positives = 0;
+        $negatives = 0;
+        foreach($this->votes as $vote) {
+            if ($vote->getPositive()) {
+                $positives++;
+            } elseif ($vote->getNegative()) {
+                $negatives++;
+            }
+        }
+
+        return array(
+            "positives" => $positives,
+            "negatives" => $negatives,
+        );
     }
 }

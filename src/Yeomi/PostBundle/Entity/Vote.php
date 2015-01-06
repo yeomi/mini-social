@@ -42,14 +42,14 @@ class Vote
     /**
      * @var boolean
      *
-     * @ORM\Column(name="positive", type="boolean")
+     * @ORM\Column(name="positive", type="boolean", nullable=true)
      */
     private $positive;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="negative", type="boolean")
+     * @ORM\Column(name="negative", type="boolean", nullable=true)
      */
     private $negative;
 

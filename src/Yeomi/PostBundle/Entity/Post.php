@@ -91,6 +91,14 @@ class Post
      * @ORM\Column(name="published", type="boolean", nullable=true)
      */
     private $published;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_action", type="datetime", nullable=true)
+     */
+    private $lastAction;
+
     /**
      * Constructor
      */
@@ -99,6 +107,8 @@ class Post
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setCreated(new \DateTime());
+        $this->setLastAction(new \DateTime());
+
     }
 
     /**
@@ -436,5 +446,28 @@ class Post
             "positives" => $positives,
             "negatives" => $negatives,
         );
+    }
+
+    /**
+     * Set lastAction
+     *
+     * @param \DateTime $lastAction
+     * @return Post
+     */
+    public function setLastAction($lastAction)
+    {
+        $this->lastAction = $lastAction;
+
+        return $this;
+    }
+
+    /**
+     * Get lastAction
+     *
+     * @return \DateTime 
+     */
+    public function getLastAction()
+    {
+        return $this->lastAction;
     }
 }

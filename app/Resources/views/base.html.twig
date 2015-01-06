@@ -13,6 +13,7 @@
 
         {% block popups %}
 
+            {{ render(controller("YeomiPostBundle:Main:menu")) }}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") == false %}
             {{ render(controller("YeomiUserBundle:Main:login")) }}
         {% endif %}

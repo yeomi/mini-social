@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Vote
  *
- * @ORM\Table()
+ * @ORM\Table(name="vote")
  * @ORM\Entity(repositoryClass="Yeomi\PostBundle\Repository\VoteRepository")
  */
 class Vote
@@ -42,14 +42,14 @@ class Vote
     /**
      * @var boolean
      *
-     * @ORM\Column(name="positive", type="boolean")
+     * @ORM\Column(name="positive", type="boolean", nullable=true)
      */
     private $positive;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="negative", type="boolean")
+     * @ORM\Column(name="negative", type="boolean", nullable=true)
      */
     private $negative;
 

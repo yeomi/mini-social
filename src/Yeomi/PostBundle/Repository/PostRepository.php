@@ -20,10 +20,12 @@ class PostRepository extends EntityRepository
             ->innerJoin("p.type", "t")
             ->where("t.slug = :type")
             ->setParameter("type", $type)
+            ->leftJoin("p.comments", "c")
             ->leftJoin("p.images", "img")
             ->leftJoin("p.user", "user")
             ->leftJoin("p.votes", "votes")
             ->innerJoin("p.categories", "cat")
+            ->addSelect("c")
             ->addSelect("img")
             ->addSelect("user")
             ->addSelect("votes")
@@ -37,22 +39,56 @@ class PostRepository extends EntityRepository
 
     }
 
-    public function findPopularPost($limit, $offset)
+
+    public function findMostRecents($limit, $offset)
     {
         $query = $this->createQueryBuilder("p")
-            ->innerJoin("p.type", "t")
+            ->leftJoin("p.comments", "c")
             ->leftJoin("p.images", "img")
             ->leftJoin("p.user", "user")
             ->leftJoin("p.votes", "votes")
             ->innerJoin("p.categories", "cat")
+            ->addSelect("c")
             ->addSelect("img")
             ->addSelect("user")
-            ->addSelect("COUNT(votes)")
+            ->addSelect("votes")
             ->addSelect("cat")
-            ->orderBy("p.created", "DESC")
+            ->orderBy("p.lastAction", "DESC")
             ->setFirstResult($offset)
             ->setMaxResults($limit)
             ->getQuery();
+
+        return new Paginator($query, true);
+
+    }
+
+    public function findPopularPost($limit, $offset)
+    {
+
+        $query = $this->createQueryBuilder("p")
+            ->leftJoin("p.comments", "c")
+            ->leftJoin("p.images", "img")
+            ->leftJoin("p.user", "user")
+            ->leftJoin("p.votes", "v")
+            ->innerJoin("p.categories", "cat")
+            ->addSelect("(COUNT(DISTINCT v.id)) + (COUNT(DISTINCT c.id) * 2) as pop")
+            ->addSelect("img")
+            ->addSelect("user")
+            ->addSelect("cat")
+            ->groupBy("p.id")
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->orderBy("pop", "DESC")
+            ->getQuery();
+
+        /* problem when we addSelect votes and comments, because of the group by, only one result is selected) */
+
+        /* For now we take even negative vote as popularity points,
+           This needs to be improved to take only positive with the following :
+//            ->addSelect("SUM(case when votes.positive=1 THEN 1 ELSE 0 END) as nbvotes")
+
+            ->addSelect("(COUNT(DISTINCT case v.id)) + (COUNT(DISTINCT c.id) * 2) as pop")
+        */
 
         return new Paginator($query, true);
 

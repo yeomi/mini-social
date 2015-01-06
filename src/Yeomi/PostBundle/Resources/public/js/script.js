@@ -1,6 +1,6 @@
 $(function() {
 
-  var quantity = 2;
+  var quantity = 3;
 
   $(".loader-list").click(function() {
 

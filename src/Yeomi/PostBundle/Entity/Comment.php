@@ -197,6 +197,7 @@ class Comment
     public function setPost(\Yeomi\PostBundle\Entity\Post $post)
     {
         $this->post = $post;
+        $this->post->setLastAction(new \DateTime());
 
         return $this;
     }

@@ -35,6 +35,15 @@ class MainController extends Controller
         ));
     }
 
+    public function menuAction()
+    {
+        $categories = $this->getDoctrine()->getRepository("YeomiPostBundle:Category")->findAll();
+
+        return $this->render("YeomiPostBundle:Elements:menu.html.twig", array(
+            "categories" => $categories,
+        ));
+
+    }
 
     public function listAction($type, $limit = 3, $offset = 0)
     {
@@ -48,7 +57,7 @@ class MainController extends Controller
 
     public function testAction($limit = 3, $offset = 0)
     {
-        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findPopularPost($limit, $offset);
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findMostRecents($limit, $offset);
 
         return $this->render("YeomiPostBundle:Main:test.html.twig", array(
             "posts" => $posts,
@@ -59,6 +68,21 @@ class MainController extends Controller
     {
         $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findPopularPost($limit, $offset);
 
+        $cleanArrayPosts = array();
+        foreach($posts as $post)
+        {
+            $cleanArrayPosts []= $post[0];
+        }
+
+        return $this->render("YeomiPostBundle:Main:list.html.twig", array(
+            "posts" => $cleanArrayPosts,
+        ));
+    }
+
+    public function listMostRecentAction($limit = 3, $offset = 0)
+    {
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findMostRecents($limit, $offset);
+
         return $this->render("YeomiPostBundle:Main:list.html.twig", array(
             "posts" => $posts,
         ));
@@ -66,7 +90,6 @@ class MainController extends Controller
 
     public function viewAction()
     {
-
         $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findAll();
 
         return $this->render("YeomiPostBundle:Main:view.html.twig", array(
@@ -76,7 +99,6 @@ class MainController extends Controller
 
     public function viewFullAction($id)
     {
-
         $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getPostComplete($id);
         return $this->render("YeomiPostBundle:Main:viewFull.html.twig", array(
             "post" => $post
