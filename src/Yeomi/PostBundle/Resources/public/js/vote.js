@@ -1,6 +1,6 @@
 $(function() {
 
-  $(".vote-btn").click(function() {
+  $("body").on("click", ".vote-btn", function() {
 
     var btn = $(this);
     var target = $(this).data("target");

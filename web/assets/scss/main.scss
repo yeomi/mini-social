@@ -7,7 +7,14 @@ body
   background-color: $bgColor;
   font-family: $font;
   font-size: 1.6rem;
+  position: relative;
+  left: 0;
   color: $fontColor;
+  @include transition(all 0.4s ease);
+  &.menu-open
+  {
+    left: 24.5rem;
+  }
 }
 a
 {
@@ -17,28 +24,4 @@ a
 .container
 {
   @include setContainer();
-}
-
-.pop-up-wrapper
-{
-  display: none;
-  &.visible
-  {
-    display: block;
-  }
-}
-
-
-.popup-arrow
-{
-  display: block;
-  position: absolute;
-  width: 3.2rem;
-  height: 1.6rem;
-  background-image: url(../img/arrowtop-login.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 6;
-  background-size: 100%;
-
 }

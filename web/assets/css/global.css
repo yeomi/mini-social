@@ -89,7 +89,15 @@ body {
   background-color: #e4e4e4;
   font-family: "open_sansregular", Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
-  color: #3e3e3e; }
+  position: relative;
+  left: 0;
+  color: #3e3e3e;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease; }
+  body.menu-open {
+    left: 24.5rem; }
 
 a {
   color: #3e3e3e; }
@@ -97,22 +105,6 @@ a {
 .container {
   max-width: 120rem;
   margin: auto; }
-
-.pop-up-wrapper {
-  display: none; }
-  .pop-up-wrapper.visible {
-    display: block; }
-
-.popup-arrow {
-  display: block;
-  position: absolute;
-  width: 3.2rem;
-  height: 1.6rem;
-  background-image: url(../img/arrowtop-login.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 6;
-  background-size: 100%; }
 
 .wrapper-width.site-header {
   background-color: #175da3; }
@@ -231,28 +223,6 @@ header#site-header {
     border-radius: 0.5rem;
     -webkit-box-shadow: 0 0.4rem 0 #003662;
     box-shadow: 0 0.4rem 0 #003662; }
-.page-index .more-posts {
-  background-color: #f6f6f6;
-  position: relative;
-  top: -1px;
-  border: 1px solid #bcbcbc; }
-  .page-index .more-posts a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 1.2rem;
-    text-align: center; }
-    .page-index .more-posts a:after {
-      content: "";
-      width: 1.5rem;
-      display: inline-block;
-      vertical-align: middle;
-      margin-left: 1rem;
-      height: .9rem;
-      background-image: url(../img/arrow-down.png);
-      background-repeat: no-repeat;
-      background-size: 1.5rem auto;
-      background-position: center; }
 
 .page-login {
   background-color: white; }
@@ -348,6 +318,42 @@ header#site-header {
         color: #175da3; }
       .container.container-lists .index-menu .tab.active a:before, .container.container-lists .index-menu .tab:hover a:before {
         display: block; }
+  .container.container-lists .more-posts {
+    background-color: #f6f6f6;
+    position: relative;
+    top: -1px;
+    border: 1px solid #bcbcbc; }
+    .container.container-lists .more-posts a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 1.2rem;
+      text-align: center; }
+      .container.container-lists .more-posts a:after {
+        content: "";
+        width: 1.5rem;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 1rem;
+        height: .9rem;
+        background-image: url(../img/arrow-down.png);
+        background-repeat: no-repeat;
+        background-size: 1.5rem auto;
+        background-position: center; }
+
+.container.container-lists .full.column-container .ajax-wrapper {
+  font-size: 0; }
+.container.container-lists .full.column-container .list-view {
+  font-size: 1.6rem;
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+  border: 3px solid #e4e4e4; }
+  .container.container-lists .full.column-container .list-view:nth-of-type(even) {
+    border-right: none;
+    float: right; }
+  .container.container-lists .full.column-container .list-view:nth-of-type(odd) {
+    border-left: none; }
 
 .list-view {
   position: relative;
@@ -386,17 +392,17 @@ header#site-header {
       margin-left: 2rem; }
   .list-view .actions-btn {
     margin-top: 1.8rem; }
-    .list-view .actions-btn input[type="button"] {
-      margin-right: .6rem;
+    .list-view .actions-btn .vote-btn {
+      margin: 0;
+      margin-right: .5rem;
       border: 1px solid #175da3;
-      background: transparent;
       font-family: "open_sansregular", Arial, Helvetica, sans-serif;
       color: #175da3;
       font-size: 1.2rem;
+      display: inline-block;
       padding: .5rem 1rem;
-      cursor: pointer;
       border-radius: .4rem; }
-      .list-view .actions-btn input[type="button"]:hover {
+      .list-view .actions-btn .vote-btn:hover {
         color: #fff;
         background: #175da3; }
     .list-view .actions-btn a {
@@ -421,15 +427,35 @@ header#site-header {
       text-decoration: underline;
       font-size: 1.5rem; }
 
-.login-popup {
+.pop-up-wrapper {
+  display: none; }
+  .pop-up-wrapper.visible {
+    display: block; }
+
+.popup-arrow {
+  display: block;
+  position: absolute;
+  width: 3.2rem;
+  height: 1.6rem;
+  background-image: url(../img/arrowtop-login.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 6;
+  background-size: 100%; }
+
+.yeomi-popup {
   background-color: white;
   position: absolute;
   z-index: 5;
-  width: 60rem;
   padding: 1rem 5rem;
   border: 1px solid #c1c1c1;
   border-radius: .6rem;
   color: #6a6a6a;
+  -webkit-box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3); }
+
+.login-popup {
+  width: 60rem;
   -webkit-box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3); }
   .login-popup a {
@@ -500,11 +526,52 @@ header#site-header {
     -webkit-box-shadow: 0 0.4rem 0 #003662;
     box-shadow: 0 0.4rem 0 #003662; }
 
+nav.category-nav {
+  background-color: #fff;
+  position: fixed;
+  left: -24.5rem;
+  top: 0;
+  height: 100%;
+  z-index: 5;
+  width: 24.5rem;
+  -webkit-box-shadow: -3px 0 6px rgba(0, 0, 0, 0.3) inset;
+  box-shadow: -3px 0 6px rgba(0, 0, 0, 0.3) inset;
+  padding-top: 3.5rem;
+  -o-transition: left 0.4s ease;
+  -moz-transition: left 0.4s ease;
+  -webkit-transition: left 0.4s ease;
+  transition: left 0.4s ease; }
+  nav.category-nav.open {
+    left: 0; }
+  nav.category-nav .close {
+    width: 1.6rem;
+    height: 1.6rem;
+    display: block;
+    background-image: url(../img/menu-close.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-position: center; }
+  nav.category-nav ul {
+    list-style-type: none; }
+  nav.category-nav li a {
+    display: block;
+    border-bottom: 1px solid #d7d7d7;
+    line-height: 5rem;
+    font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    padding: 0 2rem; }
+  nav.category-nav li:first-child a {
+    border-top: 1px solid #d7d7d7; }
+
 .page-category header.category-header {
   max-width: 120rem;
   margin: auto;
   background-color: #fff;
-  margin-top: 1.2rem;
+  margin-top: 1.1rem;
+  margin-bottom: 1.1rem;
   padding: 2.5em 5rem;
   height: 22rem;
   -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);

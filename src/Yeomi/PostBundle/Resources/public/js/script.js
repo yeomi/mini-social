@@ -8,6 +8,7 @@ $(function() {
     var wrapper = container.find(".ajax-wrapper");
     var target = $(this).data("target");
     var offset = $(this).parent().parent().data("offset");
+    var quantity = $(this).parent().parent().data("quantity");
 
     $.ajax({
       url: target + "/" + (quantity + offset),
@@ -33,6 +34,7 @@ $(function() {
     var wrapper = container.find(".ajax-wrapper");
     var target = container.find(".tab.active .loader-list").data("target");
     var offset = container.find(".index-menu").data("offset");
+    var quantity = container.find(".index-menu").data("quantity");
     offset += quantity;
     container.find(".index-menu").data("offset", offset);
 

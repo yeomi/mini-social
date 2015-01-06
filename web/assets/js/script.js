@@ -1,9 +1,16 @@
 $(function() {
+
   $("a.yeomi-popup-link").click(function(e) {
     var targetClass = $(this).data("popup") + "-popup";
     var target = $("." + targetClass);
+    var popupWrapper = target.parent();
 
-    target.parent().addClass("visible");
+    if(popupWrapper.hasClass("visible")) {
+      popupWrapper.removeClass("visible");
+      return false;
+    } else {
+      popupWrapper.addClass("visible");
+    }
     setPopupXY(target, e.pageX, e.pageY);
 
     var arrow = target.parent().find(".popup-arrow");
@@ -36,5 +43,31 @@ $(function() {
     });
   }
 
+  $(".menu-toggle").click(function() {
+    var menu = $(".category-nav");
+    var body = $("body");
+    if(menu.hasClass("open")) {
+      menu.removeClass("open");
+      body.removeClass("menu-open");
+    } else {
+      menu.addClass("open");
+      body.addClass("menu-open");
+    }
+
+    return false;
+  });
+  $(".category-nav .close").click(function() {
+    $(".category-nav").removeClass("open");
+    $("body").removeClass("menu-open");
+    return false;
+  });
+
+  $(".category-nav a").click(function() {
+    $(".category-nav .close").click();
+    setTimeout(function() {
+      return true;
+    }, 500);
+
+  });
 
 });

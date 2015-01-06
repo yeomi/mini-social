@@ -1,4 +1,5 @@
 <nav class="category-nav">
+    <a href="" class="close"></a>
     <ul>
         {% for category in categories %}
             <li><a href="{{ path("yeomi_post_view_category", {"id": category.id}) }}">{{ category.name }}</a></li>

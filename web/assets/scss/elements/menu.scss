@@ -1,0 +1,39 @@
+nav.category-nav
+{
+  background-color: $thirdFontColor;
+  position: fixed;
+  left: -24.5rem;
+  top: 0;
+  height: 100%;
+  z-index: 5;
+  width: 24.5rem;
+  @include boxShadow(-3px 0 6px rgba(0,0,0,0.3) inset);
+  padding-top: 3.5rem;
+  @include transition(left 0.4s ease);
+  &.open {left: 0;}
+  .close
+  {
+    width: 1.6rem;
+    height: 1.6rem;
+    display: block;
+    background-image: url(../img/menu-close.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-position: center;
+  }
+  ul { list-style-type: none;}
+  li a
+  {
+    display: block;
+    border-bottom: 1px solid #d7d7d7;
+    line-height: 5rem;
+    font-family: $semiBold;
+    font-size: 1.5rem;
+    padding: 0 2rem
+
+  }
+  li:first-child a {border-top: 1px solid #d7d7d7;}
+}

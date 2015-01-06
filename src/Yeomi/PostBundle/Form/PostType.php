@@ -15,9 +15,7 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text')
             ->add('content', 'textarea')
-            ->add('published', 'checkbox')
             ->add("categories", "entity", array(
                 "class" => "YeomiPostBundle:Category",
                 "property" => "name",
@@ -28,7 +26,6 @@ class PostType extends AbstractType
                 'allow_add' => false,
                 'allow_delete' => false,
             ))
-            ->add('published', 'checkbox')
             ->add('save', "submit")
         ;
     }

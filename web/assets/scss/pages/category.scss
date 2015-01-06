@@ -4,7 +4,8 @@
   {
     @include setContainer();
     background-color: $thirdFontColor;
-    margin-top: 1.2rem;
+    margin-top: 1.1rem;
+    margin-bottom: 1.1rem;
     padding:  2.5em 5rem;
     height: 22rem;
     @include boxShadow(0 0 6px rgba(0,0,0,0.2));

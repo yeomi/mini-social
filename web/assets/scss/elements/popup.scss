@@ -1,0 +1,36 @@
+.pop-up-wrapper
+{
+  display: none;
+  &.visible
+  {
+    display: block;
+  }
+}
+
+
+.popup-arrow
+{
+  display: block;
+  position: absolute;
+  width: 3.2rem;
+  height: 1.6rem;
+  background-image: url(../img/arrowtop-login.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 6;
+  background-size: 100%;
+
+}
+
+.yeomi-popup
+{
+  background-color: white;
+  position: absolute;
+  z-index: 5;
+  padding: 1rem 5rem;
+  border: 1px solid #c1c1c1;
+  border-radius: .6rem;
+  color: #6a6a6a;
+  @include boxShadow(0 0 2rem rgba(0,0,0,0.3));
+}
+

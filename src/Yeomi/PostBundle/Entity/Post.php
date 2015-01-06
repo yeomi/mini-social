@@ -107,6 +107,7 @@ class Post
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setCreated(new \DateTime());
+        $this->setPublished(true);
         $this->setLastAction(new \DateTime());
 
     }

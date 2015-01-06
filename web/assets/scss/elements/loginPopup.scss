@@ -1,13 +1,6 @@
 .login-popup
 {
-  background-color: white;
-  position: absolute;
-  z-index: 5;
   width: 60rem;
-  padding: 1rem 5rem;
-  border: 1px solid #c1c1c1;
-  border-radius: .6rem;
-  color: #6a6a6a;
   @include boxShadow(0 0 2rem rgba(0,0,0,0.3));
   a { color: #6a6a6a; }
   h3

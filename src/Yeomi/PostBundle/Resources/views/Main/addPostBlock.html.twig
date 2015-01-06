@@ -1,0 +1,35 @@
+
+<div class="pop-up-wrapper" style="display: block;">
+    <span class="popup-arrow"></span>
+    <aside class="add-post-popup yeomi-popup">
+
+        <h3>{% trans %}Suggest a challenge{% endtrans %}</h3>
+
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div>
+            {{ form_errors(form.content) }}
+            {{ form_widget(form.content, {'attr': {'placeholder' : 'Propose un défi'}}) }}
+        </div>
+
+        <div>
+            {{ form_label(form.categories) }}
+            {{ form_errors(form.categories) }}
+            {{ form_widget(form.categories) }}
+        </div>
+
+        <div>
+            {{ form_label(form.images) }}
+            {{ form_errors(form.images) }}
+            {{ form_widget(form.images) }}
+        </div>
+
+        <div>
+            {{ form_widget(form.save, {'label': 'Publier'}) }}
+        </div>
+
+
+        {{ form_end(form) }}
+    </aside>
+</div>

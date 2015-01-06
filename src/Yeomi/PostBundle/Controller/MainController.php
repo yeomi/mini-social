@@ -140,8 +140,9 @@ class MainController extends Controller
             return $this->redirect($this->generateUrl("yeomi_post_index"));
         }
 
+        $template = $request->getPathInfo() == "/_fragment" ? "YeomiPostBundle:Main:addPostBlock.html.twig" : "YeomiPostBundle:Main:addPost.html.twig";
 
-        return $this->render("YeomiPostBundle:Main:addPost.html.twig", array(
+        return $this->render($template, array(
             "form" => $form->createView(),
         ));
     }
