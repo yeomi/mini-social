@@ -14,9 +14,9 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 class PostRepository extends EntityRepository
 {
 
-    public function findByTypeSlug($type, $limit, $offset)
+    public function findByTypeSlug($type, $limit, $offset, $categoryId = null)
     {
-        $query = $this->createQueryBuilder("p")
+        $qb = $this->createQueryBuilder("p")
             ->innerJoin("p.type", "t")
             ->where("t.slug = :type")
             ->setParameter("type", $type)
@@ -32,8 +32,12 @@ class PostRepository extends EntityRepository
             ->addSelect("cat")
             ->orderBy("p.created", "DESC")
             ->setFirstResult($offset)
-            ->setMaxResults($limit)
-            ->getQuery();
+            ->setMaxResults($limit);
+        if(!is_null($categoryId)) {
+            $qb->andWhere("cat.id = :categoryId")
+                ->setParameter("categoryId", $categoryId);
+        }
+        $query = $qb->getQuery();
 
         return new Paginator($query, true);
 

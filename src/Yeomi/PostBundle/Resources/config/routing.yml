@@ -58,6 +58,23 @@ yeomi_post_vote_ajax:
         entityId: \d+
         type: positive|negative
 
+# Category
+
+yeomi_post_view_category:
+    path:     /category/{id}
+    defaults: { _controller: YeomiPostBundle:Category:view }
+    requirements:
+        id: \d+
+
+yeomi_post_view_list_category:
+    path:     /list-cat/{categoryId}/{type}/{limit}/{offset}
+    defaults: { _controller: YeomiPostBundle:Category:listCategory, limit: 3, offset: 0 }
+    requirements:
+        categoryId: \d+
+        type: defi|histoire
+        limit: \d+
+        offset: \d+
+
 yeomi_post_test:
     path:     /test
     defaults: { _controller: YeomiPostBundle:Main:test, limit: 3, offset: 0 }

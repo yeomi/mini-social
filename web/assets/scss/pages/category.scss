@@ -1,0 +1,23 @@
+.page-category
+{
+  header.category-header
+  {
+    @include setContainer();
+    background-color: $thirdFontColor;
+    margin-top: 1.2rem;
+    padding:  2.5em 5rem;
+    height: 22rem;
+    @include boxShadow(0 0 6px rgba(0,0,0,0.2));
+    h1
+    {
+      font-family: $semiBold;
+      font-size: 3.2rem;
+      color: $darkerColor;
+      margin-bottom: .8rem;
+    }
+    p
+    {
+      font-size: 1.7rem;
+    }
+  }
+}

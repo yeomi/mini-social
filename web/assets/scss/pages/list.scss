@@ -1,3 +1,61 @@
+.container.container-lists
+{
+  font-size: 0;
+  .column-container
+  {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 1.6rem;
+    &.full
+    {
+      width: 100%;
+    }
+    &.right
+    {
+      float: right;
+    }
+  }
+  .index-menu
+  {
+    @include boxShadow(0 0 6px rgba(0,0,0,0.2));
+    background-color: $thirdFontColor;
+    font-size: 0;
+    .tab
+    {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+      text-align: center;
+      a
+      {
+        position: relative;
+        display: block;
+        padding: 2.3rem 1rem 1.7rem 1rem;
+        font-size: 2.2rem;
+        font-family: $semiBold;
+        color: $secondFontColor;
+        &:before
+        {
+          display:none;
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 1rem;
+          background-color: $darkerColor;
+        }
+      }
+      &.active, &:hover
+      {
+        a {color: $darkerColor;}
+        a:before {display: block;}
+      }
+    }
+  }
+}
+
 .list-view
 {
   position: relative;
