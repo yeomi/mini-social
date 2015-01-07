@@ -1,4 +1,4 @@
-.page-login
+.page-login, .style-login
 {
   background-color: white;
   .container
@@ -37,7 +37,7 @@
         color:#565656;
         font-size: 1.5rem;
       }
-      input[type="text"], input[type="password"]
+      input[type="text"], input[type="email"], input[type="password"]
       {
         width: 100%;
         margin-bottom: 2rem;

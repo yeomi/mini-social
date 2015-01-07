@@ -78,6 +78,10 @@
                 <source>Add a video</source>
                 <target>Ajouter une vidéo</target>
             </trans-unit>
+            <trans-unit id="20">
+                <source>Create an account</source>
+                <target>Créer un compte</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

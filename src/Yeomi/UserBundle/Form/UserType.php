@@ -24,7 +24,7 @@ class UserType extends AbstractType
                 'second_options' => array('label' => 'Mot de passe (confirmation)'),
             ))
             ->add('email', 'email')
-            ->add('Create account', 'submit')
+            ->add('submit', 'submit')
         ;
     }
     

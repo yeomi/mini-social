@@ -110,6 +110,11 @@ class MainController extends Controller
         return hash("sha1", $username . $password);
     }
 
+
+    public function registerSuccessAction()
+    {
+        return $this->render("YeomiUserBundle:Main:registerSuccess.html.twig");
+    }
     public function registerAction(Request $request)
     {
         $user = new User();
@@ -131,6 +136,8 @@ class MainController extends Controller
 
             // User is not confirmed until he does not confirm mail
             $this->sendEmailValidation($user);
+
+            return $this->redirect($this->generateUrl("yeomi_user_register_success"));
 
         }
 

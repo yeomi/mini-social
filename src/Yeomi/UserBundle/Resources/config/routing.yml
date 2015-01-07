@@ -6,6 +6,10 @@ yeomi_user_register:
     path:     /register
     defaults: { _controller: YeomiUserBundle:Main:register }
 
+yeomi_user_register_success:
+    path:     /registration-complete
+    defaults: { _controller: YeomiUserBundle:Main:registerSuccess }
+
 yeomi_user_validate:
     path:     /validate/{id}/{token}
     defaults: { _controller: YeomiUserBundle:Main:validate }

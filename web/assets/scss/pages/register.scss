@@ -1,0 +1,17 @@
+.page-register.style-login
+{
+
+  section
+  {
+    width: 37.2rem;
+    form
+    {
+      width: 100%;
+    }
+    label.required:after
+    {
+      content: " *";
+    }
+
+  }
+}
