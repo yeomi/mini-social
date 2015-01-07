@@ -144,6 +144,7 @@ class MainController extends Controller
 
         return $this->render($template, array(
             "form" => $form->createView(),
+            "type" => $type,
         ));
     }
 

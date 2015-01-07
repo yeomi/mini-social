@@ -66,6 +66,18 @@
                 <source>See more posts</source>
                 <target>Voir plus de publications</target>
             </trans-unit>
+            <trans-unit id="17">
+                <source>Publish</source>
+                <target>Publier</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Add pictures</source>
+                <target>Ajouter des photos</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Add a video</source>
+                <target>Ajouter une vidéo</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

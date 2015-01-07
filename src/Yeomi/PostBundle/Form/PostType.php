@@ -19,6 +19,7 @@ class PostType extends AbstractType
             ->add("categories", "entity", array(
                 "class" => "YeomiPostBundle:Category",
                 "property" => "name",
+                'empty_value' => ' -- Choisissez une catégorie -- ',
             ))
 
             ->add('images', 'collection', array(

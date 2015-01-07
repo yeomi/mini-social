@@ -1,5 +1,16 @@
 $(function() {
 
+  $(document).mouseup(function (e)
+  {
+    var container = $(".pop-up-wrapper");
+
+    if (!container.is(e.target) // if the target of the click isn't the container...
+      && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+      container.removeClass("visible");
+    }
+  });
+
   $("a.yeomi-popup-link").click(function(e) {
     var targetClass = $(this).data("popup") + "-popup";
     var target = $("." + targetClass);
@@ -9,6 +20,7 @@ $(function() {
       popupWrapper.removeClass("visible");
       return false;
     } else {
+      $(".pop-up-wrapper").removeClass("visible");
       popupWrapper.addClass("visible");
     }
     setPopupXY(target, e.pageX, e.pageY);

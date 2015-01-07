@@ -1,32 +1,58 @@
 
-<div class="pop-up-wrapper" style="display: block;">
+<div class="pop-up-wrapper">
     <span class="popup-arrow"></span>
-    <aside class="add-post-popup yeomi-popup">
+    <aside class="add-{{ type.slug }}-popup yeomi-popup">
 
-        <h3>{% trans %}Suggest a challenge{% endtrans %}</h3>
 
-        {{ form_start(form) }}
+        {% if type.slug == "defi" %}
+            {% set suggestEntity = "Suggest a challenge" %}
+        {% elseif type.slug == "histoire" %}
+            {% set suggestEntity = "Share a story" %}
+        {% endif %}
+
+
+        <h3>{{ suggestEntity|trans }}</h3>
+
+        {{ form_start(form, {"action": path("yeomi_post_add_post", {"type": type.slug})}) }}
         {{ form_errors(form) }}
 
-        <div>
+        <div class="post-body">
             {{ form_errors(form.content) }}
-            {{ form_widget(form.content, {'attr': {'placeholder' : 'Propose un défi'}}) }}
+            {{ form_widget(form.content, {'attr': {'placeholder' : suggestEntity|trans}}) }}
         </div>
 
-        <div>
-            {{ form_label(form.categories) }}
+        <div class="post-category">
             {{ form_errors(form.categories) }}
             {{ form_widget(form.categories) }}
         </div>
 
-        <div>
-            {{ form_label(form.images) }}
-            {{ form_errors(form.images) }}
-            {{ form_widget(form.images) }}
+        <div class="post-attached-files">
+            <p class="info">
+                N'oubliez pas que vous pouvez agrémenter votre publication d'une image ou d'une vidéo ! Vous êtes cependant libre de laisser les mots parler d'eux-mêmes !
+            </p>
+
+            <a class="link-attach-file add-pictures" href="">{% trans %}Add pictures{% endtrans %}</a>
+            <a class="link-attach-file add-video" href="">{% trans %}Add a video{% endtrans %}</a>
+
+            <div class="add-pictures-field">
+                <ul>
+                {% for index, imageForm in form.images %}
+                    <li class="upload-image-{{ index }}">
+                    {{ form_label(imageForm.file) }}
+                    {{ form_errors(imageForm.file) }}
+                    {{ form_widget(imageForm.file) }}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+
+            <div class="add-video-field">
+                <p>Video</p>
+            </div>
         </div>
 
-        <div>
-            {{ form_widget(form.save, {'label': 'Publier'}) }}
+        <div class="submit-area">
+            {{ form_widget(form.save, {'attr': {'class': 'btn popup-btn'}, 'label': 'Publish'|trans}) }}
         </div>
 
 

@@ -18,6 +18,7 @@
             {{ render(controller("YeomiUserBundle:Main:login")) }}
         {% endif %}
             {{ render(controller("YeomiPostBundle:Main:addPost", {"type": "defi"})) }}
+            {{ render(controller("YeomiPostBundle:Main:addPost", {"type": "histoire"})) }}
         {% endblock %}
 
         {% block header %}
@@ -46,8 +47,8 @@
                 {% block menu_right %}
                     <nav class="main-nav right">
                         <ul>
-                            <li><a class="btn new-challenge add-btn yeomi-popup-link" data-popup="add-post" href="{{ url("yeomi_post_add_post", {"type": "defi"}) }}">{% trans %}Suggest a challenge{% endtrans %}</a></li>
-                            <li><a class="btn new-story add-btn" href="{{ url("yeomi_post_add_post", {"type": "histoire"}) }}">{% trans %}Share a story{% endtrans %}</a></li>
+                            <li><a class="btn new-challenge add-btn yeomi-popup-link" data-popup="add-defi" href="{{ url("yeomi_post_add_post", {"type": "defi"}) }}">{% trans %}Suggest a challenge{% endtrans %}</a></li>
+                            <li><a class="btn new-story add-btn yeomi-popup-link" data-popup="add-histoire" href="{{ url("yeomi_post_add_post", {"type": "histoire"}) }}">{% trans %}Share a story{% endtrans %}</a></li>
                         </ul>
                     </nav>
                 {% endblock %}
