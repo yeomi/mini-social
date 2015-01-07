@@ -25,3 +25,13 @@ a
 {
   @include setContainer();
 }
+
+.flash-bag-error
+{
+  background-color: #de3c3c;
+  color: white;
+  padding: 1rem;
+  border-radius: .4rem;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}

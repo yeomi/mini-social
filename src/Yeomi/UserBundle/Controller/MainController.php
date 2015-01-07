@@ -111,9 +111,9 @@ class MainController extends Controller
     }
 
 
-    public function registerSuccessAction()
+    public function registrationCompleteAction()
     {
-        return $this->render("YeomiUserBundle:Main:registerSuccess.html.twig");
+        return $this->render("YeomiUserBundle:Main:registrationComplete.html.twig");
     }
     public function registerAction(Request $request)
     {
@@ -166,23 +166,28 @@ class MainController extends Controller
             $manager->flush();
             return new Response("Felicitations, vous pouvez à présent vous connecter et commencer à profiter du site !");
         }
+        return $this->render("YeomiUserBundle:Main:validate.html.twig", array(
 
+        ));
         return new Response("Erreur d'authentification");
     }
 
     public function resetPasswordAction(Request $request)
     {
+        $isDone = false;
         if ($request->isMethod("POST")) {
 
             if (!filter_var($request->request->get("email_given"), FILTER_VALIDATE_EMAIL)) {
-                return new Response("This ain't no email address");
+                $request->getSession()->getFlashBag()->add("error", "L'adresse e-mail n'est pas valide");
+                return $this->redirect($this->generateUrl("yeomi_user_password_reset"));
             }
 
             $email = $request->request->get("email_given");
             $user = $this->getDoctrine()->getRepository("YeomiUserBundle:User")->findOneBy(array("email" => $email));
 
             if (is_null($user)) {
-                return new Response("Cet adresse email n'est associé à aucun compte, vous pouvez cependant crée un compte");
+                $request->getSession()->getFlashBag()->add("error", "Cette adresse e-mail n'est associée à aucun compte");
+                return $this->redirect($this->generateUrl("yeomi_user_password_reset"));
             }
 
             $manager = $this->getDoctrine()->getManager();
@@ -191,10 +196,10 @@ class MainController extends Controller
 
             $user->setPasswordOutdated(true);
             $manager->flush();
-
+            $isDone = true;
         }
         return $this->render("YeomiUserBundle:Main:resetPassword.html.twig", array(
-
+            "isDone" => $isDone,
         ));
     }
 
@@ -206,32 +211,35 @@ class MainController extends Controller
         $validationToken = $this->generateValidationToken($user->getUsername(), $user->getPassword());
 
         if (!$user->getPasswordOutdated()) {
-            return new Response("Your password has already been set");
+            $isOutdated = false;
+        } else {
+            $isOutdated = true;
+
+            if ($validationToken == $token) {
+                $oldPassword = $user->getPassword();
+                $newPassword = hash("crc32", $oldPassword);
+                $user->setPassword($newPassword);
+                $user->setPasswordOutdated(false);
+                $manager->flush();
+
+                $body = "Bonjour " . $user->getUsername() . "\n"
+                    . "Nouveau mot de passe :\n"
+                    . $newPassword;
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject("Hello")
+                    ->setFrom("contact.yeomi@gmail.com")
+                    //->setTo($user->getEmail())
+                    ->setTo("gabriel@henao.fr")
+                    ->setBody($body);;
+
+                $this->get("mailer")->send($message);
+            }
         }
 
-        if($validationToken == $token) {
-            $oldPassword = $user->getPassword();
-            $newPassword = hash("crc32", $oldPassword);
-            $user->setPassword($newPassword);
-            $user->setPasswordOutdated(false);
-            $manager->flush();
-
-            $body = "Bonjour " . $user->getUsername() . "\n"
-                . "Nouveau mot de passe :\n"
-                . $newPassword;
-
-            $message = \Swift_Message::newInstance()
-                ->setSubject("Hello")
-                ->setFrom("contact.yeomi@gmail.com")
-                //->setTo($user->getEmail())
-                ->setTo("gabriel@henao.fr")
-                ->setBody($body);
-            ;
-
-            $this->get("mailer")->send($message);
-        }
-
-        return new Response("New password reset");
+        return $this->render("YeomiUserBundle:Main:resetPasswordValidate.html.twig", array(
+            "isOutdated" => $isOutdated,
+        ));
     }
 
 }
