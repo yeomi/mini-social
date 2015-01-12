@@ -25,3 +25,9 @@ yeomi_reset_password_validate:
 yeomi_user_password_reset:
     path:     /user/reset
     defaults: { _controller: YeomiUserBundle:Main:resetPassword }
+
+# profile
+
+yeomi_user_profile:
+    path:     /profile/{username}
+    defaults: { _controller: YeomiUserBundle:Profile:view }

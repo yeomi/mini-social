@@ -110,11 +110,6 @@ class MainController extends Controller
         return hash("sha1", $username . $password);
     }
 
-
-    public function registrationCompleteAction()
-    {
-        return $this->render("YeomiUserBundle:Main:registrationComplete.html.twig");
-    }
     public function registerAction(Request $request)
     {
         $user = new User();
@@ -145,9 +140,15 @@ class MainController extends Controller
             "form" => $form->createView(),
         ));
     }
+    public function registrationCompleteAction()
+    {
+        return $this->render("YeomiUserBundle:Main:registrationComplete.html.twig");
+    }
 
     public function validateAction($id, $token)
     {
+        $typeOfAction = 3;
+
         $manager = $this->getDoctrine()->getManager();
         $user = $manager->getRepository("YeomiUserBundle:User")->find($id);
 
@@ -156,20 +157,18 @@ class MainController extends Controller
         if($validationToken == $token) {
 
             if($user->checkRoleExist("ROLE_USER")) {
-                return new Response("Ce compte à déjà été validé");
+                $typeOfAction = 2;
+            } else {
+                $typeOfAction = 1;
+                $role = $manager->getRepository("YeomiUserBundle:Role")->findOneBy(array("slug" => "ROLE_USER"));
+                $user->removeRoleBySlug("ROLE_UNVALIDATE");
+                $user->addRole($role);
+                $manager->flush();
             }
-
-            $role = $manager->getRepository("YeomiUserBundle:Role")->findOneBy(array("slug" => "ROLE_USER"));
-
-            $user->removeRoleBySlug("ROLE_UNVALIDATE");
-            $user->addRole($role);
-            $manager->flush();
-            return new Response("Felicitations, vous pouvez à présent vous connecter et commencer à profiter du site !");
         }
         return $this->render("YeomiUserBundle:Main:validate.html.twig", array(
-
+            "typeOfAction" => $typeOfAction,
         ));
-        return new Response("Erreur d'authentification");
     }
 
     public function resetPasswordAction(Request $request)

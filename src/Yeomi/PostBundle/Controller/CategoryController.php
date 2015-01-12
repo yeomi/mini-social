@@ -22,7 +22,7 @@ class CategoryController extends Controller{
         ));
     }
 
-    public function listCategoryAction($categoryId, $type, $limit = 3, $offset = 0)
+    public function listCategoryAction($, $type, $limit = 3, $offset = 0)
     {
         $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug($type, $limit, $offset, $categoryId);
 

@@ -1,0 +1,10 @@
+{% extends("YeomiPostBundle::layout.html.twig") %}
+
+
+{% block body %}
+
+    {{ user.checkRoleExist("ROLE_UNVALIDATE") }}
+    {{ user.username }}
+
+
+{% endblock %}
