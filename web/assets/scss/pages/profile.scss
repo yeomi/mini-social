@@ -1,0 +1,31 @@
+.page-profile
+{
+  @include setContainer();
+  .profile-ban
+  {
+    height: 20.5rem;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    .avatar
+    {
+      display: inline-block;
+      vertical-align: top;
+      width: 15rem;
+      height: 15rem;
+      background-image: url(../img/profile/default-avatar.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 15rem auto;
+    }
+    .side-infos
+    {
+      margin-left: 1rem;
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+  .content
+  {
+    background-color: #fff;
+  }
+}

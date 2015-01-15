@@ -25,7 +25,7 @@
                     {% else %}
                         <span>anonyme</span>
                     {% endif %}
-                    - <a href="{{ path("yeomi_post_view_category") }}">{{ post.categories[0].name }}</a>
+                    - <a href="{{ path("yeomi_post_view_category", {"id" : post.categories[0].id}) }}">{{ post.categories[0].name }}</a>
 
                 </td>
             </tr>

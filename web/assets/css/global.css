@@ -674,6 +674,29 @@ nav.category-nav {
   .page-register.style-login section label.required:after {
     content: " *"; }
 
+.page-profile {
+  max-width: 120rem;
+  margin: auto; }
+  .page-profile .profile-ban {
+    height: 20.5rem;
+    padding-top: 2rem;
+    padding-left: 2rem; }
+    .page-profile .profile-ban .avatar {
+      display: inline-block;
+      vertical-align: top;
+      width: 15rem;
+      height: 15rem;
+      background-image: url(../img/profile/default-avatar.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 15rem auto; }
+    .page-profile .profile-ban .side-infos {
+      margin-left: 1rem;
+      display: inline-block;
+      vertical-align: top; }
+  .page-profile .content {
+    background-color: #fff; }
+
 .page-simple section {
   background-color: #fff;
   margin-top: 1.1rem;

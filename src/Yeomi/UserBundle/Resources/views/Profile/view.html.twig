@@ -2,9 +2,26 @@
 
 
 {% block body %}
+    <div class="page-profile">
+        <header class="profile-ban">
+            <div class="avatar">
 
-    {{ user.checkRoleExist("ROLE_UNVALIDATE") }}
-    {{ user.username }}
-
-
+            </div>
+            <div class="side-infos">
+                <h2 class="username">{{ user.username }}</h2>
+                <p>Membre depuis {{ user.created|date("d/m/y") }}</p>
+            </div>
+        </header>
+        <div class="content">
+            {% if user.checkRoleExist("ROLE_UNVALIDATE") %}
+                <p>Cette utilisateur est en attente de validation</p>
+            {% else %}
+                <nav class="profile-nav">
+                    <ul>
+                        <li><a href="">Profil</a></li>
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
