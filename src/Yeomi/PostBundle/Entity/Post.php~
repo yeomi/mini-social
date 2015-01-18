@@ -107,6 +107,9 @@ class Post
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setCreated(new \DateTime());
+        $this->setPublished(true);
+        $this->setLastAction(new \DateTime());
+
     }
 
     /**
@@ -444,5 +447,28 @@ class Post
             "positives" => $positives,
             "negatives" => $negatives,
         );
+    }
+
+    /**
+     * Set lastAction
+     *
+     * @param \DateTime $lastAction
+     * @return Post
+     */
+    public function setLastAction($lastAction)
+    {
+        $this->lastAction = $lastAction;
+
+        return $this;
+    }
+
+    /**
+     * Get lastAction
+     *
+     * @return \DateTime 
+     */
+    public function getLastAction()
+    {
+        return $this->lastAction;
     }
 }

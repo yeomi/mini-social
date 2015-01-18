@@ -31,6 +31,13 @@ class User implements UserInterface
     private $roles;
 
     /**
+     * @var \Yeomi\UserBundle\Entity\Profile
+     *
+     * @ORM\OneToOne(targetEntity="Yeomi\UserBundle\Entity\Profile", inversedBy="user", cascade={"persist"})
+     */
+    private $profile;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Post", mappedBy="user")
@@ -458,5 +465,28 @@ class User implements UserInterface
     public function getVotes()
     {
         return $this->votes;
+    }
+
+    /**
+     * Set profile
+     *
+     * @param \Yeomi\UserBundle\Entity\Profile $profile
+     * @return User
+     */
+    public function setProfile(\Yeomi\UserBundle\Entity\Profile $profile = null)
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Get profile
+     *
+     * @return \Yeomi\UserBundle\Entity\Profile 
+     */
+    public function getProfile()
+    {
+        return $this->profile;
     }
 }

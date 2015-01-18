@@ -13,14 +13,20 @@
             </div>
         </header>
         <div class="content">
-            {% if user.checkRoleExist("ROLE_UNVALIDATE") %}
+            {% if user.checkRoleExist("ROLE_UNVALIDATE") == 0 %}
                 <p>Cette utilisateur est en attente de validation</p>
             {% else %}
                 <nav class="profile-nav">
                     <ul>
-                        <li><a href="">Profil</a></li>
+                        <li><a class="ajax-profile-link" href="" data-target="{{ path("yeomi_user_create_profile", {"userId" : user.id}) }}">Profil</a></li>
+                        <li><a class="ajax-profile-link" href="" data-target="{{ path("yeomi_user_list_activity", {"userId" : user.id}) }}">Activité</a></li>
+                        <li><a class="ajax-profile-link" href="">Messages</a></li>
                     </ul>
                 </nav>
+
+                <section class="ajax-wrapper">
+
+                </section>
             {% endif %}
         </div>
     </div>

@@ -1,0 +1,8 @@
+{% for post in posts %}
+    <div class="defi">
+
+        <h3>{{ post.title }}</h3>
+        <p>{{ truncatePost(post.content, 200) }}</p>
+        <a href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">Lire</a>
+    </div>
+{% endfor %}
