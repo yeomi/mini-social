@@ -17,7 +17,7 @@
                     <p class="content">
                         {{ message.content }}
                     </p>
-                    <a class="answer" href="">Lui répondre !</a>
+                    <a class="answer" href="{{ path("yeomi_user_profile", {"username":message.sender.username}) }}?tab=message">Lui répondre !</a>
                 </div>
             </div>
         {% else %}

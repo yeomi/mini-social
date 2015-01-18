@@ -1,6 +1,6 @@
 <?php
 
-namespace Yeomi\PostBundle\Entity;
+namespace Yeomi\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -8,11 +8,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Image
  *
- * @ORM\Table(name="image")
- * @ORM\Entity(repositoryClass="Yeomi\PostBundle\Repository\ImageRepository")
+ * @ORM\Table(name="avatar")
+ * @ORM\Entity(repositoryClass="Yeomi\UserBundle\Repository\AvatarRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Image
+class Avatar
 {
     /**
      * @var integer
@@ -24,20 +24,12 @@ class Image
     private $id;
 
     /**
-     * @var \Yeomi\PostBundle\Entity\Post
+     * @var \Yeomi\UserBundle\Entity\Profile
      *
-     * @ORM\ManyToOne(targetEntity="Yeomi\PostBundle\Entity\Post", inversedBy="images")
-     *
-     */
-    private $post;
-
-    /**
-     * @var \Yeomi\PostBundle\Entity\Comment
-     *
-     * @ORM\ManyToOne(targetEntity="Yeomi\PostBundle\Entity\Comment", inversedBy="images")
+     * @ORM\OneToOne(targetEntity="Yeomi\UserBundle\Entity\Profile", mappedBy="avatar")
      *
      */
-    private $comment;
+    private $profile;
 
     /**
      * @var string
@@ -71,14 +63,9 @@ class Image
     private $tempFilename;
 
     /**
-     * @var string
-     */
-    private $entityType;
-
-    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -89,7 +76,7 @@ class Image
      * Set value
      *
      * @param string $value
-     * @return Image
+     * @return Avatar
      */
     public function setValue($value)
     {
@@ -101,7 +88,7 @@ class Image
     /**
      * Get value
      *
-     * @return string 
+     * @return string
      */
     public function getValue()
     {
@@ -112,7 +99,7 @@ class Image
      * Set title
      *
      * @param string $title
-     * @return Image
+     * @return Avatar
      */
     public function setTitle($title)
     {
@@ -124,7 +111,7 @@ class Image
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -135,7 +122,7 @@ class Image
      * Set alt
      *
      * @param string $alt
-     * @return Image
+     * @return Avatar
      */
     public function setAlt($alt)
     {
@@ -147,35 +134,11 @@ class Image
     /**
      * Get alt
      *
-     * @return string 
+     * @return string
      */
     public function getAlt()
     {
         return $this->alt;
-    }
-
-    /**
-     * Set post
-     *
-     * @param \Yeomi\PostBundle\Entity\Post $post
-     * @return Image
-     */
-    public function setPost(\Yeomi\PostBundle\Entity\Post $post)
-    {
-        $this->entityType = "post";
-        $this->post = $post;
-
-        return $this;
-    }
-
-    /**
-     * Get post
-     *
-     * @return \Yeomi\PostBundle\Entity\Post 
-     */
-    public function getPost()
-    {
-        return $this->post;
     }
 
     /**
@@ -195,7 +158,6 @@ class Image
      */
     public function setFile(UploadedFile $file = null)
     {
-
         $this->file = $file;
 
         if ($this->value != null) {
@@ -267,7 +229,7 @@ class Image
     public function getUploadDir()
     {
 
-        return "uploads/img/" . $this->entityType;
+        return "uploads/img/avatar/";
     }
 
     public function getUploadRootDir()
@@ -277,26 +239,25 @@ class Image
 
 
     /**
-     * Set comment
+     * Set profile
      *
-     * @param \Yeomi\PostBundle\Entity\Comment $comment
-     * @return Image
+     * @param \Yeomi\UserBundle\Entity\Profile $profile
+     * @return Avatar
      */
-    public function setComment(\Yeomi\PostBundle\Entity\Comment $comment = null)
+    public function setProfile(\Yeomi\UserBundle\Entity\Profile $profile = null)
     {
-        $this->entityType = "comment";
-        $this->comment = $comment;
+        $this->profile = $profile;
 
         return $this;
     }
 
     /**
-     * Get comment
+     * Get profile
      *
-     * @return \Yeomi\PostBundle\Entity\Comment 
+     * @return \Yeomi\UserBundle\Entity\Profile 
      */
-    public function getComment()
+    public function getProfile()
     {
-        return $this->comment;
+        return $this->profile;
     }
 }

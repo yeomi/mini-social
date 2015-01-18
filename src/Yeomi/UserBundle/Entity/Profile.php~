@@ -29,6 +29,13 @@ class Profile
     private $user;
 
     /**
+     * @var \Yeomi\UserBundle\Entity\Avatar
+     *
+     * @ORM\OneToOne(targetEntity="Yeomi\UserBundle\Entity\Avatar", inversedBy="profile")
+     */
+    private $avatar;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=255, nullable=true)

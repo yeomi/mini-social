@@ -19,8 +19,13 @@ use Yeomi\UserBundle\Form\ProfileType;
 
 class ProfileController extends Controller
 {
-    public function viewAction($username)
+    public function viewAction(Request $request, $username)
     {
+        $tabMessage = false;
+        if ($request->query->get("tab")) {
+            $tabMessage = true;
+        }
+
         $user = $this
             ->getDoctrine()
             ->getRepository("YeomiUserBundle:User")
@@ -28,6 +33,7 @@ class ProfileController extends Controller
 
         return $this->render("YeomiUserBundle:Profile:view.html.twig", array(
             "user" => $user,
+            "tabMessage" => $tabMessage
         ));
     }
 
@@ -37,20 +43,30 @@ class ProfileController extends Controller
         $manager = $this->getDoctrine()->getManager();
         $user = $manager->getRepository("YeomiUserBundle:User")->find($userId);
         $profile = is_null($user->getProfile()) ? new Profile(): $user->getProfile();
-        $form = $this->createForm(new ProfileType(), $profile);
 
-        $user->setProfile($profile);
+        if($this->isCurrentUser($user)) {
+            $form = $this->createForm(new ProfileType(), $profile);
 
-        if ($form->handleRequest($request)->isValid()) {
+            $user->setProfile($profile);
 
-            $manager->persist($profile);
-            $manager->flush();
+            if ($form->handleRequest($request)->isValid()) {
+
+                $manager->persist($profile);
+                var_dump($profile->getAvatar());
+                $manager->flush();
+            }
+
+            return $this->render("YeomiUserBundle:Profile:createProfile.html.twig", array(
+                "form" => $form->createView(),
+                "userId" => $userId,
+            ));
+        } else {
+            return $this->render("YeomiUserBundle:Profile:viewProfile.html.twig", array(
+                "profile" => $profile,
+                "userId" => $userId,
+            ));
         }
 
-        return $this->render("YeomiUserBundle:Profile:createProfile.html.twig", array(
-            "form" => $form->createView(),
-            "userId" => $userId,
-        ));
     }
 
     public function listActivityAction($userId)

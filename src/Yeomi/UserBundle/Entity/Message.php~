@@ -38,6 +38,13 @@ class Message
     private $sender;
 
     /**
+     * @var String
+     *
+     * @ORM\Column(name="content", type="text")
+     */
+    private $content;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime")
@@ -45,6 +52,10 @@ class Message
     private $created;
 
 
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+    }
     /**
      * Get id
      *
@@ -99,5 +110,51 @@ class Message
     public function getCreated()
     {
         return $this->created;
+    }
+
+    /**
+     * Set recipient
+     *
+     * @param \Yeomi\UserBundle\Entity\User $recipient
+     * @return Message
+     */
+    public function setRecipient(\Yeomi\UserBundle\Entity\User $recipient = null)
+    {
+        $this->recipient = $recipient;
+
+        return $this;
+    }
+
+    /**
+     * Get recipient
+     *
+     * @return \Yeomi\UserBundle\Entity\User 
+     */
+    public function getRecipient()
+    {
+        return $this->recipient;
+    }
+
+    /**
+     * Set sender
+     *
+     * @param \Yeomi\UserBundle\Entity\User $sender
+     * @return Message
+     */
+    public function setSender(\Yeomi\UserBundle\Entity\User $sender = null)
+    {
+        $this->sender = $sender;
+
+        return $this;
+    }
+
+    /**
+     * Get sender
+     *
+     * @return \Yeomi\UserBundle\Entity\User 
+     */
+    public function getSender()
+    {
+        return $this->sender;
     }
 }

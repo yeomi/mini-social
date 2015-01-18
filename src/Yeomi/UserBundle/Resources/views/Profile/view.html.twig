@@ -25,6 +25,11 @@
                 </nav>
 
                 <section class="ajax-wrapper">
+                    {% if tabMessage %}
+                        {{ render(controller("YeomiUserBundle:Profile:createMessage", {"userId": user.id})) }}
+                    {% else %}
+                        {{ render(controller("YeomiUserBundle:Profile:createProfile", {"userId": user.id})) }}
+                    {% endif %}
 
                 </section>
             {% endif %}

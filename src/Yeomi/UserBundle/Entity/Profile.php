@@ -29,6 +29,13 @@ class Profile
     private $user;
 
     /**
+     * @var \Yeomi\UserBundle\Entity\Avatar
+     *
+     * @ORM\OneToOne(targetEntity="Yeomi\UserBundle\Entity\Avatar", inversedBy="profile", cascade={"persist", "remove"})
+     */
+    private $avatar;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
@@ -300,5 +307,28 @@ class Profile
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param \Yeomi\UserBundle\Entity\Avatar $avatar
+     * @return Profile
+     */
+    public function setAvatar(\Yeomi\UserBundle\Entity\Avatar $avatar = null)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return \Yeomi\UserBundle\Entity\Avatar 
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 }
