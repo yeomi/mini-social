@@ -9,9 +9,12 @@
 namespace Yeomi\UserBundle\Controller;
 
 
+use Proxies\__CG__\Yeomi\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Yeomi\UserBundle\Entity\Message;
 use Yeomi\UserBundle\Entity\Profile;
+use Yeomi\UserBundle\Form\MessageType;
 use Yeomi\UserBundle\Form\ProfileType;
 
 class ProfileController extends Controller
@@ -58,6 +61,54 @@ class ProfileController extends Controller
 
         return $this->render("YeomiUserBundle:Profile:listActivity.html.twig", array(
             "posts" => $posts,
+        ));
+    }
+
+    public function isCurrentUser(\Yeomi\UserBundle\Entity\User $user)
+    {
+        $currentUser = $this->getUser();
+
+        if (is_null($currentUser)) {
+            return false;
+        }
+
+        if ($currentUser->getId() == $user->getId()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function createMessageAction(Request $request, $userId)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $user = $this->getDoctrine()->getRepository("YeomiUserBundle:User")->find($userId);
+
+        $isUser = $this->isCurrentUser($user);
+        $message = new Message();
+
+        $form = $this->createForm(new MessageType(), $message);
+
+        if ($form->handleRequest($request)->isValid()) {
+
+            $message->setRecipient($user);
+            $message->setSender($this->getUser());
+
+            $manager->persist($message);
+            $manager->flush();
+        }
+
+        $messages = null;
+        if($isUser) {
+            $messages = $manager->getRepository("YeomiUserBundle:Message")->findby(array("recipient" => $user));
+        }
+
+
+        return $this->render("YeomiUserBundle:Profile:createMessage.html.twig", array(
+            "form" => $form->createView(),
+            "isUser" => $isUser,
+            "messages" => $messages,
+            "userId" => $userId,
         ));
     }
 

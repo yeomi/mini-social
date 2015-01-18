@@ -58,6 +58,18 @@ class User implements UserInterface
     private $votes;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Yeomi\UserBundle\Entity\Message", mappedBy="recipient")
+     */
+    private $messagesReceived;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Yeomi\UserBundle\Entity\Message", mappedBy="sender")
+     */
+    private $messagesSent;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
@@ -488,5 +500,71 @@ class User implements UserInterface
     public function getProfile()
     {
         return $this->profile;
+    }
+
+    /**
+     * Add messagesReceived
+     *
+     * @param \Yeomi\UserBundle\Entity\Message $messagesReceived
+     * @return User
+     */
+    public function addMessagesReceived(\Yeomi\UserBundle\Entity\Message $messagesReceived)
+    {
+        $this->messagesReceived[] = $messagesReceived;
+
+        return $this;
+    }
+
+    /**
+     * Remove messagesReceived
+     *
+     * @param \Yeomi\UserBundle\Entity\Message $messagesReceived
+     */
+    public function removeMessagesReceived(\Yeomi\UserBundle\Entity\Message $messagesReceived)
+    {
+        $this->messagesReceived->removeElement($messagesReceived);
+    }
+
+    /**
+     * Get messagesReceived
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessagesReceived()
+    {
+        return $this->messagesReceived;
+    }
+
+    /**
+     * Add messagesSent
+     *
+     * @param \Yeomi\UserBundle\Entity\Message $messagesSent
+     * @return User
+     */
+    public function addMessagesSent(\Yeomi\UserBundle\Entity\Message $messagesSent)
+    {
+        $this->messagesSent[] = $messagesSent;
+
+        return $this;
+    }
+
+    /**
+     * Remove messagesSent
+     *
+     * @param \Yeomi\UserBundle\Entity\Message $messagesSent
+     */
+    public function removeMessagesSent(\Yeomi\UserBundle\Entity\Message $messagesSent)
+    {
+        $this->messagesSent->removeElement($messagesSent);
+    }
+
+    /**
+     * Get messagesSent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessagesSent()
+    {
+        return $this->messagesSent;
     }
 }

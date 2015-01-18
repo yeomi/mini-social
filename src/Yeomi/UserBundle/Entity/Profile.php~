@@ -31,56 +31,56 @@ class Profile
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=255)
+     * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
      */
     private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=255)
+     * @ORM\Column(name="last_name", type="string", length=255, nullable=true)
      */
     private $lastName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="location", type="string", length=255)
+     * @ORM\Column(name="location", type="string", length=255, nullable=true)
      */
     private $location;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthday", type="date")
+     * @ORM\Column(name="birthday", type="date", nullable=true)
      */
     private $birthday;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="job", type="string", length=255)
+     * @ORM\Column(name="job", type="string", length=255, nullable=true)
      */
     private $job;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="hobbies", type="string", length=255)
+     * @ORM\Column(name="hobbies", type="string", length=255, nullable=true)
      */
     private $hobbies;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="website", type="string", length=255)
+     * @ORM\Column(name="website", type="string", length=255, nullable=true)
      */
     private $website;
 

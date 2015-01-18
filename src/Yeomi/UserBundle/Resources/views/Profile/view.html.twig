@@ -20,7 +20,7 @@
                     <ul>
                         <li><a class="ajax-profile-link" href="" data-target="{{ path("yeomi_user_create_profile", {"userId" : user.id}) }}">Profil</a></li>
                         <li><a class="ajax-profile-link" href="" data-target="{{ path("yeomi_user_list_activity", {"userId" : user.id}) }}">Activité</a></li>
-                        <li><a class="ajax-profile-link" href="">Messages</a></li>
+                        <li><a class="ajax-profile-link" href="" data-target="{{ path("yeomi_user_create_message", {"userId" : user.id}) }}">Messages</a></li>
                     </ul>
                 </nav>
 

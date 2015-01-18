@@ -39,3 +39,11 @@ yeomi_user_create_profile:
 yeomi_user_list_activity:
     path:     /list-activity/{userId}
     defaults: { _controller: YeomiUserBundle:Profile:listActivity }
+
+yeomi_user_create_message:
+    path:     /create/message/{userId}
+    defaults: { _controller: YeomiUserBundle:Profile:createMessage }
+
+yeomi_user_list_message:
+    path:     /list/message/{userId}
+    defaults: { _controller: YeomiUserBundle:Profile:listMessage }

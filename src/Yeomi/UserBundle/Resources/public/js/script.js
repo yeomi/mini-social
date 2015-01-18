@@ -13,19 +13,20 @@ $(function() {
         $(wrapper).html(data);
       }
     });
+    $(".ajax-profile-link").removeClass("active");
+    $(this).addClass("active");
 
     return false;
 
   });
 
-
-  $("body").on("submit", "form", function() {
-    console.log("salut");
+  $("body").on("submit", ".ajax-submission-form", function() {
+    var wrapper = $(".ajax-wrapper");
     var form = $(this);
-
-    $.post("/app_dev.php/create/profile/39", form.serialize(),
+    var target = $(".ajax-profile-link.active").data("target");
+    $.post(target, form.serialize(),
       function success(data){
-        console.log(data);
+        $(wrapper).html(data);
     });
 
     return false;

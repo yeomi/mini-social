@@ -58,6 +58,18 @@ class User implements UserInterface
     private $votes;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Yeomi\UserBundle\Entity\Message", mappedBy="recipient")
+     */
+    private $messagesReceived;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Yeomi\UserBundle\Entity\Message", mappedBy="sender")
+     */
+    private $messagesSent;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)

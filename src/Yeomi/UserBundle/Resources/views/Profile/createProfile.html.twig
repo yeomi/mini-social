@@ -1,4 +1,4 @@
 
-{{ form_start(form, {"action": path("yeomi_user_create_profile", {"userId": userId})}) }}
+{{ form_start(form, {"action": path("yeomi_user_create_profile", {"userId": userId}), "attr": {'class' : 'ajax-submission-form'}}) }}
 
 {{ form_end(form) }}

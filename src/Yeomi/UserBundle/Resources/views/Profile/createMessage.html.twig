@@ -1,0 +1,29 @@
+{% if is_granted("ROLE_USER") %}
+    {% if isUser == false %}
+        {{ form_start(form, {"action": path("yeomi_user_create_message", {"userId": userId}), "attr": {'class' : 'ajax-submission-form'}}) }}
+        {{ form(form) }}
+    {% endif %}
+
+    {% if isUser %}
+        {% for message in messages %}
+            <div class="message">
+                <div class="avatar left">
+
+                </div>
+
+                <div class="right">
+                    <span class="sender">{{ message.sender.username }}</span>
+                    <span class="created">{{ message.created|date("d/m/y à H:i") }}</span>
+                    <p class="content">
+                        {{ message.content }}
+                    </p>
+                    <a class="answer" href="">Lui répondre !</a>
+                </div>
+            </div>
+        {% else %}
+            <p>Vous n'avez pas encore de message</p>
+        {% endfor %}
+    {% endif %}
+{% else %}
+    <p>Fonctionnalités réservées aux membres authentifiés</p>
+{% endif %}
