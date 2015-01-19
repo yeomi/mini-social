@@ -28,4 +28,17 @@
   {
     background-color: #fff;
   }
+  
+  .profile-nav
+  {
+    font-size: 0;
+    li
+    {
+      font-size: 1.5rem;
+      display: inline-block;
+      vertical-align: top;
+      margin: 2rem 0 2rem 2rem;
+    }
+
+  }
 }

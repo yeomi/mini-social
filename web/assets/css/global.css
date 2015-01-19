@@ -162,10 +162,6 @@ header#site-header {
       line-height: 3.3rem;
       border-radius: 0.3rem;
       background-color: #fff; }
-    header#site-header .main-nav .log-btn {
-      background-color: #1293f1;
-      color: #fff;
-      font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
     header#site-header .main-nav .search {
       text-indent: -999rem;
       background-image: url(../img/zoom-icone.png);
@@ -609,6 +605,19 @@ header#site-header {
       -webkit-box-shadow: 0 0.2rem 0 #003662;
       box-shadow: 0 0.2rem 0 #003662; }
 
+.btn-light {
+  font-size: 1.4rem;
+  display: block;
+  padding: 0 1.2rem;
+  height: 3.5rem;
+  line-height: 3.3rem;
+  border-radius: 0.3rem;
+  background-color: #1293f1;
+  color: #fff;
+  font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
+  .btn-light.active {
+    background-color: #175da3; }
+
 nav.category-nav {
   background-color: #fff;
   position: fixed;
@@ -696,6 +705,13 @@ nav.category-nav {
       vertical-align: top; }
   .page-profile .content {
     background-color: #fff; }
+  .page-profile .profile-nav {
+    font-size: 0; }
+    .page-profile .profile-nav li {
+      font-size: 1.5rem;
+      display: inline-block;
+      vertical-align: top;
+      margin: 2rem 0 2rem 2rem; }
 
 .page-simple section {
   background-color: #fff;

@@ -206,6 +206,8 @@ class Avatar
             $this->getUploadRootDir(),
             $this->id . "." . $this->value
         );
+
+        $this->file = null;
     }
 
     /**

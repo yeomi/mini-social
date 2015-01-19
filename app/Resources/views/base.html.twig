@@ -30,9 +30,9 @@
                             <li><a href="" class="menu-toggle">☰</a></li>
                             <li><a href="" class="btn search">{% trans %}Search{% endtrans %}</a></li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                <li><a class="log-btn btn logout" href="{{ url("logout") }}">{{ app.user.username }} - {% trans %}Logout{% endtrans %}</a></li>
+                                <li><a class="log-btn btn-light logout" href="{{ url("logout") }}">{{ app.user.username }} - {% trans %}Logout{% endtrans %}</a></li>
                             {% else %}
-                                <li><a class="log-btn btn login yeomi-popup-link" data-popup="login" {{ url("login") }}">{% trans %}Login{% endtrans %}</a></li>
+                                <li><a class="log-btn btn-light login yeomi-popup-link" data-popup="login" {{ url("login") }}">{% trans %}Login{% endtrans %}</a></li>
                             {% endif %}
                         </ul>
                     </nav>

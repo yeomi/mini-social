@@ -12,6 +12,7 @@ namespace Yeomi\UserBundle\Controller;
 use Proxies\__CG__\Yeomi\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Yeomi\UserBundle\Entity\Message;
 use Yeomi\UserBundle\Entity\Profile;
 use Yeomi\UserBundle\Form\MessageType;
@@ -50,11 +51,10 @@ class ProfileController extends Controller
             $user->setProfile($profile);
 
             if ($form->handleRequest($request)->isValid()) {
-
-                $manager->persist($profile);
-                var_dump($profile->getAvatar());
+                //$manager->persist($profile);
                 $manager->flush();
             }
+
 
             return $this->render("YeomiUserBundle:Profile:createProfile.html.twig", array(
                 "form" => $form->createView(),

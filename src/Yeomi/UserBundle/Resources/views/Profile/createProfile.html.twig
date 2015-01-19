@@ -1,4 +1,48 @@
 <body>
 {{ form_start(form, {"action": path("yeomi_user_create_profile", {"userId": userId}), "attr": {'class' : 'ajax-submission-form'}}) }}
 
+<table>
+    <tr>
+        <td>{{ form_label(form.firstName) }}</td>
+        <td>{{ form_widget(form.firstName) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.lastName) }}</td>
+        <td>{{ form_widget(form.lastName) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.birthday) }}</td>
+        <td>{{ form_widget(form.birthday) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.description) }}</td>
+        <td>{{ form_widget(form.description) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.job) }}</td>
+        <td>{{ form_widget(form.job) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.location) }}</td>
+        <td>{{ form_widget(form.location) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.hobbies) }}</td>
+        <td>{{ form_widget(form.hobbies) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.website) }}</td>
+        <td>{{ form_widget(form.website) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.avatar.file) }}</td>
+        <td>{{ form_widget(form.avatar.file) }}</td>
+    </tr>
+
+</table>
+
+<div class="submit-area">
+    {{ form_widget(form.save) }}
+</div>
+
 {{ form_end(form) }}</body>

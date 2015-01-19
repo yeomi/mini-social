@@ -5,7 +5,7 @@
     <div class="page-profile">
         <header class="profile-ban">
             <div class="avatar">
-
+                <img style="width:15rem;height:15rem;" src="{{ asset('uploads/img/avatar/' ~ user.profile.avatar.id ~ '.' ~ user.profile.avatar.value) }}" alt=""/>
             </div>
             <div class="side-infos">
                 <h2 class="username">{{ user.username }}</h2>
@@ -18,9 +18,9 @@
             {% else %}
                 <nav class="profile-nav">
                     <ul>
-                        <li><a class="ajax-profile-link" href="" data-target="{{ path("yeomi_user_create_profile", {"userId" : user.id}) }}">Profil</a></li>
-                        <li><a class="ajax-profile-link" href="" data-target="{{ path("yeomi_user_list_activity", {"userId" : user.id}) }}">Activité</a></li>
-                        <li><a class="ajax-profile-link" href="" data-target="{{ path("yeomi_user_create_message", {"userId" : user.id}) }}">Messages</a></li>
+                        <li><a class="btn-light ajax-profile-link {% if tabMessage == false %}active{% endif %}" href="" data-target="{{ path("yeomi_user_create_profile", {"userId" : user.id}) }}">Profil</a></li>
+                        <li><a class="btn-light ajax-profile-link" href="" data-target="{{ path("yeomi_user_list_activity", {"userId" : user.id}) }}">Activité</a></li>
+                        <li><a class="btn-light ajax-profile-link {% if tabMessage %}active{% endif %}" href="" data-target="{{ path("yeomi_user_create_message", {"userId" : user.id}) }}">Messages</a></li>
                     </ul>
                 </nav>
 

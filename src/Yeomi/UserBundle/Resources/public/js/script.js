@@ -24,9 +24,17 @@ $(function() {
     var wrapper = $(".ajax-wrapper");
     var form = $(this);
     var target = $(".ajax-profile-link.active").data("target");
-    $.post(target, form.serialize(),
-      function success(data){
+
+    $.ajax({
+      url: target,
+      type: "POST",
+      data: new FormData(this),
+      context: document.body,
+      success: function(data){
         $(wrapper).html(data);
+      },
+      processData: false,
+      contentType: false
     });
 
     return false;
