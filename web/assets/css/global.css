@@ -114,6 +114,53 @@ a {
   font-size: 1.5rem;
   margin: 1rem 0; }
 
+.btn-light {
+  cursor: pointer;
+  border: none;
+  font-size: 1.4rem;
+  display: block;
+  padding: 0 1.2rem;
+  height: 3.5rem;
+  line-height: 3.3rem;
+  border-radius: 0.3rem;
+  background-color: #1293f1;
+  color: #fff;
+  font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
+  .btn-light.active {
+    background-color: #175da3; }
+
+.btn-3d {
+  background-color: #175da3;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #fff;
+  padding: 0.8rem 1.7rem;
+  border-radius: 0.3rem;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  -webkit-box-shadow: 0 0.4rem 0 #003662;
+  box-shadow: 0 0.4rem 0 #003662; }
+  .btn-3d:hover, .btn-3d.active {
+    top: .2rem;
+    -webkit-box-shadow: 0 0.2rem 0 #003662;
+    box-shadow: 0 0.2rem 0 #003662; }
+
+.classic-form input[type="text"], .classic-form textarea, .classic-form input[type="url"] {
+  width: 100%;
+  border: 1px solid #c1c1c1;
+  resize: none;
+  font-size: 1.5rem;
+  border-radius: .4rem;
+  padding: .8rem 1.5rem; }
+.classic-form select {
+  border: 1px solid #c1c1c1;
+  font-size: 1.5rem;
+  padding: .6rem 1.5rem;
+  background-color: white; }
+.classic-form label {
+  font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
+
 .wrapper-width.site-header {
   background-color: #175da3; }
 
@@ -588,35 +635,6 @@ header#site-header {
   .add-defi-popup .submit-area, .add-histoire-popup .submit-area {
     margin-top: 2.5rem;
     margin-bottom: 2.3rem; }
-  .add-defi-popup .popup-btn, .add-histoire-popup .popup-btn {
-    background-color: #175da3;
-    display: inline-block;
-    font-size: 1.5rem;
-    color: #fff;
-    padding: 0.8rem 1.7rem;
-    border-radius: 0.3rem;
-    position: relative;
-    cursor: pointer;
-    border: none;
-    -webkit-box-shadow: 0 0.4rem 0 #003662;
-    box-shadow: 0 0.4rem 0 #003662; }
-    .add-defi-popup .popup-btn:hover, .add-histoire-popup .popup-btn:hover {
-      top: .2rem;
-      -webkit-box-shadow: 0 0.2rem 0 #003662;
-      box-shadow: 0 0.2rem 0 #003662; }
-
-.btn-light {
-  font-size: 1.4rem;
-  display: block;
-  padding: 0 1.2rem;
-  height: 3.5rem;
-  line-height: 3.3rem;
-  border-radius: 0.3rem;
-  background-color: #1293f1;
-  color: #fff;
-  font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
-  .btn-light.active {
-    background-color: #175da3; }
 
 nav.category-nav {
   background-color: #fff;
@@ -712,6 +730,79 @@ nav.category-nav {
       display: inline-block;
       vertical-align: top;
       margin: 2rem 0 2rem 2rem; }
+  .page-profile .view-profile-block {
+    padding: 1.5rem; }
+    .page-profile .view-profile-block td {
+      padding: .5rem 0; }
+    .page-profile .view-profile-block td:nth-of-type(odd) {
+      font-size: 1.4rem;
+      text-align: right; }
+    .page-profile .view-profile-block td:nth-of-type(even) {
+      padding-left: 1rem;
+      font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
+  .page-profile .create-profile-block {
+    display: inline-block; }
+    .page-profile .create-profile-block td {
+      vertical-align: top; }
+    .page-profile .create-profile-block label {
+      padding: 0 1rem;
+      text-align: right;
+      display: block; }
+    .page-profile .create-profile-block .submit-area {
+      margin: 1rem 0 3rem 0;
+      text-align: right; }
+      .page-profile .create-profile-block .submit-area .submit {
+        display: inline-block; }
+  .page-profile .list-activity-block .post {
+    border-top: 1px solid #d7d7d7;
+    padding: 1.5rem; }
+    .page-profile .list-activity-block .post .infos {
+      color: #175da3;
+      font-size: 1.3rem; }
+    .page-profile .list-activity-block .post .body {
+      margin: 1rem; }
+    .page-profile .list-activity-block .post a {
+      text-align: right;
+      display: block;
+      margin: 0 3rem;
+      font-size: 1.5rem;
+      text-decoration: underline; }
+  .page-profile .message-block .simple-message {
+    padding: 2rem;
+    color: #818181; }
+  .page-profile .message-block .list-message .message {
+    font-size: 0;
+    padding: 1.5rem;
+    border-top: 1px solid #d7d7d7;
+    position: relative; }
+  .page-profile .message-block .list-message .sender {
+    font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+    font-size: 1.8rem; }
+  .page-profile .message-block .list-message .created {
+    display: block;
+    padding: 1.5rem;
+    font-size: 1.3rem;
+    color: #818181;
+    position: absolute;
+    top: 0;
+    right: 0; }
+  .page-profile .message-block .list-message .content {
+    margin: 1rem 0; }
+  .page-profile .message-block .list-message .answer {
+    display: inline-block; }
+  .page-profile .message-block .list-message .left {
+    margin-right: 1.5rem;
+    float: left; }
+  .page-profile .message-block .list-message .right {
+    overflow: hidden;
+    font-size: 1.6rem; }
+  .page-profile .message-block .create-message {
+    padding: 1.5rem;
+    text-align: right; }
+    .page-profile .message-block .create-message textarea {
+      margin-bottom: 1.5rem; }
+    .page-profile .message-block .create-message .submit {
+      display: inline-block; }
 
 .page-simple section {
   background-color: #fff;

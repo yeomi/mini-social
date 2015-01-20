@@ -1,34 +1,36 @@
-<table>
-    <tr>
-        <td>Prénom</td>
-        <td>{{ profile.firstName }}</td>
-    </tr>
-    <tr>
-        <td>Nom</td>
-        <td>{{ profile.lastName }}</td>
-    </tr>
-    <tr>
-        <td>Lieu d'habitation</td>
-        <td>{{ profile.location }}</td>
-    </tr>
-    <tr>
-        <td>Date de naissance</td>
-        <td>{{ profile.birthday|date("d/m/y") }}</td>
-    </tr>
-    <tr>
-        <td>Job</td>
-        <td>{{ profile.job }}</td>
-    </tr>
-    <tr>
-        <td>hobbies</td>
-        <td>{{ profile.hobbies }}</td>
-    </tr>
-    <tr>
-        <td>Site Internet</td>
-        <td><a target="_blank" href="{{ profile.website }}">{{ profile.website }}</a></td>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td>{{ profile.description }}</td>
-    </tr>
-</table>
+<div class="view-profile-block">
+    <table>
+        <tr>
+            <td>Prénom</td>
+            <td>{{ profile.firstName }}</td>
+        </tr>
+        <tr>
+            <td>Nom</td>
+            <td>{{ profile.lastName }}</td>
+        </tr>
+        <tr>
+            <td>Lieu d'habitation</td>
+            <td>{{ profile.location }}</td>
+        </tr>
+        <tr>
+            <td>Date de naissance</td>
+            <td>{{ profile.birthday|date("d/m/y") }}</td>
+        </tr>
+        <tr>
+            <td>Job</td>
+            <td>{{ profile.job }}</td>
+        </tr>
+        <tr>
+            <td>hobbies</td>
+            <td>{{ profile.hobbies }}</td>
+        </tr>
+        <tr>
+            <td>Site Internet</td>
+            <td><a target="_blank" href="{{ profile.website }}">{{ profile.website }}</a></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{ profile.description }}</td>
+        </tr>
+    </table>
+</div>

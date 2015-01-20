@@ -39,6 +39,139 @@
       vertical-align: top;
       margin: 2rem 0 2rem 2rem;
     }
-
   }
+
+  .view-profile-block
+  {
+    padding: 1.5rem;
+    td
+    {
+      padding: .5rem 0;
+    }
+    td:nth-of-type(odd)
+    {
+      font-size: 1.4rem;
+      text-align: right;
+    }
+    td:nth-of-type(even)
+    {
+      padding-left: 1rem;
+      font-family: $semiBold;
+    }
+  }
+
+  .create-profile-block
+  {
+    display: inline-block;
+    td
+    {
+      vertical-align: top;
+    }
+    label
+    {
+      padding: 0 1rem;
+      text-align: right;
+      display: block;
+    }
+    .submit-area
+    {
+      margin: 1rem 0 3rem 0;
+      text-align: right;
+      .submit
+      {
+        display: inline-block;
+      }
+    }
+  }
+  .list-activity-block
+  {
+    .post
+    {
+      border-top: 1px solid #d7d7d7;
+      padding: 1.5rem;
+      .infos
+      {
+        color: $darkerColor;
+        font-size: 1.3rem;
+      }
+      .body
+      {
+        margin: 1rem;
+      }
+      a
+      {
+        text-align: right;
+        display: block;
+        margin: 0 3rem;
+        font-size: 1.5rem;
+        text-decoration: underline;
+      }
+    }
+  }
+  .message-block
+  {
+    .simple-message
+    {
+      padding: 2rem;
+      color: $secondFontColor;
+    }
+
+    .list-message
+    {
+      .message
+      {
+        font-size: 0;
+        padding: 1.5rem;
+        border-top: 1px solid #d7d7d7;
+        position: relative;
+      }
+      .sender
+      {
+        font-family: $semiBold;
+        font-size: 1.8rem;
+      }
+      .created
+      {
+        display: block;
+        padding: 1.5rem;
+        font-size: 1.3rem;
+        color: $secondFontColor;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .content
+      {
+        margin: 1rem 0;
+      }
+      .answer
+      {
+        display: inline-block;
+      }
+      .left
+      {
+        margin-right: 1.5rem;
+        float: left;
+      }
+      .right
+      {
+        overflow: hidden;
+        font-size: 1.6rem;
+      }
+    }
+    .create-message
+    {
+      padding: 1.5rem;
+      text-align: right;
+      textarea
+      {
+        margin-bottom: 1.5rem;
+      }
+      .submit
+      {
+        display: inline-block;
+      }
+    }
+  }
+
 }

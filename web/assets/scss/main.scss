@@ -35,3 +35,65 @@ a
   font-size: 1.5rem;
   margin: 1rem 0;
 }
+
+.btn-light
+{
+  cursor: pointer;
+  border: none;
+  font-size: 1.4rem;
+  display: block;
+  padding: 0 1.2rem;
+  height: 3.5rem;
+  line-height: 3.3rem;
+  border-radius: 0.3rem;
+  background-color: $lighterColor;
+  color: $thirdFontColor;
+  font-family: $semiBold;
+  &.active
+  {
+    background-color: $darkerColor;
+  }
+}
+
+.btn-3d
+{
+  background-color: $darkerColor;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: $thirdFontColor;
+  padding: 0.8rem 1.7rem;
+  border-radius: 0.3rem;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  @include boxShadow(0 .4rem 0 #003662);
+  &:hover, &.active
+  {
+    top: .2rem;
+    @include boxShadow(0 .2rem 0 #003662);
+  }
+}
+
+.classic-form
+{
+  input[type="text"], textarea, input[type="url"]
+  {
+    width: 100%;
+    border: 1px solid #c1c1c1;
+    resize: none;
+    font-size: 1.5rem;
+    border-radius: .4rem;
+    padding: .8rem 1.5rem;
+  }
+  select
+  {
+    border: 1px solid #c1c1c1;
+    font-size: 1.5rem;
+    padding: .6rem 1.5rem;
+    background-color: white;
+  }
+  label
+  {
+    font-family: $semiBold;
+  }
+}

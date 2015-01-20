@@ -1,16 +1,17 @@
-{% for message in messages %}
-    <div class="message">
-        <div class="avatar left">
+<div class="list-message-block">
+    {% for message in messages %}
+        <div class="message">
+            <div class="avatar left">
+            </div>
 
+            <div class="right">
+                <span class="sender">{{ message.sender.username }}</span>
+                <span class="created">{{ message.created|date("d/m/y à H:i") }}</span>
+                <p class="content">
+                    {{ message.content }}
+                </p>
+                <a class="answer" href="">Lui répondre !</a>
+            </div>
         </div>
-
-        <div class="right">
-            <span class="sender">{{ message.sender.username }}</span>
-            <span class="created">{{ message.created|date("d/m/y à H:i") }}</span>
-            <p class="content">
-                {{ message.content }}
-            </p>
-            <a class="answer" href="">Lui répondre !</a>
-        </div>
-    </div>
-{% endfor %}
+    {% endfor %}
+</div>

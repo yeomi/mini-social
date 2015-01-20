@@ -75,22 +75,4 @@
     margin-top: 2.5rem;
     margin-bottom: 2.3rem;
   }
-  .popup-btn
-  {
-    background-color: $darkerColor;
-    display: inline-block;
-    font-size: 1.5rem;
-    color: $thirdFontColor;
-    padding: 0.8rem 1.7rem;
-    border-radius: 0.3rem;
-    position: relative;
-    cursor: pointer;
-    border: none;
-    @include boxShadow(0 .4rem 0 #003662);
-    &:hover
-    {
-      top: .2rem;
-      @include boxShadow(0 .2rem 0 #003662);
-    }
-  }
 }

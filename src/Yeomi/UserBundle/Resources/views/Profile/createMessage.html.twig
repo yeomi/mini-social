@@ -1,29 +1,45 @@
-{% if is_granted("ROLE_USER") %}
-    {% if isUser == false %}
-        {{ form_start(form, {"action": path("yeomi_user_create_message", {"userId": userId}), "attr": {'class' : 'ajax-submission-form'}}) }}
-        {{ form(form) }}
-    {% endif %}
-
-    {% if isUser %}
-        {% for message in messages %}
-            <div class="message">
-                <div class="avatar left">
-
-                </div>
-
-                <div class="right">
-                    <span class="sender">{{ message.sender.username }}</span>
-                    <span class="created">{{ message.created|date("d/m/y à H:i") }}</span>
-                    <p class="content">
-                        {{ message.content }}
-                    </p>
-                    <a class="answer" href="{{ path("yeomi_user_profile", {"username":message.sender.username}) }}?tab=message">Lui répondre !</a>
-                </div>
+<div class="message-block">
+    {% if is_granted("ROLE_USER") %}
+        {% if isUser == false %}
+            <div class="create-message">
+                {{ form_start(form, {"action": path("yeomi_user_create_message", {"userId": userId}), "attr": {'class' : 'ajax-submission-form classic-form'}}) }}
+                    <div class="body">
+                        {{ form_widget(form.content, {'attr': {'placeholder' : "Écrivez un message à cet utilisateur"}}) }}
+                    </div>
+                    <div class="submit-area">
+                        {{ form_widget(form.send, {'attr' : {'class': 'btn-light submit'}}) }}
+                    </div>
+                {{ form_end(form) }}
             </div>
-        {% else %}
-            <p>Vous n'avez pas encore de message</p>
-        {% endfor %}
+        {% endif %}
+
+        {% if isUser %}
+            <div class="list-message">
+            {% for message in messages %}
+                <div class="message">
+                    <div class="left">
+                        <div class="avatar">
+                        {% if message.sender.profile.avatar is defined %}
+                            <img style="width:5rem;height:5rem;" src="{{ asset('uploads/img/avatar/' ~ message.sender.profile.avatar.id ~ '.' ~ message.sender.profile.avatar.value) }}" alt=""/>
+                        {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <span class="sender">{{ message.sender.username }}</span>
+                        <span class="created">{{ message.created|date("d/m/y à H:i") }}</span>
+                        <p class="content">
+                            {{ message.content }}
+                        </p>
+                        <a class="answer btn-light" href="{{ path("yeomi_user_profile", {"username":message.sender.username}) }}?tab=message">Lui répondre !</a>
+                    </div>
+                </div>
+            {% else %}
+                <p class="simple-message">Vous n'avez pas encore de message</p>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% else %}
+        <p class="simple-message">Fonctionnalités réservées aux membres authentifiés</p>
     {% endif %}
-{% else %}
-    <p>Fonctionnalités réservées aux membres authentifiés</p>
-{% endif %}
+</div>
