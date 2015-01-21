@@ -21,11 +21,8 @@ use Yeomi\UserBundle\Form\UserType;
 class MainController extends Controller
 {
 
-    public function testAction()
+    public function testAction(Request $request)
     {
-        if ($this->get("security.context")->isGranted("ROLE_UNVALIDATE")) {
-            return new Response("Send me again a confirmation link");
-        }
 
         return $this->render("YeomiUserBundle:Main:test.html.twig", array(
             "testVar" => 12,
@@ -35,7 +32,6 @@ class MainController extends Controller
     public function loginAction(Request $request)
     {
         if ($this->get("security.context")->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            return $this->redirect($this->generateUrl("yeomi_user_test"));
         }
 
         $session = $request->getSession();

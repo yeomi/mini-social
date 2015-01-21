@@ -1,5 +1,5 @@
 yeomi_user_test:
-    path:     /test
+    path:     /tests
     defaults: { _controller: YeomiUserBundle:Main:test }
 
 yeomi_user_register:
