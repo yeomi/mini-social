@@ -284,6 +284,29 @@ class Comment
     }
 
     /**
+     * Get likes
+     *
+     * @return Array
+     */
+    public function getLikes()
+    {
+        $positives = 0;
+        $negatives = 0;
+        foreach($this->votes as $vote) {
+            if ($vote->getPositive()) {
+                $positives++;
+            } elseif ($vote->getNegative()) {
+                $negatives++;
+            }
+        }
+
+        return array(
+            "positives" => $positives,
+            "negatives" => $negatives,
+        );
+    }
+
+    /**
      * Add votes
      *
      * @param \Yeomi\PostBundle\Entity\Vote $votes

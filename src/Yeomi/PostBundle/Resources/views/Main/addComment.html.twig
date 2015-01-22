@@ -1,1 +1,34 @@
-{{ form(form) }}
+<div class="add-comment-form">
+
+    {{ form_start(form, {"action": path("yeomi_post_add_comment", {"postId": postId}), "attr": {"class": "classic-form"}}) }}
+
+    <div class="comment-body">
+    {{ form_widget(form.content, {'attr': {'placeholder' : "laisse ton commentaire..."}}) }}
+    </div>
+    <div class="comment-attached-files">
+        <a class="link-attach-file add-pictures" href="">{% trans %}Add pictures{% endtrans %}</a>
+        <a class="link-attach-file add-video" href="">{% trans %}Add a video{% endtrans %}</a>
+
+        <div class="add-pictures-field">
+            <ul>
+                {% for index, imageForm in form.images %}
+                    <li class="upload-image-{{ index }}">
+                        {{ form_label(imageForm.file) }}
+                        {{ form_errors(imageForm.file) }}
+                        {{ form_widget(imageForm.file) }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="add-video-field">
+            <p>Video</p>
+        </div>
+    </div>
+
+
+    <div class="submit-area">
+        {{ form_widget(form.save, {'attr': {'class': 'btn-dark submit '}, 'label': 'Publier !'}) }}
+    </div>
+    {{ form_end(form) }}
+</div>

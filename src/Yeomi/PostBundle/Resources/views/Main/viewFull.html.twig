@@ -2,41 +2,113 @@
 
 
 {% block body %}
-    <table>
-            <tr>
-                <td><a href="{{ path("yeomi_post_view_full", {"id" : post.id}) }}">{{ post.title }}</a></td>
-                <td>{{ post.content }}</td>
-                {% for image in post.images %}
-                    <td><img style="width:100px; height: auto;" src="{{ asset('uploads/img/post/' ~ image.id ~ '.' ~ image.value) }}" alt=""/></td>
-                {% endfor %}
 
-                <td><a href="{{ path("yeomi_post_edit_post", {'id': post.id}) }}">Edit</a></td>
-                <td><a href="{{ path("yeomi_post_delete_post", {'id': post.id}) }}">Delete</a></td>
-            </tr>
-    </table>
-        <fieldset>
-            <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >J'aime(<span>{{ post.likes.positives }}</span>)</a>
-            <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >J'aime pas(<span>{{ post.likes.negatives }}</span>)</a>
-        </fieldset>
-        <em>Written by {% if  post.user %}{{ post.user.username }}{% else %}anonyme{% endif %} on the {{ post.created|date("d/m/y \\à G\\hi") }}</em>
+
+    <section class="page-post">
+
+        <article class="post full-view{% if post.images[0] is defined %} with-img{% endif %}">
+
+            <div class="left">
+                <div class="body">{{ post.content }}</div>
+                <div class="details">
+                    <span class="post-date">{{ post.created|date("d/m/y \\à G\\hi") }}</span>
+                    {% if  post.user %}
+                        <a href="{{ path("yeomi_user_profile", {"username" : post.user.username}) }}">{{ post.user.username }}</a>
+                    {% else %}
+                        <span>anonyme</span>
+                    {% endif %}
+                    - <a href="{{ path("yeomi_post_view_category", {"id" : post.categories[0].id}) }}">{{ post.categories[0].name }}</a>
+                </div>
+
+
+                <div class="actions-btn">
+                    <a class="comments" href="">({{ post.comments|length }})</a>
+                    <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >J'aime(<span>{{ post.likes.positives }}</span>)</a>
+                    <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >J'aime pas(<span>{{ post.likes.negatives }}</span>)</a>
+                </div>
+            </div>
+
+            <div class="right">
+                {% for image in post.images %}
+                    <img style="width:340px; height: 210px;" src="{{ asset('uploads/img/post/' ~ image.id ~ '.' ~ image.value) }}" alt=""/>
+                {% endfor %}
+            </div>
+        </article>
 
     {% block comment %}
-        <div>
-            {{ render(controller("YeomiPostBundle:Main:addComment", {"request": app.request, "id" : post.id})) }}
-        </div>
+        <div class="comment-area">
+            <aside class="add-comment-block">
 
-        <h4>{{ post.comments|length }} Commentaires</h4>
-        {% for comment in post.comments %}
-            <fieldset>
-                <h3>{{ comment.title }}</h3>
-                <p>{{ comment.content }}</p>
-                {% for image in comment.images %}
-                    <img style="width:100px; height: auto;" src="{{ asset('uploads/img/comment/' ~ image.id ~ '.' ~ image.value) }}" alt=""/>
+                <a href="{{ path("yeomi_user_profile", {"username":app.user.username}) }}">
+                    <div class="avatar">
+                        {% if  app.user.profile.avatar.id is defined %}
+                            <img style="width:9rem;height:9rem;" src="{{ asset('uploads/img/avatar/' ~ app.user.profile.avatar.id ~ '.' ~ app.user.profile.avatar.value) }}" alt=""/>
+                        {% endif %}
+                    </div>
+                </a>
+
+                <div class="comment-intro">
+                    <p>
+                    Toi aussi, <a href="{{ path("yeomi_user_profile", {"username":app.user.username}) }}" class="username">{{ app.user.username }}</a>,
+                    {% if post.type.slug == "defi" %}
+                        participe au défi !
+                    {% else %}
+                     commente cette histoire
+                    {% endif %}
+                    </p>
+                </div>
+                {{ render(controller("YeomiPostBundle:Main:addComment", {"request": app.request, "postId" : post.id})) }}
+
+            </aside>
+
+            <aside class="list-comment-block">
+
+                {% if post.comments|length > 1 %}
+                    <h4>{{ post.comments|length }} commentaires</h4>
+                {% else %}
+                    <h4>{{ post.comments|length }} commentaire</h4>
+                {% endif %}
+
+                <div class="comment-list">
+                {% for comment in post.comments %}
+                    <div class="comment">
+
+                        <div class="left">
+                            <a href="{{ path("yeomi_user_profile", {"username":comment.user.username}) }}">
+                                <div class="avatar">
+                                    {% if  comment.user.profile.avatar.id is defined %}
+                                        <img style="width:9rem;height:9rem;" src="{{ asset('uploads/img/avatar/' ~ comment.user.profile.avatar.id ~ '.' ~ comment.user.profile.avatar.value) }}" alt=""/>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="right">
+                            <a href="{{ path("yeomi_user_profile", {"username":comment.user.username}) }}">
+                                <h4>{{ comment.user.username }}</h4>
+                            </a>
+                            <div class="details">{{ comment.created|date("d/m/y \\à G\\hi") }}</div>
+                            <div class="body">{{ comment.content }}</div>
+
+                            <div class="actions-btn">
+                                <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "positive"}) }}" >(<span>{{ comment.likes.positives }}</span>)</a>
+                                <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "negative"}) }}" >(<span>{{ comment.likes.negatives }}</span>)</a>
+                            </div>
+
+                            <div class="attached-files">
+                            {% for image in comment.images %}
+                                <img style="max-width:175px; height: auto;" src="{{ asset('uploads/img/comment/' ~ image.id ~ '.' ~ image.value) }}" alt=""/>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p>Pas encore de commentaire..</p>
                 {% endfor %}
-                <em>Written by {% if  comment.user %}{{ comment.user.username }}{% else %}anonyme{% endif %} on the {{ comment.created|date("d/m/y \\à G\\hi") }}</em>
-            </fieldset>
-        {% endfor %}
-
+                </div>
+            </aside>
+        </div>
     {% endblock %}
+    </section>
 
 {% endblock %}

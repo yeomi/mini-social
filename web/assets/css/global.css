@@ -129,6 +129,20 @@ a {
   .btn-light.active {
     background-color: #175da3; }
 
+.btn-dark {
+  cursor: pointer;
+  border: none;
+  font-size: 1.4rem;
+  display: block;
+  padding: 0 1.2rem;
+  height: 3rem;
+  line-height: 2.8rem;
+  border-radius: 0.3rem;
+  background-color: #175da3;
+  color: #fff; }
+  .btn-dark.active {
+    background-color: #1293f1; }
+
 .btn-3d {
   background-color: #175da3;
   display: inline-block;
@@ -160,6 +174,50 @@ a {
   background-color: white; }
 .classic-form label {
   font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
+
+.post .vote-btn {
+  border: 1px solid #175da3;
+  font-family: "open_sansregular", Arial, Helvetica, sans-serif;
+  color: #175da3;
+  font-size: 1.2rem;
+  display: inline-block;
+  padding: .5rem 1rem;
+  border-radius: .4rem; }
+  .post .vote-btn:hover {
+    color: #fff;
+    background: #175da3; }
+.post .comments {
+  color: #747474;
+  font-size: 1.1rem;
+  padding-left: 2.2rem;
+  background-image: url(../img/bubble-icone.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 1.9rem auto;
+  line-height: 3.5rem; }
+
+.avatar {
+  background-image: url(../img/profile/default-avatar.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain; }
+
+form .link-attach-file {
+  color: #175da3;
+  font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 3.3rem;
+  background-repeat: no-repeat;
+  background-position: left center;
+  line-height: 2.5rem; }
+  form .link-attach-file.add-pictures {
+    background-image: url(../img/picture-icone.png);
+    background-size: 2.6rem auto; }
+  form .link-attach-file.add-video {
+    background-image: url(../img/video-icone.png);
+    background-size: 2.6rem auto; }
 
 .wrapper-width.site-header {
   background-color: #175da3; }
@@ -445,28 +503,9 @@ header#site-header {
     margin-top: 1.8rem; }
     .list-view .actions-btn .vote-btn {
       margin: 0;
-      margin-right: .5rem;
-      border: 1px solid #175da3;
-      font-family: "open_sansregular", Arial, Helvetica, sans-serif;
-      color: #175da3;
-      font-size: 1.2rem;
-      display: inline-block;
-      padding: .5rem 1rem;
-      border-radius: .4rem; }
-      .list-view .actions-btn .vote-btn:hover {
-        color: #fff;
-        background: #175da3; }
+      margin-right: .5rem; }
     .list-view .actions-btn a {
       margin: .7rem; }
-    .list-view .actions-btn .comments {
-      color: #747474;
-      font-size: 1.1rem;
-      padding-left: 2.2rem;
-      background-image: url(../img/bubble-icone.png);
-      background-repeat: no-repeat;
-      background-position: left center;
-      background-size: 1.9rem auto;
-      line-height: 3.5rem; }
     .list-view .actions-btn .share {
       padding-left: 1.7rem;
       background-image: url(../img/share-icone.png);
@@ -607,23 +646,9 @@ header#site-header {
       font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
       font-size: 1.1rem; }
     .add-defi-popup .post-attached-files .link-attach-file, .add-histoire-popup .post-attached-files .link-attach-file {
-      margin-top: 1rem;
-      color: #175da3;
-      font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
-      font-size: 1.4rem;
-      display: inline-block;
-      vertical-align: top;
-      padding-left: 3.3rem;
-      background-repeat: no-repeat;
-      background-position: left center;
-      line-height: 2.5rem; }
-      .add-defi-popup .post-attached-files .link-attach-file.add-pictures, .add-histoire-popup .post-attached-files .link-attach-file.add-pictures {
-        background-image: url(../img/picture-icone.png);
-        background-size: 2.6rem auto; }
+      margin-top: 1rem; }
       .add-defi-popup .post-attached-files .link-attach-file.add-video, .add-histoire-popup .post-attached-files .link-attach-file.add-video {
-        float: right;
-        background-image: url(../img/video-icone.png);
-        background-size: 2.6rem auto; }
+        float: right; }
     .add-defi-popup .post-attached-files .add-pictures-field, .add-defi-popup .post-attached-files .add-video-field, .add-histoire-popup .post-attached-files .add-pictures-field, .add-histoire-popup .post-attached-files .add-video-field {
       display: none;
       background-color: #e4e4e4;
@@ -694,6 +719,148 @@ nav.category-nav {
   .page-category header.category-header p {
     font-size: 1.7rem; }
 
+.page-post {
+  max-width: 120rem;
+  margin: auto;
+  background-color: #fff;
+  margin-top: 1rem;
+  padding: 3.5rem 7.5rem 6rem 7.5rem; }
+  .page-post .post.full-view {
+    margin-bottom: 3rem; }
+    .page-post .post.full-view .body {
+      font-size: 1.5rem; }
+    .page-post .post.full-view .details {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      float: left;
+      color: #175da3; }
+      .page-post .post.full-view .details .post-date {
+        color: #9f9f9f; }
+      .page-post .post.full-view .details a {
+        color: #175da3; }
+    .page-post .post.full-view .actions-btn {
+      margin-top: 1rem;
+      float: right; }
+      .page-post .post.full-view .actions-btn a {
+        margin-left: .7rem;
+        font-size: 1.4rem; }
+    .page-post .post.full-view .right img {
+      position: absolute;
+      top: 0;
+      right: 0; }
+    .page-post .post.full-view.with-img .left {
+      overflow: hidden;
+      padding-right: 1rem; }
+    .page-post .post.full-view.with-img .left, .page-post .post.full-view.with-img .right {
+      display: table-cell;
+      vertical-align: top; }
+    .page-post .post.full-view.with-img .right {
+      position: relative;
+      width: 34rem; }
+  .page-post .comment-area {
+    padding: 5rem 10rem 7rem 15rem;
+    background-color: #f3f3f3;
+    border: 1px solid #d2d2d2; }
+    .page-post .comment-area .add-comment-block {
+      margin-bottom: 7rem;
+      position: relative; }
+      .page-post .comment-area .add-comment-block .avatar {
+        position: absolute;
+        left: -11.7rem;
+        top: 0;
+        width: 9rem;
+        height: 9rem;
+        border-radius: .4rem;
+        overflow: hidden; }
+      .page-post .comment-area .add-comment-block .comment-intro p {
+        font-size: 1.8rem;
+        margin-bottom: 1.8rem; }
+        .page-post .comment-area .add-comment-block .comment-intro p .username {
+          color: #1293f1;
+          font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+          text-transform: capitalize; }
+      .page-post .comment-area .add-comment-block .add-comment-form {
+        overflow: hidden; }
+      .page-post .comment-area .add-comment-block textarea {
+        border-radius: .3rem;
+        border-color: #d7d7d7;
+        font-size: 1.7rem;
+        min-height: 12rem;
+        padding: 1.6rem 1.5rem; }
+      .page-post .comment-area .add-comment-block .comment-attached-files {
+        margin-top: 1rem;
+        float: left; }
+      .page-post .comment-area .add-comment-block .add-pictures-field, .page-post .comment-area .add-comment-block .add-video-field {
+        display: none; }
+      .page-post .comment-area .add-comment-block .submit-area {
+        margin-top: 1rem;
+        float: right; }
+    .page-post .comment-area .list-comment-block > h4 {
+      background-image: url(../img/bubble-icone-filled.png);
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 5.4rem auto;
+      padding-left: 6.5rem;
+      font-size: 1.9rem;
+      margin-bottom: 2rem;
+      line-height: 4.4rem; }
+    .page-post .comment-area .list-comment-block .comment-list {
+      background-color: #fff;
+      border: 1px solid #d7d7d7;
+      border-radius: .3rem;
+      padding: 3.2rem; }
+    .page-post .comment-area .list-comment-block .comment {
+      padding: 2.5rem 0 3rem 0;
+      overflow: hidden;
+      border-top: 1px solid #d7d7d7; }
+      .page-post .comment-area .list-comment-block .comment:first-of-type {
+        border: none;
+        padding-top: 0; }
+    .page-post .comment-area .list-comment-block .left {
+      float: left;
+      margin-right: 2rem; }
+    .page-post .comment-area .list-comment-block .avatar {
+      width: 9rem;
+      height: 9rem;
+      border-radius: .4rem;
+      overflow: hidden; }
+    .page-post .comment-area .list-comment-block .right {
+      overflow: hidden; }
+      .page-post .comment-area .list-comment-block .right h4 {
+        color: #1293f1;
+        font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+        font-size: 1.8rem;
+        text-transform: capitalize;
+        display: inline-block;
+        vertical-align: bottom;
+        margin-right: 1rem; }
+      .page-post .comment-area .list-comment-block .right .details {
+        color: #9f9f9f;
+        font-size: 1.3rem;
+        display: inline-block;
+        vertical-align: bottom;
+        line-height: 2.2rem; }
+      .page-post .comment-area .list-comment-block .right .body {
+        margin-top: 1rem;
+        font-size: 1.5rem; }
+      .page-post .comment-area .list-comment-block .right .actions-btn {
+        float: right; }
+      .page-post .comment-area .list-comment-block .right .vote-btn {
+        padding-left: 1.9rem;
+        background-image: url(../img/like.png);
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 1.6rem auto;
+        color: #747474;
+        font-size: 1.1rem; }
+        .page-post .comment-area .list-comment-block .right .vote-btn.hate {
+          background-image: url(../img/hate.png); }
+      .page-post .comment-area .list-comment-block .right .attached-files {
+        clear: both; }
+        .page-post .comment-area .list-comment-block .right .attached-files img {
+          margin-top: 4.5rem;
+          margin-right: 2.5rem; }
+
 .page-register.style-login section {
   width: 37.2rem; }
   .page-register.style-login section form {
@@ -712,11 +879,7 @@ nav.category-nav {
       display: inline-block;
       vertical-align: top;
       width: 15rem;
-      height: 15rem;
-      background-image: url(../img/profile/default-avatar.png);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 15rem auto; }
+      height: 15rem; }
     .page-profile .profile-ban .side-infos {
       margin-left: 1rem;
       display: inline-block;

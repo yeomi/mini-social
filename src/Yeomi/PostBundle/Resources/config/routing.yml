@@ -14,6 +14,10 @@ yeomi_post_delete_post:
     path:     /delete/post/{id}
     defaults: { _controller: YeomiPostBundle:Main:delete }
 
+yeomi_post_add_comment:
+    path:     /add/comment/{postId}
+    defaults: { _controller: YeomiPostBundle:Main:addComment }
+
 yeomi_post_add_category:
     path:     /add/category
     defaults: { _controller: YeomiPostBundle:Main:addCategory }

@@ -1,0 +1,222 @@
+.page-post
+{
+  @include setContainer();
+  background-color: #fff;
+  margin-top: 1rem;
+  padding: 3.5rem 7.5rem 6rem 7.5rem;
+  .post.full-view
+  {
+    margin-bottom: 3rem;
+    .body {
+      font-size: 1.5rem;
+    }
+    .details
+    {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      float: left;
+      color: $darkerColor;
+      .post-date
+      {
+        color: #9f9f9f;
+      }
+      a
+      {
+        color: $darkerColor;
+      }
+    }
+    .actions-btn
+    {
+      margin-top: 1rem;
+      float: right;
+      a
+      {
+        margin-left: .7rem;
+        font-size: 1.4rem;
+      }
+    }
+    .right img
+    {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    &.with-img
+    {
+      .left
+      {
+        overflow: hidden;
+        padding-right: 1rem;
+      }
+      .left, .right
+      {
+        display: table-cell;
+        vertical-align: top;
+      }
+      .right
+      {
+        position: relative;
+        width: 34rem;
+      }
+    }
+  }
+  .comment-area
+  {
+    padding: 5rem 10rem 7rem 15rem;
+    background-color: #f3f3f3;
+    border: 1px solid #d2d2d2;
+    .add-comment-block
+    {
+      margin-bottom: 7rem;
+      position: relative;
+      .avatar
+      {
+        position: absolute;
+        left: -11.7rem;
+        top: 0;
+        width: 9rem;
+        height: 9rem;
+        border-radius: .4rem;
+        overflow: hidden;
+      }
+      .comment-intro p
+      {
+        font-size: 1.8rem;
+        margin-bottom: 1.8rem;
+        .username
+        {
+          color: $lighterColor;
+          font-family: $semiBold;
+          text-transform: capitalize;
+        }
+      }
+      .add-comment-form
+      {
+        overflow: hidden;
+      }
+      textarea
+      {
+        border-radius: .3rem;
+        border-color: #d7d7d7;
+        font-size: 1.7rem;
+        min-height: 12rem;
+        padding: 1.6rem 1.5rem
+      }
+
+      .comment-attached-files
+      {
+        margin-top: 1rem;
+        float: left;
+      }
+      .add-pictures-field, .add-video-field
+      {
+        display: none;
+      }
+      .submit-area
+      {
+        margin-top: 1rem;
+        float: right;
+
+      }
+    }
+    .list-comment-block
+    {
+      >h4
+      {
+        background-image: url(../img/bubble-icone-filled.png);
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 5.4rem auto;
+        padding-left: 6.5rem;
+        font-size: 1.9rem;
+        margin-bottom: 2rem;
+        line-height: 4.4rem;
+      }
+      .comment-list
+      {
+        background-color: #fff;
+        border: 1px solid #d7d7d7;
+        border-radius: .3rem;
+        padding: 3.2rem;
+      }
+      .comment
+      {
+        padding: 2.5rem 0 3rem 0;
+        overflow: hidden;
+        border-top: 1px solid #d7d7d7;
+        &:first-of-type
+        {
+          border: none;
+          padding-top: 0;
+        }
+      }
+      .left
+      {
+        float: left;
+        margin-right: 2rem;
+      }
+      .avatar
+      {
+        width: 9rem;
+        height: 9rem;
+        border-radius: .4rem;
+        overflow: hidden;
+      }
+      .right
+      {
+        overflow: hidden;
+        h4
+        {
+          color: $lighterColor;
+          font-family: $semiBold;
+          font-size: 1.8rem;
+          text-transform: capitalize;
+          display: inline-block;
+          vertical-align: bottom;
+          margin-right: 1rem;
+        }
+        .details
+        {
+          color: #9f9f9f;
+          font-size: 1.3rem;
+          display: inline-block;
+          vertical-align: bottom;
+          line-height: 2.2rem;
+        }
+        .body
+        {
+          margin-top: 1rem;
+          font-size: 1.5rem;
+        }
+        .actions-btn
+        {
+          float: right;
+        }
+        .vote-btn
+        {
+          padding-left: 1.9rem;
+          background-image: url(../img/like.png);
+          background-repeat: no-repeat;
+          background-position: left center;
+          background-size: 1.6rem auto;
+          color: #747474;
+          font-size: 1.1rem;
+          &.hate
+          {
+            background-image: url(../img/hate.png);
+          }
+        }
+        .attached-files
+        {
+          clear: both;
+          img
+          {
+            margin-top: 4.5rem;
+            margin-right: 2.5rem;
+          }
+        }
+      }
+    }
+  }
+}

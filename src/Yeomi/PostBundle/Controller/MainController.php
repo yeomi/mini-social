@@ -149,7 +149,7 @@ class MainController extends Controller
     }
 
 
-    public function addCommentAction (Request $request, $id)
+    public function addCommentAction (Request $request, $postId)
     {
 
         if (!$this->get("security.context")->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
@@ -169,7 +169,7 @@ class MainController extends Controller
             $comment->addImage($images[$i]);
         }
 
-        $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->find($id);
+        $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->find($postId);
 
         $comment->setPost($post);
 
@@ -179,10 +179,12 @@ class MainController extends Controller
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($comment);
             $manager->flush();
+            return $this->redirect($this->generateUrl("yeomi_post_view_full", array("id" => $postId)));
         }
 
         return $this->render("YeomiPostBundle:Main:addComment.html.twig", array(
            "form" => $form->createView(),
+            "postId" => $postId,
         ));
     }
 

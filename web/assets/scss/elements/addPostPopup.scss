@@ -40,25 +40,9 @@
     .link-attach-file
     {
       margin-top: 1rem;
-      color: $darkerColor;
-      font-family: $semiBold;
-      font-size: 1.4rem;
-      display: inline-block;
-      vertical-align: top;
-      padding-left: 3.3rem;
-      background-repeat: no-repeat;
-      background-position: left center;
-      line-height: 2.5rem;
-      &.add-pictures
-      {
-        background-image: url(../img/picture-icone.png);
-        background-size: 2.6rem auto;
-      }
       &.add-video
       {
         float: right;
-        background-image: url(../img/video-icone.png);
-        background-size: 2.6rem auto;
       }
     }
     .add-pictures-field, .add-video-field

@@ -168,34 +168,11 @@
     {
       margin: 0;
       margin-right: .5rem;
-      border: 1px solid $darkerColor;
-      font-family: $font;
-      color: $darkerColor;
-      font-size: 1.2rem;
-      display: inline-block;
-      padding: .5rem 1rem;
-      border-radius: .4rem;
-      &:hover
-      {
-        color: $thirdFontColor;
-        background: $darkerColor;
-      }
     }
 
     a
     {
       margin: .7rem;
-    }
-    .comments
-    {
-      color: #747474;
-      font-size: 1.1rem;
-      padding-left: 2.2rem;
-      background-image: url(../img/bubble-icone.png);
-      background-repeat: no-repeat;
-      background-position: left center;
-      background-size: 1.9rem auto;
-      line-height: 3.5rem;
     }
     .share
     {

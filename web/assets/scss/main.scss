@@ -55,6 +55,24 @@ a
   }
 }
 
+.btn-dark
+{
+  cursor: pointer;
+  border: none;
+  font-size: 1.4rem;
+  display: block;
+  padding: 0 1.2rem;
+  height: 3rem;
+  line-height: 2.8rem;
+  border-radius: 0.3rem;
+  background-color: $darkerColor;
+  color: $thirdFontColor;
+  &.active
+  {
+    background-color: $lighterColor;
+  }
+}
+
 .btn-3d
 {
   background-color: $darkerColor;
@@ -95,5 +113,69 @@ a
   label
   {
     font-family: $semiBold;
+  }
+}
+
+.post
+{
+  .vote-btn
+  {
+    border: 1px solid $darkerColor;
+    font-family: $font;
+    color: $darkerColor;
+    font-size: 1.2rem;
+    display: inline-block;
+    padding: .5rem 1rem;
+    border-radius: .4rem;
+    &:hover {
+      color: $thirdFontColor;
+      background: $darkerColor;
+    }
+  }
+
+  .comments
+  {
+    color: #747474;
+    font-size: 1.1rem;
+    padding-left: 2.2rem;
+    background-image: url(../img/bubble-icone.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 1.9rem auto;
+    line-height: 3.5rem;
+  }
+}
+
+.avatar
+{
+  background-image: url(../img/profile/default-avatar.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+form
+{
+  .link-attach-file
+  {
+    color: $darkerColor;
+    font-family: $semiBold;
+    font-size: 1.4rem;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 3.3rem;
+    background-repeat: no-repeat;
+    background-position: left center;
+    line-height: 2.5rem;
+    &.add-pictures
+    {
+      background-image: url(../img/picture-icone.png);
+      background-size: 2.6rem auto;
+    }
+    &.add-video
+    {
+      background-image: url(../img/video-icone.png);
+      background-size: 2.6rem auto;
+    }
   }
 }
