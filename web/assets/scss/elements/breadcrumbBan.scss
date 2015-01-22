@@ -1,0 +1,40 @@
+.breadcrumb-ban
+{
+  @include setContainer();
+  @include boxShadow(0px -2px 6px rgba(0,0,0,0.2));
+  background-color: #fff;
+  overflow: hidden;
+  margin-top: 1.5rem;
+  height: 5.5rem;
+  ul
+  {
+    list-style-type: none;
+  }
+  li
+  {
+    display: inline-block;
+  }
+  .breadcrumb
+  {
+    line-height: 5.2rem;
+    float: left;
+    margin-left: 7.5rem;
+    a
+    {
+      color: $darkerColor;
+      font-size: 1.4rem;
+    }
+  }
+  .right
+  {
+    margin-right: 7.5rem;
+    line-height: 5.2rem;
+    float: right;
+    a {font-size: 1.3rem;}
+  }
+  .prev-post, .next-post
+  {
+    color: $darkerColor;
+    padding: 0 1rem;
+  }
+}

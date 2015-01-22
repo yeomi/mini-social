@@ -1,5 +1,12 @@
 .page-category
 {
+  &.page-type
+  {
+    .index-menu
+    {
+      display: none;
+    }
+  }
   header.category-header
   {
     @include setContainer();

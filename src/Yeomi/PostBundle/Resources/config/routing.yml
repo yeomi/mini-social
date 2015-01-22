@@ -18,10 +18,6 @@ yeomi_post_add_comment:
     path:     /add/comment/{postId}
     defaults: { _controller: YeomiPostBundle:Main:addComment }
 
-yeomi_post_add_category:
-    path:     /add/category
-    defaults: { _controller: YeomiPostBundle:Main:addCategory }
-
 yeomi_post_view:
     path:     /all/post
     defaults: { _controller: YeomiPostBundle:Main:view }
@@ -64,6 +60,10 @@ yeomi_post_vote_ajax:
 
 # Category
 
+yeomi_post_add_category:
+    path:     /add/category
+    defaults: { _controller: YeomiPostBundle:Main:addCategory }
+
 yeomi_post_view_category:
     path:     /category/{id}
     defaults: { _controller: YeomiPostBundle:Category:view }
@@ -83,5 +83,21 @@ yeomi_post_test:
     path:     /test
     defaults: { _controller: YeomiPostBundle:Main:test, limit: 3, offset: 0 }
     requirements:
+        limit: \d+
+        offset: \d+
+
+# Type
+
+yeomi_post_view_type:
+    path:     /type/{slug}
+    defaults: { _controller: YeomiPostBundle:Type:view }
+    requirements:
+        slug: defi|histoire
+
+yeomi_post_view_list_type:
+    path:     /list-type/{type}/{limit}/{offset}
+    defaults: { _controller: YeomiPostBundle:Type:listType, limit: 3, offset: 0 }
+    requirements:
+        type: defi|histoire
         limit: \d+
         offset: \d+

@@ -4,6 +4,25 @@
 {% block body %}
 
 
+    <header class="breadcrumb-ban">
+        <ul class="breadcrumb left">
+            <li><a href="{{ path("yeomi_post_index") }}">Accueil ></a></li>
+            <li><a href="{{ path("yeomi_post_view_type", {"slug": post.type.slug}) }}">{{ post.type.name }} ></a></li>
+            <li><a href="{{ path("yeomi_post_view_category", {"id": post.categories[0].id}) }}">{{ post.categories[0].name }}</a></li>
+        </ul>
+
+        <ul class="right">
+            <li><a class="btn-dark" href="{{ path("yeomi_post_view_type", {"slug": post.type.slug}) }}">Retour aux {{ post.type.name }}s</a></li>
+            {% if prevPostId %}
+                <li><a class="prev-post" href="{{ path("yeomi_post_view_full", {"id": prevPostId}) }}">< {{ post.type.name }} précédent</a></li>
+            {% endif %}
+            {% if nextPostId %}
+                <li><a class="next-post" href="{{ path("yeomi_post_view_full", {"id": nextPostId}) }}">{{ post.type.name }} suivant ></a></li>
+            {% endif %}
+        </ul>
+
+    </header>
+
     <section class="page-post">
 
         <article class="post full-view{% if post.images[0] is defined %} with-img{% endif %}">
@@ -37,6 +56,7 @@
 
     {% block comment %}
         <div class="comment-area">
+        {% if is_granted("ROLE_USER") %}
             <aside class="add-comment-block">
 
                 <a href="{{ path("yeomi_user_profile", {"username":app.user.username}) }}">
@@ -57,56 +77,17 @@
                     {% endif %}
                     </p>
                 </div>
-                {{ render(controller("YeomiPostBundle:Main:addComment", {"request": app.request, "postId" : post.id})) }}
+                {{ render(controller("YeomiPostBundle:Main:addComment", {"postId" : post.id})) }}
 
             </aside>
 
-            <aside class="list-comment-block">
-
-                {% if post.comments|length > 1 %}
-                    <h4>{{ post.comments|length }} commentaires</h4>
-                {% else %}
-                    <h4>{{ post.comments|length }} commentaire</h4>
-                {% endif %}
-
-                <div class="comment-list">
-                {% for comment in post.comments %}
-                    <div class="comment">
-
-                        <div class="left">
-                            <a href="{{ path("yeomi_user_profile", {"username":comment.user.username}) }}">
-                                <div class="avatar">
-                                    {% if  comment.user.profile.avatar.id is defined %}
-                                        <img style="width:9rem;height:9rem;" src="{{ asset('uploads/img/avatar/' ~ comment.user.profile.avatar.id ~ '.' ~ comment.user.profile.avatar.value) }}" alt=""/>
-                                    {% endif %}
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="right">
-                            <a href="{{ path("yeomi_user_profile", {"username":comment.user.username}) }}">
-                                <h4>{{ comment.user.username }}</h4>
-                            </a>
-                            <div class="details">{{ comment.created|date("d/m/y \\à G\\hi") }}</div>
-                            <div class="body">{{ comment.content }}</div>
-
-                            <div class="actions-btn">
-                                <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "positive"}) }}" >(<span>{{ comment.likes.positives }}</span>)</a>
-                                <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "negative"}) }}" >(<span>{{ comment.likes.negatives }}</span>)</a>
-                            </div>
-
-                            <div class="attached-files">
-                            {% for image in comment.images %}
-                                <img style="max-width:175px; height: auto;" src="{{ asset('uploads/img/comment/' ~ image.id ~ '.' ~ image.value) }}" alt=""/>
-                            {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                {% else %}
-                    <p>Pas encore de commentaire..</p>
-                {% endfor %}
-                </div>
-            </aside>
+        {% else %}
+            <p class="simple-message">
+                Vous devez disposez d'un compte Tpaschiche authentitifé pour pouvoir laisser des commentaires,
+                <a href="{{ path("yeomi_user_register") }}">s'inscrire maintenant !</a>
+            </p>
+        {% endif %}
+            {{ render(controller("YeomiPostBundle:Main:listComment", {"postId" : post.id})) }}
         </div>
     {% endblock %}
     </section>

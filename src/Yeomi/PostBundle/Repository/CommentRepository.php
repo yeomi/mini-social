@@ -3,6 +3,7 @@
 namespace Yeomi\PostBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * CommentRepository
@@ -12,4 +13,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentRepository extends EntityRepository
 {
+    public function getCommentsComplete($postId)
+    {
+        $query = $this->createQueryBuilder("c")
+            ->where("c.post = :postId")
+            ->setParameter("postId", $postId)
+            ->leftJoin("c.images", "img")
+            ->leftJoin("c.user", "user")
+            ->leftJoin("user.profile", "profile")
+            ->leftJoin("profile.avatar", "avatar")
+            ->leftJoin("c.votes", "votes")
+            ->addSelect("img")
+            ->addSelect("user")
+            ->addSelect("votes")
+            ->addSelect("profile")
+            ->addSelect("avatar")
+            ->orderBy("c.created", "DESC")
+            ->getQuery();
+
+
+        return new Paginator($query, true);
+    }
 }

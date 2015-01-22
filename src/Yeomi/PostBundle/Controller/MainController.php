@@ -55,6 +55,16 @@ class MainController extends Controller
 
     }
 
+    public function listCommentAction($postId, $limit = NULL, $offset = 0)
+    {
+        $comments = $this->getDoctrine()->getRepository("YeomiPostBundle:Comment")->getCommentsComplete($postId);
+
+        return $this->render("YeomiPostBundle:Main:listComment.html.twig", array(
+            "comments" => $comments,
+        ));
+
+    }
+
     public function testAction($limit = 3, $offset = 0)
     {
         $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findMostRecents($limit, $offset);
@@ -100,8 +110,17 @@ class MainController extends Controller
     public function viewFullAction($id)
     {
         $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getPostComplete($id);
+
+        $prevPost = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getSiblingPost("<", $post->getType()->getId(), $post->getId());
+        $nextPost = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getSiblingPost(">", $post->getType()->getId(), $post->getId());
+
+        $prevPostId = is_null($prevPost) ? null : $prevPost->getId();
+        $nextPostId = is_null($nextPost) ? null : $nextPost->getId();
+
         return $this->render("YeomiPostBundle:Main:viewFull.html.twig", array(
-            "post" => $post
+            "post" => $post,
+            "prevPostId" => $prevPostId,
+            "nextPostId" => $nextPostId,
         ));
     }
 

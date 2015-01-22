@@ -105,19 +105,37 @@ class PostRepository extends EntityRepository
             ->setParameter("id", $id)
             ->leftJoin("p.images", "img")
             ->leftJoin("p.user", "user")
+            ->leftJoin("p.type", "type")
             ->leftJoin("p.comments", "com")
             ->leftJoin("p.votes", "votes")
-            ->leftJoin("com.images", "imgcom")
             ->innerJoin("p.categories", "cat")
             ->addSelect("img")
+            ->addSelect("type")
             ->addSelect("user")
             ->addSelect("cat")
             ->addSelect("com")
-            ->addSelect("imgcom")
             ->addSelect("votes")
             ->getQuery();
 
 
         return $query->getOneOrNullResult();
     }
+
+
+    public function getSiblingPost($operator, $typeId, $postId)
+    {
+        $direction = $operator == "<" ? "DESC" : "ASC";
+        $query = $this->createQueryBuilder("p")
+            ->where("p.id $operator :postId")
+            ->andWhere("p.type = :typeId")
+            ->setParameter("typeId", $typeId)
+            ->setParameter("postId", $postId)
+            ->orderBy("p.id", $direction)
+            ->setMaxResults(1)
+            ->getQuery();
+
+
+        return $query->getOneOrNullResult();
+    }
+
 }

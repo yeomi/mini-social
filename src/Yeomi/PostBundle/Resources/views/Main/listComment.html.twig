@@ -1,0 +1,47 @@
+
+<aside class="list-comment-block">
+
+    {% if comments|length > 1 %}
+        <h4>{{ comments|length }} commentaires</h4>
+    {% else %}
+        <h4>{{ comments|length }} commentaire</h4>
+    {% endif %}
+
+    <div class="comment-list">
+        {% for comment in comments %}
+            <div class="comment">
+
+                <div class="left">
+                    <a href="{{ path("yeomi_user_profile", {"username":comment.user.username}) }}">
+                        <div class="avatar">
+                            {% if  comment.user.profile.avatar.id is defined %}
+                                <img style="width:9rem;height:9rem;" src="{{ asset('uploads/img/avatar/' ~ comment.user.profile.avatar.id ~ '.' ~ comment.user.profile.avatar.value) }}" alt=""/>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+
+                <div class="right">
+                    <a href="{{ path("yeomi_user_profile", {"username":comment.user.username}) }}">
+                        <h4>{{ comment.user.username }}</h4>
+                    </a>
+                    <div class="details">{{ comment.created|date("d/m/y \\à G\\hi") }}</div>
+                    <div class="body">{{ comment.content }}</div>
+
+                    <div class="actions-btn">
+                        <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "positive"}) }}" >(<span>{{ comment.likes.positives }}</span>)</a>
+                        <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "negative"}) }}" >(<span>{{ comment.likes.negatives }}</span>)</a>
+                    </div>
+
+                    <div class="attached-files">
+                        {% for image in comment.images %}
+                            <img style="max-width:175px; height: auto;" src="{{ asset('uploads/img/comment/' ~ image.id ~ '.' ~ image.value) }}" alt=""/>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>Pas encore de commentaire..</p>
+        {% endfor %}
+    </div>
+</aside>

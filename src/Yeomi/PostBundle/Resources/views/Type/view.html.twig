@@ -1,0 +1,34 @@
+{% extends("YeomiPostBundle::layout.html.twig") %}
+
+
+{% block body %}
+    <section class="page-category page-type">
+        <header class="category-header">
+            <h1>{{ type.name }}</h1>
+        </header>
+
+        {% block homeViews %}
+
+            <div class="container container-lists">
+                <div class="full column-container">
+                    <div class="index-menu" data-offset="0" data-quantity="12">
+                        <div class="tab {{ type.slug }} active"><a class="loader-list" data-target="{{ path("yeomi_post_view_list_type", {"type": type.slug}) }}" href="">{{ type.name }}</a></div>
+                    </div>
+
+                    <div class="ajax-wrapper">
+                        {{ render(controller("YeomiPostBundle:Type:listType", {"type": type.slug, "limit": 12})) }}
+                    </div>
+                    <div class="more-posts">
+                        <a href="">{% trans %}See more posts{% endtrans %}</a>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+
+
+
+
+    </section>
+
+
+{% endblock %}

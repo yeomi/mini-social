@@ -29,7 +29,6 @@ class CategoryController extends Controller{
         return $this->render("YeomiPostBundle:Main:list.html.twig", array(
             "posts" => $posts,
         ));
-
     }
 
 } 
