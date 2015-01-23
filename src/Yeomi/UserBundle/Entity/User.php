@@ -5,12 +5,18 @@ namespace Yeomi\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * User
  *
  * @ORM\Table("user")
  * @ORM\Entity(repositoryClass="Yeomi\UserBundle\Repository\UserRepository")
+ * @UniqueEntity(fields="username", message="Un utilisateur existe deja avec ce nom.")
+ * @UniqueEntity(fields="email", message="Un utilisateur existe deja avec cette email.")
  */
 class User implements UserInterface
 {
@@ -80,13 +86,27 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
+     *
      */
     private $password;
 
     /**
      * @var string
      *
+     * @Assert\Length(
+     *      min = "6",
+     *      max = "50",
+     *      minMessage = "Votre mot de passe doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre mot de passe doit faire moins de {{ limit }} caractères"
+     * )
+     */
+    protected $passwordClear;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\Email(message="'{{ value }}' n'est pas un email valide.")
      */
     private $email;
 
@@ -128,6 +148,8 @@ class User implements UserInterface
         $this->setPasswordOutdated(false);
         $this->setStatus(0);
     }
+
+
     /**
      * Get id
      *
@@ -137,6 +159,26 @@ class User implements UserInterface
     {
         return $this->id;
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getPasswordClear()
+    {
+        return $this->passwordClear;
+    }
+
+    /**
+     * @param mixed $passwordClear
+     */
+    public function setPasswordClear($passwordClear)
+    {
+        $this->passwordClear = $passwordClear;
+        $this->setPassword($passwordClear);
+        return $this;
+    }
+
 
     /**
      * Set username

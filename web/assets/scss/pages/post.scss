@@ -50,9 +50,6 @@
     }
     .right img
     {
-      position: absolute;
-      top: 0;
-      right: 0;
     }
 
     .left
@@ -61,20 +58,53 @@
     }
     &.with-img
     {
-      .left
-      {
-        overflow: hidden;
-        padding-right: 1rem;
-      }
+      font-size: 0;
       .left, .right
       {
-        display: table-cell;
+        font-size: 1.6rem;
+        display: inline-block;
         vertical-align: top;
+      }
+
+      .left
+      {
+        padding-right: 1rem;
+        width: 70.5rem;
       }
       .right
       {
+        float: right;
         position: relative;
         width: 34rem;
+      }
+    }
+    #post-slideshow
+    {
+      border-radius: 1rem;
+      overflow: hidden;
+      .slick-next,
+      .slick-prev
+      {
+
+        background-image: url(../img/slideshow-left.png);
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 2.6rem auto;
+        width: 2.6rem;
+        height: 2.6rem;
+        &:before
+        {
+          content: "";
+        }
+      }
+      .slick-prev
+      {
+        left: .7rem;
+      }
+      .slick-next
+      {
+        background-image: url(../img/slideshow-right.png);
+        right: .7rem;
       }
     }
   }

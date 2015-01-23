@@ -48,9 +48,16 @@
             </div>
 
             <div class="right">
+                {% if post.images[0] is defined %}
+                    <div id="post-slideshow" class="yeo-slideshow">
+                {% endif %}
                 {% for image in post.images %}
-                    <img style="width:340px; height: 210px;" src="{{ asset('uploads/img/post/' ~ image.id ~ '.' ~ image.value) }}" alt=""/>
+
+                    <div class="slide"><img style="width:340px; height: 210px;" src="{{ asset('uploads/img/post/' ~ image.id ~ '.' ~ image.value) }}" alt=""/></div>
                 {% endfor %}
+                {% if post.images[0] is defined %}
+                    </div>
+                {% endif %}
             </div>
         </article>
 

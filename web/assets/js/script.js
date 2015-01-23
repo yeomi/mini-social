@@ -82,4 +82,8 @@ $(function() {
 
   });
 
+  $('.yeo-slideshow').slick({
+    infinite: true
+  });
+
 });

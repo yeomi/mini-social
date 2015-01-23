@@ -3,6 +3,7 @@
 namespace Yeomi\UserBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Yeomi\UserBundle\Entity\User;
 
 /**
  * UserRepository
@@ -12,4 +13,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+
+    public function isUniqueUser(User $user)
+    {
+        $query = $this->createQueryBuilder("u")
+            ->setMaxResults(1)
+            ->getQuery();
+
+
+        return $query->getOneOrNullResult();
+
+    }
 }

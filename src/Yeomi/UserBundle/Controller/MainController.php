@@ -112,10 +112,13 @@ class MainController extends Controller
 
         $form = $this->createForm(new UserType(), $user);
 
+        echo $user->getPassword();
         if ($form->handleRequest($request)->isValid()) {
 
             $manager = $this->getDoctrine()->getManager();
             $role = $manager->getRepository("YeomiUserBundle:Role")->findOneBy(array("slug" => "ROLE_UNVALIDATE"));
+
+            //$user = $this->getDoctrine()->getRepository("YeomiUserBundle:User")->findOneBy(array("email" => $email));
 
             if(is_null($role)) {
                 throw new EntityNotFoundException;
