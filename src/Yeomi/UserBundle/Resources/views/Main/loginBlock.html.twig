@@ -11,7 +11,7 @@
         <form id="login-form" action="{{ path('login_check') }}" method="post">
 
             <div class="login-infos">
-                <label class="username" for="username"><input type="text" id="username" placeholder="{% trans %}Username{% endtrans %}" name="_username" value="{{ last_username }}" /></label>
+                <label class="username" for="username"><input type="text" id="username" placeholder="Email" name="_username" value="{{ last_username }}" /></label>
                 <label class="password"  for="password"><input type="password" placeholder="{% trans %}Password{% endtrans %}" id="password" name="_password" /></label>
             </div>
 

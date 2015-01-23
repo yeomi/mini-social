@@ -14,7 +14,7 @@
                 {% endif %}
 
                 <form id="login-form" action="{{ path('login_check') }}" method="post">
-                    <label for="username">{% trans %}Username{% endtrans %}</label>
+                    <label for="username">{% trans %}Email{% endtrans %}</label>
                     <input type="text" id="username" name="_username" value="{{ last_username }}" />
 
                     <label for="password">{% trans %}Password{% endtrans %}</label>

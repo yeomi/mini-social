@@ -79,6 +79,12 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "30",
+     *      minMessage = "Votre pseudo doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre pseudo {{ limit }} caractères"
+     * )
      */
     private $username;
 
