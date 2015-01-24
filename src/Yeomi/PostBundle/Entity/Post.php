@@ -5,6 +5,8 @@ namespace Yeomi\PostBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Post
  *
@@ -27,6 +29,7 @@ class Post
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Yeomi\PostBundle\Entity\Category", inversedBy="posts")
+     * @Assert\NotBlank(message="Vous devez choisir une catégorie")
      */
     private $categories;
 
@@ -34,9 +37,17 @@ class Post
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Image", mappedBy="post", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $images;
 
+    /**
+     * @var \Yeomi\PostBundle\Entity\Video
+     *
+     * @ORM\OneToOne(targetEntity="Yeomi\PostBundle\Entity\Video", inversedBy="post", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $video;
     /**
      * @var ArrayCollection
      *
@@ -60,6 +71,13 @@ class Post
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Assert\NotBlank(message="Vous devez écrire un texte")
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "4000",
+     *      minMessage = "Votre texte est trop court !",
+     *      maxMessage = "Votre text ne doit pas dépasser {{ limit }} caractères"
+     * )
      */
     private $content;
 
@@ -104,7 +122,6 @@ class Post
      */
     public function __construct()
     {
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setCreated(new \DateTime());
         $this->setPublished(true);
@@ -470,5 +487,28 @@ class Post
     public function getLastAction()
     {
         return $this->lastAction;
+    }
+
+    /**
+     * Set video
+     *
+     * @param \Yeomi\PostBundle\Entity\Video $video
+     * @return Post
+     */
+    public function setVideo(\Yeomi\PostBundle\Entity\Video $video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return \Yeomi\PostBundle\Entity\Video 
+     */
+    public function getVideo()
+    {
+        return $this->video;
     }
 }

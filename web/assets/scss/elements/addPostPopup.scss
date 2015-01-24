@@ -45,14 +45,6 @@
         float: right;
       }
     }
-    .add-pictures-field, .add-video-field
-    {
-      display: none;
-      ul { list-style-type: none }
-      background-color: $bgColor;
-      padding: 1rem;
-      li { margin: 1rem 0;}
-    }
   }
   .submit-area
   {

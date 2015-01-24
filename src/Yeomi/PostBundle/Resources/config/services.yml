@@ -3,3 +3,5 @@ services:
         class: Yeomi\PostBundle\Tools\YeomiTruncate
         tags:
             -  { name : twig.extension }
+    yeomi_post.video.youtube:
+        class: Yeomi\PostBundle\VideoEmbed\YoutubeField

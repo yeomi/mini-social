@@ -82,6 +82,10 @@
                 <source>Create an account</source>
                 <target>Créer un compte</target>
             </trans-unit>
+            <trans-unit id="21">
+                <source>Bad credentials</source>
+                <target>Erreur d'identification</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

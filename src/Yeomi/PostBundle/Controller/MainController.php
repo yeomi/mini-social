@@ -25,6 +25,14 @@ use Yeomi\PostBundle\Entity\Vote;
 class MainController extends Controller
 {
 
+    public function testAction($limit = 3, $offset = 0)
+    {
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findMostRecents($limit, $offset);
+
+        return $this->render("YeomiPostBundle:Main:test.html.twig", array(
+            "posts" => $posts,
+        ));
+    }
 
     public function indexAction()
     {
@@ -65,14 +73,6 @@ class MainController extends Controller
 
     }
 
-    public function testAction($limit = 3, $offset = 0)
-    {
-        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findMostRecents($limit, $offset);
-
-        return $this->render("YeomiPostBundle:Main:test.html.twig", array(
-            "posts" => $posts,
-        ));
-    }
 
     public function listPopularAction($limit = 3, $offset = 0)
     {
@@ -150,12 +150,17 @@ class MainController extends Controller
         }
 
         $form = $this->createForm(new PostType(), $post);
-
-        if($form->handleRequest($request)->isValid()) {
+        $form = $form->handleRequest($request);
+        if($form->isValid()) {
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($post);
             $manager->flush();
 
+            return $this->redirect($this->generateUrl("yeomi_post_index"));
+        } elseif ($form->getErrors()->count() > 0) {
+            foreach ($form->getErrors() as $error) {
+                $request->getSession()->getFlashBag()->add("alert", $error->getMessage());
+            }
             return $this->redirect($this->generateUrl("yeomi_post_index"));
         }
 
@@ -193,11 +198,16 @@ class MainController extends Controller
         $comment->setPost($post);
 
         $form = $this->createForm(new CommentType(), $comment);
-
-        if ($form->handleRequest($request)->isValid()) {
+        $form = $form->handleRequest($request);
+        if ($form->isValid()) {
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($comment);
             $manager->flush();
+            return $this->redirect($this->generateUrl("yeomi_post_view_full", array("id" => $postId)));
+        } elseif ($form->getErrors()->count() > 0) {
+            foreach ($form->getErrors() as $error) {
+                $request->getSession()->getFlashBag()->add("alert", $error->getMessage());
+            }
             return $this->redirect($this->generateUrl("yeomi_post_view_full", array("id" => $postId)));
         }
 

@@ -178,4 +178,30 @@ form
       background-size: 2.6rem auto;
     }
   }
+  .field-attach-file
+  {
+    overflow: hidden;
+    ul {list-style-type: none;}
+    li { margin: 1rem 0;}
+    >p, >ul
+    {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: $bgColor;
+    }
+    max-height: 0;
+    @include transition(max-height 0.3s ease);
+    &.show
+    {
+      max-height: 30rem;
+    }
+    input[type="text"]
+    {
+      width: 100%;
+      border: 1px solid #c1c1c1;
+      font-size: 1.5rem;
+      border-radius: .4rem;
+      padding: .8rem 1.5rem;
+    }
+  }
 }

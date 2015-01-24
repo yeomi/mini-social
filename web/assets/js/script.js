@@ -86,4 +86,27 @@ $(function() {
     infinite: true
   });
 
+  $("#status-message>div").click(function() {
+    $(this).addClass("closed");
+  });
+
+
+  setTimeout(function() {
+    $("#status-message .flash").click();
+  }, 2000);
+
+  $(".link-attach-file").click(function() {
+    var target = ".add-"+$(this).data("target")+"-field";
+
+    if($(target).hasClass("show")) {
+      $(".field-attach-file").removeClass("show");
+    } else {
+      $(".field-attach-file").removeClass("show");
+      $(target).addClass("show");
+    }
+
+    return false;
+  });
+
+
 });

@@ -31,6 +31,13 @@ class Comment
     private $images;
 
     /**
+     * @var \Yeomi\PostBundle\Entity\Video
+     *
+     * @ORM\OneToOne(targetEntity="Yeomi\PostBundle\Entity\Video", mappedBy="comment", cascade={"persist", "remove"})
+     */
+    private $video;
+
+    /**
      * @var \Yeomi\PostBundle\Entity\Post
      *
      * @ORM\ManyToOne(targetEntity="Yeomi\PostBundle\Entity\Post", inversedBy="comments")
@@ -281,6 +288,29 @@ class Comment
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Get likes
+     *
+     * @return Array
+     */
+    public function getLikes()
+    {
+        $positives = 0;
+        $negatives = 0;
+        foreach($this->votes as $vote) {
+            if ($vote->getPositive()) {
+                $positives++;
+            } elseif ($vote->getNegative()) {
+                $negatives++;
+            }
+        }
+
+        return array(
+            "positives" => $positives,
+            "negatives" => $negatives,
+        );
     }
 
     /**

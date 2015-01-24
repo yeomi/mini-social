@@ -25,7 +25,7 @@
 
     <section class="page-post">
 
-        <article class="post full-view{% if post.images[0] is defined %} with-img{% endif %}">
+        <article class="post full-view{% if post.video.video is defined %} with-video{% elseif post.images[0] is defined %} with-img{% endif %}">
 
             <div class="left">
                 <div class="body">{{ post.content }}</div>
@@ -48,14 +48,17 @@
             </div>
 
             <div class="right">
-                {% if post.images[0] is defined %}
-                    <div id="post-slideshow" class="yeo-slideshow">
-                {% endif %}
-                {% for image in post.images %}
+                {% if post.video.video is defined %}
 
-                    <div class="slide"><img style="width:340px; height: 210px;" src="{{ asset('uploads/img/post/' ~ image.id ~ '.' ~ image.value) }}" alt=""/></div>
-                {% endfor %}
-                {% if post.images[0] is defined %}
+                    <div id="main-video-player" class="yeo-video">
+                        <iframe width="420" height="251" src="//www.youtube.com/embed/{{ post.video.video }}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                {% elseif post.images[0] is defined %}
+                    <div id="post-slideshow" class="yeo-slideshow">
+                    {% for image in post.images %}
+
+                        <div class="slide"><img style="width:340px; height: 210px;" src="{{ asset('uploads/img/post/' ~ image.id ~ '.' ~ image.value) }}" alt=""/></div>
+                    {% endfor %}
                     </div>
                 {% endif %}
             </div>

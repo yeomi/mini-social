@@ -27,7 +27,9 @@
     {
       margin-top: 1rem;
       font-size: 1.5rem;
-      float: left;
+      position: absolute;
+      left: 0;
+      bottom: 0;
       color: $darkerColor;
       .post-date
       {
@@ -41,20 +43,21 @@
     .actions-btn
     {
       margin-top: 1rem;
-      float: right;
+      position: absolute;;
+      right: 0;
+      bottom: 0;
       a
       {
         margin-left: .7rem;
         font-size: 1.4rem;
       }
     }
-    .right img
-    {
-    }
 
     .left
     {
       overflow: hidden;
+      position: relative;
+      padding-bottom: 5rem;
     }
     &.with-img
     {
@@ -68,20 +71,43 @@
 
       .left
       {
-        padding-right: 1rem;
-        width: 70.5rem;
+        margin-right: 1rem;
+        width: 69.5rem;
+        min-height: 21rem;
       }
       .right
       {
-        float: right;
         position: relative;
         width: 34rem;
+      }
+    }
+    &.with-video
+    {
+      font-size: 0;
+      .left, .right
+      {
+        font-size: 1.6rem;
+        display: inline-block;
+        vertical-align: top;
+      }
+      .left
+      {
+        margin-right: 1rem;
+        width: 62rem;
+        min-height: 25.1rem;
+
+      }
+      .right
+      {
+        position: relative;
+        width: 42rem;
       }
     }
     #post-slideshow
     {
       border-radius: 1rem;
       overflow: hidden;
+      margin-bottom: 0;
       .slick-next,
       .slick-prev
       {
@@ -165,9 +191,8 @@
         margin-top: 1rem;
         float: left;
       }
-      .add-pictures-field, .add-video-field
+      .field-attach-file
       {
-        display: none;
       }
       .submit-area
       {

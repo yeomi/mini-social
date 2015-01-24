@@ -6,10 +6,10 @@
     {{ form_widget(form.content, {'attr': {'placeholder' : "laisse ton commentaire..."}}) }}
     </div>
     <div class="comment-attached-files">
-        <a class="link-attach-file add-pictures" href="">{% trans %}Add pictures{% endtrans %}</a>
-        <a class="link-attach-file add-video" href="">{% trans %}Add a video{% endtrans %}</a>
+        <a class="link-attach-file add-pictures" data-target="pictures" href="">{% trans %}Add pictures{% endtrans %}</a>
+        <a class="link-attach-file add-video" data-target="video" href="">{% trans %}Add a video{% endtrans %}</a>
 
-        <div class="add-pictures-field">
+        <div class="field-attach-file add-pictures-field">
             <ul>
                 {% for index, imageForm in form.images %}
                     <li class="upload-image-{{ index }}">
@@ -21,9 +21,9 @@
             </ul>
         </div>
 
-        <div class="add-video-field">
-            <p>Video</p>
-        </div>
+        <div class="field-attach-file add-video-field">
+            {{ form_errors(form.video) }}
+            <p>{{ form_widget(form.video.video, {'attr': {'placeholder' : "Copier l'url d'une vidéo Youtube"}}) }}</p>        </div>
     </div>
 
 

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ImageType extends AbstractType
+class VideoType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,7 +15,7 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', 'file', array("required" => false, 'error_bubbling'=>true))
+            ->add('video', 'text', array("required" => false, 'error_bubbling'=>true))
         ;
     }
     
@@ -25,7 +25,7 @@ class ImageType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Yeomi\PostBundle\Entity\Image'
+            'data_class' => 'Yeomi\PostBundle\Entity\Video'
         ));
     }
 
@@ -34,6 +34,6 @@ class ImageType extends AbstractType
      */
     public function getName()
     {
-        return 'yeomi_postbundle_image';
+        return 'yeomi_postbundle_video';
     }
 }

@@ -5,6 +5,8 @@ namespace Yeomi\PostBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Comment
  *
@@ -27,8 +29,17 @@ class Comment
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Image", mappedBy="comment", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $images;
+
+    /**
+     * @var \Yeomi\PostBundle\Entity\Video
+     *
+     * @ORM\OneToOne(targetEntity="Yeomi\PostBundle\Entity\Video", inversedBy="comment", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $video;
 
     /**
      * @var \Yeomi\PostBundle\Entity\Post
@@ -55,6 +66,13 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Assert\NotBlank(message="Vous écrire un texte")
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "500",
+     *      minMessage = "Votre commentaire est trop court !",
+     *      maxMessage = "Votre commentaire ne doit pas dépasser {{ limit }} caractères"
+     * )
      */
     private $content;
 
@@ -338,4 +356,28 @@ class Comment
     {
         return $this->votes;
     }
+
+    /**
+     * Set video
+     *
+     * @param \Yeomi\PostBundle\Entity\Video $video
+     * @return Comment
+     */
+    public function setVideo(\Yeomi\PostBundle\Entity\Video $video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return \Yeomi\PostBundle\Entity\Video 
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
 }

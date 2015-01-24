@@ -11,9 +11,18 @@
     </head>
     <body>
 
+        <div id="status-message">
+        {% block statusMessage %}
+            {% for index, message in app.session.flashbag.get("info") %}
+                <div class="info flash"><p>{{ message }}</p></div>
+            {% endfor %}
+            {% for index, message in app.session.flashbag.get("alert") %}
+                <div class="alert"><p>{{ message }}</p></div>
+            {% endfor %}
+        {% endblock %}
+        </div>
 
         {% block popups %}
-
             {{ render(controller("YeomiPostBundle:Main:menu")) }}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") == false %}
             {{ render(controller("YeomiUserBundle:Main:login")) }}

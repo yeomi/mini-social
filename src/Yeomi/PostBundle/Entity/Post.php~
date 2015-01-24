@@ -38,6 +38,12 @@ class Post
     private $images;
 
     /**
+     * @var \Yeomi\PostBundle\Entity\Video
+     *
+     * @ORM\OneToOne(targetEntity="Yeomi\PostBundle\Entity\Video", mappedBy="post", cascade={"persist", "remove"})
+     */
+    private $video;
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Comment", mappedBy="post", cascade={"remove"})
@@ -470,5 +476,28 @@ class Post
     public function getLastAction()
     {
         return $this->lastAction;
+    }
+
+    /**
+     * Set video
+     *
+     * @param \Yeomi\PostBundle\Entity\Video $video
+     * @return Post
+     */
+    public function setVideo(\Yeomi\PostBundle\Entity\Video $video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video
+     *
+     * @return \Yeomi\PostBundle\Entity\Video 
+     */
+    public function getVideo()
+    {
+        return $this->video;
     }
 }

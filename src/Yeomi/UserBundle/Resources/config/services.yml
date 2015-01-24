@@ -1,4 +1,10 @@
 services:
-#    yeomi_user.example:
-#        class: Yeomi\UserBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    yeomi_user.userlogin.log:
+        class: Yeomi\UserBundle\UserLogin\Log
+        arguments: [@doctrine.orm.entity_manager, @session]
+
+    yeomi_user.userlogin.listener:
+        class: Yeomi\UserBundle\UserLogin\LogListener
+        arguments: [@yeomi_user.userlogin.log]
+        tags:
+            - { name: kernel.event_listener, event: security.authentication.success, method: processLog }

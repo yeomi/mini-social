@@ -153,7 +153,16 @@
   .right
   {
     text-align: right;
-    img
+    span 
+    { 
+      display: inline-block;
+      background-color: $bgColor;
+      background-image: url(../img/play-icone.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 7.5rem auto;
+    }
+    img, span
     {
       width: 9rem;
       height: 9rem;

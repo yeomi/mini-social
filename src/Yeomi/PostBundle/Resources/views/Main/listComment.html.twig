@@ -34,9 +34,13 @@
                     </div>
 
                     <div class="attached-files">
-                        {% for image in comment.images %}
-                            <img style="max-width:175px; height: auto;" src="{{ asset('uploads/img/comment/' ~ image.id ~ '.' ~ image.value) }}" alt=""/>
-                        {% endfor %}
+                        {% if comment.video.video is defined %}
+                            <iframe width="420" height="251" src="//www.youtube.com/embed/{{ comment.video.video }}" frameborder="0" allowfullscreen></iframe>
+                        {% elseif comment.images[0] is defined %}
+                            {% for image in comment.images %}
+                                <img style="max-width:175px; height: auto;" src="{{ asset('uploads/img/comment/' ~ image.id ~ '.' ~ image.value) }}" alt=""/>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>

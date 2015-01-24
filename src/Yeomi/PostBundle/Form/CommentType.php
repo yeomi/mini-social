@@ -15,12 +15,15 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content', 'textarea')
+            ->add('content', 'textarea', array("required" => false, 'error_bubbling'=>true))
             ->add('images', 'collection', array(
                 'type' => new ImageType(),
                 'allow_add' => false,
                 'allow_delete' => false,
+                "required" => false,
+                'error_bubbling'=>true
             ))
+            ->add('video', new VideoType(), array("required" => false, 'error_bubbling'=>true))
             ->add('save', 'submit')
         ;
     }

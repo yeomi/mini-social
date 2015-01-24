@@ -14,15 +14,12 @@
         <h3>{{ suggestEntity|trans }}</h3>
 
         {{ form_start(form, {"action": path("yeomi_post_add_post", {"type": type.slug})}) }}
-        {{ form_errors(form) }}
 
         <div class="post-body">
-            {{ form_errors(form.content) }}
             {{ form_widget(form.content, {'attr': {'placeholder' : suggestEntity|trans}}) }}
         </div>
 
         <div class="post-category">
-            {{ form_errors(form.categories) }}
             {{ form_widget(form.categories) }}
         </div>
 
@@ -31,23 +28,22 @@
                 N'oubliez pas que vous pouvez agrémenter votre publication d'une image ou d'une vidéo ! Vous êtes cependant libre de laisser les mots parler d'eux-mêmes !
             </p>
 
-            <a class="link-attach-file add-pictures" href="">{% trans %}Add pictures{% endtrans %}</a>
-            <a class="link-attach-file add-video" href="">{% trans %}Add a video{% endtrans %}</a>
+            <a class="link-attach-file add-pictures" data-target="pictures" href="">{% trans %}Add pictures{% endtrans %}</a>
+            <a class="link-attach-file add-video" data-target="video" href="">{% trans %}Add a video{% endtrans %}</a>
 
-            <div class="add-pictures-field">
+            <div class="field-attach-file add-pictures-field">
                 <ul>
                 {% for index, imageForm in form.images %}
                     <li class="upload-image-{{ index }}">
                     {{ form_label(imageForm.file) }}
-                    {{ form_errors(imageForm.file) }}
                     {{ form_widget(imageForm.file) }}
                     </li>
                 {% endfor %}
                 </ul>
             </div>
 
-            <div class="add-video-field">
-                <p>Video</p>
+            <div class="field-attach-file add-video-field">
+                <p>{{ form_widget(form.video.video, {'attr': {'placeholder' : "Copier l'url d'une vidéo Youtube"}}) }}</p>
             </div>
         </div>
 

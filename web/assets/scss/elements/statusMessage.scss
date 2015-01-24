@@ -1,0 +1,55 @@
+#status-message
+{
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1.5rem;
+  z-index: 10;
+  ul
+  {
+    list-style-type: none;
+  }
+  div
+  {
+    &:after
+    {
+      content: "";
+      display: block;
+      cursor: pointer;
+      position: absolute;
+      top: .5rem;
+      width: 2em;
+      height: 2rem;
+      right: 0rem;
+      background-image: url(../img/close-icone.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 2rem auto;
+    }
+    position: relative;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    max-width: 25rem;
+    max-height: 27rem;
+    border-radius: .4rem;
+    opacity: 0.9;
+    font-family: $semiBold;
+    left: 0;
+    transition: left 0.3s ease, max-height 0.3s ease 0.1s;
+    >*
+    {
+      padding: 2.5rem;
+    }
+    &.closed
+    {
+      left: 30rem;
+      max-height: 0;
+    }
+  }
+  .alert
+  {
+    background-color: #db4141;
+    color: white;
+    font-family: $semiBold;
+  }
+}

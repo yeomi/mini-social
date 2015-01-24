@@ -51,7 +51,7 @@ class ProfileController extends Controller
             $user->setProfile($profile);
 
             if ($form->handleRequest($request)->isValid()) {
-                //$manager->persist($profile);
+                $manager->persist($profile);
                 $manager->flush();
             }
 

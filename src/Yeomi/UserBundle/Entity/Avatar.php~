@@ -158,7 +158,6 @@ class Avatar
      */
     public function setFile(UploadedFile $file = null)
     {
-
         $this->file = $file;
 
         if ($this->value != null) {
@@ -207,6 +206,8 @@ class Avatar
             $this->getUploadRootDir(),
             $this->id . "." . $this->value
         );
+
+        $this->file = null;
     }
 
     /**
@@ -238,4 +239,27 @@ class Avatar
         return __DIR__ . "/../../../../web/" . $this->getUploadDir();
     }
 
+
+    /**
+     * Set profile
+     *
+     * @param \Yeomi\UserBundle\Entity\Profile $profile
+     * @return Avatar
+     */
+    public function setProfile(\Yeomi\UserBundle\Entity\Profile $profile = null)
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Get profile
+     *
+     * @return \Yeomi\UserBundle\Entity\Profile 
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
 }

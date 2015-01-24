@@ -8,7 +8,14 @@
                     <div class="content">{{ truncatePost(post.content, 200) }}</div>
                 </td>
 
-                {% if post.images[0] is defined %}
+
+                {% if post.video.video is defined %}
+                    <td class="right">
+                        <a class="image" href="">
+                            <span class="thumb-video"></span>
+                        </a>
+                    </td>
+                {% elseif post.images[0] is defined %}
                     <td class="right">
                         <a class="image" href="">
                             <img src="{{ asset('uploads/img/post/' ~ post.images[0].id ~ '.' ~ post.images[0].value) }}" alt=""/>

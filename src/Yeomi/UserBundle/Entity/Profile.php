@@ -332,13 +332,4 @@ class Profile
         return $this->avatar;
     }
 
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function test()
-    {
-        echo "HELLO";
-    }
-
 }

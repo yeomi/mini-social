@@ -1,5 +1,14 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
+{% block statusMessage %}
+    {{ parent() }}
+    {% if form_errors(form) %}<div class="alert">{{ form_errors(form) }}</div>{% endif %}
+    {% if form_errors(form.username) %}<div class="alert">{{ form_errors(form.username) }}</div>{% endif %}
+    {% if form_errors(form.email) %}<div class="alert">{{ form_errors(form.email) }}</div>{% endif %}
+    {% if form_errors(form.passwordClear.first) %}<div class="alert">{{ form_errors(form.passwordClear.first) }}</div>{% endif %}
+    {% if form_errors(form.passwordClear.second) %}<div class="alert">{{ form_errors(form.passwordClear.second) }}</div>{% endif %}
+
+{% endblock %}
 
 {% block body %}
 
@@ -9,23 +18,27 @@
             </aside>
 
             <section>
+
+
                 <h3>{% trans %}Create an account{% endtrans %}</h3>
 
 
                 {{ form_start(form) }}
-                {{ form_errors(form) }}
 
                 {{ form_label(form.username) }}
-                {{ form_errors(form.username) }}
                 {{ form_widget(form.username) }}
 
                 {{ form_label(form.email) }}
-                {{ form_errors(form.email) }}
                 {{ form_widget(form.email) }}
 
-                {{ form_widget(form.passwordClear) }}
-                {{ form_errors(form.passwordClear) }}
-                {{ form_widget(form.passwordClear) }}
+
+                {{ form_label(form.passwordClear.first) }}
+                {{ form_widget(form.passwordClear.first) }}
+
+                {{ form_label(form.passwordClear.second) }}
+                {{ form_widget(form.passwordClear.second) }}
+
+
 
 
                 <div class="submit-area">
