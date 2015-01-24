@@ -15,12 +15,11 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content', 'textarea', array("required" => false, 'error_bubbling'=>true))
+            ->add('content', 'textarea', array('error_bubbling'=>true))
             ->add("categories", "entity", array(
                 "class" => "YeomiPostBundle:Category",
                 "property" => "name",
                 'empty_value' => ' -- Choisissez une catégorie -- ',
-                "required" => false,
                 'error_bubbling'=>true
             ))
 

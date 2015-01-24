@@ -1,6 +1,12 @@
 .page-profile
 {
   @include setContainer();
+
+  .simple-message
+  {
+    padding: 2rem;
+    color: $secondFontColor;
+  }
   .profile-ban
   {
     height: 20.5rem;
@@ -20,7 +26,7 @@
       vertical-align: top;
     }
   }
-  .content
+  >.content
   {
     background-color: #fff;
   }
@@ -106,12 +112,6 @@
   }
   .message-block
   {
-    .simple-message
-    {
-      padding: 2rem;
-      color: $secondFontColor;
-    }
-
     .list-message
     {
       .message
@@ -120,6 +120,10 @@
         padding: 1.5rem;
         border-top: 1px solid #d7d7d7;
         position: relative;
+        &.new
+        {
+          background-color: #b9e1ff;
+        }
       }
       .sender
       {

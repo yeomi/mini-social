@@ -1,5 +1,8 @@
 .page-login, .style-login
 {
+  @include setContainer();
+  @include boxShadow(0 0 .6rem rgba(0, 0, 0, 0.2));
+  margin-top: 1.5rem;
   background-color: white;
   .container
   {

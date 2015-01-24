@@ -19,10 +19,10 @@ class VoteController extends Controller
 
         $response = new Response();
 
-        /*
+
         $cookieNewEntry = false;
         $cookieDeleteEntry = false;
-        */
+
 
         if (!in_array($entityType, array("post", "comment"))) {
             throw new NotFoundHttpException("This entity type is not allowed");
@@ -35,9 +35,13 @@ class VoteController extends Controller
             throw new NotFoundHttpException("Entity not found");
         }
 
+
+        $voteRepository = $manager
+            ->getRepository("YeomiPostBundle:Vote");
+
         $user = $this->getUser();
 
-       /* if(is_null($user)) {
+        if(is_null($user)) {
 
             $jsonCookie = $request->cookies->get("SESSIONSTPC");
             $cookie = json_decode($jsonCookie, true);
@@ -57,34 +61,56 @@ class VoteController extends Controller
             $jsonCookie = json_encode($cookie);
 
             $response->headers->setCookie(new Cookie("SESSIONSTPC", $jsonCookie));
-        }*/
+
+            if($cookieDeleteEntry) {
+                $existing = $voteRepository->findOneBy(array(
+                    "user" => null, $entityType => $entity, $type => 1
+                ));
+                $manager->remove($existing);
+                $manager->flush();
+
+                $response->setContent("remove");
+                return $response;
+            }
+
+            $vote = new Vote();
+
+            $vote->{"set" . $ucEntityType}($entity);
+            $vote->setUser($user);
+            $vote->{"set" . $type}(true);
+
+            $manager->persist($vote);
+            $manager->flush();
+            $response->setContent("add");
 
 
-        $voteRepository = $manager
-            ->getRepository("YeomiPostBundle:Vote");
+        } else {
 
-        $existing = $voteRepository->findOneBy(array(
+            $existing = $voteRepository->findOneBy(array(
                 "user" => $user, $entityType => $entity
             ));
 
-        if(!is_null($existing)) {
-            $manager->remove($existing);
+            if(!is_null($existing)) {
+                $manager->remove($existing);
+                $manager->flush();
+
+                $response->setContent("remove");
+                return $response;
+            }
+
+            $vote = new Vote();
+
+            $vote->{"set" . $ucEntityType}($entity);
+            $vote->setUser($user);
+            $vote->{"set" . $type}(true);
+
+            $manager->persist($vote);
             $manager->flush();
 
-            $response->setContent("remove");
-            return $response;
+            $response->setContent("add");
+
         }
 
-        $vote = new Vote();
-
-        $vote->{"set" . $ucEntityType}($entity);
-        $vote->setUser($user);
-        $vote->{"set" . $type}(true);
-
-        $manager->persist($vote);
-        $manager->flush();
-
-        $response->setContent("add");
         return $response;
     }
 

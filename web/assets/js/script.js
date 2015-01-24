@@ -86,13 +86,13 @@ $(function() {
     infinite: true
   });
 
-  $("#status-message>div").click(function() {
+  $("body").on("click", "#status-message>div, .additional-message>div", function() {
     $(this).addClass("closed");
   });
 
 
   setTimeout(function() {
-    $("#status-message .flash").click();
+    $("#status-message, .additional-message").find(".flash").trigger("click");
   }, 2000);
 
   $(".link-attach-file").click(function() {

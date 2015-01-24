@@ -1,6 +1,11 @@
 <div class="message-block">
     {% if is_granted("ROLE_USER") %}
         {% if isUser == false %}
+            <div class="additional-message">
+                {% if isSent %}<div class="info flash"><p>Votre message à bien été envoyé !</p></div>{% endif %}
+                {% if form_errors(form) %}<div class="alert">{{ form_errors(form) }}</div>{% endif %}
+                {% if form_errors(form.content) %}<div class="alert">{{ form_errors(form.content) }}</div>{% endif %}
+            </div>
             <div class="create-message">
                 {{ form_start(form, {"action": path("yeomi_user_create_message", {"userId": userId}), "attr": {'class' : 'ajax-submission-form classic-form'}}) }}
                     <div class="body">
@@ -16,7 +21,7 @@
         {% if isUser %}
             <div class="list-message">
             {% for message in messages %}
-                <div class="message">
+                <div class="message{% if message.isRead == false %} new{% endif %}">
                     <div class="left">
                         <div class="avatar">
                         {% if message.sender.profile.avatar is defined %}

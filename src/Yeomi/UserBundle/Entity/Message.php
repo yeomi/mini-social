@@ -3,6 +3,7 @@
 namespace Yeomi\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Message
@@ -41,8 +42,20 @@ class Message
      * @var String
      *
      * @ORM\Column(name="content", type="text")
+     * @Assert\NotBlank(message="Vous ne pouvez pas envoyer un message vide")
+     * @Assert\Length(
+     *      max = "500",
+     *      maxMessage = "Votre texte ne doit pas dépasser {{ limit }} caractères"
+     * )
      */
     private $content;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_read", type="boolean")
+     */
+    private $isRead;
 
     /**
      * @var \DateTime
@@ -55,6 +68,7 @@ class Message
     public function __construct()
     {
         $this->setCreated(new \DateTime());
+        $this->setIsRead(false);
     }
     /**
      * Get id
@@ -156,5 +170,30 @@ class Message
     public function getSender()
     {
         return $this->sender;
+    }
+
+
+
+    /**
+     * Set isRead
+     *
+     * @param boolean $isRead
+     * @return Message
+     */
+    public function setIsRead($isRead)
+    {
+        $this->isRead = $isRead;
+
+        return $this;
+    }
+
+    /**
+     * Get isRead
+     *
+     * @return boolean 
+     */
+    public function getIsRead()
+    {
+        return $this->isRead;
     }
 }

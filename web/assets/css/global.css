@@ -242,6 +242,26 @@ form .field-attach-file {
     border-radius: .4rem;
     padding: .8rem 1.5rem; }
 
+.text-fix {
+  position: fixed;
+  right: 0;
+  top: 0; }
+
+.unread-messages-container {
+  position: relative; }
+  .unread-messages-container .unread-messages {
+    color: white;
+    display: block;
+    position: absolute;
+    top: -1.8rem;
+    right: -1.8rem;
+    background-color: #db4141;
+    width: 3.5rem;
+    height: 3.5rem;
+    text-align: center;
+    line-height: 3.5rem;
+    border-radius: 1.8rem; }
+
 .wrapper-width.site-header {
   background-color: #175da3; }
 
@@ -357,6 +377,11 @@ header#site-header {
     box-shadow: 0 0.4rem 0 #003662; }
 
 .page-login, .style-login {
+  max-width: 120rem;
+  margin: auto;
+  -webkit-box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.2);
+  margin-top: 1.5rem;
   background-color: white; }
   .page-login .container, .style-login .container {
     overflow: hidden;
@@ -713,15 +738,15 @@ header#site-header {
     color: #175da3;
     padding: 0 1rem; }
 
-#status-message {
+#status-message, .additional-message {
   position: fixed;
   top: 0;
   right: 0;
   padding: 1.5rem;
   z-index: 10; }
-  #status-message ul {
+  #status-message ul, .additional-message ul {
     list-style-type: none; }
-  #status-message div {
+  #status-message div, .additional-message div {
     position: relative;
     margin-bottom: 1rem;
     background-color: #fff;
@@ -732,7 +757,7 @@ header#site-header {
     font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
     left: 0;
     transition: left 0.3s ease, max-height 0.3s ease 0.1s; }
-    #status-message div:after {
+    #status-message div:after, .additional-message div:after {
       content: "";
       display: block;
       cursor: pointer;
@@ -745,12 +770,12 @@ header#site-header {
       background-repeat: no-repeat;
       background-position: center;
       background-size: 2rem auto; }
-    #status-message div > * {
+    #status-message div > *, .additional-message div > * {
       padding: 2.5rem; }
-    #status-message div.closed {
+    #status-message div.closed, .additional-message div.closed {
       left: 30rem;
       max-height: 0; }
-  #status-message .alert {
+  #status-message .alert, .additional-message .alert {
     background-color: #db4141;
     color: white;
     font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
@@ -1021,6 +1046,9 @@ nav.category-nav {
 .page-profile {
   max-width: 120rem;
   margin: auto; }
+  .page-profile .simple-message {
+    padding: 2rem;
+    color: #818181; }
   .page-profile .profile-ban {
     height: 20.5rem;
     padding-top: 2rem;
@@ -1034,7 +1062,7 @@ nav.category-nav {
       margin-left: 1rem;
       display: inline-block;
       vertical-align: top; }
-  .page-profile .content {
+  .page-profile > .content {
     background-color: #fff; }
   .page-profile .profile-nav {
     font-size: 0; }
@@ -1080,14 +1108,13 @@ nav.category-nav {
       margin: 0 3rem;
       font-size: 1.5rem;
       text-decoration: underline; }
-  .page-profile .message-block .simple-message {
-    padding: 2rem;
-    color: #818181; }
   .page-profile .message-block .list-message .message {
     font-size: 0;
     padding: 1.5rem;
     border-top: 1px solid #d7d7d7;
     position: relative; }
+    .page-profile .message-block .list-message .message.new {
+      background-color: #b9e1ff; }
   .page-profile .message-block .list-message .sender {
     font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
     font-size: 1.8rem; }

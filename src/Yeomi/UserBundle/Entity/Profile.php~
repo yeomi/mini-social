@@ -3,6 +3,7 @@
 namespace Yeomi\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Profile
@@ -32,6 +33,7 @@ class Profile
      * @var \Yeomi\UserBundle\Entity\Avatar
      *
      * @ORM\OneToOne(targetEntity="Yeomi\UserBundle\Entity\Avatar", inversedBy="profile", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $avatar;
 
@@ -67,6 +69,10 @@ class Profile
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Assert\Length(
+     *      max = "500",
+     *      maxMessage = "Votre texte ne doit pas dépasser {{ limit }} caractères"
+     * )
      */
     private $description;
 
@@ -88,6 +94,7 @@ class Profile
      * @var string
      *
      * @ORM\Column(name="website", type="string", length=255, nullable=true)
+     * @Assert\Url()
      */
     private $website;
 
@@ -330,15 +337,6 @@ class Profile
     public function getAvatar()
     {
         return $this->avatar;
-    }
-
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function test()
-    {
-        echo "HELLO";
     }
 
 }

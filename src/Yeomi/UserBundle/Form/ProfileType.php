@@ -14,16 +14,21 @@ class ProfileType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+        $currentYear = date("Y");
         $builder
             ->add('avatar', new AvatarType(), array("required" => false))
-            ->add('firstName', 'text')
-            ->add('lastName', 'text')
-            ->add('location', 'text')
-            ->add('birthday', 'date')
-            ->add('description', 'textarea')
-            ->add('job', 'text')
-            ->add('hobbies', 'text')
-            ->add('website', 'url')
+            ->add('firstName', 'text', array("required" => false))
+            ->add('lastName', 'text', array("required" => false))
+            ->add('location', 'text', array("required" => false))
+            ->add('birthday', 'date', array(
+                "years" => range(1940,$currentYear),
+                "required" => false,
+            ))
+            ->add('description', 'textarea', array("required" => false))
+            ->add('job', 'text', array("required" => false))
+            ->add('hobbies', 'text', array("required" => false))
+            ->add('website', 'text', array("required" => false))
             ->add('save', 'submit')
         ;
     }

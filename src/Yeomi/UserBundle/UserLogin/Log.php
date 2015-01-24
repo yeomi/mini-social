@@ -34,6 +34,10 @@ class Log
     {
         $username = $this->user->getUsername();
         $this->session->getFlashBag()->add("info", "Bienvenue $username !");
+
+        if($this->user->checkRoleExist("ROLE_UNVALIDATE")) {
+            $this->session->getFlashBag()->add("alert", "N'oubliez pas que pour profiter pleinement du site, vous devez valider votre compte en suivant les instructions reçu par e-mail !");
+        }
     }
 
     public function rememberLogin(User $user)

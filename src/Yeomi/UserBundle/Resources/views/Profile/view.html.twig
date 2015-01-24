@@ -12,17 +12,26 @@
             <div class="side-infos">
                 <h2 class="username">{{ user.username }}</h2>
                 <p>Membre depuis {{ user.created|date("d/m/y") }}</p>
+                {% if user.lastLogin %}
+                    <p>Dernière connexion le {{ user.lastLogin|date("d/m/y à H:i") }}</p>
+                {% endif %}
             </div>
         </header>
         <div class="content">
-            {% if user.checkRoleExist("ROLE_UNVALIDATE") == 0 %}
-                <p>Cette utilisateur est en attente de validation</p>
+            {% if (user.checkRoleExist("ROLE_UNVALIDATE") == 1) %}
+                <p class="simple-message">Cette utilisateur est en attente de validation</p>
             {% else %}
                 <nav class="profile-nav">
                     <ul>
                         <li><a class="btn-3d ajax-profile-link {% if tabMessage == false %}active{% endif %}" href="" data-target="{{ path("yeomi_user_create_profile", {"userId" : user.id}) }}">Profil</a></li>
                         <li><a class="btn-3d ajax-profile-link" href="" data-target="{{ path("yeomi_user_list_activity", {"userId" : user.id}) }}">Activité</a></li>
-                        <li><a class="btn-3d ajax-profile-link {% if tabMessage %}active{% endif %}" href="" data-target="{{ path("yeomi_user_create_message", {"userId" : user.id}) }}">Messages</a></li>
+                        <li class="unread-messages-container">
+                            <a class="btn-3d ajax-profile-link {% if tabMessage %}active{% endif %}" href="" data-target="{{ path("yeomi_user_create_message", {"userId" : user.id}) }}">Messages</a>
+                            {% set unreadMessage = render(controller("YeomiUserBundle:Profile:checkUnreadMessage")) %}
+                            {% if unreadMessage > 0 %}
+                                <span class="unread-messages">{{ unreadMessage }}</span>
+                            {% endif %}
+                        </li>
                     </ul>
                 </nav>
 

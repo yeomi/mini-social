@@ -5,6 +5,8 @@ namespace Yeomi\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Image
  *
@@ -54,6 +56,10 @@ class Avatar
 
     /**
      * @var UploadedFile
+     * @Assert\Image(
+     *     maxWidth = 1200,
+     *     maxHeight = 1200,
+     * )
      */
     private $file;
 

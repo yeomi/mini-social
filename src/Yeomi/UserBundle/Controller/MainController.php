@@ -53,9 +53,9 @@ class MainController extends Controller
 
     public function sendEmailValidation(User $user)
     {
-        $body = "Bonjour " . $user->getUsername() . "\n"
-            . "Nous avions bien reçu ta demande d'inscription,\n"
-            . "Pour la valider clique sur ce lien : \n"
+        $body = "Bonjour " . $user->getUsername() . ",\n"
+            . "Nous avons bien reçu ta demande d'inscription,\n"
+            . "Pour la valider et commencer à participer, cliques sur ce lien pour valider ton adresse e-mail : \n"
             . $this->generateUrl(
                 "yeomi_user_validate",
                 array(
@@ -66,7 +66,7 @@ class MainController extends Controller
             );
 
         $message = \Swift_Message::newInstance()
-            ->setSubject("Hello")
+            ->setSubject("Inscription à Tpaschiche ! ")
             ->setFrom("contact.yeomi@gmail.com")
             //->setTo($user->getEmail())
             ->setTo("gabriel@henao.fr")
@@ -108,6 +108,10 @@ class MainController extends Controller
 
     public function registerAction(Request $request)
     {
+        if ($this->get("security.context")->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+
+            return $this->redirect($this->generateUrl("yeomi_post_index"));
+        }
         $user = new User();
 
         $form = $this->createForm(new UserType(), $user);

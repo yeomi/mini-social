@@ -205,3 +205,29 @@ form
     }
   }
 }
+
+.text-fix
+{
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.unread-messages-container
+{
+  position: relative;
+  .unread-messages
+  {
+    color: white;
+    display: block;
+    position: absolute;
+    top: -1.8rem;
+    right: -1.8rem;
+    background-color: #db4141;
+    width: 3.5rem;
+    height: 3.5rem;
+    text-align: center;
+    line-height: 3.5rem;
+    border-radius: 1.8rem;
+  }
+}

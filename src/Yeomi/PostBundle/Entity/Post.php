@@ -76,7 +76,7 @@ class Post
      *      min = "10",
      *      max = "4000",
      *      minMessage = "Votre texte est trop court !",
-     *      maxMessage = "Votre text ne doit pas dépasser {{ limit }} caractères"
+     *      maxMessage = "Votre texte ne doit pas dépasser {{ limit }} caractères"
      * )
      */
     private $content;
