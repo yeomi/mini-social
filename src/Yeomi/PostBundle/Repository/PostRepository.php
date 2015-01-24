@@ -140,4 +140,25 @@ class PostRepository extends EntityRepository
         return $query->getOneOrNullResult();
     }
 
+    public function search($search)
+    {
+        $query = $this->createQueryBuilder("p")
+            ->leftJoin("p.comments", "c")
+            ->leftJoin("p.images", "img")
+            ->leftJoin("p.user", "user")
+            ->leftJoin("p.votes", "votes")
+            ->innerJoin("p.categories", "cat")
+            ->addSelect("c")
+            ->addSelect("img")
+            ->addSelect("user")
+            ->addSelect("votes")
+            ->addSelect("cat")
+            ->where("p.content LIKE :search")
+            ->setParameter(":search", "%$search%")
+            ->orderBy("p.id", "DESC")
+            ->setMaxResults(20)
+            ->getQuery();
+        return $query->getResult();
+    }
+
 }

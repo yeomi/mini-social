@@ -101,3 +101,9 @@ yeomi_post_view_list_type:
         type: defi|histoire
         limit: \d+
         offset: \d+
+
+#search
+
+yeomi_post_search:
+    path:     /search
+    defaults: { _controller: YeomiPostBundle:Main:search }

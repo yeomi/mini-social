@@ -109,4 +109,8 @@ $(function() {
   });
 
 
+  $(".site-search-container a.search").click(function() {
+    $(this).parent().parent().toggleClass("show-form");
+    return false;
+  });
 });

@@ -327,6 +327,43 @@ header#site-header {
       background-position: 0.6rem center;
       background-size: 1.8rem 1.8rem;
       padding-left: 2.9rem; }
+  header#site-header .site-search-container {
+    position: relative;
+    width: 3.5rem;
+    overflow: hidden;
+    -o-transition: width 0.3s ease;
+    -moz-transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+    transition: width 0.3s ease; }
+    header#site-header .site-search-container a {
+      position: relative;
+      z-index: 3; }
+    header#site-header .site-search-container.show-form {
+      width: 27rem; }
+  header#site-header .site-search input[type="text"] {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 2.9rem;
+    width: 21rem;
+    border: 0;
+    font-size: 1.5rem;
+    background-color: #efefef;
+    border-radius: .4rem;
+    padding: .7rem 1.5rem; }
+  header#site-header .site-search input[type="submit"] {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 3.5rem;
+    width: 3.5rem;
+    font-size: 1.5rem;
+    background: #1293f1;
+    border: 0;
+    border-radius: 0 .4rem .4rem 0;
+    color: white;
+    font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
 
 .page-index .wrapper-width.home-ban {
   background-image: url(../img/bg-home.jpeg);

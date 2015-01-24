@@ -16,16 +16,17 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class UserRepository extends EntityRepository implements UserProviderInterface
 {
 
-    public function isUniqueUser(User $user)
+    public function search($search)
     {
         $query = $this->createQueryBuilder("u")
-            ->setMaxResults(1)
+            ->where("u.username LIKE :search")
+            ->setParameter(":search", "%$search%")
+            ->setMaxResults(15)
+            ->orderBy("u.id", "DESC")
             ->getQuery();
-
-
-        return $query->getOneOrNullResult();
-
+        return $query->getResult();
     }
+
 
     /**
      * Loads the user for the given username.

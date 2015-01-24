@@ -38,7 +38,13 @@
                     <nav class="main-nav left">
                         <ul>
                             <li><a href="" class="menu-toggle">☰</a></li>
-                            <li><a href="" class="btn search">{% trans %}Search{% endtrans %}</a></li>
+                            <li class="site-search-container">
+                                <form class="site-search" action="{{ path("yeomi_post_search") }}" method="post">
+                                    <a href="" class="btn search">{% trans %}Search{% endtrans %}</a>
+                                    <input type="text" placeholder="Tapez une recherche" name="site_search"/>
+                                    <input type="submit" value="Ok"/>
+                                </form>
+                            </li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <li class="unread-messages-container">
                                     <a class="log-btn btn-light logout" href="{{ url("logout") }}">{{ app.user.username }} - {% trans %}Logout{% endtrans %}</a>

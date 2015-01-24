@@ -81,4 +81,53 @@ header#site-header
     }
   }
 
+  .site-search-container
+  {
+    position: relative;
+    width: 3.5rem;
+    overflow: hidden;
+    @include transition(width 0.3s ease);
+    a
+    {
+      position: relative;
+      z-index: 3;
+    }
+    &.show-form
+    {
+      width: 27rem;
+    }
+  }
+  .site-search
+  {
+    input[type="text"]
+    {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      right: 2.9rem;
+      width: 21rem;
+      border: 0;
+      font-size: 1.5rem;
+      background-color: #efefef;
+      border-radius: .4rem;
+      padding: .7rem 1.5rem;
+    }
+    input[type="submit"]
+    {
+
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 3.5rem;
+      width: 3.5rem;
+      font-size: 1.5rem;
+      background: $lighterColor;
+      border: 0;
+      border-radius: 0 .4rem .4rem 0;
+      color: white;
+      font-family: $semiBold;
+    }
+  }
+
 }

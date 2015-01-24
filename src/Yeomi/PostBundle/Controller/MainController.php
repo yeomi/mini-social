@@ -25,12 +25,21 @@ use Yeomi\PostBundle\Entity\Vote;
 class MainController extends Controller
 {
 
-    public function testAction($limit = 3, $offset = 0)
+    public function testAction(Request $request, $limit = 3, $offset = 0)
     {
-        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findMostRecents($limit, $offset);
+        if ($request->isMethod("POST")) {
+            var_dump($request->request->get("search"));
+            $search = $request->request->get("search");
+            $resultsPost = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->search($search);
+            $resultsUser = $this->getDoctrine()->getRepository("YeomiUserBundle:User")->search($search);
+
+            var_dump($resultsPost);
+            var_dump($resultsUser);
+
+        }
 
         return $this->render("YeomiPostBundle:Main:test.html.twig", array(
-            "posts" => $posts,
+
         ));
     }
 
@@ -268,5 +277,21 @@ class MainController extends Controller
 
         return $this->redirect($this->generateUrl("yeomi_post_view"));
     }
+
+    public function searchAction(Request $request)
+    {
+        if ($request->isMethod("POST")) {
+            $search = $request->request->get("site_search");
+            $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->search($search);
+            return $this->render("YeomiPostBundle:Main:search.html.twig", array(
+                "posts" => $posts,
+                "searchWord" => $search,
+            ));
+        }
+
+        return $this->redirect($this->generateUrl("yeomi_post_index"));
+
+    }
+
 
 }

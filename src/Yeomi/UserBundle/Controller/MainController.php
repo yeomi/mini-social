@@ -23,7 +23,6 @@ class MainController extends Controller
 
     public function testAction(Request $request)
     {
-
         return $this->render("YeomiUserBundle:Main:test.html.twig", array(
             "testVar" => 12,
         ));
