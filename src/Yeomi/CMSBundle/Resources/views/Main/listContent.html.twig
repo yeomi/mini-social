@@ -1,0 +1,44 @@
+{% extends("YeomiAdminBundle::layout.html.twig") %}
+
+{% block content %}
+    <h3 class="content-title">Liste des {{ type }}s</h3>
+
+    <table class="table table-striped table-hover table-paginator">
+        <thead>
+        <tr>
+            <th>Ref</th>
+            <th>Titre</th>
+            <th>Texte</th>
+            <th>Date de création</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for content in contents %}
+            <tr>
+                <th>{{ content.id }}</th>
+                <td><a href="">{{ content.title }}</a></td>
+                <td>{{ truncatePost(content.body, 200)|striptags }}</td>
+                <td>{{ content.created|date("d/m/Y à H:i") }}</td>
+                <td>
+                    {% if type == "article" %}
+                    <a href="{{ path("yeomi_cms_create_article", {"id": content.id}) }}">
+                        Modifier
+                    </a>
+                    <a class="need-confirmation" href="{{ path("yeomi_cms_delete_content", {"contentType": "article", "id": content.id}) }}">
+                        Supprimer
+                    </a>
+                    {% else %}
+                        <a href="{{ path("yeomi_cms_create_page", {"id": content.id}) }}">
+                            Modifier
+                        </a>
+                        <a class="need-confirmation" href="{{ path("yeomi_cms_delete_content", {"contentType": "page", "id": content.id}) }}">
+                            Supprimer
+                        </a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

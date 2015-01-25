@@ -34,6 +34,13 @@ class Image
     private $post;
 
     /**
+     * @var \Yeomi\CMSBundle\Entity\Article
+     *
+     * @ORM\OneToOne(targetEntity="Yeomi\CMSBundle\Entity\Article", mappedBy="image")
+     */
+    private $article;
+
+    /**
      * @var \Yeomi\PostBundle\Entity\Comment
      *
      * @ORM\ManyToOne(targetEntity="Yeomi\PostBundle\Entity\Comment", inversedBy="images")
@@ -81,6 +88,19 @@ class Image
      * @var string
      */
     private $entityType;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function setEntityType($entityType)
+    {
+        $this->entityType = $entityType;
+
+        return $this;
+    }
 
     /**
      * Get id
@@ -305,5 +325,28 @@ class Image
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set article
+     *
+     * @param \Yeomi\CMSBundle\Entity\Article $article
+     * @return Image
+     */
+    public function setArticle(\Yeomi\CMSBundle\Entity\Article $article = null)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \Yeomi\CMSBundle\Entity\Article 
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }

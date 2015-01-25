@@ -1,7 +1,7 @@
 {% extends("YeomiAdminBundle::layout.html.twig") %}
 
 {% block content %}
-
+    <h3 class="content-title">Liste des commentaires</h3>
     <table class="table table-striped table-hover table-paginator">
         <thead>
         <tr>
@@ -27,7 +27,7 @@
                 <td>{{ comment.created|date("d/m/Y à H:i") }}</td>
                 <td>
 
-                    <a href="{{ path("yeomi_admin_delete_entity", {"type": "comment", "id": comment.id}) }}">
+                    <a class="need-confirmation" href="{{ path("yeomi_admin_delete_entity", {"type": "comment", "id": comment.id}) }}">
                         Supprimer
                     </a>
                 </td>

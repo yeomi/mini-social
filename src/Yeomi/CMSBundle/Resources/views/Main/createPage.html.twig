@@ -1,6 +1,8 @@
 {% extends("YeomiAdminBundle::layout.html.twig") %}
 
 {% block content %}
+    <h3 class="content-title">Creation d'une page</h3>
+
     {{ form_start(form) }}
     <div class="form-group">
         {{ form_widget(form.title, {"attr" : {"placeholder": "Choissisez le titre de la page", "class": "form-control"}}) }}
@@ -9,7 +11,7 @@
     <div class="form-group">
         {{ form_widget(form.body, {"attr" : {"class": "ckeditor"}}) }}
     </div>
-    {{ form_widget(form.save, {"attr" : {"class": "btn btn-default"}, "label": "Créer la page"}) }}
+    {{ form_widget(form.save, {"attr" : {"class": "btn btn-default"}, "label": "Enregistrer la page"}) }}
     {{ form_end(form) }}
 
 {% endblock %}

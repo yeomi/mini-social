@@ -1,0 +1,54 @@
+.sentence-footer
+{
+  clear: both;
+  background-image: url(../img/sentence-footer.png);
+  background-repeat: no-repeat;
+  background-size: 47.7rem auto;
+  background-position: center;
+  margin: auto;
+  margin-top: 5rem;
+  width: 47.7rem;
+  height: 9.6rem;
+}
+
+footer#site-footer
+{
+  background-color: #d3d3d3;
+  margin-top: 5rem;
+  nav
+  {
+    max-width: 83rem;
+    margin: auto;
+    font-size: 1.4rem;
+    a { color: #818181 };
+    ul
+    {
+      list-style-type: none;
+    }
+    .page-list
+    {
+      text-align: center;
+      padding: 1.5rem 0;
+      border-bottom: 3px solid white;
+      li
+      {
+        margin: 0 2rem;
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+  }
+  .sub-footer-nav
+  {
+    overflow: hidden;
+    .left
+    {
+      text-align: right;
+      padding: 1.5rem;
+      margin: 1rem;
+      margin-left: 6rem;
+      float: left;
+      border-right: 3px solid white;
+    }
+  }
+}

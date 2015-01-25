@@ -53,7 +53,7 @@ class Message
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_read", type="boolean", nullable=true)
+     * @ORM\Column(name="is_read", type="boolean")
      */
     private $isRead;
 
@@ -68,7 +68,7 @@ class Message
     public function __construct()
     {
         $this->setCreated(new \DateTime());
-        $this->setRead(false);
+        $this->setIsRead(false);
     }
     /**
      * Get id
@@ -173,4 +173,27 @@ class Message
     }
 
 
+
+    /**
+     * Set isRead
+     *
+     * @param boolean $isRead
+     * @return Message
+     */
+    public function setIsRead($isRead)
+    {
+        $this->isRead = $isRead;
+
+        return $this;
+    }
+
+    /**
+     * Get isRead
+     *
+     * @return boolean 
+     */
+    public function getIsRead()
+    {
+        return $this->isRead;
+    }
 }

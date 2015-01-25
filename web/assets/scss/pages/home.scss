@@ -61,12 +61,19 @@
       @include boxShadow(0 .4rem 0 #003662);
     }
   }
+  .container.container-home-block
+  {
+    margin-top: 3rem;
+    overflow: hidden;
+    clear: both;
+  }
   
   #social-block
   {
     float: right;
     text-align: center;
     width: 28rem;
+    height: 46.5rem;
     background-color: #fff;
     border: 1px solid #bcbcbc;
     padding: 1.7rem;
@@ -119,4 +126,112 @@
     }
   }
 
+  #articles-block
+  {
+    float: left;
+    width: 89.5rem;
+    .article-teaser
+    {
+      position: relative;
+      height: 46.5rem;
+      .block-over
+      {
+        padding: 2rem 2.7rem;
+        width: 53.5rem;
+        color: white;
+        height: 26rem;
+        position: absolute;
+        left: 8.5rem;
+        top: 7rem;
+        background-color: rgba(0,0,0,0.8);
+        h3
+        {
+          font-size: 3.5rem;
+          font-family: $semiBold;
+        }
+        p
+        {
+          font-size: 1.8rem;
+          line-height: 3.2rem;
+          &:before { content: '« '}
+          &:after { content: ' »'}
+        }
+        a
+        {
+          color: white;
+          font-family: $semiBold;
+          position: absolute;
+          bottom: 2rem;
+          left: 2.7rem;
+        }
+      }
+      .readmore
+      {
+
+        background-color: $lighterColor;
+        font-size: 2.2rem;
+        position: absolute;
+        left: 8.5rem;
+        padding-left: 6.5rem;
+        line-height: 4.7rem;
+        bottom:5rem;
+        background-image: url(../img/big-arrow-right.png);
+        background-repeat: no-repeat;
+        background-position: 2rem center;
+        background-size: 2.7rem auto;
+        @include boxShadow(0 0.4rem 0 $darkerColor);
+        &:hover, &.active
+        {
+          top: auto;
+        }
+      }
+    }
+    .slick-dots
+    {
+      bottom: 14.1rem;
+      right: 28.8rem;
+      text-align: right;
+      width: auto;
+      li { margin: 0 .1rem;}
+      button
+      {
+        background-color: #fff;
+        border-radius: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        &:before
+        {
+          content:"";
+        }
+      }
+      .slick-active button
+      {
+        background-color: $darkerColor;
+      }
+    }
+
+    .slick-next,
+    .slick-prev
+    {
+      background-image: url(../img/slideshow-left.png);
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 2.6rem auto;
+      width: 2.6rem;
+      height: 2.6rem;
+      &:before
+      {
+        content: "";
+      }
+    }
+    .slick-prev
+    {
+      left: 1.5rem;
+    }
+    .slick-next
+    {
+      background-image: url(../img/slideshow-right.png);
+      right: 1.5rem;
+    }
+  }
 }

@@ -3,11 +3,39 @@ yeomi_cms_homepage:
     defaults: { _controller: YeomiCMSBundle:Main:test }
 
 yeomi_cms_create_page:
-    path:     /admin/create/page
-    defaults: { _controller: YeomiCMSBundle:Main:createPage }
+    path:     /admin/create/page/{id}
+    defaults: { _controller: YeomiCMSBundle:Main:createPage, id: null }
+    requirements:
+        id: \d+
+
+yeomi_cms_create_article:
+    path:     /admin/create/article/{id}
+    defaults: { _controller: YeomiCMSBundle:Main:createArticle, id: null }
+    requirements:
+        id: \d+
+
+yeomi_cms_list_content:
+    path:     /list/{contentType}
+    defaults: { _controller: YeomiCMSBundle:Main:listContent }
+    requirements:
+        contentType: article|page
+
+yeomi_cms_delete_content:
+    path:     /delete/{contentType}/{id}
+    defaults: { _controller: YeomiCMSBundle:Main:deleteContent }
+    requirements:
+        contentType: article|page
+        id: \d+
+
 
 yeomi_cms_view_page:
     path:     /page/{id}
     defaults: { _controller: YeomiCMSBundle:Main:viewPage }
+    requirements:
+        id: \d+
+
+yeomi_cms_view_article:
+    path:     /article/{id}
+    defaults: { _controller: YeomiCMSBundle:Main:viewArticle }
     requirements:
         id: \d+

@@ -84,7 +84,20 @@
         {% block body %}{% endblock %}
 
         {% block footer %}
-            {{ render(controller("YeomiCMSBundle:Main:getListOfPage")) }}
+            <div class="sentence-footer">
+            </div>
+
+            <footer id="site-footer">
+                <nav class="footer-nav">
+                    {{ render(controller("YeomiCMSBundle:Main:getListOfPage")) }}
+                </nav>
+                <nav class="sub-footer-nav">
+                    <ul class="left">
+                        <li><a href="#">Faire une publication</a></li>
+                        <li><a href="{{ path("yeomi_user_register") }}">Inscription rapide</a></li>
+                    </ul>
+                </nav>
+            </footer>
         {% endblock %}
         {% block javascripts %}
 

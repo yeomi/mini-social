@@ -19,10 +19,24 @@ body
 {
   background-color: black;
   padding: 0;
+  height: 600px;
+}
+.menu .cms-link
+{
+  margin-top: 50px;
+  border-top: 1px solid #efefef;
+
 }
 .content
 {
   padding: 30px;
+}
+.content-title
+{
+  background-color: #fff;
+  padding: 10px;
+  margin-top: 0;
+  margin-bottom: 30px;
 }
 .menu ul
 {

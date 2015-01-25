@@ -1,0 +1,13 @@
+{% extends("YeomiPostBundle::layout.html.twig") %}
+
+{% block body %}
+    <section class="cms-page container">
+        <h3>{{ article.title }}</h3>
+        <div class="image">
+            <img width="895" height="465" class="article-img" src="{{ asset('uploads/img/article/' ~ article.image.id ~ '.' ~ article.image.value) }}" alt=""/>
+        </div>
+        <article class="body ckeditor-actif">
+            {{ article.body|raw }}
+        </article>
+    </section>
+{% endblock %}

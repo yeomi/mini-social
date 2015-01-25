@@ -86,6 +86,12 @@ $(function() {
     infinite: true
   });
 
+  $('.yeo-detailed-slideshow').slick({
+    infinite: true,
+    dots: true
+  });
+
+
   $("body").on("click", "#status-message>div, .additional-message>div", function() {
     $(this).addClass("closed");
   });

@@ -47,8 +47,11 @@ class MainController extends Controller
     {
         $defis = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug("histoire", 2, 0);
 
+        $articles = $this->getDoctrine()->getRepository("YeomiCMSBundle:Article")->findAll();
+
         return $this->render("YeomiPostBundle:Main:index.html.twig", array(
             "defis" => $defis,
+            "articles" => $articles,
         ));
     }
 
