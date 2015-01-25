@@ -26,9 +26,12 @@ class LoadCategories implements FixtureInterface {
     function load(ObjectManager $manager)
     {
         $categories = array(
-            "funny" => "Funny",
-            "love-story" => "Love Story",
-            "work-offer" => "Work offer",
+            "insolite" => "Insolite",
+            "amour-rencontre" => "Amour/Rencontre",
+            "animaux" => "Animaux",
+            "challenges" => "Challenges Tpaschiche",
+            "covoiturages" => "Covoiturages libre",
+            "divertissement-blague" => "Divertissement/Blagues",
         );
         $desc = "Lorem ipsum ..";
 

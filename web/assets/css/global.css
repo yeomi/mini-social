@@ -698,19 +698,21 @@ footer#site-footer {
         background-size: 1.5rem auto;
         background-position: center; }
 
-.container.container-lists .full.column-container .ajax-wrapper {
-  font-size: 0; }
-.container.container-lists .full.column-container .list-view {
-  font-size: 1.6rem;
-  width: 50%;
-  display: inline-block;
-  vertical-align: top;
-  border: 3px solid #e4e4e4; }
-  .container.container-lists .full.column-container .list-view:nth-of-type(even) {
-    border-right: none;
-    float: right; }
-  .container.container-lists .full.column-container .list-view:nth-of-type(odd) {
-    border-left: none; }
+.container.container-lists {
+  overflow: hidden; }
+  .container.container-lists .full.column-container .ajax-wrapper {
+    font-size: 0; }
+  .container.container-lists .full.column-container .list-view {
+    font-size: 1.6rem;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    border: 3px solid #e4e4e4; }
+    .container.container-lists .full.column-container .list-view:nth-of-type(even) {
+      border-right: none;
+      float: right; }
+    .container.container-lists .full.column-container .list-view:nth-of-type(odd) {
+      border-left: none; }
 
 .list-view {
   position: relative;

@@ -25,17 +25,17 @@ class LoadUsers implements FixtureInterface {
     function load(ObjectManager $manager)
     {
         $users = array(
-            'bindou' => array(
-                'email' => 'bindou@bin.fr',
-                'password' => '1234',
+            'user1' => array(
+                'email' => 'user1@hotmail.fr',
+                'password' => '123456',
             ),
-            'bumbo' => array(
-                'email' => 'boumboum@bumb.fr',
-                'password' => '1234',
+            'user2' => array(
+                'email' => 'user2@hotmail.fr',
+                'password' => '123456',
             ),
-            'damour' => array(
-                'email' => 'damour@binbumb.fr',
-                'password' => '1234',
+            'user3' => array(
+                'email' => 'user3@hotmail.fr',
+                'password' => '123456',
             )
         );
 
@@ -49,6 +49,9 @@ class LoadUsers implements FixtureInterface {
         $roleC = new Role();
         $roleC->setName('Premium User')
             ->setSlug('ROLE_USER_PREMIUM');
+        $roleC = new Role();
+        $roleC->setName('Administrator')
+            ->setSlug('ROLE_ADMIN');
 
         foreach ($users as $username => $userData) {
             $user = new User();
@@ -57,12 +60,26 @@ class LoadUsers implements FixtureInterface {
             $user->setUsername($username)
                 ->setEmail($userData["email"])
                 ->setPassword($userData["password"])
-                ->addRole($roleA)
                 ->addRole($roleB);
 
             $manager->persist($roleC);
             $manager->persist($user);
         }
+
+        $admin = new User();
+        $admin->setUsername("admin")
+            ->setEmail("admin@hotmail.fr")
+            ->setPassword("123456")
+            ->addRole($roleC);
+
+        $notValidate = new User();
+        $notValidate->setUsername("unvalidate")
+            ->setEmail("unvalidate@hotmail.fr")
+            ->setPassword("123456")
+            ->addRole($roleA);
+
+        $manager->persist($admin);
+        $manager->persist($notValidate);
 
         $manager->flush();
 

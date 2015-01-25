@@ -17,7 +17,7 @@
         <tbody>
         {% for post in posts %}
             <tr>
-                <th>{{ post.id }}</th>
+                <th><a target="_blank" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">{{ post.id }}</th></a>
                 <td>{{ post.type.name }}</td>
                 <td>{{ post.categories[0].name }}</td>
                 <td>{{ truncatePost(post.content, 200) }}</td>
