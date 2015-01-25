@@ -39,39 +39,39 @@ class User implements UserInterface, \Serializable
     /**
      * @var \Yeomi\UserBundle\Entity\Profile
      *
-     * @ORM\OneToOne(targetEntity="Yeomi\UserBundle\Entity\Profile", inversedBy="user", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Yeomi\UserBundle\Entity\Profile", inversedBy="user", cascade={"persist", "remove"})
      */
     private $profile;
 
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Post", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Post", mappedBy="user", cascade={"remove"})
      */
     private $posts;
 
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Comment", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Comment", mappedBy="user", cascade={"remove"})
      */
     private $comments;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Vote", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Vote", mappedBy="user", cascade={"remove"})
      */
     private $votes;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Yeomi\UserBundle\Entity\Message", mappedBy="recipient")
+     * @ORM\OneToMany(targetEntity="Yeomi\UserBundle\Entity\Message", mappedBy="recipient", cascade={"remove"})
      */
     private $messagesReceived;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Yeomi\UserBundle\Entity\Message", mappedBy="sender")
+     * @ORM\OneToMany(targetEntity="Yeomi\UserBundle\Entity\Message", mappedBy="sender", cascade={"remove"})
      */
     private $messagesSent;
 

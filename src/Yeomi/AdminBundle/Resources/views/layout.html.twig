@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="{{ asset("bundles/yeomiadmin/css/bootstrap.min.css") }}"/>
+    <link rel="stylesheet" href="{{ asset("bundles/yeomiadmin/css/bootstrap-theme.min.css") }}"/>
+    <link rel="stylesheet" href="{{ asset("bundles/yeomiadmin/css/style.css") }}"/>
+</head>
+<body>
+
+<div class="container-fluid">
+    {% block top_bar %}
+        <div class="top-bar row">
+
+            <div class="col-xs-12 text-center">
+                <a href="{{ path('yeomi_admin_home') }}">
+                    <h2>Administration - TpasChiche</h2>
+                </a>
+            </div>
+
+        </div>
+    {% endblock %}
+
+     <div class="row">
+         <div class="menu col-xs-3">
+             <ul>
+                 <li><a href="{{ path("yeomi_admin_list_users") }}">Les Utilisateurs</a></li>
+                 <li><a href="{{ path("yeomi_admin_list_posts") }}">Les Posts</a></li>
+                 <li><a href="{{ path("yeomi_admin_list_comments") }}">Les Commentaires</a></li>
+             </ul>
+         </div>
+         <div class="content col-xs-9">
+             {% block content %}
+             {% endblock %}
+         </div>
+     </div>
+</div>
+{% block body %}
+{% endblock %}
+<script src="{{ asset("assets/js/libs/jquery-1.11.2.js") }}"></script>
+<script src="{{ asset("bundles/yeomiadmin/js/bootstrap.min.js") }}"></script>
+<script src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<script src="{{ asset("bundles/yeomiadmin/js/script.js") }}"></script>
+</body>
+</html>

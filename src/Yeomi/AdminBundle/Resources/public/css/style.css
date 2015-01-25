@@ -1,0 +1,25 @@
+body
+{
+  background-color: #efefef;
+}
+.top-bar
+{
+  background-color: black;
+}
+.top-bar a
+{
+  color: white;
+}
+.top-bar a:hover
+{
+  color: white;
+  text-decoration: none;
+}
+.menu
+{
+  background-color: black;
+}
+.content
+{
+  padding: 30px;
+}

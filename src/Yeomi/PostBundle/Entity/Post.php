@@ -57,7 +57,7 @@ class Post
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Vote", mappedBy="post")
+     * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Vote", mappedBy="post", cascade={"remove"})
      */
     private $votes;
     /**

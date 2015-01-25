@@ -49,6 +49,7 @@ class UserRepository extends EntityRepository implements UserProviderInterface
             //->leftJoin("u.roles", "r")
             ->where("u.username = :username")
             ->orWhere("u.email = :username")
+            ->having("u.status = 0")
             //->andWhere("r.slug = :role")
             ->setParameter(":username", $username)
             //->setParameter(":role", "ROLE_USER")

@@ -1,0 +1,31 @@
+yeomi_admin_home:
+    path:     /
+    defaults: { _controller: YeomiAdminBundle:Main:index }
+
+yeomi_admin_list_users:
+    path:     /users
+    defaults: { _controller: YeomiAdminBundle:Main:listUsers }
+
+yeomi_admin_list_posts:
+    path:     /posts
+    defaults: { _controller: YeomiAdminBundle:Main:listPosts }
+
+yeomi_admin_list_comments:
+    path:     /comments
+    defaults: { _controller: YeomiAdminBundle:Main:listComments }
+
+yeomi_admin_delete_entity:
+    path:     /delete/{type}/{id}
+    defaults: { _controller: YeomiAdminBundle:Main:deleteEntity }
+    requirements:
+        type: comment|post|user
+        id: \d+
+
+yeomi_admin_block_user:
+    path:     /block/{id}/{unblock}
+    defaults: { _controller: YeomiAdminBundle:Main:blockUser, unblock: 0 }
+    requirements:
+        id: \d+
+    requirements:
+        unblock: \d+
+

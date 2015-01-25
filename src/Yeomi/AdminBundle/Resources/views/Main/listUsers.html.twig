@@ -1,0 +1,47 @@
+{% extends("YeomiAdminBundle::layout.html.twig") %}
+
+{% block content %}
+
+    <table class="table table-striped table-hover table-paginator">
+        <thead>
+            <tr>
+                <th>Ref</th>
+                <th>Pseudo</th>
+                <th>Email</th>
+                <th>Dernière connexion</th>
+                <th>Profile</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for user in users %}
+        <tr>
+            <th>{{ user.id }}</th>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.lastLogin|date("d/m/Y à H:i") }}</td>
+            <td>
+                <a href="{{ path("yeomi_user_profile", {"username": user.username}) }}">
+                    Voir profile
+                </a>
+            </td>
+            <td>
+                {% if user.status == -1 %}
+
+                    <a href="{{ path("yeomi_admin_block_user", {"id": user.id, "unblock": "1"}) }}">
+                        Débloquer
+                    </a>
+                {% else %}
+                    <a href="{{ path("yeomi_admin_block_user", {"id": user.id}) }}">
+                        Bloquer
+                    </a>
+                {% endif %}
+                <a href="{{ path("yeomi_admin_delete_entity", {"type": "user", "id": user.id}) }}">
+                    Supprimer
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

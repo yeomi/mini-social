@@ -1,0 +1,36 @@
+{% extends("YeomiAdminBundle::layout.html.twig") %}
+
+{% block content %}
+
+    <table class="table table-striped table-hover table-paginator">
+        <thead>
+        <tr>
+            <th>Ref</th>
+            <th>Type</th>
+            <th>Catégorie</th>
+            <th>Texte</th>
+            <th>Auteur</th>
+            <th>Date de création</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <th>{{ post.id }}</th>
+                <td>{{ post.type.name }}</td>
+                <td>{{ post.categories[0].name }}</td>
+                <td>{{ truncatePost(post.content, 200) }}</td>
+                <td>{% if post.user.username is defined %}{{ post.user.username }}{% else %}Anonyme{% endif %}</td>
+                <td>{{ post.created|date("d/m/Y à H:i") }}</td>
+                <td>
+
+                    <a href="{{ path("yeomi_admin_delete_entity", {"type": "post", "id": post.id}) }}">
+                        Supprimer
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Yeomi\UserBundle\YeomiUserBundle(),
             new Yeomi\PostBundle\YeomiPostBundle(),
+            new Yeomi\AdminBundle\YeomiAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
