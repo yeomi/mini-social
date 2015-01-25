@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <table class="table table-striped table-hover table-paginator">
+    <table class="table table-striped table-paginator user-table">
         <thead>
             <tr>
                 <th>Ref</th>
@@ -15,7 +15,7 @@
         </thead>
         <tbody>
     {% for user in users %}
-        <tr>
+        <tr {% if user.checkRoleExist("ROLE_UNVALIDATE") %}class="unvalidate"{% elseif user.checkRoleExist("ROLE_ADMIN") %}class="admin"{% endif %}>
             <th>{{ user.id }}</th>
             <td>{{ user.username }}</td>
             <td>{{ user.email }}</td>
@@ -26,19 +26,21 @@
                 </a>
             </td>
             <td>
-                {% if user.status == -1 %}
+                {% if user.checkRoleExist("ROLE_ADMIN") == 0 %}
+                    {% if user.status == -1 %}
 
-                    <a href="{{ path("yeomi_admin_block_user", {"id": user.id, "unblock": "1"}) }}">
-                        Débloquer
-                    </a>
-                {% else %}
-                    <a href="{{ path("yeomi_admin_block_user", {"id": user.id}) }}">
-                        Bloquer
+                        <a href="{{ path("yeomi_admin_block_user", {"id": user.id, "unblock": "1"}) }}">
+                            Débloquer
+                        </a>
+                    {% else %}
+                        <a href="{{ path("yeomi_admin_block_user", {"id": user.id}) }}">
+                            Bloquer
+                        </a>
+                    {% endif %}
+                    <a href="{{ path("yeomi_admin_delete_entity", {"type": "user", "id": user.id}) }}">
+                        Supprimer
                     </a>
                 {% endif %}
-                <a href="{{ path("yeomi_admin_delete_entity", {"type": "user", "id": user.id}) }}">
-                    Supprimer
-                </a>
             </td>
         </tr>
     {% endfor %}

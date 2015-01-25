@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
     </head>
     <body>
+        {% block jsPlugin %}{% endblock %}
 
         <div id="status-message">
         {% block statusMessage %}
@@ -81,7 +82,12 @@
 
 
         {% block body %}{% endblock %}
+
+        {% block footer %}
+            {{ render(controller("YeomiCMSBundle:Main:getListOfPage")) }}
+        {% endblock %}
         {% block javascripts %}
+
             <script src="{{ asset("assets/js/libs/jquery-1.11.2.js") }}"></script>
             <script src="{{ asset("bundles/yeomipost/js/script.js") }}"></script>
             <script src="{{ asset("bundles/yeomiuser/js/script.js") }}"></script>

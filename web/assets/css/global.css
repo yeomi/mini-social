@@ -412,6 +412,44 @@ header#site-header {
     border-radius: 0.5rem;
     -webkit-box-shadow: 0 0.4rem 0 #003662;
     box-shadow: 0 0.4rem 0 #003662; }
+.page-index #social-block {
+  float: right;
+  text-align: center;
+  width: 28rem;
+  background-color: #fff;
+  border: 1px solid #bcbcbc;
+  padding: 1.7rem;
+  padding-bottom: 6rem; }
+  .page-index #social-block h4 {
+    text-transform: uppercase;
+    font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+    color: #175da3;
+    font-size: 1.7rem;
+    margin-bottom: 1.3rem; }
+  .page-index #social-block .buttons-area {
+    font-size: 0;
+    margin-bottom: 5rem; }
+    .page-index #social-block .buttons-area a {
+      text-indent: -999rem;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: top;
+      width: 4.3rem;
+      height: 4.3rem;
+      background-repeat: no-repeat;
+      background-size: 4.3rem 4.3rem;
+      background-position: center;
+      margin: 0 .1rem; }
+    .page-index #social-block .buttons-area .fb {
+      background-image: url(../img/socials/fb.jpg); }
+    .page-index #social-block .buttons-area .tw {
+      background-image: url(../img/socials/tw.jpg); }
+    .page-index #social-block .buttons-area .pin {
+      background-image: url(../img/socials/pin.jpg); }
+    .page-index #social-block .buttons-area .you {
+      background-image: url(../img/socials/you.jpg); }
+    .page-index #social-block .buttons-area .gplus {
+      background-image: url(../img/socials/gplus.jpg); }
 
 .page-login, .style-login {
   max-width: 120rem;
@@ -876,6 +914,31 @@ nav.category-nav {
     margin-bottom: .8rem; }
   .page-category header.category-header p {
     font-size: 1.7rem; }
+
+.cms-page {
+  -webkit-box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.2);
+  margin-top: 1.5rem;
+  padding: 4rem 3rem;
+  background-color: white; }
+  .cms-page h3 {
+    text-align: center;
+    font-size: 3rem;
+    font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+    color: #175da3;
+    margin-bottom: 2rem; }
+  .cms-page .body.ckeditor-actif ol, .cms-page .body.ckeditor-actif ul {
+    padding: 0 4rem; }
+  .cms-page .body.ckeditor-actif p, .cms-page .body.ckeditor-actif ul, .cms-page .body.ckeditor-actif ol {
+    margin: 1.5rem 0; }
+  .cms-page .body.ckeditor-actif h1, .cms-page .body.ckeditor-actif h2, .cms-page .body.ckeditor-actif h3, .cms-page .body.ckeditor-actif h4, .cms-page .body.ckeditor-actif h5, .cms-page .body.ckeditor-actif h6 {
+    font-size: 2rem;
+    font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+    color: #175da3;
+    margin: 2.5rem 0; }
+  .cms-page .body.ckeditor-actif a {
+    color: #1293f1;
+    text-decoration: underline; }
 
 .page-post {
   max-width: 120rem;

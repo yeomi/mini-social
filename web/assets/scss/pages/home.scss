@@ -61,4 +61,62 @@
       @include boxShadow(0 .4rem 0 #003662);
     }
   }
+  
+  #social-block
+  {
+    float: right;
+    text-align: center;
+    width: 28rem;
+    background-color: #fff;
+    border: 1px solid #bcbcbc;
+    padding: 1.7rem;
+    padding-bottom: 6rem;
+    h4
+    {
+      text-transform: uppercase;
+      font-family: $semiBold;
+      color: $darkerColor;
+      font-size: 1.7rem;
+      margin-bottom: 1.3rem;
+    }
+    .buttons-area
+    {
+      font-size: 0;
+      margin-bottom: 5rem;
+      a
+      {
+        text-indent: -999rem;
+        overflow: hidden;
+        display: inline-block;
+        vertical-align: top;
+        width: 4.3rem;
+        height: 4.3rem;
+        background-repeat: no-repeat;
+        background-size: 4.3rem 4.3rem;
+        background-position: center;
+        margin: 0 .1rem;
+      }
+      .fb
+      {
+        background-image: url(../img/socials/fb.jpg);
+      }
+      .tw
+      {
+        background-image: url(../img/socials/tw.jpg);
+      }
+      .pin
+      {
+        background-image: url(../img/socials/pin.jpg);
+      }
+      .you
+      {
+        background-image: url(../img/socials/you.jpg);
+      }
+      .gplus
+      {
+        background-image: url(../img/socials/gplus.jpg);
+      }
+    }
+  }
+
 }

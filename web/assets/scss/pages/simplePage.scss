@@ -1,0 +1,38 @@
+.cms-page
+{
+  @include boxShadow(0 0 .6rem rgba(0, 0, 0, 0.2));
+  margin-top: 1.5rem;
+  padding: 4rem 3rem;
+  background-color: white;
+  h3
+  {
+    text-align: center;
+    font-size: 3rem;
+    font-family: $semiBold;
+    color: $darkerColor;
+    margin-bottom: 2rem;
+  }
+  .body.ckeditor-actif
+  {
+    ol, ul
+    {
+      padding: 0 4rem;
+    }
+    p, ul, ol
+    {
+      margin: 1.5rem 0;
+    }
+    h1,h2,h3,h4,h5,h6
+    {
+      font-size: 2rem;
+      font-family: $semiBold;
+      color: $darkerColor;
+      margin: 2.5rem 0;
+    }
+    a
+    {
+      color: $lighterColor;
+      text-decoration: underline;
+    }
+  }
+}

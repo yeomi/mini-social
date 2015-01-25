@@ -1,0 +1,10 @@
+{% extends("YeomiPostBundle::layout.html.twig") %}
+
+{% block body %}
+    <section class="cms-page container">
+        <h3>{{ page.title }}</h3>
+        <article class="body ckeditor-actif">
+            {{ page.body|raw }}
+        </article>
+    </section>
+{% endblock %}

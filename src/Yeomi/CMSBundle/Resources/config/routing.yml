@@ -1,0 +1,13 @@
+yeomi_cms_homepage:
+    path:     /testcms
+    defaults: { _controller: YeomiCMSBundle:Main:test }
+
+yeomi_cms_create_page:
+    path:     /admin/create/page
+    defaults: { _controller: YeomiCMSBundle:Main:createPage }
+
+yeomi_cms_view_page:
+    path:     /page/{id}
+    defaults: { _controller: YeomiCMSBundle:Main:viewPage }
+    requirements:
+        id: \d+

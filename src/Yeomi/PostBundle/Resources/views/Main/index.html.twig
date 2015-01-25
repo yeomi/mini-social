@@ -1,6 +1,17 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
 
+{% block jsPlugin %}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}
+
 {% block body %}
     <div class="page-index">
     {% block headerBan %}
@@ -49,6 +60,25 @@
             </div>
         </div>
     {% endblock %}
+
+     <div class="container container-home-block">
+    {% block homeBlock %}
+        <div id="social-block">
+            <h4>TpasChiche de nous suivre</h4>
+            <div class="buttons-area">
+                <a class="fb" href="">Facebook</a>
+                <a class="tw" href="">Twitter</a>
+                <a class="pin" href="">Pinterest</a>
+                <a class="you" href="">Youtube</a>
+                <a class="gplus" href="">Google+</a>
+            </div>
+
+            <div class="facebook-module">
+                <div class="fb-like-box" data-href="https://www.facebook.com/Tpaschiche" data-width="240" data-height="240" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+            </div>
+        </div>
+    {% endblock %}
+    </div>
 
     </div>
 {% endblock %}
