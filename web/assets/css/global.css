@@ -532,15 +532,15 @@ footer#site-footer {
         left: 2.7rem; }
     .page-index #articles-block .article-teaser .readmore {
       background-color: #1293f1;
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       position: absolute;
       left: 8.5rem;
-      padding-left: 6.5rem;
-      line-height: 4.7rem;
-      bottom: 5rem;
+      padding-left: 4.5rem;
+      line-height: 2.7rem;
+      bottom: 7rem;
       background-image: url(../img/big-arrow-right.png);
       background-repeat: no-repeat;
-      background-position: 2rem center;
+      background-position: 1rem center;
       background-size: 2.7rem auto;
       -webkit-box-shadow: 0 0.4rem 0 #175da3;
       box-shadow: 0 0.4rem 0 #175da3; }
@@ -589,6 +589,8 @@ footer#site-footer {
   .page-login .container, .style-login .container {
     overflow: hidden;
     padding: 5rem 0; }
+  .page-login h3, .style-login h3 {
+    clear: both; }
   .page-login .illustration, .style-login .illustration {
     float: left;
     width: 63.7rem;
@@ -598,16 +600,15 @@ footer#site-footer {
     background-position: center;
     background-size: 63.7rem auto; }
   .page-login section, .style-login section {
-    float: right;
-    width: 27.2rem;
-    margin-right: 10rem;
+    width: 80rem;
+    margin: auto;
     margin-top: 2rem; }
     .page-login section h3, .style-login section h3 {
       color: #175da3;
       font-size: 2.3rem;
       margin-bottom: 1rem; }
     .page-login section form, .style-login section form {
-      width: 16.5rem; }
+      width: 80rem; }
       .page-login section form label, .style-login section form label {
         color: #565656;
         font-size: 1.5rem; }
@@ -622,6 +623,10 @@ footer#site-footer {
       .page-login section form #remember_me, .style-login section form #remember_me {
         width: auto;
         margin: 0; }
+    .page-login section .sides, .style-login section .sides {
+      float: left; }
+    .page-login section .login, .style-login section .login {
+      float: right; }
     .page-login section .btn, .style-login section .btn {
       background-color: #1293f1;
       border-radius: 0.4rem;
@@ -805,7 +810,7 @@ footer#site-footer {
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3); }
 
 .login-popup {
-  width: 60rem;
+  width: 44rem;
   -webkit-box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3); }
   .login-popup a {
@@ -1033,15 +1038,14 @@ nav.category-nav {
   background-color: #fff;
   margin-top: 1.1rem;
   margin-bottom: 1.1rem;
-  padding: 2.5em 5rem;
-  height: 22rem;
+  padding: 1.2em 3rem;
+  height: 15rem;
   -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2); }
   .page-category header.category-header h1 {
     font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
     font-size: 3.2rem;
-    color: #175da3;
-    margin-bottom: .8rem; }
+    color: #175da3; }
   .page-category header.category-header p {
     font-size: 1.7rem; }
 
@@ -1095,14 +1099,19 @@ nav.category-nav {
     .page-post .post.full-view .details {
       margin-top: 1rem;
       font-size: 1.5rem;
-      position: absolute;
-      left: 0;
-      bottom: 0;
       color: #175da3; }
       .page-post .post.full-view .details .post-date {
         color: #9f9f9f; }
       .page-post .post.full-view .details a {
         color: #175da3; }
+    .page-post .post.full-view .social-network-action {
+      position: absolute;
+      left: 0;
+      bottom: 0; }
+      .page-post .post.full-view .social-network-action > div, .page-post .post.full-view .social-network-action > iframe {
+        font-size: 0;
+        vertical-align: top;
+        margin-right: 1rem; }
     .page-post .post.full-view .actions-btn {
       margin-top: 1rem;
       position: absolute;
@@ -1282,11 +1291,13 @@ nav.category-nav {
           margin-right: 2.5rem; }
 
 .page-register.style-login section {
-  width: 37.2rem; }
+  width: 80rem; }
   .page-register.style-login section form {
     width: 100%; }
   .page-register.style-login section label.required:after {
     content: " *"; }
+  .page-register.style-login section .submit-area {
+    float: right; }
 
 .page-profile {
   max-width: 120rem;

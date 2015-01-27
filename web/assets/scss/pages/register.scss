@@ -3,7 +3,7 @@
 
   section
   {
-    width: 37.2rem;
+    width: 80rem;
     form
     {
       width: 100%;
@@ -12,6 +12,9 @@
     {
       content: " *";
     }
-
+    .submit-area
+    {
+      float: right;
+    }
   }
 }

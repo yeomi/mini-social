@@ -13,15 +13,14 @@
     background-color: $thirdFontColor;
     margin-top: 1.1rem;
     margin-bottom: 1.1rem;
-    padding:  2.5em 5rem;
-    height: 22rem;
+    padding:  1.2em 3rem;
+    height: 15rem;
     @include boxShadow(0 0 6px rgba(0,0,0,0.2));
     h1
     {
       font-family: $semiBold;
       font-size: 3.2rem;
       color: $darkerColor;
-      margin-bottom: .8rem;
     }
     p
     {

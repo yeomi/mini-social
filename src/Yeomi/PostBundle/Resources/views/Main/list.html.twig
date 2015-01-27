@@ -5,7 +5,9 @@
         <table>
             <tr>
                 <td class="left">
-                    <div class="content">{{ truncatePost(post.content, 200) }}</div>
+                    <a href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">
+                    <div class="content"><p>{{ truncatePost(post.content, 200) }}</p></div>
+                    </a>
                 </td>
 
 
@@ -39,8 +41,13 @@
         </table>
 
         <div class="actions-btn">
-            <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >J'aime(<span>{{ post.likes.positives }}</span>)</a>
-            <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >J'aime pas(<span>{{ post.likes.negatives }}</span>)</a>
+            {% if post.type.slug == "defi" %}
+                <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >Jkiff ton défi ! (<span>{{ post.likes.positives }}</span>)</a>
+                <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >Ouais pourri... (<span>{{ post.likes.negatives }}</span>)</a>
+            {% else %}
+                <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >Jkiff ton blabla ! (<span>{{ post.likes.positives }}</span>)</a>
+                <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >Zéro, null... (<span>{{ post.likes.negatives }}</span>)</a>
+            {% endif %}
             <a class="comments" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">({{ post.comments|length }})</a>
 
 

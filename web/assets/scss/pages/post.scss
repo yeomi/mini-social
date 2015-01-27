@@ -27,9 +27,6 @@
     {
       margin-top: 1rem;
       font-size: 1.5rem;
-      position: absolute;
-      left: 0;
-      bottom: 0;
       color: $darkerColor;
       .post-date
       {
@@ -38,6 +35,18 @@
       a
       {
         color: $darkerColor;
+      }
+    }
+    .social-network-action
+    {
+      position: absolute;;
+      left: 0;
+      bottom: 0;
+      >div, >iframe
+      {
+        font-size: 0;
+        vertical-align: top;
+        margin-right: 1rem;
       }
     }
     .actions-btn

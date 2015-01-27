@@ -167,17 +167,16 @@
       }
       .readmore
       {
-
         background-color: $lighterColor;
-        font-size: 2.2rem;
+        font-size: 1.8rem;
         position: absolute;
         left: 8.5rem;
-        padding-left: 6.5rem;
-        line-height: 4.7rem;
-        bottom:5rem;
+        padding-left: 4.5rem;
+        line-height: 2.7rem;
+        bottom:7rem;
         background-image: url(../img/big-arrow-right.png);
         background-repeat: no-repeat;
-        background-position: 2rem center;
+        background-position: 1rem center;
         background-size: 2.7rem auto;
         @include boxShadow(0 0.4rem 0 $darkerColor);
         &:hover, &.active

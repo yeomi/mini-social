@@ -9,7 +9,7 @@
     overflow: hidden;
     padding: 5rem 0;
   }
-  h3 { clear: both; }
+
   .illustration
   {
     float: left;
@@ -22,8 +22,9 @@
   }
   section
   {
-    width: 80rem;
-    margin: auto;
+    float: right;
+    width: 27.2rem;
+    margin-right: 10rem;
     margin-top: 2rem;
     h3
     {
@@ -33,7 +34,7 @@
     }
     form
     {
-      width: 80rem;
+      width: 16.5rem;
       label
       {
         color:#565656;
@@ -54,15 +55,6 @@
         width: auto;
         margin: 0;
       }
-    }
-    .sides
-    {
-      float: left;
-
-    }
-    .login
-    {
-      float: right;
     }
     .btn
     {

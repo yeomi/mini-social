@@ -22,7 +22,9 @@
                 <span class="middle">Tpaschiche de faire un selfie dans un lieu insolite !</span>
                 <span class="bottom">Rejoignez Tpaschiche pour le partage et l'entraide.</span>
 
-                <a class="btn big register" href="{{ path("yeomi_user_register") }}">{% trans %}Register{% endtrans %}</a>
+                {% if is_granted("ROLE_USER") == false %}
+                    <a class="btn big register" href="{{ path("yeomi_user_register") }}">{% trans %}Register{% endtrans %}</a>
+                {% endif %}
 
             </aside>
         </div>
@@ -71,7 +73,7 @@
                     <div class="block-over">
                         <h3>{{ article.title }}</h3>
                         <p>{{ truncatePost(article.body, 200)|striptags }}</p>
-                        <!--<a>Voir toutes les actus</a>-->
+                        <a href="{{ path("yeomi_cms_list_article") }}">Voir toutes les actus</a>
                     </div>
 
                     <a class="btn-3d readmore" href="{{ path("yeomi_cms_view_article", {"id": article.id}) }}">Lire la suite</a>

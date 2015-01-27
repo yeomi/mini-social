@@ -85,6 +85,15 @@ class MainController extends Controller
         ));
     }
 
+    public function listArticleAction()
+    {
+        $articles = $this->getDoctrine()->getRepository("YeomiCMSBundle:Article")->findAll();
+
+        return $this->render('YeomiCMSBundle:Main:listArticle.html.twig', array(
+            "articles" => $articles,
+        ));
+    }
+
     public function listContentAction($contentType)
     {
         $ucType = ucfirst($contentType);

@@ -10,26 +10,27 @@
 {% block body %}
     <div class="page-login">
         <div class="container">
-            <aside class="illustration">
-            </aside>
 
             <section>
                 <h3>{% trans %}Get Connected{% endtrans %}</h3>
 
 
                 <form id="login-form" action="{{ path('login_check') }}" method="post">
-                    <label for="username">{% trans %}Email{% endtrans %}</label>
+                    <label for="username">Email ou pseudo</label>
                     <input type="text" id="username" name="_username" value="{{ last_username }}" />
 
                     <label for="password">{% trans %}Password{% endtrans %}</label>
                     <input type="password" id="password" name="_password" />
                     <br>
 
-                    <input type="checkbox" id="remember_me" name="_remember_me" checked />
-                    <label class="remember_me" for="remember_me">{% trans %}Remember me{% endtrans %}</label>
+                    <div class="sides">
+                        <input type="checkbox" id="remember_me" name="_remember_me" checked />
+                        <label class="remember_me" for="remember_me">{% trans %}Remember me{% endtrans %}</label>
+                        <a class="link-forgot-password" href="{{ path('yeomi_user_password_reset') }}">{% trans %}Forgot your password ?{% endtrans %}</a>
+                    </div>
 
                     <input class="btn login" type="submit" value="{% trans %}Connection{% endtrans %}" />
-                    <a class="link-forgot-password" href="{{ path('yeomi_user_password_reset') }}">{% trans %}Forgot your password ?{% endtrans %}</a>
+
 
                 </form>
 

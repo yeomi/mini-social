@@ -39,3 +39,7 @@ yeomi_cms_view_article:
     defaults: { _controller: YeomiCMSBundle:Main:viewArticle }
     requirements:
         id: \d+
+
+yeomi_cms_list_article:
+    path:     /article
+    defaults: { _controller: YeomiCMSBundle:Main:listArticle }
