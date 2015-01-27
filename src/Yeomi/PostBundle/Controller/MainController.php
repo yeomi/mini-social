@@ -119,7 +119,7 @@ class MainController extends Controller
         ));
     }
 
-    public function viewFullAction($id)
+    public function viewFullAction($type, $id)
     {
         $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getPostComplete($id);
 
@@ -215,12 +215,12 @@ class MainController extends Controller
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($comment);
             $manager->flush();
-            return $this->redirect($this->generateUrl("yeomi_post_view_full", array("id" => $postId)));
+            return $this->redirect($this->generateUrl("yeomi_post_view_full", array("type" => $post->getType()->getSlug(), "id" => $postId)));
         } elseif ($form->getErrors()->count() > 0) {
             foreach ($form->getErrors() as $error) {
                 $request->getSession()->getFlashBag()->add("alert", $error->getMessage());
             }
-            return $this->redirect($this->generateUrl("yeomi_post_view_full", array("id" => $postId)));
+            return $this->redirect($this->generateUrl("yeomi_post_view_full", array("type" => $post->getType()->getSlug(), "id" => $postId)));
         }
 
         return $this->render("YeomiPostBundle:Main:addComment.html.twig", array(

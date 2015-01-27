@@ -23,10 +23,11 @@ yeomi_post_view:
     defaults: { _controller: YeomiPostBundle:Main:view }
 
 yeomi_post_view_full:
-    path:     /post/{id}
+    path:     /{type}/{id}
     defaults: { _controller: YeomiPostBundle:Main:viewFull }
     requirements:
         id: \d+
+        type: defi|histoire
 
 yeomi_post_view_list:
     path:     /list/{type}/{limit}/{offset}

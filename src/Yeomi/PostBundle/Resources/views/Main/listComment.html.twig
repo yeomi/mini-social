@@ -29,8 +29,13 @@
                     <div class="body">{{ comment.content }}</div>
 
                     <div class="actions-btn">
-                        <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "positive"}) }}" >(<span>{{ comment.likes.positives }}</span>)</a>
-                        <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "negative"}) }}" >(<span>{{ comment.likes.negatives }}</span>)</a>
+                        {% if is_granted("ROLE_USER") %}
+                            <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "positive"}) }}" >(<span>{{ comment.likes.positives }}</span>)</a>
+                            <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "negative"}) }}" >(<span>{{ comment.likes.negatives }}</span>)</a>
+                        {% else %}
+                            <span class="vote-btn-disable like">(<span>{{ comment.likes.positives }}</span>)</span>
+                            <span class="vote-btn-disable hate">(<span>{{ comment.likes.negatives }}</span>)</span>
+                        {% endif %}
                     </div>
 
                     <div class="attached-files">

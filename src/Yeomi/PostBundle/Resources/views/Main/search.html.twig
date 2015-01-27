@@ -27,13 +27,13 @@
 
                                         {% if post.video.video is defined %}
                                             <td class="right">
-                                                <a class="image" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">
+                                                <a class="image" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">
                                                     <span class="thumb-video"></span>
                                                 </a>
                                             </td>
                                         {% elseif post.images[0] is defined %}
                                             <td class="right">
-                                                <a class="image" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">
+                                                <a class="image" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">
                                                     <img src="{{ asset('uploads/img/post/' ~ post.images[0].id ~ '.' ~ post.images[0].value) }}" alt=""/>
                                                 </a>
                                             </td>
@@ -57,10 +57,9 @@
                                 <div class="actions-btn">
                                     <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >J'aime(<span>{{ post.likes.positives }}</span>)</a>
                                     <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >J'aime pas(<span>{{ post.likes.negatives }}</span>)</a>
-                                    <a class="comments" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">({{ post.comments|length }})</a>
-                                    <a class="share" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}"></a>
+                                    <a class="comments" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">({{ post.comments|length }})</a>
 
-                                    <a class="readmore" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">{% trans %}Read More{% endtrans %}</a>
+                                    <a class="readmore" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">{% trans %}Read More{% endtrans %}</a>
                                 </div>
 
 

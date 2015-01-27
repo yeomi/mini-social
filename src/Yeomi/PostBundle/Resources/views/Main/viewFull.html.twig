@@ -14,10 +14,10 @@
         <ul class="right">
             <li><a class="btn-dark" href="{{ path("yeomi_post_view_type", {"slug": post.type.slug}) }}">Retour aux {{ post.type.name }}s</a></li>
             {% if prevPostId %}
-                <li><a class="prev-post" href="{{ path("yeomi_post_view_full", {"id": prevPostId}) }}">< {{ post.type.name }} précédent</a></li>
+                <li><a class="prev-post" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": prevPostId}) }}">< {{ post.type.name }} précédent</a></li>
             {% endif %}
             {% if nextPostId %}
-                <li><a class="next-post" href="{{ path("yeomi_post_view_full", {"id": nextPostId}) }}">{{ post.type.name }} suivant ></a></li>
+                <li><a class="next-post" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": nextPostId}) }}">{{ post.type.name }} suivant ></a></li>
             {% endif %}
         </ul>
 

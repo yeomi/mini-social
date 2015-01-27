@@ -5,7 +5,7 @@
             <p class="infos">{{ post.type.name }} - {{ post.created|date("d/m/y à H:i") }} </p>
 
             <p class="body">{{ truncatePost(post.content, 200) }}</p>
-            <a href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">Lire la suite</a>
+            <a href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">Lire la suite</a>
         </div>
     {% endfor %}
 </div>
