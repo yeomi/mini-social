@@ -225,6 +225,7 @@ class MainController extends Controller
 
         return $this->render("YeomiPostBundle:Main:addComment.html.twig", array(
            "form" => $form->createView(),
+            "type" => $post->getType()->getSlug(),
             "postId" => $postId,
         ));
     }
