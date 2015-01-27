@@ -25,7 +25,10 @@ a
 {
   @include setContainer();
 }
-
+.italic
+{
+  font-style: italic;
+}
 .flash-bag-error
 {
   background-color: #de3c3c;

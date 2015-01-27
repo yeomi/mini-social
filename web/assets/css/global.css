@@ -107,6 +107,9 @@ a {
   max-width: 120rem;
   margin: auto; }
 
+.italic {
+  font-style: italic; }
+
 .flash-bag-error {
   background-color: #de3c3c;
   color: white;
@@ -1158,6 +1161,19 @@ nav.category-nav {
       .page-post .post.full-view #post-slideshow .slick-next {
         background-image: url(../img/slideshow-right.png);
         right: .7rem; }
+      .page-post .post.full-view #post-slideshow .slick-dots {
+        bottom: 0.2rem; }
+        .page-post .post.full-view #post-slideshow .slick-dots li {
+          margin: 0 .1rem; }
+        .page-post .post.full-view #post-slideshow .slick-dots button {
+          background-color: #fff;
+          border-radius: .6rem;
+          width: 1.2rem;
+          height: 1.2rem; }
+          .page-post .post.full-view #post-slideshow .slick-dots button:before {
+            content: ""; }
+        .page-post .post.full-view #post-slideshow .slick-dots .slick-active button {
+          background-color: #175da3; }
   .page-post .comment-area {
     padding: 5rem 10rem 7rem 15rem;
     background-color: #f3f3f3;

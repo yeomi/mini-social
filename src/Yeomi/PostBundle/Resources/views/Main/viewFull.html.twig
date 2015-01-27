@@ -93,8 +93,13 @@
 
         {% else %}
             <p class="simple-message">
-                Vous devez disposez d'un compte Tpaschiche authentitifé pour pouvoir laisser des commentaires,
-                <a href="{{ path("yeomi_user_register") }}">s'inscrire maintenant !</a>
+                {% if post.type.slug == "defi" %}
+                    Connectez-vous pour commenter ou participer à ce défi...<br> Quoi vous n'êtes pas encore membre ?
+                    <a href="{{ path("yeomi_user_register") }}">S’inscrire en 30 sec.</a>
+                {% else %}
+                    Connectez-vous pour pouvoir commenter ce blabla...<br> Quoi vous n'êtes pas encore membre ?
+                    <a href="{{ path("yeomi_user_register") }}">S’inscrire en 30 sec.</a>
+                {% endif %}
             </p>
         {% endif %}
             {{ render(controller("YeomiPostBundle:Main:listComment", {"postId" : post.id})) }}

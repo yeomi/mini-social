@@ -132,6 +132,26 @@
         background-image: url(../img/slideshow-right.png);
         right: .7rem;
       }
+      .slick-dots
+      {
+        bottom: 0.2rem;
+        li { margin: 0 .1rem;}
+        button
+        {
+          background-color: #fff;
+          border-radius: .6rem;
+          width: 1.2rem;
+          height: 1.2rem;
+          &:before
+          {
+            content:"";
+          }
+        }
+        .slick-active button
+        {
+          background-color: $darkerColor;
+        }
+      }
     }
   }
   .comment-area

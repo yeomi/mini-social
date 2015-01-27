@@ -83,7 +83,8 @@ $(function() {
   });
 
   $('.yeo-slideshow').slick({
-    infinite: true
+    infinite: true,
+    dots: true
   });
 
   $('.yeo-detailed-slideshow').slick({
