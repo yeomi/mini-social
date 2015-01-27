@@ -1249,7 +1249,7 @@ nav.category-nav {
         font-size: 1.5rem; }
       .page-post .comment-area .list-comment-block .right .actions-btn {
         float: right; }
-      .page-post .comment-area .list-comment-block .right .vote-btn {
+      .page-post .comment-area .list-comment-block .right .vote-btn, .page-post .comment-area .list-comment-block .right .vote-btn-disable {
         padding-left: 1.9rem;
         background-image: url(../img/like.png);
         background-repeat: no-repeat;
@@ -1257,7 +1257,7 @@ nav.category-nav {
         background-size: 1.6rem auto;
         color: #747474;
         font-size: 1.1rem; }
-        .page-post .comment-area .list-comment-block .right .vote-btn.hate {
+        .page-post .comment-area .list-comment-block .right .vote-btn.hate, .page-post .comment-area .list-comment-block .right .vote-btn-disable.hate {
           background-image: url(../img/hate.png); }
       .page-post .comment-area .list-comment-block .right .attached-files {
         clear: both; }

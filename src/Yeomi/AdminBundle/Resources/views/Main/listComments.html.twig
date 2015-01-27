@@ -18,7 +18,7 @@
             <tr>
                 <th>{{ comment.id }}</th>
                 <td>
-                    <a target="_blank" href="{{ path("yeomi_post_view_full", {"id": comment.post.id}) }}">
+                    <a target="_blank" href="{{ path("yeomi_post_view_full", {"type": comment.post.type.slug, "id": comment.post.id}) }}">
                         Voir
                     </a>
                 </td>
