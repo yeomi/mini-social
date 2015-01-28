@@ -103,6 +103,9 @@ body {
 a {
   color: #3e3e3e; }
 
+.hide {
+  display: none; }
+
 .container {
   max-width: 120rem;
   margin: auto; }
@@ -1294,6 +1297,13 @@ nav.category-nav {
   width: 80rem; }
   .page-register.style-login section form {
     width: 100%; }
+  .page-register.style-login section .form-legend {
+    display: block;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    color: #818181; }
+  .page-register.style-login section input.with-legend {
+    margin-bottom: 0; }
   .page-register.style-login section label.required:after {
     content: " *"; }
   .page-register.style-login section .submit-area {
@@ -1329,6 +1339,16 @@ nav.category-nav {
       margin: 2rem 0 2rem 2rem; }
   .page-profile .view-profile-block {
     padding: 1.5rem; }
+    .page-profile .view-profile-block .switch-to-form {
+      color: #175da3;
+      font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+      margin-left: 1rem;
+      display: block;
+      margin-bottom: 1rem; }
+    .page-profile .view-profile-block table {
+      display: block;
+      width: 100%;
+      overflow: hidden; }
     .page-profile .view-profile-block td {
       padding: .5rem 0; }
     .page-profile .view-profile-block td:nth-of-type(odd) {
@@ -1338,7 +1358,9 @@ nav.category-nav {
       padding-left: 1rem;
       font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
   .page-profile .create-profile-block {
-    display: inline-block; }
+    display: none; }
+    .page-profile .create-profile-block.show {
+      display: inline-block; }
     .page-profile .create-profile-block td {
       vertical-align: top; }
     .page-profile .create-profile-block label {

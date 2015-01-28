@@ -8,6 +8,17 @@
     {
       width: 100%;
     }
+    .form-legend
+    {
+      display: block;
+      margin-bottom: 2rem;
+      font-size: 1.3rem;
+      color: $secondFontColor
+    }
+    input.with-legend
+    {
+      margin-bottom: 0;
+    }
     label.required:after
     {
       content: " *";

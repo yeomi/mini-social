@@ -13,6 +13,10 @@
         {% block jsPlugin %}{% endblock %}
 
         <div id="status-message">
+            <div class="check-cookie-fail hide alert">
+                <p>Les cookies ne sont pas activés sur votre navigateur.
+                    Veuillez les activer dans les préférences de votre navigateur pour pouvoir vous connecter</p>
+            </div>
         {% block statusMessage %}
             {% for index, message in app.session.flashbag.get("info") %}
                 <div class="info flash"><p>{{ message }}</p></div>

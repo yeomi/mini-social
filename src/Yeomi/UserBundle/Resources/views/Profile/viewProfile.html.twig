@@ -1,4 +1,24 @@
+{% if form %}
+    <div class="additional-message">
+        {% if isUpdated %}<div class="info flash"><p>Votre profil à bien été mis à jour !</p></div>{% endif %}
+        {% if form_errors(form) %}<div class="alert">{{ form_errors(form) }}</div>{% endif %}
+        {% if form_errors(form.firstName) %}<div class="alert">{{ form_errors(form.firstName) }}</div>{% endif %}
+        {% if form_errors(form.lastName) %}<div class="alert">{{ form_errors(form.lastName) }}</div>{% endif %}
+        {% if form_errors(form.birthday) %}<div class="alert">{{ form_errors(form.birthday) }}</div>{% endif %}
+        {% if form_errors(form.description) %}<div class="alert">{{ form_errors(form.description) }}</div>{% endif %}
+        {% if form_errors(form.job) %}<div class="alert">{{ form_errors(form.lastName) }}</div>{% endif %}
+        {% if form_errors(form.location) %}<div class="alert">{{ form_errors(form.location) }}</div>{% endif %}
+        {% if form_errors(form.hobbies) %}<div class="alert">{{ form_errors(form.hobbies) }}</div>{% endif %}
+        {% if form_errors(form.website) %}<div class="alert">{{ form_errors(form.website) }}</div>{% endif %}
+        {% if form_errors(form.avatar) %}<div class="alert">{{ form_errors(form.avatar) }}</div>{% endif %}
+        {% if form_errors(form.avatar.file) %}<div class="alert">{{ form_errors(form.avatar.file) }}</div>{% endif %}
+    </div>
+{% endif %}
+
 <div class="view-profile-block">
+    {% if form %}
+        <a href="" class="switch-to-form">Modifier</a>
+    {% endif %}
     <table>
         <tr>
             <td>Prénom</td>
@@ -34,3 +54,57 @@
         </tr>
     </table>
 </div>
+
+{% if form %}
+
+<div class="create-profile-block">
+
+    {{ form_start(form, {"action": path("yeomi_user_view_profile", {"userId": userId}), "attr": {'class' : 'ajax-submission-form classic-form'}}) }}
+
+    <table>
+        <tr>
+            <td>{{ form_label(form.firstName, 'Prénom') }}</td>
+            <td>{{ form_widget(form.firstName) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.lastName, 'Nom de famille') }}</td>
+            <td>{{ form_widget(form.lastName) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.birthday, 'Date de naissance') }}</td>
+            <td>{{ form_widget(form.birthday.day) }}{{ form_widget(form.birthday.month) }}{{ form_widget(form.birthday.year) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.description, 'Description') }}</td>
+            <td>{{ form_widget(form.description) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.job, 'Job') }}</td>
+            <td>{{ form_widget(form.job) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.location, 'Lieu d\'habitation') }}</td>
+            <td>{{ form_widget(form.location) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.hobbies, 'Hobbies') }}</td>
+            <td>{{ form_widget(form.hobbies) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.website, 'Site internet') }}</td>
+            <td>{{ form_widget(form.website) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.avatar.file, 'Avatar') }}</td>
+            <td>{{ form_widget(form.avatar.file) }}</td>
+        </tr>
+
+    </table>
+
+    <div class="submit-area">
+        {{ form_widget(form.save, {'attr': {'class': 'btn-light submit'}, "label" : "Sauvegarder"}) }}
+    </div>
+
+    {{ form_end(form) }}
+</div>
+{% endif %}

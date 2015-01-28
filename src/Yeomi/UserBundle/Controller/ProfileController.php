@@ -38,13 +38,14 @@ class ProfileController extends Controller
         ));
     }
 
-    public function createProfileAction(Request $request, $userId)
+    public function viewProfileAction(Request $request, $userId)
     {
 
         $manager = $this->getDoctrine()->getManager();
         $user = $manager->getRepository("YeomiUserBundle:User")->find($userId);
         $profile = is_null($user->getProfile()) ? new Profile(): $user->getProfile();
         $isUpdated = false;
+        $formView = false;
 
         if($this->isCurrentUser($user)) {
             $form = $this->createForm(new ProfileType(), $profile);
@@ -57,20 +58,19 @@ class ProfileController extends Controller
                 $isUpdated = true;
             }
 
+            $formView = $form->createView();
 
-            return $this->render("YeomiUserBundle:Profile:createProfile.html.twig", array(
-                "form" => $form->createView(),
-                "userId" => $userId,
-                "isUpdated" => $isUpdated
-            ));
-        } else {
-            return $this->render("YeomiUserBundle:Profile:viewProfile.html.twig", array(
-                "profile" => $profile,
-                "userId" => $userId,
-            ));
         }
 
+        return $this->render("YeomiUserBundle:Profile:viewProfile.html.twig", array(
+            "profile" => $profile,
+            "userId" => $userId,
+            "form" => $formView,
+            "isUpdated" => $isUpdated
+        ));
+
     }
+
 
     public function listActivityAction($userId)
     {

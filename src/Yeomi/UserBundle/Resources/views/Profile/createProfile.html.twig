@@ -1,7 +1,6 @@
 <div class="create-profile-block">
 
     <div class="additional-message">
-        {% if isUpdated %}<div class="info flash"><p>Votre profil à été mis à jour !</p></div>{% endif %}
         {% if form_errors(form) %}<div class="alert">{{ form_errors(form) }}</div>{% endif %}
         {% if form_errors(form.firstName) %}<div class="alert">{{ form_errors(form.firstName) }}</div>{% endif %}
         {% if form_errors(form.lastName) %}<div class="alert">{{ form_errors(form.lastName) }}</div>{% endif %}
@@ -14,7 +13,7 @@
         {% if form_errors(form.avatar) %}<div class="alert">{{ form_errors(form.avatar) }}</div>{% endif %}
         {% if form_errors(form.avatar.file) %}<div class="alert">{{ form_errors(form.avatar.file) }}</div>{% endif %}
     </div>
-    {{ form_start(form, {"action": path("yeomi_user_create_profile", {"userId": userId}), "attr": {'class' : 'ajax-submission-form classic-form'}}) }}
+    {{ form_start(form, {"action": path("yeomi_user_create_profile"), "attr": {'class' : 'ajax-submission-form classic-form'}}) }}
 
     <table>
         <tr>

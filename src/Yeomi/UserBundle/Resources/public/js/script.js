@@ -40,4 +40,9 @@ $(function() {
     return false;
   });
 
+  $("body").on("click", ".switch-to-form", function() {
+    $(this).parent().addClass("hide");
+    $(".create-profile-block").addClass("show");
+    return false;
+  });
 });

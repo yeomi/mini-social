@@ -24,14 +24,16 @@
                 {{ form_start(form) }}
 
                 {{ form_label(form.username) }}
-                {{ form_widget(form.username) }}
+                {{ form_widget(form.username, {"attr": {"class": "with-legend"}}) }}
+                <span class="form-legend">Votre pseudo doit faire 5 caractères mininums avec minuscules et/ou chiffres.</span>
 
                 {{ form_label(form.email) }}
                 {{ form_widget(form.email) }}
 
 
                 {{ form_label(form.passwordClear.first) }}
-                {{ form_widget(form.passwordClear.first) }}
+                {{ form_widget(form.passwordClear.first, {"attr": {"class": "with-legend"}}) }}
+                <span class="form-legend">Choisissez un mot de passe de 6 caractères minimum.</span>
 
                 {{ form_label(form.passwordClear.second) }}
                 {{ form_widget(form.passwordClear.second) }}

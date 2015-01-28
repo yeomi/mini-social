@@ -21,6 +21,10 @@ a
   color: $fontColor;
 }
 
+.hide
+{
+  display: none;
+}
 .container
 {
   @include setContainer();

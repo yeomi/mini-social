@@ -32,9 +32,9 @@ yeomi_user_profile:
     path:     /profile/{username}
     defaults: { _controller: YeomiUserBundle:Profile:view }
 
-yeomi_user_create_profile:
-    path:     /create/profile/{userId}
-    defaults: { _controller: YeomiUserBundle:Profile:createProfile }
+yeomi_user_view_profile:
+    path:     /view/profile/{userId}
+    defaults: { _controller: YeomiUserBundle:Profile:viewProfile }
 
 yeomi_user_list_activity:
     path:     /list-activity/{userId}
