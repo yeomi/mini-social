@@ -9,6 +9,7 @@
 /vendor/
 /bin/
 /web/uploads/
+/web/cache/
 /composer.phar
 /app/config/
 .DS_Store

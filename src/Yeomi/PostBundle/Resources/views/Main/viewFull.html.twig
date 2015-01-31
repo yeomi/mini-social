@@ -78,7 +78,7 @@
                     <div id="post-slideshow" class="yeo-slideshow">
                     {% for image in post.images %}
 
-                        <div class="slide"><img style="width:340px; height: 210px;" src="{{ asset('uploads/img/post/' ~ image.id ~ '.' ~ image.value) }}" alt=""/></div>
+                        <div class="slide"><img src="{{ web_image(asset('uploads/img/post/' ~ image.id ~ '.' ~ image.value)).zoomCrop(340, 210) }}" alt=""/></div>
                     {% endfor %}
                     </div>
                 {% endif %}
@@ -93,7 +93,7 @@
                 <a href="{{ path("yeomi_user_profile", {"username":app.user.username}) }}">
                     <div class="avatar">
                         {% if  app.user.profile.avatar.id is defined %}
-                            <img style="width:9rem;height:9rem;" src="{{ asset('uploads/img/avatar/' ~ app.user.profile.avatar.id ~ '.' ~ app.user.profile.avatar.value) }}" alt=""/>
+                            <img src="{{ web_image(asset('uploads/img/avatar/' ~ app.user.profile.avatar.id ~ '.' ~ app.user.profile.avatar.value)).zoomCrop(90,90) }}" alt=""/>
                         {% endif %}
                     </div>
                 </a>

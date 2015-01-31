@@ -34,7 +34,11 @@
         </tr>
         <tr>
             <td>Date de naissance</td>
+            {% if profile.birthday %}
             <td>{{ profile.birthday|date("d/m/y") }}</td>
+            {% else %}
+             <td></td>
+            {% endif %}
         </tr>
         <tr>
             <td>Job</td>
