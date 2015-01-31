@@ -67,18 +67,18 @@ class MainController extends Controller
         ));
     }
 
-    public function viewPageAction($id)
+    public function viewPageAction($slug)
     {
-        $page = $this->getDoctrine()->getRepository("YeomiCMSBundle:Page")->find($id);
+        $page = $this->getDoctrine()->getRepository("YeomiCMSBundle:Page")->findOneBy(array("slug" => $slug));
 
         return $this->render('YeomiCMSBundle:Main:viewPage.html.twig', array(
             "page" => $page,
         ));
     }
 
-    public function viewArticleAction($id)
+    public function viewArticleAction($slug)
     {
-        $article = $this->getDoctrine()->getRepository("YeomiCMSBundle:Article")->find($id);
+        $article = $this->getDoctrine()->getRepository("YeomiCMSBundle:Article")->findOneBy(array("slug" => $slug));
 
         return $this->render('YeomiCMSBundle:Main:viewArticle.html.twig', array(
             "article" => $article,
@@ -87,7 +87,7 @@ class MainController extends Controller
 
     public function listArticleAction()
     {
-        $articles = $this->getDoctrine()->getRepository("YeomiCMSBundle:Article")->findAll();
+        $articles = $this->getDoctrine()->getRepository("YeomiCMSBundle:Article")->findBy(array(), array("id" => "DESC"));
 
         return $this->render('YeomiCMSBundle:Main:listArticle.html.twig', array(
             "articles" => $articles,

@@ -23,7 +23,7 @@
             {% else %}
                 <nav class="profile-nav">
                     <ul>
-                        <li><a class="btn-3d ajax-profile-link {% if tabMessage == false %}active{% endif %}" href="" data-target="{{ path("yeomi_user_view_profile", {"userId" : user.id}) }}">Profil</a></li>
+                        <li><a class="btn-3d ajax-profile-link {% if tabMessage == false and tabParams == false %}active{% endif %}" href="" data-target="{{ path("yeomi_user_view_profile", {"userId" : user.id}) }}">Profil</a></li>
                         <li><a class="btn-3d ajax-profile-link" href="" data-target="{{ path("yeomi_user_list_activity", {"userId" : user.id}) }}">Activité</a></li>
                         <li class="unread-messages-container">
                             <a class="btn-3d ajax-profile-link {% if tabMessage %}active{% endif %}" href="" data-target="{{ path("yeomi_user_create_message", {"userId" : user.id}) }}">Messages</a>
@@ -32,12 +32,17 @@
                                 <span class="unread-messages">{{ unreadMessage }}</span>
                             {% endif %}
                         </li>
+                        {% if isCurrentUser %}
+                            <li><a class="btn-3d ajax-profile-link {% if tabParams %}active{% endif %}" href="" data-target="{{ path("yeomi_user_view_parameter") }}">Paramètres</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
 
                 <section class="ajax-wrapper">
                     {% if tabMessage %}
                         {{ render(controller("YeomiUserBundle:Profile:createMessage", {"userId": user.id})) }}
+                    {% elseif tabParams %}
+                        {{ render(controller("YeomiUserBundle:Profile:viewParameter")) }}
                     {% else %}
                         {{ render(controller("YeomiUserBundle:Profile:viewProfile", {"userId": user.id})) }}
                     {% endif %}

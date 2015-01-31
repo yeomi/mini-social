@@ -2,15 +2,19 @@ yeomi_admin_home:
     path:     /
     defaults: { _controller: YeomiAdminBundle:Main:index }
 
-yeomi_admin_list_users:
+yeomi_admin_list_user:
     path:     /users
     defaults: { _controller: YeomiAdminBundle:Main:listUsers }
 
-yeomi_admin_list_posts:
+yeomi_admin_list_post:
     path:     /posts
     defaults: { _controller: YeomiAdminBundle:Main:listPosts }
 
-yeomi_admin_list_comments:
+yeomi_admin_list_category:
+    path:     /categories
+    defaults: { _controller: YeomiAdminBundle:Main:listCategories }
+
+yeomi_admin_list_comment:
     path:     /comments
     defaults: { _controller: YeomiAdminBundle:Main:listComments }
 
@@ -18,7 +22,7 @@ yeomi_admin_delete_entity:
     path:     /delete/{type}/{id}
     defaults: { _controller: YeomiAdminBundle:Main:deleteEntity }
     requirements:
-        type: comment|post|user
+        type: comment|post|user|category
         id: \d+
 
 yeomi_admin_block_user:

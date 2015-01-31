@@ -3,7 +3,7 @@
     <ul>
         <li><a href="{{ path("yeomi_post_index")}}">Accueil</a></li>
         {% for category in categories %}
-            <li><a href="{{ path("yeomi_post_view_category", {"id": category.id}) }}">{{ category.name }}</a></li>
+            <li><a href="{{ path("yeomi_post_view_category", {"slug": category.slug}) }}">{{ category.name }}</a></li>
         {% endfor %}
     </ul>
 </nav>

@@ -1,0 +1,44 @@
+<div class="parameter-block">
+
+
+    <h3>Modifier mes infos</h3>
+
+
+    <div class="form-user">
+        {{ form_start(formUser, {"action": path("yeomi_user_view_parameter"), "attr": {'class' : 'classic-form'}}) }}
+
+        {{ form_label(formUser.username) }}
+        {{ form_widget(formUser.username, {"attr": {"class": "with-legend"}}) }}
+        <span class="form-legend">Votre pseudo doit faire 5 caractères mininums avec minuscules et/ou chiffres.</span>
+
+        {{ form_label(formUser.email) }}
+        {{ form_widget(formUser.email) }}
+
+
+        <div class="submit-area">
+            {{ form_widget(formUser.submit, {'attr': {'class': 'btn btn-light'}, 'label': "Mettre à jour"}) }}
+        </div>
+
+        {{ form_end(formUser) }}
+    </div>
+
+    <div class="form-password">
+        <h3>Changer mot de passe</h3>
+        {{ form_start(formPassword, {"action": path("yeomi_user_view_parameter"), "attr": {'class' : 'classic-form'}}) }}
+
+        {{ form_label(formPassword.passwordClear.first) }}
+        {{ form_widget(formPassword.passwordClear.first, {"attr": {"class": "with-legend"}}) }}
+        <span class="form-legend">Votre mot de passe doit faire 6 caractères minimum.</span>
+
+        {{ form_label(formPassword.passwordClear.second) }}
+        {{ form_widget(formPassword.passwordClear.second) }}
+
+
+        <div class="submit-area">
+            {{ form_widget(formPassword.submit, {'attr': {'class': 'btn btn-light'}, 'label': "Valider la modification"}) }}
+        </div>
+
+        {{ form_end(formPassword) }}
+    </div>
+
+</div>

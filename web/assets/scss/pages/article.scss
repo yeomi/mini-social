@@ -1,0 +1,17 @@
+.page-article
+{
+  .article.list-view
+  {
+    h3
+    {
+      font-family: $semiBold;
+      color: $darkerColor;
+      margin-bottom: 1rem;
+    }
+  }
+  .actions-btn, .details
+  {
+    vertical-align: middle;
+    margin: 0;
+  }
+}

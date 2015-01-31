@@ -47,7 +47,7 @@ class MainController extends Controller
     {
         $defis = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug("histoire", 2, 0);
 
-        $articles = $this->getDoctrine()->getRepository("YeomiCMSBundle:Article")->findAll();
+        $articles = $this->getDoctrine()->getRepository("YeomiCMSBundle:Article")->findFive();
 
         return $this->render("YeomiPostBundle:Main:index.html.twig", array(
             "defis" => $defis,
@@ -230,27 +230,6 @@ class MainController extends Controller
         ));
     }
 
-    public function addCategoryAction(Request $request)
-    {
-        $category = new Category();
-
-        $form = $this->createForm(new CategoryType(), $category);
-
-        if($form->handleRequest($request)->isValid()) {
-
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($category);
-            $manager->flush();
-
-            //return $this->redirect($this->generateUrl("yeomi_post_index"));
-        }
-
-
-        return $this->render("YeomiPostBundle:Main:addPost.html.twig", array(
-            "form" => $form->createView(),
-        ));
-    }
-
     public function editAction(Request $request, $id)
     {
         $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->find($id);
@@ -262,7 +241,7 @@ class MainController extends Controller
             $manager = $this->getDoctrine()->getManager();
             $manager->flush();
 
-            //return $this->redirect($this->generateUrl("yeomi_post_index"));
+            return $this->redirect($this->generateUrl("yeomi_post_index"));
         }
 
 

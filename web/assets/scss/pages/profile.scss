@@ -191,5 +191,28 @@
       }
     }
   }
+  .parameter-block
+  {
+    h3
+    {
+      color: $darkerColor;
+      font-family: $semiBold;
+    }
+    padding: 1.5rem;
+    label
+    {
+      display: block;
+      margin-top: 1.5rem;
+    }
+    .btn
+    {
+      margin: 2rem 0;
+    }
+    .form-legend
+    {
+      font-size: 1.3rem;
+      color: $secondFontColor;
+    }
+  }
 
 }

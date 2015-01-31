@@ -29,6 +29,14 @@ class MainController extends Controller
         ));
     }
 
+    public function listCategoriesAction()
+    {
+        $categories = $this->getDoctrine()->getRepository("YeomiPostBundle:Category")->findAll();
+        return $this->render('YeomiAdminBundle:Main:listCategories.html.twig', array(
+            "categories" => $categories,
+        ));
+    }
+
     public function listcommentsAction()
     {
         $comments = $this->getDoctrine()->getRepository("YeomiPostBundle:Comment")->findAll();
@@ -39,8 +47,8 @@ class MainController extends Controller
 
     public function deleteEntityAction($type, $id)
     {
-        $authorized = array("comment, user, post");
-        if(in_array($type, $authorized)) {
+        $authorized = array("comment", "user", "post", "category");
+        if(!in_array($type, $authorized)) {
             return $this->redirect($this->generateUrl("yeomi_admin_home"));
         }
 
@@ -60,7 +68,7 @@ class MainController extends Controller
         $manager->remove($entity);
         $manager->flush();
 
-        return $this->redirect($this->generateUrl("yeomi_admin_list_" . $type . "s"));
+        return $this->redirect($this->generateUrl("yeomi_admin_list_" . $type));
     }
 
     public function blockUserAction($id, $unblock = 0)

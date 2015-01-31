@@ -47,3 +47,7 @@ yeomi_user_create_message:
 yeomi_user_list_message:
     path:     /list/message/{userId}
     defaults: { _controller: YeomiUserBundle:Profile:listMessage }
+
+yeomi_user_view_parameter:
+    path:     /view/parameter
+    defaults: { _controller: YeomiUserBundle:Profile:viewParameter }

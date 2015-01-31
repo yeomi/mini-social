@@ -17,24 +17,35 @@ use Yeomi\UserBundle\Entity\Message;
 use Yeomi\UserBundle\Entity\Profile;
 use Yeomi\UserBundle\Form\MessageType;
 use Yeomi\UserBundle\Form\ProfileType;
+use Yeomi\UserBundle\Form\UserEditType;
+use Yeomi\UserBundle\Form\UserPasswordType;
+use Yeomi\UserBundle\Form\UserType;
 
 class ProfileController extends Controller
 {
     public function viewAction(Request $request, $username)
     {
-        $tabMessage = false;
-        if ($request->query->get("tab")) {
-            $tabMessage = true;
-        }
-
         $user = $this
             ->getDoctrine()
             ->getRepository("YeomiUserBundle:User")
             ->findOneBy(array("username" => $username));
 
+        $isCurrentUser = $this->isCurrentUser($user);
+        $tabMessage = false;
+        $tabParams = false;
+        if ($request->query->get("tab") == "message") {
+            $tabMessage = true;
+        } elseif($request->query->get("tab") == "params"
+        && $isCurrentUser) {
+            $tabParams = true;
+        }
+
+
         return $this->render("YeomiUserBundle:Profile:view.html.twig", array(
             "user" => $user,
-            "tabMessage" => $tabMessage
+            "tabMessage" => $tabMessage,
+            "tabParams" => $tabParams,
+            "isCurrentUser" => $isCurrentUser,
         ));
     }
 
@@ -67,6 +78,47 @@ class ProfileController extends Controller
             "userId" => $userId,
             "form" => $formView,
             "isUpdated" => $isUpdated
+        ));
+
+    }
+
+    public function viewParameterAction(Request $request)
+    {
+        $user = $this->getUser();
+        // This need to be done or token will be updated even if validator block operation
+        $lastUsername = $this->getDoctrine()->getRepository("YeomiUserBundle:User")->find($user->getId())->getUsername();
+        $formUser = $this->createForm(new UserEditType(), $user);
+        $formPassword = $this->createForm(new UserPasswordType(), $user);
+
+        if ($formUser->handleRequest($request)->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->flush();
+            $request->getSession()->getFlashBag()->add("info", "Vos paramètre de compte ont bien été mis à jour");
+            return $this->redirect($this->generateUrl("yeomi_user_profile", array("username" => $user->getUsername())) . "?tab=params");
+        } elseif ($formUser->getErrors()->count() > 0) {
+            $user->setUsername($lastUsername);
+            foreach ($formUser->getErrors() as $error) {
+                $request->getSession()->getFlashBag()->add("alert", $error->getMessage());
+            }
+            return $this->redirect($this->generateUrl("yeomi_user_profile", array("username" => $user->getUsername())) . "?tab=params");
+        }
+
+        if ($formPassword->handleRequest($request)->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->flush();
+            $request->getSession()->getFlashBag()->add("info", "Vos paramètre de compte ont bien été mis à jour");
+            return $this->redirect($this->generateUrl("yeomi_user_profile", array("username" => $user->getUsername())) . "?tab=params");
+        } elseif ($formPassword->getErrors()->count() > 0) {
+            foreach ($formPassword->getErrors() as $error) {
+                $request->getSession()->getFlashBag()->add("alert", $error->getMessage());
+            }
+            return $this->redirect($this->generateUrl("yeomi_user_profile", array("username" => $user->getUsername())) . "?tab=params");
+        }
+
+
+        return $this->render("YeomiUserBundle:Profile:viewParameter.html.twig", array(
+            "formUser" => $formUser->createView(),
+            "formPassword" => $formPassword->createView()
         ));
 
     }

@@ -36,6 +36,13 @@ class Page
     private $body;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime")
@@ -75,6 +82,7 @@ class Page
     public function setTitle($title)
     {
         $this->title = $title;
+        $this->setSlug($title);
 
         return $this;
     }
@@ -156,5 +164,46 @@ class Page
     public function getPublished()
     {
         return $this->published;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Page
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $this->stringToSlug($slug);
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $string
+     * @param string $separator
+     * @return string
+     */
+    function stringToSlug($string, $separator = '-')
+    {
+        $debutFin = array ("/[\W]+$/", "/^[\W]+/", "/[\W]+/");
+        $tiretDebutFin = array ("", "", $separator);
+
+        $idForTarget=htmlentities($string);
+        $idForTarget = preg_replace('/&(.)[^;]+;/', '$1', $idForTarget); // change accent and special to normal caracters
+        $idForTarget = strtolower($idForTarget);
+        $idForTarget = preg_replace($debutFin, $tiretDebutFin, $idForTarget); // change spaces to hyphen
+
+        return $idForTarget;
     }
 }

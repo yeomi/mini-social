@@ -25,7 +25,7 @@ class Category
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Yeomi\PostBundle\Entity\Post", mappedBy="categories")
+     * @ORM\ManyToMany(targetEntity="Yeomi\PostBundle\Entity\Post", mappedBy="categories", cascade="remove")
      */
     private $posts;
 

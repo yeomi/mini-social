@@ -1,6 +1,10 @@
 .wrapper-width.site-header
 {
   background-color: $darkerColor;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
 }
 header#site-header
 {
@@ -78,6 +82,14 @@ header#site-header
       background-position: 0.6rem center;
       background-size: 1.8rem 1.8rem;
       padding-left: 2.9rem;
+      position: relative;
+      top: 0;
+      @include transition(all 0.3s ease);
+      &:hover
+      {
+        top: -.2rem;
+        @include boxShadow(0 0 2rem rgba(255,255,255,0.6));
+      }
     }
   }
 

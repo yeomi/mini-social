@@ -76,7 +76,7 @@
                         <a href="{{ path("yeomi_cms_list_article") }}">Voir toutes les actus</a>
                     </div>
 
-                    <a class="btn-3d readmore" href="{{ path("yeomi_cms_view_article", {"id": article.id}) }}">Lire la suite</a>
+                    <a class="btn-3d readmore" href="{{ path("yeomi_cms_view_article", {"slug": article.slug}) }}">Lire la suite</a>
                 </div>
             {% endfor %}
             </div>

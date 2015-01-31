@@ -87,6 +87,7 @@ html {
   font-size: 10px; }
 
 body {
+  padding-top: 8.7rem;
   background-color: #e4e4e4;
   font-family: "open_sansregular", Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
@@ -167,7 +168,7 @@ a {
     -webkit-box-shadow: 0 0.2rem 0 #003662;
     box-shadow: 0 0.2rem 0 #003662; }
 
-.classic-form input[type="text"], .classic-form textarea, .classic-form input[type="url"] {
+.classic-form input[type="text"], .classic-form textarea, .classic-form input[type="url"], .classic-form input[type="email"], .classic-form input[type="password"] {
   width: 100%;
   border: 1px solid #c1c1c1;
   resize: none;
@@ -232,6 +233,12 @@ form .field-attach-file {
   -moz-transition: max-height 0.3s ease;
   -webkit-transition: max-height 0.3s ease;
   transition: max-height 0.3s ease; }
+  form .field-attach-file .reset-image-upload {
+    padding: 0 0.5rem;
+    font-size: 1.3rem;
+    height: 2.5rem;
+    float: right;
+    line-height: 2.4rem; }
   form .field-attach-file ul {
     list-style-type: none; }
   form .field-attach-file li {
@@ -260,17 +267,22 @@ form .field-attach-file {
     color: white;
     display: block;
     position: absolute;
-    top: -1.8rem;
-    right: -1.8rem;
+    top: -1rem;
+    right: -1rem;
     background-color: #db4141;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 2rem;
+    height: 2rem;
     text-align: center;
-    line-height: 3.5rem;
+    line-height: 2rem;
+    font-size: 1.1rem;
     border-radius: 1.8rem; }
 
 .wrapper-width.site-header {
-  background-color: #175da3; }
+  background-color: #175da3;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%; }
 
 header#site-header {
   max-width: 120rem;
@@ -333,7 +345,17 @@ header#site-header {
       background-repeat: no-repeat;
       background-position: 0.6rem center;
       background-size: 1.8rem 1.8rem;
-      padding-left: 2.9rem; }
+      padding-left: 2.9rem;
+      position: relative;
+      top: 0;
+      -o-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -webkit-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      header#site-header .main-nav .add-btn:hover {
+        top: -.2rem;
+        -webkit-box-shadow: 0 0 2rem rgba(255, 255, 255, 0.6);
+        box-shadow: 0 0 2rem rgba(255, 255, 255, 0.6); }
   header#site-header .site-search-container {
     position: relative;
     width: 3.5rem;
@@ -532,7 +554,8 @@ footer#site-footer {
         font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
         position: absolute;
         bottom: 2rem;
-        left: 2.7rem; }
+        left: 2.7rem;
+        text-decoration: underline; }
     .page-index #articles-block .article-teaser .readmore {
       background-color: #1293f1;
       font-size: 1.8rem;
@@ -792,19 +815,19 @@ footer#site-footer {
 
 .popup-arrow {
   display: block;
-  position: absolute;
+  position: fixed;
   width: 3.2rem;
   height: 1.6rem;
   background-image: url(../img/arrowtop-login.png);
   background-repeat: no-repeat;
   background-position: center;
-  z-index: 6;
+  z-index: 13;
   background-size: 100%; }
 
 .yeomi-popup {
   background-color: white;
-  position: absolute;
-  z-index: 5;
+  position: fixed;
+  z-index: 12;
   padding: 1rem 5rem;
   border: 1px solid #c1c1c1;
   border-radius: .6rem;
@@ -956,7 +979,7 @@ footer#site-footer {
   top: 0;
   right: 0;
   padding: 1.5rem;
-  z-index: 10; }
+  z-index: 15; }
   #status-message ul, .additional-message ul {
     list-style-type: none; }
   #status-message div, .additional-message div {
@@ -1309,6 +1332,14 @@ nav.category-nav {
   .page-register.style-login section .submit-area {
     float: right; }
 
+.page-article .article.list-view h3 {
+  font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+  color: #175da3;
+  margin-bottom: 1rem; }
+.page-article .actions-btn, .page-article .details {
+  vertical-align: middle;
+  margin: 0; }
+
 .page-profile {
   max-width: 120rem;
   margin: auto; }
@@ -1421,6 +1452,19 @@ nav.category-nav {
       margin-bottom: 1.5rem; }
     .page-profile .message-block .create-message .submit {
       display: inline-block; }
+  .page-profile .parameter-block {
+    padding: 1.5rem; }
+    .page-profile .parameter-block h3 {
+      color: #175da3;
+      font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
+    .page-profile .parameter-block label {
+      display: block;
+      margin-top: 1.5rem; }
+    .page-profile .parameter-block .btn {
+      margin: 2rem 0; }
+    .page-profile .parameter-block .form-legend {
+      font-size: 1.3rem;
+      color: #818181; }
 
 .page-simple section {
   background-color: #fff;

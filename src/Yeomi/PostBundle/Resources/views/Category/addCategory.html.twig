@@ -1,0 +1,21 @@
+{% extends("YeomiAdminBundle::layout.html.twig") %}
+
+{% block content %}
+    <h3 class="content-title">Creation d'une catégorie</h3>
+
+    {{ form_errors(form) }}
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_widget(form.name, {"attr" : {"placeholder": "Choissisez le titre de la catégorie (ex: Les soirées d'été!)", "class": "form-control"}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_widget(form.slug, {"attr" : {"placeholder": "Choissisez l'url de la catégorie (ex: 'les-soirees-d-ete)", "class": "form-control"}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.description, {"attr" : {"placeholder": "Écrivez une courte description", "class": "form-control"}}) }}
+    </div>
+    {{ form_widget(form.save, {"attr" : {"class": "btn btn-default"}, "label": "Enregistrer la catégorie"}) }}
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -4,6 +4,7 @@ html
 }
 body
 {
+  padding-top: 8.7rem;
   background-color: $bgColor;
   font-family: $font;
   font-size: 1.6rem;
@@ -101,7 +102,7 @@ a
 
 .classic-form
 {
-  input[type="text"], textarea, input[type="url"]
+  input[type="text"], textarea, input[type="url"], input[type="email"], input[type="password"]
   {
     width: 100%;
     border: 1px solid #c1c1c1;
@@ -187,6 +188,15 @@ form
   }
   .field-attach-file
   {
+
+    .reset-image-upload
+    {
+      padding: 0 0.5rem;
+      font-size: 1.3rem;
+      height: 2.5rem;
+      float: right;
+      line-height: 2.4rem;
+    }
     overflow: hidden;
     ul {list-style-type: none;}
     li { margin: 1rem 0;}
@@ -228,13 +238,14 @@ form
     color: white;
     display: block;
     position: absolute;
-    top: -1.8rem;
-    right: -1.8rem;
+    top: -1rem;
+    right: -1rem;
     background-color: #db4141;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 2rem;
+    height: 2rem;
     text-align: center;
-    line-height: 3.5rem;
+    line-height: 2rem;
+    font-size: 1.1rem;
     border-radius: 1.8rem;
   }
 }

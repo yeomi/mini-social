@@ -1,5 +1,5 @@
 <ul class="page-list">
 {% for page in pages %}
-    <li><a href="{{ path("yeomi_cms_view_page", {"id": page.id}) }}">{{ page.title }}</a></li>
+    <li><a href="{{ path("yeomi_cms_view_page", {"slug": page.slug}) }}">{{ page.title }}</a></li>
 {% endfor %}
 </ul>

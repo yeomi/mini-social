@@ -11,13 +11,13 @@
 .popup-arrow
 {
   display: block;
-  position: absolute;
+  position: fixed;
   width: 3.2rem;
   height: 1.6rem;
   background-image: url(../img/arrowtop-login.png);
   background-repeat: no-repeat;
   background-position: center;
-  z-index: 6;
+  z-index: 13;
   background-size: 100%;
 
 }
@@ -25,8 +25,8 @@
 .yeomi-popup
 {
   background-color: white;
-  position: absolute;
-  z-index: 5;
+  position: fixed;
+  z-index: 12;
   padding: 1rem 5rem;
   border: 1px solid #c1c1c1;
   border-radius: .6rem;

@@ -19,7 +19,7 @@
         <ul class="breadcrumb left">
             <li><a href="{{ path("yeomi_post_index") }}">Accueil ></a></li>
             <li><a href="{{ path("yeomi_post_view_type", {"slug": post.type.slug}) }}">{{ post.type.name }} ></a></li>
-            <li><a href="{{ path("yeomi_post_view_category", {"id": post.categories[0].id}) }}">{{ post.categories[0].name }}</a></li>
+            <li><a href="{{ path("yeomi_post_view_category", {"slug": post.categories[0].slug}) }}">{{ post.categories[0].name }}</a></li>
         </ul>
 
         <ul class="right">
@@ -47,7 +47,7 @@
                     {% else %}
                         <span>anonyme</span>
                     {% endif %}
-                    - <a href="{{ path("yeomi_post_view_category", {"id" : post.categories[0].id}) }}">{{ post.categories[0].name }}</a>
+                    - <a href="{{ path("yeomi_post_view_category", {"slug" : post.categories[0].slug}) }}">{{ post.categories[0].name }}</a>
                 </div>
 
 

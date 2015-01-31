@@ -35,8 +35,8 @@
                 <ul>
                 {% for index, imageForm in form.images %}
                     <li class="upload-image-{{ index }}">
-                    {{ form_label(imageForm.file) }}
                     {{ form_widget(imageForm.file) }}
+                        <button class="reset-image-upload btn-dark">Annuler</button>
                     </li>
                 {% endfor %}
                 </ul>

@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArticleRepository extends EntityRepository
 {
+
+    public function findFive() {
+        $query =$this->createQueryBuilder("a")
+            ->setMaxResults(5)
+            ->orderBy("a.created", "DESC")
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

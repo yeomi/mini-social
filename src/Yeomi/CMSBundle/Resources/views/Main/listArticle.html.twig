@@ -1,4 +1,64 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
 {% block body %}
+
+    <section class="page-category page-article">
+        <header class="category-header">
+            <h1>Les articles</h1>
+        </header>
+
+
+        <div class="container container-lists">
+            <div class="full column-container">
+
+                <div class="ajax-wrapper">
+
+
+                    {% for article in articles %}
+
+                        <div class="article list-view">
+
+                            <table>
+                                <tr>
+                                    <td class="left">
+                                        <a href="{{ path("yeomi_cms_view_article", {"slug": article.slug}) }}">
+                                            <h3>{{ article.title }}</h3>
+                                            <div class="content"><p>{{ truncatePost(article.body, 200)|striptags }}</p></div>
+                                        </a>
+                                    </td>
+
+
+                                    {% if article.image.id is defined %}
+                                        <td class="right">
+                                            <a class="image"
+                                               href="{{ path("yeomi_cms_view_article", {"slug": article.slug}) }}">
+                                                <img src="{{ asset('uploads/img/article/' ~ article.image.id ~ '.' ~ article.image.value) }}"
+                                                     alt=""/>
+                                            </a>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+
+                                <tr>
+                                    <td class="details">
+                                        <span class="post-date">{{ article.created|date("d/m/y \\à G\\hi") }}</span>
+                                    </td>
+                                    <td class="actions-btn">
+                                        <a class="readmore"
+                                           href="{{ path("yeomi_cms_view_article", {"slug": article.slug}) }}">{% trans %}
+                                            Read More{% endtrans %}</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
 {% endblock %}

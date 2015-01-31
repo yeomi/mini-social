@@ -29,13 +29,14 @@ yeomi_cms_delete_content:
 
 
 yeomi_cms_view_page:
-    path:     /page/{id}
+    path:     /page/{slug}
     defaults: { _controller: YeomiCMSBundle:Main:viewPage }
     requirements:
         id: \d+
 
+
 yeomi_cms_view_article:
-    path:     /article/{id}
+    path:     /article/{slug}
     defaults: { _controller: YeomiCMSBundle:Main:viewArticle }
     requirements:
         id: \d+

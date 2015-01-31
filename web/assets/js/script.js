@@ -1,6 +1,6 @@
 $(function() {
 
-  $(document).mouseup(function (e)
+  $("body").mouseup(function (e)
   {
     var container = $(".pop-up-wrapper");
 
@@ -23,10 +23,10 @@ $(function() {
       $(".pop-up-wrapper").removeClass("visible");
       popupWrapper.addClass("visible");
     }
-    setPopupXY(target, e.pageX, e.pageY);
+    setPopupXY(target, e.pageX, e.pageY - $(window).scrollTop());
 
     var arrow = target.parent().find(".popup-arrow");
-    setArrowXY(arrow, e.pageX, e.pageY);
+    setArrowXY(arrow, e.pageX, e.pageY - $(window).scrollTop());
 
     return false;
   });
@@ -137,4 +137,14 @@ $(function() {
 
   checkCookie();
 
+
+
+  $(".reset-image-upload").on("click", function () {
+    console.log("here");
+    var input = $(this).parent().find("input");
+    var id = input.attr("id");
+    var name = input.attr("name");
+    input.replaceWith('<input type="file" name="' + name + '" id="' + id + '">');
+    return false;
+  });
 });

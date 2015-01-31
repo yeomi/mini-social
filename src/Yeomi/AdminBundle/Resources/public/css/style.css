@@ -68,3 +68,7 @@ body
   background-color: #5bc0de !important;
 
 }
+.bg-warning
+{
+  padding: 10px;
+}

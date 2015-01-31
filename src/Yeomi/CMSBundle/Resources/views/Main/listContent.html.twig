@@ -18,9 +18,9 @@
             <tr>
                 <th>{{ content.id }}</th>
                 {% if type == "article" %}
-                    <td><a target="_blank" href="{{ path("yeomi_cms_view_article", {"id": content.id}) }}">{{ content.title }}</a></td>
+                    <td><a target="_blank" href="{{ path("yeomi_cms_view_article", {"slug": content.slug}) }}">{{ content.title }}</a></td>
                 {% else %}
-                    <td><a target="_blank" href="{{ path("yeomi_cms_view_page", {"id": content.id}) }}">{{ content.title }}</a></td>
+                    <td><a target="_blank" href="{{ path("yeomi_cms_view_page", {"slug": content.slug}) }}">{{ content.title }}</a></td>
                 {% endif %}
                 <td>{{ truncatePost(content.body, 200)|striptags }}</td>
                 <td>{{ content.created|date("d/m/Y à H:i") }}</td>

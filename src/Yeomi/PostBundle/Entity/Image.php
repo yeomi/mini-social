@@ -40,6 +40,7 @@ class Image
      */
     private $article;
 
+
     /**
      * @var \Yeomi\PostBundle\Entity\Comment
      *
@@ -349,4 +350,5 @@ class Image
     {
         return $this->article;
     }
+
 }

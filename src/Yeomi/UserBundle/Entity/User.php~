@@ -20,6 +20,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User implements UserInterface, \Serializable
 {
+
+
     /**
      * @var integer
      *
@@ -84,7 +86,7 @@ class User implements UserInterface, \Serializable
      *      min = "5",
      *      max = "30",
      *      minMessage = "Votre pseudo doit faire au moins {{ limit }} caractères",
-     *      maxMessage = "Votre pseudo {{ limit }} caractères"
+     *      maxMessage = "Votre pseudo ne doit pas excèder {{ limit }} caractères"
      * )
      */
     private $username;

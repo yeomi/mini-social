@@ -62,11 +62,13 @@ yeomi_post_vote_ajax:
 # Category
 
 yeomi_post_add_category:
-    path:     /add/category
-    defaults: { _controller: YeomiPostBundle:Main:addCategory }
+    path:     admin/categories/add/{id}
+    defaults: { _controller: YeomiPostBundle:Category:addCategory, id: null }
+    requirements:
+        id: \d+
 
 yeomi_post_view_category:
-    path:     /category/{id}
+    path:     /category/{slug}
     defaults: { _controller: YeomiPostBundle:Category:view }
     requirements:
         id: \d+
