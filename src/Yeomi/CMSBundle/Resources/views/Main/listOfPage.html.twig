@@ -1,4 +1,5 @@
 <ul class="page-list">
+    <li><a href="{{ path("yeomi_cms_list_article") }}">Actualités Tpaschiche</a></li>
 {% for page in pages %}
     <li><a href="{{ path("yeomi_cms_view_page", {"slug": page.slug}) }}">{{ page.title }}</a></li>
 {% endfor %}

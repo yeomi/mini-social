@@ -1,0 +1,18 @@
+.user-panel-popup
+{
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  font-family: $light;
+  ul
+  {
+    list-style-type: none;
+  }
+  a
+  {
+    color : $darkerColor;
+    &:hover
+    {
+      color: $lighterColor;
+    }
+  }
+}

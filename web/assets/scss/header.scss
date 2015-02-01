@@ -91,6 +91,14 @@ header#site-header
         @include boxShadow(0 0 2rem rgba(255,255,255,0.6));
       }
     }
+    .logged
+    {
+      padding: 0 1.5rem 0 3rem;
+      background-image: url(../img/profile-icone.png);
+      background-repeat: no-repeat;
+      background-position: .6rem center;
+      background-size: 1.7rem auto;
+    }
   }
 
   .site-search-container

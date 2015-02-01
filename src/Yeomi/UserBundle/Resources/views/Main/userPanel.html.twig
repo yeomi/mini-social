@@ -1,0 +1,14 @@
+<div class="pop-up-wrapper">
+    <span class="popup-arrow"></span>
+    <aside class="user-panel-popup yeomi-popup">
+
+        <div class="user-panel-links">
+            <ul>
+                <li><a href="{{ path("yeomi_user_profile", {"username": app.user.username}) }}">Mon profil</a></li>
+                <li><a href="{{ path("yeomi_user_profile", {"username": app.user.username}) }}?tab=message">Mes Messages {% if unreadMessages > 0 %}<span class="semibold">({{ unreadMessages }})</span>{% endif %}</a></li>
+                <li><a href="{{ path("logout") }}">Déconnexion</a></li>
+            </ul>
+        </div>
+
+    </aside>
+</div>

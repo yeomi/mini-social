@@ -27,10 +27,14 @@
         {% endblock %}
         </div>
 
+        {% set unreadMessage = render(controller("YeomiUserBundle:Profile:checkUnreadMessage")) %}
+
         {% block popups %}
             {{ render(controller("YeomiPostBundle:Main:menu")) }}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") == false %}
             {{ render(controller("YeomiUserBundle:Main:login")) }}
+        {% else %}
+            {{ render(controller("YeomiUserBundle:Main:userPanel", {"unreadMessages": unreadMessage})) }}
         {% endif %}
             {{ render(controller("YeomiPostBundle:Main:addPost", {"type": "defi"})) }}
             {{ render(controller("YeomiPostBundle:Main:addPost", {"type": "histoire"})) }}
@@ -52,8 +56,7 @@
                             </li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <li class="unread-messages-container">
-                                    <a class="log-btn btn-light logout" href="{{ url("logout") }}">{{ app.user.username }} - {% trans %}Logout{% endtrans %}</a>
-                                    {% set unreadMessage = render(controller("YeomiUserBundle:Profile:checkUnreadMessage")) %}
+                                    <a class="log-btn btn-light yeomi-popup-link logged" data-popup="user-panel" href="{{ url("logout") }}">{{ app.user.username }}</a>
                                     {% if unreadMessage > 0 %}
                                         <span class="unread-messages">{{ unreadMessage }}</span>
                                     {% endif %}
@@ -95,12 +98,14 @@
                 <nav class="footer-nav">
                     {{ render(controller("YeomiCMSBundle:Main:getListOfPage")) }}
                 </nav>
+                {# can be taken out on the next dev
                 <nav class="sub-footer-nav">
                     <ul class="left">
                         <li><a href="#">Faire une publication</a></li>
                         <li><a href="{{ path("yeomi_user_register") }}">Inscription rapide</a></li>
                     </ul>
                 </nav>
+                #}
             </footer>
         {% endblock %}
         {% block javascripts %}

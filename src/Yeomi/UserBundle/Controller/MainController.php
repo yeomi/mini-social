@@ -56,6 +56,14 @@ class MainController extends Controller
         ));
     }
 
+    public function userPanelAction(Request $request, $unreadMessages = 0)
+    {
+
+        return $this->render("YeomiUserBundle:Main:userPanel.html.twig", array(
+            "unreadMessages" => $unreadMessages,
+        ));
+    }
+
     public function sendEmailValidation(User $user)
     {
         $body = "Bonjour " . $user->getUsername() . ",\n"
