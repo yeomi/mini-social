@@ -6,7 +6,7 @@
         <header class="profile-ban">
             <div class="avatar">
                 {% if  user.profile.avatar.id is defined %}
-                <img src="{{ web_image(asset('uploads/img/avatar/' ~ user.profile.avatar.id ~ '.' ~ user.profile.avatar.value)).zoomCrop(150,150) }}" alt=""/>
+                <img src="{{ web_image(asset('uploads/img/avatar/' ~ user.profile.avatar.id ~ '.' ~ user.profile.avatar.value)).fixOrientation().zoomCrop(150,150) }}" alt=""/>
                     {% endif %}
             </div>
             <div class="side-infos">

@@ -20,7 +20,7 @@
                 {% elseif post.images[0] is defined %}
                     <td class="right">
                         <a class="image" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">
-                            <img src="{{ web_image(asset('uploads/img/post/' ~ post.images[0].id ~ '.' ~ post.images[0].value)).zoomCrop(90,90) }}" alt=""/>
+                            <img src="{{ web_image(asset('uploads/img/post/' ~ post.images[0].id ~ '.' ~ post.images[0].value)).fixOrientation().zoomCrop(90,90)}}" alt=""/>
                         </a>
                     </td>
                 {% endif %}

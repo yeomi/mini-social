@@ -4,7 +4,7 @@
     <section class="cms-page container">
         <h3>{{ article.title }}</h3>
         <div class="image">
-            <img class="article-img" src="{{ web_image(asset('uploads/img/article/' ~ article.image.id ~ '.' ~ article.image.value)).cropResize(895,465, "transparent") }}" alt=""/>
+            <img class="article-img" src="{{ web_image(asset('uploads/img/article/' ~ article.image.id ~ '.' ~ article.image.value)).fixOrientation().cropResize(895,465) }}" alt=""/>
         </div>
         <article class="body ckeditor-actif">
             {{ article.body|raw }}

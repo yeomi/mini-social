@@ -25,7 +25,7 @@
                     <div class="left">
                         <div class="avatar">
                         {% if message.sender.profile.avatar is defined %}
-                            <img src="{{ web_image(asset('uploads/img/avatar/' ~ message.sender.profile.avatar.id ~ '.' ~ message.sender.profile.avatar.value)).zoomCrop(50,50) }}" alt=""/>
+                            <img src="{{ web_image(asset('uploads/img/avatar/' ~ message.sender.profile.avatar.id ~ '.' ~ message.sender.profile.avatar.value)).fixOrientation().zoomCrop(50,50) }}" alt=""/>
                         {% endif %}
                         </div>
                     </div>
