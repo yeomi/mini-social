@@ -40,12 +40,6 @@ class Image
      */
     private $article;
 
-    /**
-     * @var \Yeomi\CMSBundle\Entity\Block
-     *
-     * @ORM\OneToOne(targetEntity="Yeomi\CMSBundle\Entity\Block", mappedBy="image")
-     */
-    private $block;
 
     /**
      * @var \Yeomi\PostBundle\Entity\Comment
@@ -79,8 +73,7 @@ class Image
     /**
      * @var UploadedFile
      * @Assert\Image(
-     *     maxWidth = 1200,
-     *     maxHeight = 1200,
+     *     maxSize = "10M"
      *
      * )
      */
@@ -356,4 +349,5 @@ class Image
     {
         return $this->article;
     }
+
 }

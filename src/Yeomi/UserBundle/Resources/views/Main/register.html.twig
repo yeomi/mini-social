@@ -23,6 +23,10 @@
 
                 {{ form_start(form) }}
 
+
+                {{ form_label(form.gender, "Genre") }}
+                {{ form_widget(form.gender) }}
+
                 {{ form_label(form.username) }}
                 {{ form_widget(form.username, {"attr": {"class": "with-legend"}}) }}
                 <span class="form-legend">Votre pseudo doit faire 5 caractères mininums avec minuscules et/ou chiffres.</span>

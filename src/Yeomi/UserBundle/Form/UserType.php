@@ -15,6 +15,12 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('gender', 'choice', array(
+                'choices'   => array('m' => 'Masculin', 'f' => 'Féminin'),
+                'required'  => true,
+                'error_bubbling'=>true,
+                'expanded' => true
+            ))
             ->add('username', 'text', array('error_bubbling'=>true))
             ->add('passwordClear', 'repeated', array(
                 'type' => 'password',

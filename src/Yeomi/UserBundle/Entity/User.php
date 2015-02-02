@@ -94,6 +94,14 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
+     * @ORM\Column(name="gender", type="string", length=255)
+     *
+     */
+    private $gender;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="password", type="string", length=255)
      *
      */
@@ -653,4 +661,27 @@ class User implements UserInterface, \Serializable
 
     }
 
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     * @return User
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string 
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
 }

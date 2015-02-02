@@ -19,10 +19,14 @@
     line-height: 5.2rem;
     float: left;
     margin-left: 7.5rem;
-    a
+    a, span
     {
       color: $darkerColor;
       font-size: 1.4rem;
+    }
+    span
+    {
+      color: $fontColor;
     }
   }
   .right

@@ -15,6 +15,7 @@ class UserPasswordType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->remove('username')
+            ->remove('gender')
             ->remove('email');
     }
     

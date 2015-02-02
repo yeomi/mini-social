@@ -1,6 +1,17 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
 {% block body %}
+
+
+    <header class="breadcrumb-ban">
+        <ul class="breadcrumb left">
+            <li><a href="{{ path("yeomi_post_index") }}">Accueil ></a></li>
+            <li><a href="{{ path("yeomi_cms_list_article") }}">Les articles ></a></li>
+            <li><span>{{ article.title }}</span></li>
+        </ul>
+
+    </header>
+
     <section class="cms-page container">
         <h3>{{ article.title }}</h3>
         <div class="image">

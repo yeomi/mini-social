@@ -3,6 +3,11 @@
 
   section
   {
+    #yeomi_userbundle_user_gender
+    {
+      margin-bottom: 2rem;
+      label.required:after { content: ""; }
+    }
     width: 80rem;
     form
     {

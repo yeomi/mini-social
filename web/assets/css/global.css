@@ -980,9 +980,11 @@ footer#site-footer {
     line-height: 5.2rem;
     float: left;
     margin-left: 7.5rem; }
-    .breadcrumb-ban .breadcrumb a {
+    .breadcrumb-ban .breadcrumb a, .breadcrumb-ban .breadcrumb span {
       color: #175da3;
       font-size: 1.4rem; }
+    .breadcrumb-ban .breadcrumb span {
+      color: #3e3e3e; }
   .breadcrumb-ban .right {
     margin-right: 7.5rem;
     line-height: 5.2rem;
@@ -1337,6 +1339,10 @@ nav.category-nav {
 
 .page-register.style-login section {
   width: 80rem; }
+  .page-register.style-login section #yeomi_userbundle_user_gender {
+    margin-bottom: 2rem; }
+    .page-register.style-login section #yeomi_userbundle_user_gender label.required:after {
+      content: ""; }
   .page-register.style-login section form {
     width: 100%; }
   .page-register.style-login section .form-legend {
