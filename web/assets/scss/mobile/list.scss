@@ -1,0 +1,18 @@
+
+@media screen and  (max-width: 969px)
+{
+  .container.container-lists .column-container
+  {
+    width: 50%
+  }
+  .post.list-view
+  {
+    padding: 1rem 2rem;
+    .details
+    {
+      padding-top: 1rem;
+    }
+    .content { height: 11rem; }
+    .post-date { display: none;}
+  }
+}
