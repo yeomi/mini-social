@@ -73,8 +73,7 @@ class Image
     /**
      * @var UploadedFile
      * @Assert\Image(
-     *     maxWidth = 1200,
-     *     maxHeight = 1200,
+     *     maxSize = "10M"
      *
      * )
      */

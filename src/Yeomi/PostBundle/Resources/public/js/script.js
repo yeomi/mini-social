@@ -12,7 +12,7 @@ $(function() {
 
     $.ajax({
       url: target + "/" + (quantity + offset),
-      type: "POST",
+      type: "GET",
       context: document.body,
       success: function(data){
         $(wrapper).html(data);
@@ -40,7 +40,7 @@ $(function() {
 
     $.ajax({
       url: target + "/" + quantity + "/" + offset,
-      type: "POST",
+      type: "GET",
       context: document.body,
       success: function(data){
         $(wrapper).append(data);
