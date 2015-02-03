@@ -879,17 +879,17 @@
         },
         {
             "name": "gregwar/image",
-            "version": "v2.0.18",
+            "version": "v2.0.19",
             "target-dir": "Gregwar/Image",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gregwar/Image.git",
-                "reference": "280ed7ade8036aab059b1597e299f582157a2b37"
+                "reference": "8faeedfc211162bef5cddc93bea58700c32e06f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gregwar/Image/zipball/280ed7ade8036aab059b1597e299f582157a2b37",
-                "reference": "280ed7ade8036aab059b1597e299f582157a2b37",
+                "url": "https://api.github.com/repos/Gregwar/Image/zipball/8faeedfc211162bef5cddc93bea58700c32e06f6",
+                "reference": "8faeedfc211162bef5cddc93bea58700c32e06f6",
                 "shasum": ""
             },
             "require": {
@@ -923,26 +923,26 @@
                 "gd",
                 "image"
             ],
-            "time": "2014-11-10 13:57:24"
+            "time": "2015-02-03 16:44:33"
         },
         {
             "name": "gregwar/image-bundle",
-            "version": "v2.0.18",
+            "version": "v2.0.19",
             "target-dir": "Gregwar/ImageBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gregwar/ImageBundle.git",
-                "reference": "f779be819ac2aa716cd34ba60b476872c6c5561b"
+                "reference": "5953a49711c8a0f8779a486055f5a0dc98c9ded7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gregwar/ImageBundle/zipball/f779be819ac2aa716cd34ba60b476872c6c5561b",
-                "reference": "f779be819ac2aa716cd34ba60b476872c6c5561b",
+                "url": "https://api.github.com/repos/Gregwar/ImageBundle/zipball/5953a49711c8a0f8779a486055f5a0dc98c9ded7",
+                "reference": "5953a49711c8a0f8779a486055f5a0dc98c9ded7",
                 "shasum": ""
             },
             "require": {
                 "ext-gd": "*",
-                "gregwar/image": "v2.0.18",
+                "gregwar/image": "2.*",
                 "php": ">=5.3.0"
             },
             "type": "symfony-bundle",
@@ -968,7 +968,7 @@
                 "Symfony2",
                 "image"
             ],
-            "time": "2014-12-13 14:05:08"
+            "time": "2015-02-03 16:49:26"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1258,17 +1258,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.15",
+            "version": "v3.0.16",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "0692cd6a8fcf645abce8ea45f7cbbd1942e2b23c"
+                "reference": "aa30f8cd3ee68144e043ca30713aa7d7df35c5fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/0692cd6a8fcf645abce8ea45f7cbbd1942e2b23c",
-                "reference": "0692cd6a8fcf645abce8ea45f7cbbd1942e2b23c",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/aa30f8cd3ee68144e043ca30713aa7d7df35c5fa",
+                "reference": "aa30f8cd3ee68144e043ca30713aa7d7df35c5fa",
                 "shasum": ""
             },
             "require": {
@@ -1307,7 +1307,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-01-07 07:13:43"
+            "time": "2015-02-01 05:42:21"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -1644,16 +1644,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.5.9",
+            "version": "v2.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "e082a9f28edfd5a081b60e009889b30c04979924"
+                "reference": "6ffe6437a9e734eabd6d092387f065bebfefcd24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/e082a9f28edfd5a081b60e009889b30c04979924",
-                "reference": "e082a9f28edfd5a081b60e009889b30c04979924",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/6ffe6437a9e734eabd6d092387f065bebfefcd24",
+                "reference": "6ffe6437a9e734eabd6d092387f065bebfefcd24",
                 "shasum": ""
             },
             "require": {
@@ -1753,7 +1753,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-01-07 12:32:08"
+            "time": "2015-02-02 09:26:53"
         },
         {
             "name": "twig/extensions",
