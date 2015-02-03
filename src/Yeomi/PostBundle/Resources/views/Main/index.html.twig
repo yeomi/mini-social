@@ -17,11 +17,11 @@
     {% block headerBan %}
         <div class="wrapper-width home-ban">
             <aside id="home-ban" class="top-ban">
-
-                <span class="top">Une envie, un partage, un défi...</span>
-                <span class="middle">Tpaschiche de faire un selfie dans un lieu insolite !</span>
-                <span class="bottom">Rejoignez Tpaschiche pour le partage et l'entraide.</span>
-
+                <div class="text">
+                    <span class="top">Une envie, un partage, un défi...</span>
+                    <span class="middle">Tpaschiche de faire un selfie dans un lieu insolite !</span>
+                    <span class="bottom">Rejoignez Tpaschiche pour le partage et l'entraide.</span>
+                </div>
                 {% if is_granted("ROLE_USER") == false %}
                     <a class="btn big register" href="{{ path("yeomi_user_register") }}">{% trans %}Register{% endtrans %}</a>
                 {% endif %}

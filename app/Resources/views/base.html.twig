@@ -4,6 +4,10 @@
         <meta charset="UTF-8">
         <title>{% block title %} - Tpaschiche - {% endblock %}</title>
         {% block stylesheets %}
+            <meta name="MobileOptimized" content="width">
+            <meta name="HandheldFriendly" content="true">
+            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+
             <link rel="stylesheet" href="{{ asset("assets/css/global.css") }}"/>
             <link rel="stylesheet" href="{{ asset("assets/css/libs/slick.css") }}"/>
         {% endblock %}
@@ -76,6 +80,7 @@
 
                 {% block menu_right %}
                     <nav class="main-nav right">
+                        <span class="mobile-btn"></span>
                         <ul>
                             <li><a class="btn new-challenge add-btn yeomi-popup-link" data-popup="add-defi" href="{{ url("yeomi_post_add_post", {"type": "defi"}) }}">{% trans %}Suggest a challenge{% endtrans %}</a></li>
                             <li><a class="btn new-story add-btn yeomi-popup-link" data-popup="add-histoire" href="{{ url("yeomi_post_add_post", {"type": "histoire"}) }}">{% trans %}Share a story{% endtrans %}</a></li>
@@ -116,6 +121,7 @@
             <script src="{{ asset("bundles/yeomipost/js/vote.js") }}"></script>
             <script src="{{ asset("assets/js/script.js") }}"></script>
             <script src="{{ asset("assets/js/libs/slick.min.js") }}"></script>
+            <script src="{{ asset("assets/js/responsive.js") }}"></script>
         {% endblock %}
     </body>
 </html>
