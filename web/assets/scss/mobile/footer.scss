@@ -1,0 +1,19 @@
+
+@media screen and  (max-width: 969px)
+{
+  footer#site-footer
+  {
+    nav .page-list li
+    {
+      width: 60%;
+      min-width: 320px;
+      margin: auto;
+      border-top: 1px solid white;
+      display: block;
+      font-size: 1.8rem;
+      padding: .5rem 0;
+      &:first-of-type { border: 0; }
+      a {color: white;}
+    }
+  }
+}

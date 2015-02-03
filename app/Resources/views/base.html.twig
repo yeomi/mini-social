@@ -80,6 +80,7 @@
 
                 {% block menu_right %}
                     <nav class="main-nav right">
+                        <span class="mobile-btn"></span>
                         <ul>
                             <li><a class="btn new-challenge add-btn yeomi-popup-link" data-popup="add-defi" href="{{ url("yeomi_post_add_post", {"type": "defi"}) }}">{% trans %}Suggest a challenge{% endtrans %}</a></li>
                             <li><a class="btn new-story add-btn yeomi-popup-link" data-popup="add-histoire" href="{{ url("yeomi_post_add_post", {"type": "histoire"}) }}">{% trans %}Share a story{% endtrans %}</a></li>
@@ -120,6 +121,7 @@
             <script src="{{ asset("bundles/yeomipost/js/vote.js") }}"></script>
             <script src="{{ asset("assets/js/script.js") }}"></script>
             <script src="{{ asset("assets/js/libs/slick.min.js") }}"></script>
+            <script src="{{ asset("assets/js/responsive.js") }}"></script>
         {% endblock %}
     </body>
 </html>

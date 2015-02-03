@@ -26,3 +26,23 @@
     .slick-slider {margin-bottom: 0;}
   }
 }
+
+
+@media screen and  (max-width: 820px)
+{
+  .page-index
+  {
+    #home-ban
+    {
+      height: 17.6rem;
+      .text
+      {
+        display: none;
+      }
+    }
+    #articles-block
+    {
+      display: none;
+    }
+  }
+}
