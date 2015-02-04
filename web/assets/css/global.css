@@ -1596,7 +1596,7 @@ nav.category-nav {
     .post.list-view .post-date {
       display: none; } }
 @media screen and (max-width: 819px) {
-  .container.container-lists .column-container.right, .container.container-lists .column-container.left {
+  .container.container-lists .column-container.right, .container.container-lists .column-container.left, .container.container-lists .column-container.full {
     max-width: 640px;
     width: 95%;
     min-width: 320px;
@@ -1604,8 +1604,37 @@ nav.category-nav {
     float: none;
     margin: 2rem auto; }
 
-  .post.list-view .comments {
-    display: none; } }
+  .container.container-lists .column-container .post.list-view {
+    display: block;
+    float: none;
+    position: relative;
+    width: 100%;
+    border: 1px solid #d7d7d7; }
+    .container.container-lists .column-container .post.list-view:nth-of-type(2n+1) {
+      border-left: 1px solid #d7d7d7;
+      float: none; }
+    .container.container-lists .column-container .post.list-view:nth-of-type(2n) {
+      border-right: 1px solid #d7d7d7;
+      float: none; }
+    .container.container-lists .column-container .post.list-view .comments {
+      display: none; }
+    .container.container-lists .column-container .post.list-view .actions-btn .readmore {
+      margin: 0;
+      border: 1px solid #175da3;
+      border-radius: 0.4rem;
+      height: 3rem;
+      width: 3rem;
+      overflow: hidden;
+      position: relative;
+      color: #175da3;
+      font-size: 0; }
+      .container.container-lists .column-container .post.list-view .actions-btn .readmore:after {
+        position: absolute;
+        font-size: 3rem;
+        top: -0.6rem;
+        content: "+";
+        width: 100%;
+        text-align: center; } }
 @media screen and (max-width: 565px) {
   .post.list-view .right {
     display: none; }
@@ -1676,6 +1705,121 @@ nav.category-nav {
         border-radius: .4rem .4rem 0 0; }
       header#site-header .main-nav.right.show ul {
         max-height: 200rem; } }
+@media screen and (max-width: 565px) {
+  .pop-up-wrapper {
+    position: absolute;
+    top: -5.5rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 130;
+    background-color: rgba(0, 0, 0, 0.8); }
+
+  .popup-container .popup-arrow {
+    display: none; }
+  .popup-container aside.yeomi-popup {
+    position: absolute;
+    left: 0 !important;
+    right: 0 !important;
+    top: 9rem;
+    margin: auto;
+    padding: 1rem 3.4rem;
+    max-width: 48rem;
+    width: 90%;
+    z-index: 20; }
+  .popup-container .close {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 1rem;
+    cursor: pointer;
+    right: 1rem;
+    background-image: url("../img/close-icone.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 2rem auto; }
+
+  .login-popup .submit-area {
+    text-align: center;
+    clear: both;
+    float: none; }
+  .login-popup .login-noaccount {
+    padding-top: 2.5rem; }
+
+  .add-defi-popup .field-attach-file input[type="file"], .add-histoire-popup .field-attach-file input[type="file"] {
+    max-width: 15rem; } }
+@media screen and (max-width: 969px) {
+  .page-post {
+    padding: 2.5rem 4.5rem 3rem; }
+    .page-post article.post.full-view .left {
+      width: 100% !important; }
+    .page-post article.post.full-view.with-img .right {
+      padding-top: 2rem;
+      display: block;
+      margin: auto; }
+    .page-post article.post.full-view .comments {
+      display: none; }
+    .page-post .comment-area {
+      padding: 2rem; }
+      .page-post .comment-area .add-comment-block > a {
+        display: inline-block;
+        vertical-align: middle; }
+      .page-post .comment-area .add-comment-block .comment-intro {
+        display: inline-block;
+        vertical-align: middle; }
+        .page-post .comment-area .add-comment-block .comment-intro p {
+          margin: 0; }
+      .page-post .comment-area .add-comment-block .avatar {
+        height: 4rem;
+        width: 4rem;
+        position: static; }
+      .page-post .comment-area .add-comment-block .add-comment-form {
+        margin-top: 1rem; }
+      .page-post .comment-area .list-comment-block .comment-list {
+        padding: 1rem; }
+      .page-post .comment-area .list-comment-block .comment {
+        padding-top: 1rem;
+        padding-bottom: 1.5rem; }
+      .page-post .comment-area .list-comment-block .left {
+        height: 4rem;
+        width: 4rem;
+        overflow: hidden; }
+      .page-post .comment-area .list-comment-block .right {
+        overflow: visible; }
+        .page-post .comment-area .list-comment-block .right .body {
+          margin-top: 3rem;
+          margin-bottom: 1rem; }
+        .page-post .comment-area .list-comment-block .right .attached-files {
+          text-align: center; }
+          .page-post .comment-area .list-comment-block .right .attached-files img {
+            max-width: 27%;
+            margin: 0 .5rem; }
+        .page-post .comment-area .list-comment-block .right .actions-btn {
+          margin-bottom: 2rem; }
+      .page-post .comment-area .list-comment-block .body, .page-post .comment-area .list-comment-block .actions-btn {
+        clear: both; } }
+@media screen and (max-width: 565px) {
+  .page-post {
+    padding: 1.5rem .5rem 2rem; }
+    .page-post article.post.full-view .left {
+      padding-bottom: 0; }
+      .page-post article.post.full-view .left .body, .page-post article.post.full-view .left .details {
+        padding: 0 1rem; }
+      .page-post article.post.full-view .left .actions-btn {
+        text-align: center;
+        position: static; }
+    .page-post article.post.full-view .social-network-action {
+      display: none; }
+    .page-post .comment-area .add-comment-block {
+      margin-bottom: 3rem; }
+    .page-post form .link-attach-file {
+      font-size: 0; }
+    .page-post form .field-attach-file input[type="file"] {
+      width: 21rem; }
+    .page-post .submit-area {
+      width: 100%; }
+      .page-post .submit-area button {
+        margin: auto; } }
 @media screen and (max-width: 969px) {
   footer#site-footer nav .page-list li {
     width: 60%;

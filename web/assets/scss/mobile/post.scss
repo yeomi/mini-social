@@ -1,0 +1,154 @@
+@media screen and (max-width: 969px)
+{
+  .page-post
+  {
+    padding: 2.5rem 4.5rem 3rem;
+    article.post.full-view
+    {
+      .left
+      {
+        width: 100% !important;
+      }
+      &.with-img
+      {
+        .right
+        {
+          padding-top: 2rem;
+          display: block;
+          margin: auto;
+        }
+      }
+      .comments
+      {
+        display: none;
+      }
+    }
+    .comment-area
+    {
+      padding: 2rem;
+      .add-comment-block
+      {
+        >a
+        {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .comment-intro
+        {
+          display: inline-block;
+          vertical-align: middle;
+          p { margin: 0;}
+        }
+        .avatar
+        {
+          height: 4rem;
+          width: 4rem;
+          position: static;
+        }
+        .add-comment-form
+        {
+          margin-top: 1rem;
+        }
+      }
+      .list-comment-block
+      {
+        .comment-list
+        {
+          padding: 1rem;
+        }
+        .comment
+        {
+          padding-top: 1rem;
+          padding-bottom: 1.5rem;
+        }
+        .left
+        {
+          height: 4rem;
+          width: 4rem;
+          overflow: hidden;
+        }
+        .right
+        {
+          overflow: visible;
+          .body
+          {
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+          }
+          .attached-files
+          {
+            text-align: center;
+            img
+            {
+              max-width: 27%;
+              margin: 0 .5rem;
+            }
+          }
+          .actions-btn
+          {
+            margin-bottom: 2rem;
+          }
+        }
+        .body, .actions-btn
+        {
+          clear: both;
+        }
+      }
+    }
+  }
+
+}
+
+
+@media screen and  (max-width: 565px)
+{
+  .page-post
+  {
+    padding: 1.5rem .5rem 2rem;
+    article.post.full-view
+    {
+
+      .left
+      {
+        padding-bottom: 0;
+        .body, .details {padding: 0 1rem};
+        .actions-btn
+        {
+          text-align: center;
+          position: static;
+        }
+      }
+      .social-network-action
+      {
+        display: none;
+      }
+    }
+    .comment-area .add-comment-block
+    {
+      margin-bottom: 3rem;
+    }
+    form
+    {
+      .link-attach-file
+      {
+        font-size: 0;
+      }
+      .field-attach-file
+      {
+        input[type="file"]
+        {
+          width: 21rem;
+        }
+      }
+    }
+    .submit-area
+    {
+      width: 100%;
+      button
+      {
+        margin: auto;
+      }
+    }
+  }
+
+}

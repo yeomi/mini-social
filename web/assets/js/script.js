@@ -11,10 +11,14 @@ $(function() {
     }
   });
 
+  $(".popup-container .close").click(function() {
+    $(this).closest(".pop-up-wrapper").removeClass("visible");
+  });
+
   $("a.yeomi-popup-link").click(function(e) {
     var targetClass = $(this).data("popup") + "-popup";
     var target = $("." + targetClass);
-    var popupWrapper = target.parent();
+    var popupWrapper = target.parent().parent();
 
     if(popupWrapper.hasClass("visible")) {
       popupWrapper.removeClass("visible");

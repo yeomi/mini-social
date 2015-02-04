@@ -43,7 +43,7 @@
                             <iframe width="420" height="251" src="//www.youtube.com/embed/{{ comment.video.video }}" frameborder="0" allowfullscreen></iframe>
                         {% elseif comment.images[0] is defined %}
                             {% for image in comment.images %}
-                                <img style="max-width:175px; height: auto;" src="{{ web_image(asset('uploads/img/comment/' ~ image.id ~ '.' ~ image.value)).fixOrientation().cropResize(175,220) }}" alt=""/>
+                                <img src="{{ web_image(asset('uploads/img/comment/' ~ image.id ~ '.' ~ image.value)).fixOrientation().cropResize(175,220) }}" alt=""/>
                             {% endfor %}
                         {% endif %}
                     </div>

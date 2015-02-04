@@ -1,36 +1,39 @@
 
 <div class="pop-up-wrapper">
-    <span class="popup-arrow"></span>
-    <aside class="login-popup yeomi-popup">
-        <h3>{% trans %}Get Connected{% endtrans %}</h3>
+    <div class="popup-container">
+        <span class="popup-arrow"></span>
+        <aside class="login-popup yeomi-popup">
+            <div class="close"></div>
+            <h3>{% trans %}Get Connected{% endtrans %}</h3>
 
-        {% if error %}
-            <div class="alert alert-danger">{{ error.message }}</div>
-        {% endif %}
+            {% if error %}
+                <div class="alert alert-danger">{{ error.message }}</div>
+            {% endif %}
 
-        <form id="login-form" action="{{ path('login_check') }}" method="post">
+            <form id="login-form" action="{{ path('login_check') }}" method="post">
 
-            <div class="login-infos">
-                <label class="username" for="username"><input type="text" id="username" placeholder="Email ou pseudo" name="_username" value="{{ last_username }}" /></label>
-                <label class="password"  for="password"><input type="password" placeholder="{% trans %}Password{% endtrans %}" id="password" name="_password" /></label>
+                <div class="login-infos">
+                    <label class="username" for="username"><input type="text" id="username" placeholder="Email ou pseudo" name="_username" value="{{ last_username }}" /></label>
+                    <label class="password"  for="password"><input type="password" placeholder="{% trans %}Password{% endtrans %}" id="password" name="_password" /></label>
+                </div>
+
+                <div class="remember-me">
+                    <input type="checkbox" id="remember_me" name="_remember_me" checked />
+                    <label class="remember_me" for="remember_me">{% trans %}Remember me{% endtrans %}</label>
+                </div>
+
+                <div class="submit-area">
+                    <input class="popup-btn login" type="submit" value="{% trans %}Get Connected{% endtrans %}" />
+                    <a class="link-forgot-password" href="{{ path('yeomi_user_password_reset') }}">{% trans %}Forgot your password ?{% endtrans %}</a>
+                </div>
+
+            </form>
+
+            <div class="login-noaccount">
+                <h3>{% trans %}Not registered yet ?{% endtrans %}</h3>
+                <a class="popup-btn register" href="{{ path("yeomi_user_register") }}">{% trans %}Register{% endtrans %}</a>
             </div>
 
-            <div class="remember-me">
-                <input type="checkbox" id="remember_me" name="_remember_me" checked />
-                <label class="remember_me" for="remember_me">{% trans %}Remember me{% endtrans %}</label>
-            </div>
-
-            <div class="submit-area">
-                <input class="popup-btn login" type="submit" value="{% trans %}Get Connected{% endtrans %}" />
-                <a class="link-forgot-password" href="{{ path('yeomi_user_password_reset') }}">{% trans %}Forgot your password ?{% endtrans %}</a>
-            </div>
-
-        </form>
-
-        <div class="login-noaccount">
-            <h3>{% trans %}Not registered yet ?{% endtrans %}</h3>
-            <a class="popup-btn register" href="{{ path("yeomi_user_register") }}">{% trans %}Register{% endtrans %}</a>
-        </div>
-
-    </aside>
+        </aside>
+    </div>
 </div>
