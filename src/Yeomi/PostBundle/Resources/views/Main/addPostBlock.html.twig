@@ -1,8 +1,9 @@
 
 <div class="pop-up-wrapper">
+    <div class="popup-container">
     <span class="popup-arrow"></span>
     <aside class="add-{{ type.slug }}-popup yeomi-popup">
-
+        <div class="close"></div>
 
         {% if type.slug == "defi" %}
             {% set suggestEntity = "Suggest a challenge" %}
@@ -56,4 +57,5 @@
 
         {{ form_end(form) }}
     </aside>
+    </div>
 </div>

@@ -1,0 +1,70 @@
+
+@media screen and  (max-width: 565px)
+{
+  .pop-up-wrapper
+  {
+    position: absolute;
+    top: -5.5rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 130;
+    background-color: rgba(0, 0, 0, .8);
+  }
+  .popup-container
+  {
+    .popup-arrow
+    {
+      display: none;
+    }
+    aside.yeomi-popup
+    {
+      position: absolute;
+      left: 0 !important;
+      right: 0 !important;
+      top: 9rem;
+      margin: auto;
+      padding: 1rem 3.4rem;
+      max-width: 48rem;
+      width: 90%;
+      z-index: 20;
+    }
+    .close
+    {
+      width: 2rem;
+      height: 2rem;
+      position: absolute;
+      top: 1rem;
+      cursor: pointer;
+      right: 1rem;
+      background-image: url("../img/close-icone.png");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 2rem auto;
+    }
+
+  }
+  .login-popup
+  {
+    .submit-area
+    {
+      text-align: center;
+      clear: both;
+      float: none;
+    }
+    .login-noaccount
+    {
+      padding-top: 2.5rem;
+    }
+  }
+  .add-defi-popup, .add-histoire-popup
+  {
+    .field-attach-file
+    {
+      input[type="file"]
+      {
+        max-width: 15rem;
+      }
+    }
+  }
+}
