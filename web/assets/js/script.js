@@ -19,6 +19,7 @@ $(function() {
     var targetClass = $(this).data("popup") + "-popup";
     var target = $("." + targetClass);
     var popupWrapper = target.parent().parent();
+    var responsiveWrapper = target.parent();
 
     if(popupWrapper.hasClass("visible")) {
       popupWrapper.removeClass("visible");
@@ -28,6 +29,8 @@ $(function() {
       popupWrapper.addClass("visible");
     }
     setPopupXY(target, e.pageX, e.pageY - $(window).scrollTop());
+
+    setPopupXY(responsiveWrapper, e.pageX, e.pageY + 25);
 
     var arrow = target.parent().find(".popup-arrow");
     setArrowXY(arrow, e.pageX, e.pageY - $(window).scrollTop());

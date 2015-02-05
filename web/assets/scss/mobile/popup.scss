@@ -1,5 +1,5 @@
 
-@media screen and  (max-width: 565px)
+@media screen and  (max-width: 820px)
 {
   .pop-up-wrapper
   {
@@ -13,20 +13,22 @@
   }
   .popup-container
   {
+    position: absolute;
+    left: 0 !important;
+    right: 0 !important;
+    margin: auto;
+    width: 90%;
+    max-width: 48rem;
     .popup-arrow
     {
       display: none;
     }
     aside.yeomi-popup
     {
-      position: absolute;
-      left: 0 !important;
-      right: 0 !important;
+      position: static;
       top: 9rem;
-      margin: auto;
       padding: 1rem 3.4rem;
-      max-width: 48rem;
-      width: 90%;
+      width: 100%;
       z-index: 20;
     }
     .close
