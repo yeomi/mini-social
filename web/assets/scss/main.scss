@@ -15,6 +15,10 @@ body
   &.menu-open
   {
     left: 24.5rem;
+    .wrapper-width.site-header
+    {
+      left: 24.5rem;
+    }
   }
 }
 a

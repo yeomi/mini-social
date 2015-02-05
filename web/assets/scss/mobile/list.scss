@@ -15,7 +15,7 @@
       border-left: 1px solid #d7d7d7;
     }
   }
-  .post.list-view
+  .post.list-view, .article.list-view
   {
     padding: 1rem 2rem;
     .details
@@ -41,7 +41,7 @@
       margin: 2rem auto;
     }
   }
-  .container.container-lists .column-container .post.list-view
+  .container.container-lists .column-container .post.list-view, .container.container-lists .column-container .article.list-view
   {
     display: block;
     float: none;
@@ -90,7 +90,7 @@
 @media screen and  (max-width: 565px)
 {
 
-  .post.list-view
+  .post.list-view, .article.list-view
   {
    .right
    {
@@ -98,7 +98,7 @@
    }
     .content
     {
-      height: 10rem;
+      height: 10.5rem;
     }
 
   }
