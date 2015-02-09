@@ -12,7 +12,7 @@
                         {{ form_widget(form.content, {'attr': {'placeholder' : "Écrivez un message à cet utilisateur"}}) }}
                     </div>
                     <div class="submit-area">
-                        {{ form_widget(form.send, {'attr' : {'class': 'btn-light submit'}}) }}
+                        {{ form_widget(form.send, {'attr' : {'class': 'btn-light submit'}, 'label' : 'Envoyer'}) }}
                     </div>
                 {{ form_end(form) }}
             </div>

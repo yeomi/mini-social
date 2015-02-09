@@ -1,4 +1,16 @@
 
+@media screen and  (max-width: 1099px)
+{
+  #social-block
+  {
+    iframe
+    {
+      height: 204px !important;
+      width: 200px !important;
+    }
+  }
+}
+
 @media screen and  (max-width: 969px)
 {
   html

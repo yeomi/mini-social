@@ -10,6 +10,7 @@ namespace Yeomi\PostBundle\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Yeomi\PostBundle\Entity\Category;
@@ -65,9 +66,24 @@ class MainController extends Controller
 
     }
 
-    public function listAction($type, $limit = 3, $offset = 0)
+    public function listAction(Request $request, $type, $limit = 3, $offset = 0)
     {
         $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug($type, $limit, $offset);
+
+        if($request->isXmlHttpRequest()) {
+
+            if(count($posts) - $limit - $offset > 0) {
+                $keepGoing = true;
+            } else {
+                $keepGoing = false;
+            }
+
+            $jsonResponse = array($this->renderView("YeomiPostBundle:Main:list.html.twig", array(
+                "posts" => $posts,
+            )), $keepGoing);
+
+            return new JsonResponse($jsonResponse);
+        }
 
         return $this->render("YeomiPostBundle:Main:list.html.twig", array(
             "posts" => $posts,
@@ -86,7 +102,7 @@ class MainController extends Controller
     }
 
 
-    public function listPopularAction($limit = 3, $offset = 0)
+    public function listPopularAction(Request $request, $limit = 3, $offset = 0)
     {
         $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findPopularPost($limit, $offset);
 
@@ -96,14 +112,44 @@ class MainController extends Controller
             $cleanArrayPosts []= $post[0];
         }
 
+        if($request->isXmlHttpRequest()) {
+
+            if(count($posts) - $limit - $offset > 0) {
+                $keepGoing = true;
+            } else {
+                $keepGoing = false;
+            }
+
+            $jsonResponse = array($this->renderView("YeomiPostBundle:Main:list.html.twig", array(
+                "posts" => $cleanArrayPosts,
+            )), $keepGoing);
+
+            return new JsonResponse($jsonResponse);
+        }
+
         return $this->render("YeomiPostBundle:Main:list.html.twig", array(
             "posts" => $cleanArrayPosts,
         ));
     }
 
-    public function listMostRecentAction($limit = 3, $offset = 0)
+    public function listMostRecentAction(Request $request, $limit = 3, $offset = 0)
     {
         $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findMostRecents($limit, $offset);
+
+        if($request->isXmlHttpRequest()) {
+
+            if(count($posts) - $limit - $offset > 0) {
+                $keepGoing = true;
+            } else {
+                $keepGoing = false;
+            }
+
+            $jsonResponse = array($this->renderView("YeomiPostBundle:Main:list.html.twig", array(
+                "posts" => $posts,
+            )), $keepGoing);
+
+            return new JsonResponse($jsonResponse);
+        }
 
         return $this->render("YeomiPostBundle:Main:list.html.twig", array(
             "posts" => $posts,
