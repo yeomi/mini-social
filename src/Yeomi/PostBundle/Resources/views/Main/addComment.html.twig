@@ -30,12 +30,14 @@
 
         <div class="field-attach-file add-video-field">
             {{ form_errors(form.video) }}
-            <p>{{ form_widget(form.video.video, {'attr': {'placeholder' : "Copier l'url d'une vidéo Youtube"}}) }}</p>        </div>
+            <p>{{ form_widget(form.video.video, {'attr': {'placeholder' : "Copier l'url d'une vidéo Youtube"}}) }}</p>
+        </div>
+
+        <div class="submit-area">
+            {{ form_widget(form.save, {'attr': {'class': 'btn-dark submit '}, 'label': 'Publier !'}) }}
+        </div>
     </div>
 
 
-    <div class="submit-area">
-        {{ form_widget(form.save, {'attr': {'class': 'btn-dark submit '}, 'label': 'Publier !'}) }}
-    </div>
     {{ form_end(form) }}
 </div>

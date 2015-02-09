@@ -232,16 +232,18 @@
       .comment-attached-files
       {
         margin-top: 1rem;
-        float: left;
+        position: relative;
+        width: 100%;
+        min-height: 3rem;
       }
       .field-attach-file
       {
       }
       .submit-area
       {
-        margin-top: 1rem;
-        float: right;
-
+        position: absolute;
+        right: 0;
+        top: 0;
       }
     }
     .list-comment-block

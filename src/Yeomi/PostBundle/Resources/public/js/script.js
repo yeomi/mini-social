@@ -1,7 +1,5 @@
 $(function() {
 
-  var quantity = 3;
-
   $(".loader-list").click(function() {
 
     var container = $(this).closest(".column-container");
@@ -15,7 +13,12 @@ $(function() {
       type: "GET",
       context: document.body,
       success: function(data){
-        $(wrapper).html(data);
+        $(wrapper).html(data[0]);
+        if(!data[1]) {
+          noMorePost(container);
+        } else {
+          container.find(".more-posts").show();
+        }
       }
     });
 
@@ -43,11 +46,18 @@ $(function() {
       type: "GET",
       context: document.body,
       success: function(data){
-        $(wrapper).append(data);
+        $(wrapper).append(data[0]);
+        if(!data[1]) {
+          noMorePost(container);
+        }
       }
     });
 
     return false;
   });
 
+  function noMorePost(container)
+  {
+    container.find(".more-posts").fadeOut();
+  }
 });

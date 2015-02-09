@@ -10,7 +10,8 @@ namespace Yeomi\PostBundle\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class TypeController extends Controller{
 
@@ -23,9 +24,24 @@ class TypeController extends Controller{
         ));
     }
 
-    public function listTypeAction($type, $limit = 3, $offset = 0)
+    public function listTypeAction(Request $request, $type, $limit = 3, $offset = 0)
     {
         $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug($type, $limit, $offset);
+
+        if($request->isXmlHttpRequest()) {
+
+            if(count($posts) - $limit - $offset > 0) {
+                $keepGoing = true;
+            } else {
+                $keepGoing = false;
+            }
+
+            $jsonResponse = array($this->renderView("YeomiPostBundle:Main:list.html.twig", array(
+                "posts" => $posts,
+            )), $keepGoing);
+
+            return new JsonResponse($jsonResponse);
+        }
 
         return $this->render("YeomiPostBundle:Main:list.html.twig", array(
             "posts" => $posts,
