@@ -1,0 +1,23 @@
+{% extends("YeomiAdminBundle::layout.html.twig") %}
+
+{% block content %}
+    <h3 class="content-title">Modification d'un TPC</h3>
+
+    {{ form_errors(form) }}
+    {{ form_start(form) }}
+
+    <div class="form-group">
+        {{ form_widget(form.content, {"attr" : {"class" : "form-control"}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_widget(form.categories) }}
+    </div>
+
+    <div class="hide">
+        {{ form_widget(form.images) }}
+        {{ form_widget(form.video) }}
+    </div>
+    {{ form_widget(form.save, {"attr" : {"class": "btn btn-default"}, "label": "Modifier"}) }}
+    {{ form_end(form) }}
+
+{% endblock %}

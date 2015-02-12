@@ -26,7 +26,9 @@
                 <td>{% if comment.user.username is defined %}{{ comment.user.username }}{% else %}Anonyme{% endif %}</td>
                 <td>{{ comment.created|date("d/m/Y à H:i") }}</td>
                 <td>
-
+                    <a href="{{ path("yeomi_post_edit_comment", {"id": comment.id}) }}">
+                        Modifier
+                    </a>
                     <a class="need-confirmation" href="{{ path("yeomi_admin_delete_entity", {"type": "comment", "id": comment.id}) }}">
                         Supprimer
                     </a>

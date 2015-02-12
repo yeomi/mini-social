@@ -287,11 +287,31 @@ class MainController extends Controller
             $manager = $this->getDoctrine()->getManager();
             $manager->flush();
 
-            return $this->redirect($this->generateUrl("yeomi_post_index"));
+            return $this->redirect($this->generateUrl("yeomi_admin_list_post"));
         }
 
 
-        return $this->render("YeomiPostBundle:Main:addPost.html.twig", array(
+        return $this->render("YeomiPostBundle:Main:editPost.html.twig", array(
+            "form" => $form->createView(),
+        ));
+    }
+
+    public function editCommentAction(Request $request, $id)
+    {
+        $comment = $this->getDoctrine()->getRepository("YeomiPostBundle:Comment")->find($id);
+
+        $form = $this->createForm(new CommentType(), $comment);
+
+        if($form->handleRequest($request)->isValid()) {
+
+            $manager = $this->getDoctrine()->getManager();
+            $manager->flush();
+
+            return $this->redirect($this->generateUrl("yeomi_admin_list_comment"));
+        }
+
+
+        return $this->render("YeomiPostBundle:Main:editComment.html.twig", array(
             "form" => $form->createView(),
         ));
     }

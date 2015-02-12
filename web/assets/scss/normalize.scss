@@ -1,7 +1,6 @@
 *, *:before, *:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
   -webkit-text-size-adjust: none;
-  -webkit-appearance: none;
 }
 html, body, header, section, footer, aside, article, h1, h2, h3, h4, h5, h6,
 div, p, a, span, ul, ol, li, table, td, tr, th, thead, tbody, iframe
@@ -21,4 +20,8 @@ a
 input, textarea, select
 {
   font-family: inherit;
+}
+input[type="submit"]
+{
+  -webkit-appearance: none;
 }

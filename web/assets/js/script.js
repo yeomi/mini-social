@@ -1,15 +1,32 @@
 $(function() {
 
-  $("body").mouseup(function (e)
-  {
-    var container = $(".pop-up-wrapper");
 
-    if (!container.is(e.target) // if the target of the click isn't the container...
-      && container.has(e.target).length === 0) // ... nor a descendant of the container
+  if(isMobile.tablet || isMobile.phone) {
+
+    $("body").on('touchend', function (e)
     {
-      container.removeClass("visible");
-    }
-  });
+      var container = $(".pop-up-wrapper");
+
+      if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+      {
+        container.removeClass("visible");
+      }
+    });
+  } else {
+    $("body").mouseup(function (e)
+    {
+      var container = $(".pop-up-wrapper");
+
+      if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+      {
+        container.removeClass("visible");
+      }
+    });
+
+  }
+
 
   $(".popup-container .close").click(function() {
     $(this).closest(".pop-up-wrapper").removeClass("visible");

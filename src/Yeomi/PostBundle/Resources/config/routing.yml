@@ -7,7 +7,7 @@ yeomi_post_add_post:
     defaults: { _controller: YeomiPostBundle:Main:addPost }
 
 yeomi_post_edit_post:
-    path:     /edit/post/{id}
+    path:     admin/edit/post/{id}
     defaults: { _controller: YeomiPostBundle:Main:edit }
 
 yeomi_post_delete_post:
@@ -17,6 +17,10 @@ yeomi_post_delete_post:
 yeomi_post_add_comment:
     path:     /add/comment/{postId}
     defaults: { _controller: YeomiPostBundle:Main:addComment }
+
+yeomi_post_edit_comment:
+    path:     admin/edit/comment/{id}
+    defaults: { _controller: YeomiPostBundle:Main:editComment }
 
 yeomi_post_view:
     path:     /all/post

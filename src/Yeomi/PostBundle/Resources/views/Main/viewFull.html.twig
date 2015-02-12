@@ -78,7 +78,7 @@
                     <div id="post-slideshow" class="yeo-slideshow">
                     {% for image in post.images %}
 
-                        <div class="slide"><img src="{{ web_image(asset('uploads/img/post/' ~ image.id ~ '.' ~ image.value)).fixOrientation().zoomCrop(340, 210) }}" alt=""/></div>
+                        <div class="slide"><img src="{{ web_image(asset('uploads/img/post/' ~ image.id ~ '.' ~ image.value)).fixOrientation().zoomCrop(210, 210) }}" alt=""/></div>
                     {% endfor %}
                     </div>
                 {% endif %}
@@ -100,7 +100,7 @@
 
                 <div class="comment-intro">
                     <p>
-                    Toi aussi, <a href="{{ path("yeomi_user_profile", {"username":app.user.username}) }}" class="username">{{ app.user.username }}</a>,
+                    <span class="hide-mobile">Toi aussi, </span><a href="{{ path("yeomi_user_profile", {"username":app.user.username}) }}" class="username">{{ app.user.username }}</a>,
                     {% if post.type.slug == "defi" %}
                         participe au défi !
                     {% else %}

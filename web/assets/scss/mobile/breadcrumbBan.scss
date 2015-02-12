@@ -5,6 +5,34 @@
   .breadcrumb-ban
   {
     margin-top: .6rem;
+    .breadcrumb.left
+    {
+      margin-left: .5rem;
+    }
+    .right
+    {
+      margin-right: .5rem;
+    }
+  }
+
+}
+
+
+@media screen and  (max-width: 565px)
+{
+
+  .breadcrumb-ban
+  {
+    .breadcrumb.left
+    {
+      display: none;
+    }
+    .right
+    {
+      float: none;
+      text-align: center;
+      li { display: inline-block;}
+    }
   }
 
 }
