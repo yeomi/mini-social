@@ -1012,12 +1012,14 @@ footer#site-footer {
   position: fixed;
   top: 0;
   right: 0;
-  padding: 1.5rem;
+  font-size: 0;
   z-index: 15; }
   #status-message ul, .additional-message ul {
     list-style-type: none; }
   #status-message div, .additional-message div {
+    font-size: 1.6rem;
     cursor: pointer;
+    margin: 1.5rem;
     position: relative;
     margin-bottom: 1rem;
     background-color: #fff;
