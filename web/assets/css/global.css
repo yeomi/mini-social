@@ -1395,6 +1395,15 @@ nav.category-nav {
   vertical-align: middle;
   margin: 0; }
 
+.body-page-404 {
+  padding: 0; }
+  .body-page-404 .page-404 a {
+    display: block;
+    margin-top: 1rem;
+    color: #175da3;
+    font-weight: bold;
+    text-decoration: underline; }
+
 .page-profile {
   max-width: 120rem;
   margin: auto; }
@@ -1614,6 +1623,9 @@ nav.category-nav {
     .page-index #home-ban .text {
       display: none; }
   .page-index #articles-block {
+    display: none; }
+
+  body.authenticated-user #home-ban {
     display: none; } }
 @media screen and (min-width: 820px) and (max-width: 969px) {
   .container.container-lists .column-container {

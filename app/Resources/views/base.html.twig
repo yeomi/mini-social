@@ -13,7 +13,7 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
     </head>
-    <body>
+    <body class="{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}authenticated-user{% endif %}">
         {% block jsPlugin %}{% endblock %}
 
         <div id="status-message">
