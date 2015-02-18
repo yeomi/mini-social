@@ -1,5 +1,8 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
+{% block metaTitle %}Créer un compte sur Tpaschiche.com{% endblock %}
+{% block metaDescription %}Devenez membre et participez pleinement des fonctionnalités du site pour partager vos défis et histoires.{% endblock %}
+
 {% block statusMessage %}
     {{ parent() }}
     {% if form_errors(form) %}<div class="alert">{{ form_errors(form) }}</div>{% endif %}

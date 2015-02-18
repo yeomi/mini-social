@@ -1,7 +1,10 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
+{% block metaTitle %}TPC - {{ truncatePost(post.content, 30) }}{% endblock %}
+{% block metaDescription %}{{ post.type.name~" - "~post.categories[0].name }} : {{ truncatePost(post.content, 70) }}{% endblock %}
 
 {% block jsPlugin %}
+    {{ parent() }}
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];

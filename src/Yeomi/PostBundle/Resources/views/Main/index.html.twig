@@ -1,7 +1,10 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
+{% block metaTitle %}Tpaschiche : Partagez vos défis et histoires en toute liberté...{% endblock %}
+{% block metaDescription %}Propose un défi et partage tes histoires drôles (ou pas) avec les autres...{% endblock %}
 
 {% block jsPlugin %}
+    {{ parent() }}
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];

@@ -1,3 +1,7 @@
+yeomi_post_robots:
+    path:     /robots.txt
+    defaults: { _controller: YeomiPostBundle:Main:robots }
+
 yeomi_post_index:
     path:     /
     defaults: { _controller: YeomiPostBundle:Main:index }

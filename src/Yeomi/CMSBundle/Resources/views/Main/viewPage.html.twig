@@ -1,5 +1,8 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
+{% block metaTitle %}{{ page.title }} - Actu Tpaschiche{% endblock %}
+{% block metaDescription %}{{ truncatePost(page.body, 120)|striptags }}{% endblock %}
+
 {% block body %}
     <section class="cms-page container">
         <h3>{{ page.title }}</h3>

@@ -1,5 +1,8 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
+{% block metaTitle %}{{ article.title }} - Actu Tpaschiche{% endblock %}
+{% block metaDescription %}{{ truncatePost(article.body, 120)|striptags }}{% endblock %}
+
 {% block body %}
 
 

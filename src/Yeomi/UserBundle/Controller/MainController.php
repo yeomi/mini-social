@@ -66,9 +66,9 @@ class MainController extends Controller
 
     public function sendEmailValidation(User $user)
     {
-        $body = "Bonjour " . $user->getUsername() . ",\n"
+        $body = "Hello " . $user->getUsername() . " !,\n"
             . "Nous avons bien reçu ta demande d'inscription,\n"
-            . "Pour la valider et commencer à participer, cliques sur ce lien pour valider ton adresse e-mail : \n"
+            . "Pour la valider et commencer à participer, cliques sur ce lien pour confirmer ton adresse e-mail : \n"
             . $this->generateUrl(
                 "yeomi_user_validate",
                 array(
@@ -76,10 +76,14 @@ class MainController extends Controller
                     "id" => $user->getId(),
                 ),
                 UrlGeneratorInterface::ABSOLUTE_URL
-            );
+            )
+            . "\n\nSinon ton compte restera en attente pour l’éternité... ça serait dommage !\n"
+            . "\nTu pourras poster de nouveaux commentaires, participer à tous les votes, envoyer un message privé à un membre...\n"
+            . "À tout de suite sur <a href='http://www.tpaschiche.com/'>Tpaschiche.com</a>"
+        ;
 
         $message = \Swift_Message::newInstance()
-            ->setSubject("Inscription à Tpaschiche ! ")
+            ->setSubject("Tpaschiche : plus qu'une étape pour valider ton compte !")
             ->setFrom("contact.yeomi@gmail.com")
             //->setTo($user->getEmail())
             ->setTo("gabriel@henao.fr")
@@ -91,9 +95,9 @@ class MainController extends Controller
 
     public function sendResetPasswordValidation(User $user)
     {
-        $body = "Bonjour " . $user->getUsername() . "\n"
-            . "Vous avez fait une demande pour regenerer un mot de passe,\n"
-            . "Pour ce faire cliquez ici : \n"
+        $body = "Hello " . $user->getUsername() . " !\n"
+            . "Tu as fait une demande pour régénérer ton mot de passe,\n"
+            . "Pour cela, il te suffit de cliquer ici : \n"
             . $this->generateUrl(
                 "yeomi_reset_password_validate",
                 array(
@@ -101,10 +105,12 @@ class MainController extends Controller
                     "id" => $user->getId(),
                 ),
                 UrlGeneratorInterface::ABSOLUTE_URL
-            );
+            )
+            . "\n\nTes identifiants de connexion vont être envoyés dans un prochain mail...\n"
+            . "À tout de suite...";
 
         $message = \Swift_Message::newInstance()
-            ->setSubject("Hello")
+            ->setSubject("Tpaschiche : tu as demandé un nouveau mot de passe ?")
             ->setFrom("contact.yeomi@gmail.com")
             //->setTo($user->getEmail())
             ->setTo("gabriel@henao.fr")
@@ -234,12 +240,15 @@ class MainController extends Controller
                 $user->setPasswordOutdated(false);
                 $manager->flush();
 
-                $body = "Bonjour " . $user->getUsername() . "\n"
-                    . "Nouveau mot de passe :\n"
-                    . $newPassword;
+                $body = "Bien joué !\n"
+                    . "Ci-dessous tes identifiants de connexion... :\n\n"
+                    . " - Pseudo : " . $user->getUsername() . "\n"
+                    . " - Nouveau mot de passe : " . $newPassword . "\n\n"
+                    . "Nous te conseillons de personnaliser ton mot de passe à partir de ton profil...\n\n"
+                    . "A tout de suite sur Tpaschiche.com";
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject("Hello")
+                    ->setSubject("Tpaschiche : tes identifiants de connexion")
                     ->setFrom("contact.yeomi@gmail.com")
                     //->setTo($user->getEmail())
                     ->setTo("gabriel@henao.fr")

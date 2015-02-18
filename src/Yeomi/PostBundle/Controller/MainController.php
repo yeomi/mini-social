@@ -56,6 +56,15 @@ class MainController extends Controller
         ));
     }
 
+    public function robotsAction()
+    {
+
+        $response = new Response();
+        $response->headers->set('Content-Type', 'text/plain');
+        $response->setContent($this->render("YeomiPostBundle:Main:robots.txt.twig"));
+        return $response;
+    }
+
     public function menuAction()
     {
         $categories = $this->getDoctrine()->getRepository("YeomiPostBundle:Category")->findAll();
