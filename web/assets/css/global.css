@@ -87,6 +87,9 @@ input, textarea, select {
 input[type="submit"] {
   -webkit-appearance: none; }
 
+img {
+  border-style: none; }
+
 html {
   font-size: 10px; }
 
