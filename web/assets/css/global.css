@@ -1660,7 +1660,7 @@ nav.category-nav {
     min-width: 320px;
     display: block;
     float: none;
-    margin: 2rem auto; }
+    margin: 1rem auto; }
 
   .container.container-lists .column-container .post.list-view, .container.container-lists .column-container .article.list-view {
     display: block;
@@ -1974,5 +1974,10 @@ nav.category-nav {
       .cms-page.container .image img {
         width: 100%;
         height: auto; } }
+@media screen and (max-width: 969px) {
+  .page-category header.category-header {
+    height: auto; }
+    .page-category header.category-header p {
+      font-size: 1.3rem; } }
 
 /*# sourceMappingURL=global.css.map */
