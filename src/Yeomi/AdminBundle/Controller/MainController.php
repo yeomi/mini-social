@@ -88,7 +88,7 @@ class MainController extends Controller
 
         $manager->flush();
 
-        return $this->redirect($this->generateUrl("yeomi_admin_list_users"));
+        return $this->redirect($this->generateUrl("yeomi_admin_list_user"));
     }
 
 }

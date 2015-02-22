@@ -66,7 +66,7 @@ class CategoryController extends Controller{
             $manager->persist($category);
             $manager->flush();
 
-            return $this->redirect($this->generateUrl("yeomi_admin_list_categories"));
+            return $this->redirect($this->generateUrl("yeomi_admin_list_category"));
         }
 
 
