@@ -67,7 +67,7 @@ class MainController extends Controller
 
     public function menuAction()
     {
-        $categories = $this->getDoctrine()->getRepository("YeomiPostBundle:Category")->findAll();
+        $categories = $this->getDoctrine()->getRepository("YeomiPostBundle:Category")->findBy(array(), array("name"=>"ASC"));
 
         return $this->render("YeomiPostBundle:Elements:menu.html.twig", array(
             "categories" => $categories,

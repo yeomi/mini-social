@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Erreur : {{ status_text }}</title>
+    <title>{% block metaTitle %}Tpaschiche{% endblock %}</title>
+    <meta name="description" content="{% block metaDescription %}Site communautaire Tpaschiche !{% endblock %}">
     {% block stylesheets %}
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">

@@ -1,7 +1,7 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
-{% block metaTitle %}TPC - {{ truncatePost(post.content, 30) }}{% endblock %}
-{% block metaDescription %}{{ post.type.name~" - "~post.categories[0].name }} : {{ truncatePost(post.content, 70) }}{% endblock %}
+{% block metaTitle %}TPC - {{ truncatePost(post.content, 55) }}{% endblock %}
+{% block metaDescription %}{{ post.type.name~" - "~post.categories[0].name }} : {{ truncatePost(post.content, 110) }}{% endblock %}
 
 {% block jsPlugin %}
     {{ parent() }}

@@ -2,6 +2,7 @@ nav.category-nav
 {
   background-color: $thirdFontColor;
   position: fixed;
+  overflow: auto;
   left: -24.5rem;
   top: 0;
   height: 100%;
@@ -29,9 +30,9 @@ nav.category-nav
   {
     display: block;
     border-bottom: 1px solid #d7d7d7;
-    line-height: 5rem;
+    line-height: 4rem;
     font-family: $semiBold;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     padding: 0 2rem
 
   }
