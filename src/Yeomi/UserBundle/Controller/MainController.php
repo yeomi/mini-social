@@ -149,7 +149,7 @@ class MainController extends Controller
             $manager->flush();
 
             // User is not confirmed until he does not confirm mail
-            $this->sendEmailValidation($user);
+            //$this->sendEmailValidation($user);
 
             return $this->redirect($this->generateUrl("yeomi_user_register_success"));
 
