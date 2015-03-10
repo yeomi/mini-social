@@ -79,14 +79,14 @@ class MainController extends Controller
             )
             . "\n\nSinon ton compte restera en attente pour l’éternité... ça serait dommage !\n"
             . "\nTu pourras poster de nouveaux commentaires, participer à tous les votes, envoyer un message privé à un membre...\n"
-            . "À tout de suite sur <a href='http://www.tpaschiche.com/'>Tpaschiche.com</a>"
+            . "À tout de suite sur http://www.tpaschiche.com"
         ;
 
         $message = \Swift_Message::newInstance()
             ->setSubject("Tpaschiche : plus qu'une étape pour valider ton compte !")
-            ->setFrom("contact.yeomi@gmail.com")
-            //->setTo($user->getEmail())
-            ->setTo("gabriel@henao.fr")
+            ->setFrom("contact@tpaschiche.com")
+            ->setTo($user->getEmail())
+            //->setTo("gabriel@henao.fr")
             ->setBody($body);
         ;
 
@@ -111,9 +111,9 @@ class MainController extends Controller
 
         $message = \Swift_Message::newInstance()
             ->setSubject("Tpaschiche : tu as demandé un nouveau mot de passe ?")
-            ->setFrom("contact.yeomi@gmail.com")
-            //->setTo($user->getEmail())
-            ->setTo("gabriel@henao.fr")
+            ->setFrom("contact@tpaschiche.com")
+            ->setTo($user->getEmail())
+            //->setTo("gabriel@henao.fr")
             ->setBody($body);
         ;
 
@@ -149,7 +149,7 @@ class MainController extends Controller
             $manager->flush();
 
             // User is not confirmed until he does not confirm mail
-            //$this->sendEmailValidation($user);
+            $this->sendEmailValidation($user);
 
             return $this->redirect($this->generateUrl("yeomi_user_register_success"));
 
@@ -249,9 +249,9 @@ class MainController extends Controller
 
                 $message = \Swift_Message::newInstance()
                     ->setSubject("Tpaschiche : tes identifiants de connexion")
-                    ->setFrom("contact.yeomi@gmail.com")
-                    //->setTo($user->getEmail())
-                    ->setTo("gabriel@henao.fr")
+                    ->setFrom("contact@tpaschiche.com")
+                    ->setTo($user->getEmail())
+                    //->setTo("gabriel@henao.fr")
                     ->setBody($body);;
 
                 $this->get("mailer")->send($message);
