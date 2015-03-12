@@ -164,11 +164,12 @@ $(function() {
 
 
   $(".reset-image-upload").on("click", function () {
-    console.log("here");
     var input = $(this).parent().find("input");
     var id = input.attr("id");
     var name = input.attr("name");
     input.replaceWith('<input type="file" name="' + name + '" id="' + id + '">');
     return false;
   });
+
+
 });

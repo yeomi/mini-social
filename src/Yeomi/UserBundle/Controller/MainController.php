@@ -128,9 +128,9 @@ class MainController extends Controller
     public function registerAction(Request $request)
     {
         if ($this->get("security.context")->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-
             return $this->redirect($this->generateUrl("yeomi_post_index"));
         }
+
         $user = new User();
 
         $form = $this->createForm(new UserType(), $user);
@@ -161,6 +161,9 @@ class MainController extends Controller
     }
     public function registrationCompleteAction()
     {
+        if ($this->get("security.context")->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            return $this->redirect($this->generateUrl("yeomi_post_index"));
+        }
         return $this->render("YeomiUserBundle:Main:registrationComplete.html.twig");
     }
 
@@ -192,6 +195,10 @@ class MainController extends Controller
 
     public function resetPasswordAction(Request $request)
     {
+        if ($this->get("security.context")->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            return $this->redirect($this->generateUrl("yeomi_post_index"));
+        }
+
         $isDone = false;
         if ($request->isMethod("POST")) {
 
@@ -223,6 +230,10 @@ class MainController extends Controller
 
     public function resetPasswordValidateAction($id, $token)
     {
+        if ($this->get("security.context")->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            return $this->redirect($this->generateUrl("yeomi_post_index"));
+        }
+
         $manager = $this->getDoctrine()->getManager();
         $user = $manager->getRepository("YeomiUserBundle:User")->find($id);
 

@@ -23,10 +23,16 @@ class YeomiTruncate extends \Twig_Extension
 
     public function truncate($var, $size)
     {
+        $var = $this->clean($var);
         if(strlen($var) > $size) {
             return substr($var, 0, $size) . " ...";
         }
+
         return $var;
     }
 
+    public function clean($var)
+    {
+        return str_replace("&nbsp;", "", $var);
+    }
 } 

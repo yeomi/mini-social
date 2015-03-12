@@ -81,7 +81,7 @@ class User implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
-     * @Assert\Regex("/^[a-z0-9_-]+$/", message="Votre nom d'utilisateur ne peut comporter que des minuscules et des chiffres")
+     * @Assert\Regex("/^[a-zA-Z0-9_-]+$/", message="Votre nom d'utilisateur ne peut comporter que des minuscules et des chiffres")
      * @Assert\Length(
      *      min = "5",
      *      max = "30",

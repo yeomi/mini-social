@@ -2,19 +2,23 @@
 
 
 
-{% block metaTitle %}
     {% if type.slug == "defi"%}
-        Proposez un défi et participez aux challenges sur Tpaschiche
+        {% block metaTitle %}Proposez un défi et participez aux challenges sur Tpaschiche{% endblock %}
+        {% block metaDescription %}Bienvenue dans la catégorie « Défi ». Ici, on donne libre cours à son imagination, pour lancer ou relever des challenges en tous genres, sans aucune limites... a part les quelques règles de notre sacro-sainte Charte TPC bien sûr !{% endblock %}
     {% else %}
-        Partagez vos histoires drôles (ou pas) avec les autres sur Tpaschiche
+        {% block metaTitle %}Partagez vos histoires drôles (ou pas) avec les autres sur Tpaschiche{% endblock %}
+        {% block metaDescription %}Histoires, blagues, récits et autres blabla de tout poil, notre catégorie « Histoire » est là pour partager en quelques clics et quelques coups de clavier ! Laissez-vous tenter en racontant toutes vos histoires...{% endblock %}
     {% endif %}
-{% endblock %}
-{% block metaDescription %}{% endblock %}
 
 {% block body %}
     <section class="page-category page-type">
         <header class="category-header">
             <h1>{{ type.name }}</h1>
+            {% if type.slug == "defi"%}
+                <p>Bienvenue dans la catégorie « Défi ». Ici, on donne libre cours à son imagination, pour lancer ou relever des challenges en tous genres, sans aucune limites... a part les quelques règles de notre sacro-sainte Charte TPC bien sûr !</p>
+            {% else %}
+                <p>Histoires, blagues, récits et autres blabla de tout poil, notre catégorie « Histoire » est là pour partager en quelques clics et quelques coups de clavier ! Laissez-vous tenter en racontant toutes vos histoires... ou simplement en lisant celles des autres, bande de curieux !</p>
+            {% endif %}
         </header>
 
         {% block homeViews %}

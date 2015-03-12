@@ -489,8 +489,8 @@ footer#site-footer {
     text-align: center; }
   .page-index #home-ban .top {
     font-size: 2.2rem;
-    text-transform: uppercase;
-    margin: 3rem 0 2rem 0; }
+    font-style: italic;
+    margin: 6rem 0 2rem 0; }
   .page-index #home-ban .middle {
     font-size: 4rem;
     margin-bottom: 0.5rem; }

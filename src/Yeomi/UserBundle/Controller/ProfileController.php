@@ -150,14 +150,13 @@ class ProfileController extends Controller
         }
     }
 
-    public function createMessageAction(Request $request, $userId)
+    public function createMessageAction(Request $request, $userId, $isSent = false)
     {
         $manager = $this->getDoctrine()->getManager();
         $user = $this->getDoctrine()->getRepository("YeomiUserBundle:User")->find($userId);
 
         $isUser = $this->isCurrentUser($user);
         $message = new Message();
-        $isSent = false;
         $form = $this->createForm(new MessageType(), $message);
 
         if ($form->handleRequest($request)->isValid()) {
@@ -167,7 +166,7 @@ class ProfileController extends Controller
 
             $manager->persist($message);
             $manager->flush();
-            $isSent = true;
+            return $this->redirect($this->generateUrl("yeomi_user_create_message", array("userId" =>  $userId, "isSent" => true)));
         }
 
         $messages = null;
