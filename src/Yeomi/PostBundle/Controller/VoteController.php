@@ -17,6 +17,9 @@ class VoteController extends Controller
     public function voteAction(Request $request, $entityType, $entityId, $type)
     {
 
+        if(!$request->isXmlHttpRequest()) {
+            return new Response("");
+        }
         $response = new Response();
 
 

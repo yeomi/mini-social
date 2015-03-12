@@ -26,24 +26,6 @@ use Yeomi\PostBundle\Entity\Vote;
 class MainController extends Controller
 {
 
-    public function testAction(Request $request, $limit = 3, $offset = 0)
-    {
-        if ($request->isMethod("POST")) {
-            var_dump($request->request->get("search"));
-            $search = $request->request->get("search");
-            $resultsPost = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->search($search);
-            $resultsUser = $this->getDoctrine()->getRepository("YeomiUserBundle:User")->search($search);
-
-            var_dump($resultsPost);
-            var_dump($resultsUser);
-
-        }
-
-        return $this->render("YeomiPostBundle:Main:test.html.twig", array(
-
-        ));
-    }
-
     public function indexAction()
     {
         $defis = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug("histoire", 2, 0);
@@ -162,15 +144,6 @@ class MainController extends Controller
 
         return $this->render("YeomiPostBundle:Main:list.html.twig", array(
             "posts" => $posts,
-        ));
-    }
-
-    public function viewAction()
-    {
-        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findAll();
-
-        return $this->render("YeomiPostBundle:Main:view.html.twig", array(
-            "posts" => $posts
         ));
     }
 
@@ -323,17 +296,6 @@ class MainController extends Controller
         return $this->render("YeomiPostBundle:Main:editComment.html.twig", array(
             "form" => $form->createView(),
         ));
-    }
-
-    public function deleteAction(Request $request, $id)
-    {
-        $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->find($id);
-
-        $manager = $this->getDoctrine()->getManager();
-        $manager->remove($post);
-        $manager->flush();
-
-        return $this->redirect($this->generateUrl("yeomi_post_view"));
     }
 
     public function searchAction(Request $request)

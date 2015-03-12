@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 /**
  * Post
  *
@@ -510,5 +512,24 @@ class Post
     public function getVideo()
     {
         return $this->video;
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        $content = $this->getContent();
+
+        if(strpos($content, 'viagra') !== false) {
+            $context->buildViolation('Merci de respecter la charte d\'utilisation')
+                ->atPath('content')
+                ->addViolation();
+        }
+        if(strpos($content, '</a>') !== false) {
+            $context->buildViolation('Merci de respecter la charte d\'utilisation')
+                ->atPath('content')
+                ->addViolation();
+        }
     }
 }

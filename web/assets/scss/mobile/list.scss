@@ -58,10 +58,6 @@
       border-right: 1px solid #d7d7d7;
       float: none;
     }
-    .comments
-    {
-      display: none;
-    }
     .actions-btn .readmore
     {
       margin: 0;
@@ -96,6 +92,11 @@
    {
      display: none;
    }
+
+    .comments
+    {
+      display: none;
+    }
     .content
     {
       height: 12rem;

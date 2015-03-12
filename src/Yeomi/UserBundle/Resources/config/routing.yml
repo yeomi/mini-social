@@ -1,6 +1,3 @@
-yeomi_user_test:
-    path:     /tests
-    defaults: { _controller: YeomiUserBundle:Main:test }
 
 yeomi_user_register:
     path:     /register
@@ -12,10 +9,6 @@ yeomi_user_register_success:
 
 yeomi_user_validate:
     path:     /validate/{id}/{token}
-    defaults: { _controller: YeomiUserBundle:Main:validate }
-
-yeomi_user_send_mail_validation:
-    path:     /send/mail
     defaults: { _controller: YeomiUserBundle:Main:validate }
 
 yeomi_reset_password_validate:
@@ -43,10 +36,6 @@ yeomi_user_list_activity:
 yeomi_user_create_message:
     path:     /create/message/{userId}/{isSent}
     defaults: { _controller: YeomiUserBundle:Profile:createMessage, isSent: false }
-
-yeomi_user_list_message:
-    path:     /list/message/{userId}
-    defaults: { _controller: YeomiUserBundle:Profile:listMessage }
 
 yeomi_user_view_parameter:
     path:     /view/parameter
