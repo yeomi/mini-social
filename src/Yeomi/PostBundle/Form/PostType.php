@@ -5,6 +5,7 @@ namespace Yeomi\PostBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Yeomi\PostBundle\Repository\CategoryRepository;
 
 class PostType extends AbstractType
 {
@@ -18,6 +19,10 @@ class PostType extends AbstractType
             ->add('content', 'textarea', array('error_bubbling'=>true))
             ->add("categories", "entity", array(
                 "class" => "YeomiPostBundle:Category",
+                'query_builder' => function(CategoryRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                },
                 "property" => "name",
                 'empty_value' => ' -- Choisissez une catégorie -- ',
                 'error_bubbling'=>true
