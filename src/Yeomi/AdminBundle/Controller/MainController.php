@@ -3,7 +3,11 @@
 namespace Yeomi\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Yeomi\UserBundle\Entity\User;
 
 class MainController extends Controller
 {
@@ -91,4 +95,61 @@ class MainController extends Controller
         return $this->redirect($this->generateUrl("yeomi_admin_list_user"));
     }
 
+    public function activateUsersAction(Request $request)
+    {
+        return new Response("not yet..");
+
+        $manager = $this->getDoctrine()->getManager();
+        $users = $manager->getRepository("YeomiUserBundle:User")->activateMass('03/06/2015');
+        $role = $manager->getRepository("YeomiUserBundle:Role")->findOneBy(array("slug" => "ROLE_USER"));
+
+        if(count($users) == 0) {
+            return $this->render("YeomiAdminBundle:Main:actionDone.html.twig", array(
+                "content" => "<h1>Tous les utilisateurs ont été prevenus !</h1>",
+            ));
+        }
+
+        foreach($users as $user) {
+            $user->setPasswordOutdated(true);
+            $user->removeRoleBySlug("ROLE_UNVALIDATE");
+            $user->addRole($role);
+            $this->sendActivationEmail($user);
+        }
+        $manager->flush();
+
+        return $this->render("YeomiAdminBundle:Main:actionDone.html.twig", array(
+           "content" => "<h1>L'action à bien été effectuée</h1>",
+        ));
+    }
+
+    public function sendActivationEmail(User $user)
+    {
+        $body = "Hello " . $user->getUsername() . " !\n"
+            . "Le site de tpas chiche s'est refait une beauté !,\n"
+            . "Tu as bénéficie d'un compte premium ! : \n"
+            . $this->generateUrl(
+                "yeomi_reset_password_validate",
+                array(
+                    "token" => $this->generateValidationToken($user->getUsername(), $user->getPassword()),
+                    "id" => $user->getId(),
+                ),
+                UrlGeneratorInterface::ABSOLUTE_URL
+            )
+            . "\n\nTes identifiants de connexion vont être envoyés dans un prochain mail...\n"
+            . "À tout de suite...";
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject("Tpaschiche : Nouveau site, nouveaux accès")
+            ->setFrom("contact@tpaschiche.com")
+            ->setTo($user->getEmail())
+            //->setTo("gabriel@henao.fr")
+            ->setBody($body);
+        ;
+
+        $this->get("mailer")->send($message);
+    }
+    public function generateValidationToken($username, $password)
+    {
+        return hash("sha1", $username . $password);
+    }
 }

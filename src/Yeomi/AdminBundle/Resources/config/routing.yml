@@ -33,3 +33,7 @@ yeomi_admin_block_user:
     requirements:
         unblock: \d+
 
+# temporary activate all the users
+yeomi_admin_activate_users:
+    path:     /activate-all-users
+    defaults: { _controller: YeomiAdminBundle:Main:activateUsers }

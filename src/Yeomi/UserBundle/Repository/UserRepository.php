@@ -3,6 +3,7 @@
 namespace Yeomi\UserBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Yeomi\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -87,6 +88,27 @@ class UserRepository extends EntityRepository implements UserProviderInterface
     public function supportsClass($class)
     {
         return $class === 'Yeomi\UserBundle\User';
+    }
+
+    public function activateMass($fromDate = null)
+    {
+        $query = $this->createQueryBuilder("u")
+        ->leftJoin("u.roles", "r")
+        ->having("u.status = 0")
+        ->andWhere("r.slug = :role")
+        ->setParameter(":role", "ROLE_UNVALIDATE");
+
+
+        if(!is_null($fromDate)) {
+            $query->andWhere('u.created <= :date')
+                ->setParameter(':date', \DateTime::createFromFormat('m/d/Y', $fromDate));
+        }
+
+        $query->setMaxResults(3)
+            ->getQuery();
+
+
+        return new Paginator($query, true);
     }
 
 }
