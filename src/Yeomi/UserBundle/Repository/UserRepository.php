@@ -104,7 +104,7 @@ class UserRepository extends EntityRepository implements UserProviderInterface
                 ->setParameter(':date', \DateTime::createFromFormat('m/d/Y', $fromDate));
         }
 
-        $query->setMaxResults(3)
+        $query->setMaxResults(10)
             ->getQuery();
 
 
