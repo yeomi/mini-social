@@ -1498,6 +1498,12 @@ nav.category-nav {
     position: relative; }
     .page-profile .message-block .list-message .message.new {
       background-color: #b9e1ff; }
+    .page-profile .message-block .list-message .message .avatar {
+      width: 5rem;
+      height: 5rem; }
+      .page-profile .message-block .list-message .message .avatar img {
+        max-width: 100%;
+        height: auto; }
   .page-profile .message-block .list-message .sender {
     font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
     font-size: 1.8rem; }

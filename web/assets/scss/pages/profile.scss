@@ -148,6 +148,16 @@
         {
           background-color: #b9e1ff;
         }
+        .avatar
+        {
+          width: 5rem;
+          height: 5rem;
+          img
+          {
+            max-width: 100%;
+            height: auto;
+          }
+        }
       }
       .sender
       {

@@ -167,6 +167,10 @@ class MainController extends Controller
 
     public function addPostAction(Request $request, $type)
     {
+        if($request->getPathInfo() != "/_fragment") {
+            throw new NotFoundHttpException();
+        }
+
         $post = new Post();
         $type = $this->getDoctrine()->getRepository("YeomiPostBundle:Type")->findOneBy(array("slug" => $type));
         $user = $this->getUser();

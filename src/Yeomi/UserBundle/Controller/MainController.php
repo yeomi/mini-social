@@ -169,6 +169,10 @@ class MainController extends Controller
 
     public function validateAction($id, $token)
     {
+        if ($this->get("security.context")->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            return $this->redirect($this->generateUrl("yeomi_post_index"));
+        }
+        
         $typeOfAction = 3;
 
         $manager = $this->getDoctrine()->getManager();
