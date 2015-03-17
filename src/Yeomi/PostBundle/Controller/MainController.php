@@ -167,7 +167,7 @@ class MainController extends Controller
 
     public function addPostAction(Request $request, $type)
     {
-        if($request->getPathInfo() != "/_fragment") {
+        if($request->getPathInfo() != "/_fragment" && $request->getMethod() != 'POST') {
             throw new NotFoundHttpException();
         }
 
