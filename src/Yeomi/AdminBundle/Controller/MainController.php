@@ -97,8 +97,6 @@ class MainController extends Controller
 
     public function activateUsersAction(Request $request)
     {
-        return new Response("not yet..");
-
         $manager = $this->getDoctrine()->getManager();
         $users = $manager->getRepository("YeomiUserBundle:User")->activateMass('03/06/2015');
         $role = $manager->getRepository("YeomiUserBundle:Role")->findOneBy(array("slug" => "ROLE_USER"));
@@ -124,9 +122,9 @@ class MainController extends Controller
 
     public function sendActivationEmail(User $user)
     {
-        $body = "Hello " . $user->getUsername() . " !\n"
-            . "Le site de tpas chiche s'est refait une beauté !,\n"
-            . "Tu as bénéficie d'un compte premium ! : \n"
+        $body = "Bonjour " . $user->getUsername() . " !\n"
+            . "Nous avons le plaisir de vous annoncer la mise en ligne de la nouvelle version du site Tpaschiche.com.\n"
+            . "En 2014 vous étiez membre, si vous désirez continuer à profiter pleinement du site vous devez cliquer sur le lien ci-dessous pour recevoir les nouveaux accès à votre compte : \n"
             . $this->generateUrl(
                 "yeomi_reset_password_validate",
                 array(
@@ -135,11 +133,19 @@ class MainController extends Controller
                 ),
                 UrlGeneratorInterface::ABSOLUTE_URL
             )
-            . "\n\nTes identifiants de connexion vont être envoyés dans un prochain mail...\n"
-            . "À tout de suite...";
+            . "\n"
+            . "\n"
+            . "Petit rappel, Tpaschiche.com c'est quoi ?\n\n"
+            . "Un site pour partager vos défis et histoires en toute liberté...\n\n"
+            . "Dernières histoires postées par la communauté :\n\n"
+            . "\" Je me souviens d'une petite journée à St Tropez, nous étions dans une rue un peu retirée quand un mec commence à dire \"Obama, Obama vient vite...\", alors je me dis quoi le Président des States derrière moi ? Je me retourne et je vois un petit chihuahua courir vers son maître ! \" - 04/03/15 à 9h20 anonyme - Animaux\n\n"
+            . "\" Je vis avec mon lapin dans un studio et je lui donne du foin, mais il sent très très fort et ça pourrait vite faire penser à du camping dans un champ, oui oui croyez moi! La dernière fois que j'ai reçu des amis chez moi, on commençait à prendre l'apéro, quand une pote me demande : \"Tu mets quoi comme parfum? Il sent fort je trouve...\" \" -  14/03/15 à 22h53 marcf - Animaux\n\n"
+            . "\" Ce matin après avoir fait l'amour mon copain me dit qu'avec moi c'est top car j'y rappelle quelqu'un. Je lui demande alors qui, il me dit \"tu ne connais pas c'est une actrice porno\" - 15/03/15 à 14h37 anonyme - Amour\n\n"
+            . "\nLa suite ? A vous de l'écrire !\n\n"
+            . "\nBon divertissement sur Tpaschiche.com";
 
         $message = \Swift_Message::newInstance()
-            ->setSubject("Tpaschiche : Nouveau site, nouveaux accès")
+            ->setSubject("Info sur votre compte membre Tpaschiche.com")
             ->setFrom("contact@tpaschiche.com")
             ->setTo($user->getEmail())
             //->setTo("gabriel@henao.fr")
