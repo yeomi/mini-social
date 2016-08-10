@@ -1,0 +1,25 @@
+yeomi_cms:
+    resource: "@YeomiCMSBundle/Resources/config/routing.yml"
+    prefix:   /
+
+yeomi_admin:
+    resource: "@YeomiAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+yeomi_post:
+    resource: "@YeomiPostBundle/Resources/config/routing.yml"
+    prefix:   /
+
+yeomi_user:
+    resource: "@YeomiUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+   pattern: /login
+   defaults: { _controller: YeomiUserBundle:Main:login }
+
+login_check:
+   pattern: /login_check
+
+logout:
+   pattern: /logout
