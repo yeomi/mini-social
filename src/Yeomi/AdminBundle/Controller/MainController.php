@@ -122,13 +122,13 @@ class MainController extends Controller
 
     public function sendActivationEmail(User $user)
     {
-        $body = "Bonjour " . $user->getUsername() . " !\n"
+        $body = "Bonjour " . $user->getDisplayUsername() . " !\n"
             . "Nous avons le plaisir de vous annoncer la mise en ligne de la nouvelle version du site Tpaschiche.com.\n"
             . "En 2014 vous étiez membre, si vous désirez continuer à profiter pleinement du site vous devez cliquer sur le lien ci-dessous pour recevoir les nouveaux accès à votre compte : \n"
             . $this->generateUrl(
                 "yeomi_reset_password_validate",
                 array(
-                    "token" => $this->generateValidationToken($user->getUsername(), $user->getPassword()),
+                    "token" => $this->generateValidationToken($user->getDisplayUsername(), $user->getPassword()),
                     "id" => $user->getId(),
                 ),
                 UrlGeneratorInterface::ABSOLUTE_URL

@@ -46,7 +46,7 @@
                 <div class="details">
                     <span class="post-date">{{ post.created|date("d/m/y \\à G\\hi") }}</span>
                     {% if  post.user %}
-                        <a href="{{ path("yeomi_user_profile", {"username" : post.user.username}) }}">{{ post.user.username }}</a>
+                        <a href="{{ path("yeomi_user_profile", {"username" : post.user.username}) }}">{{ post.user.displayUsername }}</a>
                     {% else %}
                         <span>anonyme</span>
                     {% endif %}
@@ -103,7 +103,7 @@
 
                 <div class="comment-intro">
                     <p>
-                    <span class="hide-mobile">Toi aussi, </span><a href="{{ path("yeomi_user_profile", {"username":app.user.username}) }}" class="username">{{ app.user.username }}</a>,
+                    <span class="hide-mobile">Toi aussi, </span><a href="{{ path("yeomi_user_profile", {"username":app.user.username}) }}" class="username">{{ app.user.displayUsername }}</a>,
                     {% if post.type.slug == "defi" %}
                         participe au défi !
                     {% else %}

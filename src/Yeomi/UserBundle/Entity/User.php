@@ -93,8 +93,14 @@ class User implements UserInterface, \Serializable
 
     /**
      * @var string
+     * @ORM\Column(name="nick_name", type="string", length=255, nullable=true)
+     */
+    private $nickName;
+
+    /**
+     * @var string
      *
-     * @ORM\Column(name="gender", type="string", length=255)
+     * @ORM\Column(name="gender", type="string", length=255, nullable=true)
      *
      */
     private $gender;
@@ -102,7 +108,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=255, nullable=true)
      *
      */
     private $password;
@@ -747,5 +753,36 @@ class User implements UserInterface, \Serializable
     public function getRessourceOwner()
     {
         return $this->ressourceOwner;
+    }
+
+    /**
+     * Set nickName
+     *
+     * @param string $nickName
+     *
+     * @return User
+     */
+    public function setNickName($nickName)
+    {
+        $this->nickName = $nickName;
+
+        return $this;
+    }
+
+    /**
+     * Get nickName
+     *
+     * @return string
+     */
+    public function getNickName()
+    {
+        return $this->nickName;
+    }
+
+    public function getDisplayUsername() {
+        if (!empty($this->nickName)) {
+            return $this->nickName;
+        }
+        return $this->username;
     }
 }

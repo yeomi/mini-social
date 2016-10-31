@@ -1,7 +1,7 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
-{% block metaTitle %}Profil TPC : {{ user.username }}{% endblock %}
-{% block metaDescription %}Profil de {{ user.username }} sur Tpaschiche... Membre depuis {{ user.created|date("d/m/y") }}, communauté de partage pour les défis et histoires drôles (ou pas).{% endblock %}
+{% block metaTitle %}Profil TPC : {{ user.displayUsername }}{% endblock %}
+{% block metaDescription %}Profil de {{ user.displayUsername }} sur Tpaschiche... Membre depuis {{ user.created|date("d/m/y") }}, communauté de partage pour les défis et histoires drôles (ou pas).{% endblock %}
 
 {% block body %}
     <div class="page-profile">
@@ -12,7 +12,7 @@
                     {% endif %}
             </div>
             <div class="side-infos">
-                <h2 class="username">{{ user.username }}</h2>
+                <h2 class="username">{{ user.displayUsername }}</h2>
                 <p>Membre depuis {{ user.created|date("d/m/y") }}</p>
                 {% if user.lastLogin %}
                     <p>Dernière connexion le {{ user.lastLogin|date("d/m/y à H:i") }}</p>
@@ -34,7 +34,7 @@
                                 <span class="unread-messages">{{ unreadMessage }}</span>
                             {% endif %}
                         </li>
-                        {% if isCurrentUser %}
+                        {% if isCurrentUser and user.password is not null %}
                             <li><a class="btn-3d ajax-profile-link {% if tabParams %}active{% endif %}" href="" data-target="{{ path("yeomi_user_view_parameter") }}">Paramètres</a></li>
                         {% endif %}
                     </ul>

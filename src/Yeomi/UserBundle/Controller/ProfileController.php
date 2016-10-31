@@ -84,7 +84,11 @@ class ProfileController extends Controller
 
     public function viewParameterAction(Request $request)
     {
+        /** @var \Yeomi\UserBundle\Entity\User $user */
         $user = $this->getUser();
+        if ($user->getPassword() == null) {
+            return new Response('');
+        }
         // This need to be done or token will be updated even if validator block operation
         $lastUsername = $this->getDoctrine()->getRepository("YeomiUserBundle:User")->find($user->getId())->getUsername();
         $formUser = $this->createForm(new UserEditType(), $user);

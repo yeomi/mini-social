@@ -23,7 +23,7 @@
 
                 <div class="right">
                     <a href="{{ path("yeomi_user_profile", {"username":comment.user.username}) }}">
-                        <h4>{{ comment.user.username }}</h4>
+                        <h4>{{ comment.user.displayUsername }}</h4>
                     </a>
                     <div class="details">{{ comment.created|date("d/m/y \\à G\\hi") }}</div>
                     <div class="body">{{ comment.content }}</div>

@@ -9,6 +9,7 @@ use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Yeomi\UserBundle\Entity\Profile;
 use Yeomi\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -25,12 +26,20 @@ class UserRepository extends EntityRepository implements UserProviderInterface, 
 
         $em = $this->getEntityManager();
         $user = $this->loadUserByUsername($response->getUsername());
+        
         if(is_null($user)) {
             $user = new User();
 
+            $profile = new Profile();
+            $user->setProfile($profile);
+
+            $role = $this->getEntityManager()->getRepository("YeomiUserBundle:Role")->findOneBy(array("slug" => "ROLE_USER"));
+            $user->addRole($role);
+            
             $email = $response->getEmail();
             $user->setEmail((!empty($email) ? $email : $response->getUsername()));
             $user->setUsername($response->getUsername());
+            $user->setNickName($response->getNickname());
             $user->setAccessToken($response->getAccessToken());
             $user->setRessourceOwner($response->getResourceOwner()->getName());
             $em->persist($user);

@@ -32,7 +32,7 @@ class Log
 
     public function outputNotification()
     {
-        $username = $this->user->getUsername();
+        $username = $this->user->getDisplayUsername();
         $this->session->getFlashBag()->add("info", "Bienvenue $username !");
 
         if($this->user->checkRoleExist("ROLE_UNVALIDATE")) {

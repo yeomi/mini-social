@@ -66,13 +66,13 @@ class MainController extends Controller
 
     public function sendEmailValidation(User $user)
     {
-        $body = "Hello " . $user->getUsername() . " !,\n"
+        $body = "Hello " . $user->getDisplayUsername() . " !,\n"
             . "Nous avons bien reçu ta demande d'inscription,\n"
             . "Pour la valider et commencer à participer, cliques sur ce lien pour confirmer ton adresse e-mail : \n"
             . $this->generateUrl(
                 "yeomi_user_validate",
                 array(
-                    "token" => $this->generateValidationToken($user->getUsername(), $user->getPassword()),
+                    "token" => $this->generateValidationToken($user->getDisplayUsername(), $user->getPassword()),
                     "id" => $user->getId(),
                 ),
                 UrlGeneratorInterface::ABSOLUTE_URL
@@ -95,13 +95,13 @@ class MainController extends Controller
 
     public function sendResetPasswordValidation(User $user)
     {
-        $body = "Hello " . $user->getUsername() . " !\n"
+        $body = "Hello " . $user->getDisplayUsername() . " !\n"
             . "Tu as fait une demande pour régénérer ton mot de passe,\n"
             . "Pour cela, il te suffit de cliquer ici : \n"
             . $this->generateUrl(
                 "yeomi_reset_password_validate",
                 array(
-                    "token" => $this->generateValidationToken($user->getUsername(), $user->getPassword()),
+                    "token" => $this->generateValidationToken($user->getDisplayUsername(), $user->getPassword()),
                     "id" => $user->getId(),
                 ),
                 UrlGeneratorInterface::ABSOLUTE_URL
@@ -178,7 +178,7 @@ class MainController extends Controller
         $manager = $this->getDoctrine()->getManager();
         $user = $manager->getRepository("YeomiUserBundle:User")->find($id);
 
-        $validationToken = $this->generateValidationToken($user->getUsername(), $user->getPassword());
+        $validationToken = $this->generateValidationToken($user->getDisplayUsername(), $user->getPassword());
 
         if($validationToken == $token) {
 
@@ -241,7 +241,7 @@ class MainController extends Controller
         $manager = $this->getDoctrine()->getManager();
         $user = $manager->getRepository("YeomiUserBundle:User")->find($id);
 
-        $validationToken = $this->generateValidationToken($user->getUsername(), $user->getPassword());
+        $validationToken = $this->generateValidationToken($user->getDisplayUsername(), $user->getPassword());
 
         if (!$user->getPasswordOutdated()) {
             $isOutdated = false;
@@ -257,7 +257,7 @@ class MainController extends Controller
 
                 $body = "Bien joué !\n"
                     . "Ci-dessous tes identifiants de connexion... :\n\n"
-                    . " - Pseudo : " . $user->getUsername() . "\n"
+                    . " - Pseudo : " . $user->getDisplayUsername() . "\n"
                     . " - Nouveau mot de passe : " . $newPassword . "\n\n"
                     . "Nous te conseillons de personnaliser ton mot de passe à partir de ton profil...\n\n"
                     . "A tout de suite sur Tpaschiche.com";

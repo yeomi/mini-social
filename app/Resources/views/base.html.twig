@@ -72,7 +72,7 @@
                             </li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <li class="unread-messages-container">
-                                    <a class="log-btn btn-light yeomi-popup-link logged" data-popup="user-panel" href="{{ url("logout") }}">{{ app.user.username }}</a>
+                                    <a class="log-btn btn-light yeomi-popup-link logged" data-popup="user-panel" href="{{ url("logout") }}">{{ app.user.displayUsername }}</a>
                                     {% if unreadMessage > 0 %}
                                         <span class="unread-messages">{{ unreadMessage }}</span>
                                     {% endif %}

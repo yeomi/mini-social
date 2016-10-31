@@ -17,11 +17,11 @@
     {% for user in users %}
         <tr {% if user.checkRoleExist("ROLE_UNVALIDATE") %}class="unvalidate"{% elseif user.checkRoleExist("ROLE_ADMIN") %}class="admin"{% endif %}>
             <th>{{ user.id }}</th>
-            <td>{{ user.username }}</td>
+            <td>{{ user.displayUsername }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.lastLogin|date("d/m/Y à H:i") }}</td>
             <td>
-                <a target="_blank" href="{{ path("yeomi_user_profile", {"username": user.username}) }}">
+                <a target="_blank" href="{{ path("yeomi_user_profile", {"username": user.username }) }}">
                     Voir profile
                 </a>
             </td>
