@@ -15,11 +15,24 @@ yeomi_user:
     prefix:   /
 
 login:
-   pattern: /login
+   path: /login
    defaults: { _controller: YeomiUserBundle:Main:login }
 
 login_check:
-   pattern: /login_check
+   path: /login_check
 
 logout:
-   pattern: /logout
+   path: /logout
+
+
+# HWIOAuthBundle
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /
+
+facebook_login:
+    path: /login/check-facebook

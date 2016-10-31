@@ -27,6 +27,14 @@ security:
                 login_path: login
                 check_path: login_check
                 use_referer: true
+            oauth:
+                resource_owners:
+                    facebook: "/login/check-facebook"
+                login_path: /
+                use_forward: false
+                failure_path: /
+                oauth_user_provider:
+                    service: yeomi_user.user_provider
             logout:
                 path: logout
                 target: yeomi_post_index

@@ -73,3 +73,18 @@ swiftmailer:
 
 gregwar_image:
     fallback_image: assets/img/profile/default-avatar.png
+
+
+# HWIOAuthBundle
+hwi_oauth:
+    firewall_names: [main]
+    resource_owners:
+        facebook:
+            type:   facebook
+            client_id: "%fb_id%"
+            client_secret: "%fb_secret%"
+            scope: "email,public_profile"
+            infos_url: "https://graph.facebook.com/me?fields=id,name,email"
+            options:
+                csrf: true
+

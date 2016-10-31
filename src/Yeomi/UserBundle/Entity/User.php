@@ -128,6 +128,22 @@ class User implements UserInterface, \Serializable
     private $email;
 
     /**
+     * For oauth users
+     * @var string
+     *
+     * @ORM\Column(name="access_token", type="string", length=255, nullable=true)
+     */
+    private $accessToken;
+
+    /**
+     * For oauth users
+     * @var string
+     *
+     * @ORM\Column(name="ressource_owner", type="string", length=255, nullable=true)
+     */
+    private $ressourceOwner;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime")
@@ -683,5 +699,53 @@ class User implements UserInterface, \Serializable
     public function getGender()
     {
         return $this->gender;
+    }
+
+    /**
+     * Set accessToken
+     *
+     * @param string $accessToken
+     *
+     * @return User
+     */
+    public function setAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get accessToken
+     *
+     * @return string
+     */
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * Set ressourceOwner
+     *
+     * @param string $ressourceOwner
+     *
+     * @return User
+     */
+    public function setRessourceOwner($ressourceOwner)
+    {
+        $this->ressourceOwner = $ressourceOwner;
+
+        return $this;
+    }
+
+    /**
+     * Get ressourceOwner
+     *
+     * @return string
+     */
+    public function getRessourceOwner()
+    {
+        return $this->ressourceOwner;
     }
 }

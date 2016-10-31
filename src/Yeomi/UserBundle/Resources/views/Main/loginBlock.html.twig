@@ -29,6 +29,10 @@
 
             </form>
 
+            {% for owner in hwi_oauth_resource_owners() %}
+                <a class="btn-default btn" href="{{ hwi_oauth_login_url(owner) }}">Login With Facebook</a>
+            {% endfor %}
+
             <div class="login-noaccount">
                 <h3>{% trans %}Not registered yet ?{% endtrans %}</h3>
                 <a class="popup-btn register" href="{{ path("yeomi_user_register") }}">{% trans %}Register{% endtrans %}</a>

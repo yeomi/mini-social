@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Yeomi\AdminBundle\YeomiAdminBundle(),
             new Yeomi\CMSBundle\YeomiCMSBundle(),
             new Gregwar\ImageBundle\GregwarImageBundle(),
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

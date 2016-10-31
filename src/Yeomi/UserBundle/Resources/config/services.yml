@@ -8,3 +8,10 @@ services:
         arguments: [@yeomi_user.userlogin.log]
         tags:
             - { name: kernel.event_listener, event: security.authentication.success, method: processLog }
+            
+    yeomi_user.user_provider:
+        class: Yeomi\UserBundle\Repository\UserRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - Yeomi\UserBundle\Entity\User
