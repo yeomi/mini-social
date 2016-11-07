@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Yeomi\UserBundle\YeomiUserBundle(),
             new Yeomi\PostBundle\YeomiPostBundle(),
             new Yeomi\AdminBundle\YeomiAdminBundle(),
+            new \Yeomi\AppBundle\YeomiAppBundle(),
             new Yeomi\CMSBundle\YeomiCMSBundle(),
             new Gregwar\ImageBundle\GregwarImageBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),

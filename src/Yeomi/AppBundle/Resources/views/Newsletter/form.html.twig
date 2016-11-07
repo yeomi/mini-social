@@ -1,0 +1,15 @@
+
+{% if existing %}
+  <div>
+    <h2>Vous êtes déjà inscrit a la newsletter</h2>
+  </div>
+{% else %}
+  <div>
+    <h2>Inscrivez vous a la newsletter</h2>
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+      <button type="submit">Je m'inscris</button>
+    {{ form_end(form) }}
+
+  </div>
+{% endif %}

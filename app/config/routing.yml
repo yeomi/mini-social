@@ -2,6 +2,10 @@ yeomi_cms:
     resource: "@YeomiCMSBundle/Resources/config/routing.yml"
     prefix:   /
 
+yeomi_app:
+    resource: "@YeomiAppBundle/Resources/config/routing.yml"
+    prefix:   /
+
 yeomi_admin:
     resource: "@YeomiAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
