@@ -1,0 +1,21 @@
+{% extends("YeomiAdminBundle::layout.html.twig") %}
+
+{% block content %}
+    <h3 class="content-title">Liste des inscriptions à la newsletter</h3>
+    <table class="table table-striped table-paginator user-table">
+        <thead>
+            <tr>
+                <th>Ref</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for newsletterSubscription in newsletterSubscriptions %}
+        <tr>
+            <th>{{ newsletterSubscription.id }}</th>
+            <td>{{ newsletterSubscription.email }}</td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

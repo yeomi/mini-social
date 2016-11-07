@@ -17,6 +17,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Serializer\Serializer;
+use Yeomi\AppBundle\Entity\NewsletterSubscription;
 use Yeomi\UserBundle\Entity\User;
 use Yeomi\UserBundle\Form\UserType;
 
@@ -137,8 +138,21 @@ class MainController extends Controller
 
         if ($form->handleRequest($request)->isValid()) {
 
-            $manager = $this->getDoctrine()->getManager();
+            $manager = $this->getDoctrine()->getEntityManager();
             $role = $manager->getRepository("YeomiUserBundle:Role")->findOneBy(array("slug" => "ROLE_UNVALIDATE"));
+
+
+            $subscribeNewsletter = false;
+            if ($form->get('newsletter')->getData()) {
+                $email = $user->getEmail();
+                $existing = $manager->getRepository('YeomiAppBundle:NewsletterSubscription')->findOneBy(array('email' => $email));
+                if (is_null($existing)) {
+                    $subscribeNewsletter = true;
+                    $newsletterSubscription = new NewsletterSubscription();
+                    $newsletterSubscription->setUser($user);
+                    $newsletterSubscription->setEmail($email);
+                }
+            }
 
             if(is_null($role)) {
                 throw new EntityNotFoundException;
@@ -146,6 +160,9 @@ class MainController extends Controller
 
             $user->addRole($role);
             $manager->persist($user);
+            if ($subscribeNewsletter) {
+                $manager->persist($newsletterSubscription);
+            }
             $manager->flush();
 
             // User is not confirmed until he does not confirm mail

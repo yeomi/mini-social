@@ -11,6 +11,16 @@ use Yeomi\UserBundle\Entity\User;
 
 class AppController extends Controller
 {
+    
+    public function newsletterViewAllAdminAction() {
+        $newsletterSubscriptions = $this->getDoctrine()
+            ->getRepository('YeomiAppBundle:NewsletterSubscription')
+            ->findAll();
+
+        return $this->render('@YeomiAdmin/Main/listNewsletterSubscriptions.html.twig', array(
+            'newsletterSubscriptions' => $newsletterSubscriptions,
+        ));
+    }
     public function newsletterSubscribeAction(Request $request) {
 
         /** @var User $user */
@@ -69,5 +79,30 @@ class AppController extends Controller
             'form' => $form->createView(),
             'existing' => null,
         ));
+    }
+
+    public function newsletterUnsubscribeAction(Request $request) {
+
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+
+            $email = $request->request->get('_email');
+            $existing = $em->getRepository('YeomiAppBundle:NewsletterSubscription')
+                ->findOneBy(array('email' => $email));
+
+            if ($existing) {
+                $em->remove($existing);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add("info", "Vous êtes désinscrit de la newsletter");
+            } else {
+                $request->getSession()->getFlashBag()->add("alert", "L'email indiqué ne fait pas partie des inscrits à la newsletter");
+            }
+
+        }
+
+        return $this->render('@YeomiApp/Newsletter/unsubscribe.html.twig', array(
+
+        ));
+
     }
 }

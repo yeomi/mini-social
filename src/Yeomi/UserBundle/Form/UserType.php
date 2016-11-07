@@ -21,6 +21,11 @@ class UserType extends AbstractType
                 'error_bubbling'=>true,
                 'expanded' => true
             ))
+            ->add('newsletter', 'checkbox', array(
+                'required' => false,
+                'label' => "S'inscrire à la newsletter",
+                'mapped' => false,
+            ))
             ->add('username', 'text', array('error_bubbling'=>true))
             ->add('passwordClear', 'repeated', array(
                 'type' => 'password',
