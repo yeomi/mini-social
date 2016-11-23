@@ -14,12 +14,9 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 class PostRepository extends EntityRepository
 {
 
-    public function findByTypeSlug($type, $limit, $offset, $categoryId = null)
+    public function findWithOffsetLimit($limit, $offset, $categoryId = null)
     {
         $qb = $this->createQueryBuilder("p")
-            ->innerJoin("p.type", "t")
-            ->where("t.slug = :type")
-            ->setParameter("type", $type)
             ->leftJoin("p.comments", "c")
             ->leftJoin("p.images", "img")
             ->leftJoin("p.user", "user")
@@ -105,13 +102,11 @@ class PostRepository extends EntityRepository
             ->setParameter("id", $id)
             ->leftJoin("p.images", "img")
             ->leftJoin("p.user", "user")
-            ->leftJoin("p.type", "type")
             ->leftJoin("p.video", "video")
             ->leftJoin("p.comments", "com")
             ->leftJoin("p.votes", "votes")
             ->innerJoin("p.categories", "cat")
             ->addSelect("img")
-            ->addSelect("type")
             ->addSelect("video")
             ->addSelect("user")
             ->addSelect("cat")
@@ -129,8 +124,6 @@ class PostRepository extends EntityRepository
         $direction = $operator == "<" ? "DESC" : "ASC";
         $query = $this->createQueryBuilder("p")
             ->where("p.id $operator :postId")
-            ->andWhere("p.type = :typeId")
-            ->setParameter("typeId", $typeId)
             ->setParameter("postId", $postId)
             ->orderBy("p.id", $direction)
             ->setMaxResults(1)

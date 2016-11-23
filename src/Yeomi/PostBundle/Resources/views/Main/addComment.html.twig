@@ -3,11 +3,7 @@
     {{ form_start(form, {"action": path("yeomi_post_add_comment", {"postId": postId}), "attr": {"class": "classic-form"}}) }}
 
     <div class="comment-body">
-        {% if type == 'defi' %}
-            {% set textareaPlaceholder = "Relève le défi ou laisse un commentaire..." %}
-        {% else %}
-            {% set textareaPlaceholder = "Laisse ton commentaire, une réaction, un coup de gueule..." %}
-        {% endif %}
+        {% set textareaPlaceholder = "Laisse ton commentaire, une réaction, un coup de gueule..." %}
 
     {{ form_widget(form.content, {'attr': {'placeholder' : textareaPlaceholder }}) }}
     </div>

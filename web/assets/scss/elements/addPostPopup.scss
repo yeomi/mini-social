@@ -1,4 +1,4 @@
-.add-defi-popup, .add-histoire-popup
+.add-post-popup
 {
   width: 50rem;
   padding: 1rem 8rem 3rem 8rem;
@@ -8,9 +8,20 @@
     font-size: 2.3rem;
     text-align: center;
   }
+  .post-title {
+    margin-top: 1rem;
+  }
+  .post-title input, .post-link input {
+    border: 1px solid #ccc;
+    padding: .8rem 1.5rem;
+    border-radius: 0.3rem;
+    font-size: 1.5rem;
+    color: #666;
+    height: 3.2rem;
+    width: 100%;
+  }
   .post-body textarea
   {
-    margin-top: 1rem;
     width: 100%;
     height: 25rem;
     border: 1px solid #c1c1c1;

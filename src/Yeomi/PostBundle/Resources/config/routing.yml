@@ -7,7 +7,7 @@ yeomi_post_index:
     defaults: { _controller: YeomiPostBundle:Main:index }
 
 yeomi_post_add_post:
-    path:     /add/{type}
+    path:     /add-post
     defaults: { _controller: YeomiPostBundle:Main:addPost }
 
 yeomi_post_edit_post:
@@ -23,17 +23,15 @@ yeomi_post_edit_comment:
     defaults: { _controller: YeomiPostBundle:Main:editComment }
 
 yeomi_post_view_full:
-    path:     /{type}/{id}
+    path:     /post/{id}
     defaults: { _controller: YeomiPostBundle:Main:viewFull }
     requirements:
         id: \d+
-        type: defi|histoire
 
 yeomi_post_view_list:
-    path:     /list/{type}/{limit}/{offset}
+    path:     /list-post/{limit}/{offset}
     defaults: { _controller: YeomiPostBundle:Main:list, limit: 3, offset: 0 }
     requirements:
-        type: defi|histoire
         limit: \d+
         offset: \d+
 
@@ -74,29 +72,28 @@ yeomi_post_view_category:
         id: \d+
 
 yeomi_post_view_list_category:
-    path:     /list-cat/{categoryId}/{type}/{limit}/{offset}
+    path:     /list-cat/{categoryId}/{limit}/{offset}
     defaults: { _controller: YeomiPostBundle:Category:listCategory, limit: 3, offset: 0 }
     requirements:
         categoryId: \d+
-        type: defi|histoire
         limit: \d+
         offset: \d+
 
 # Type
 
-yeomi_post_view_type:
-    path:     /type/{slug}
-    defaults: { _controller: YeomiPostBundle:Type:view }
-    requirements:
-        slug: defi|histoire
-
-yeomi_post_view_list_type:
-    path:     /list-type/{type}/{limit}/{offset}
-    defaults: { _controller: YeomiPostBundle:Type:listType, limit: 3, offset: 0 }
-    requirements:
-        type: defi|histoire
-        limit: \d+
-        offset: \d+
+#yeomi_post_view_type:
+#    path:     /type/{slug}
+#    defaults: { _controller: YeomiPostBundle:Type:view }
+#    requirements:
+#        slug: defi|histoire
+#
+#yeomi_post_view_list_type:
+#    path:     /list-type/{type}/{limit}/{offset}
+#    defaults: { _controller: YeomiPostBundle:Type:listType, limit: 3, offset: 0 }
+#    requirements:
+#        type: defi|histoire
+#        limit: \d+
+#        offset: \d+
 
 #search
 

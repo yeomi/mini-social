@@ -79,7 +79,7 @@ $(function() {
     });
   }
 
-  $(".menu-toggle").click(function() {
+  $(".responsive-menu-toggle").click(function() {
     var menu = $(".category-nav");
     var body = $("body");
     if(menu.hasClass("open")) {
@@ -138,12 +138,7 @@ $(function() {
 
     return false;
   });
-
-
-  $(".site-search-container a.search").click(function() {
-    $(this).parent().parent().toggleClass("show-form");
-    return false;
-  });
+  
 
 
   function checkCookie(){

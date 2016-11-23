@@ -68,9 +68,23 @@
       display: block;
     }
   }
-  .login-noaccount
+  .login-facebook
   {
     padding-top: 3.5rem;
+    clear: both;
+    text-align: center;
+    h3 {
+      font-size: 2.1rem;
+    }
+    .popup-btn
+    {
+      margin-top: 1.4rem;
+    }
+
+  }
+  .login-noaccount
+  {
+    padding-top: 2rem;
     clear: both;
     text-align: center;
     .popup-btn

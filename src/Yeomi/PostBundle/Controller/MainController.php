@@ -28,7 +28,7 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        $defis = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug("histoire", 2, 0);
+        $defis = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findWithOffsetLimit(2, 0);
 
         $articles = $this->getDoctrine()->getRepository("YeomiCMSBundle:Article")->findFive();
 
@@ -57,9 +57,9 @@ class MainController extends Controller
 
     }
 
-    public function listAction(Request $request, $type, $limit = 3, $offset = 0)
+    public function listAction(Request $request, $limit = 3, $offset = 0)
     {
-        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug($type, $limit, $offset);
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findWithOffsetLimit($limit, $offset);
 
         if($request->isXmlHttpRequest()) {
 
@@ -147,7 +147,7 @@ class MainController extends Controller
         ));
     }
 
-    public function viewFullAction($type, $id)
+    public function viewFullAction($id)
     {
         $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getPostComplete($id);
 
@@ -165,25 +165,18 @@ class MainController extends Controller
     }
 
 
-    public function addPostAction(Request $request, $type)
+    public function addPostAction(Request $request)
     {
         if($request->getPathInfo() != "/_fragment" && $request->getMethod() != 'POST') {
             throw new NotFoundHttpException();
         }
 
         $post = new Post();
-        $type = $this->getDoctrine()->getRepository("YeomiPostBundle:Type")->findOneBy(array("slug" => $type));
         $user = $this->getUser();
 
         if(!is_null($user)) {
             $post->setUser($user);
         }
-
-        if(is_null($type)) {
-            throw New NotFoundHttpException("Cette page n'existe pas, veuillez vérifier l'url");
-        }
-
-        $post->setType($type);
 
         $imgAllow = 3;
         $images = array();
@@ -212,7 +205,6 @@ class MainController extends Controller
 
         return $this->render($template, array(
             "form" => $form->createView(),
-            "type" => $type,
         ));
     }
 
@@ -247,17 +239,16 @@ class MainController extends Controller
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($comment);
             $manager->flush();
-            return $this->redirect($this->generateUrl("yeomi_post_view_full", array("type" => $post->getType()->getSlug(), "id" => $postId)));
+            return $this->redirect($this->generateUrl("yeomi_post_view_full", array("id" => $postId)));
         } elseif ($form->getErrors()->count() > 0) {
             foreach ($form->getErrors() as $error) {
                 $request->getSession()->getFlashBag()->add("alert", $error->getMessage());
             }
-            return $this->redirect($this->generateUrl("yeomi_post_view_full", array("type" => $post->getType()->getSlug(), "id" => $postId)));
+            return $this->redirect($this->generateUrl("yeomi_post_view_full", array("id" => $postId)));
         }
 
         return $this->render("YeomiPostBundle:Main:addComment.html.twig", array(
            "form" => $form->createView(),
-            "type" => $post->getType()->getSlug(),
             "postId" => $postId,
         ));
     }

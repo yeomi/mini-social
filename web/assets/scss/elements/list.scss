@@ -3,7 +3,7 @@
   font-size: 0;
   .column-container
   {
-    width: 49%;
+    width: 100%;
     display: inline-block;
     vertical-align: top;
     font-size: 1.6rem;
@@ -60,6 +60,7 @@
 
   .more-posts
   {
+    margin-top: 20px;
     background-color: #f6f6f6;
     position: relative;
     top: -1px;
@@ -117,24 +118,29 @@
 }
 .list-view
 {
+  margin-top: 20px;
   position: relative;
   border: 1px solid #d7d7d7;
   background-color: $thirdFontColor;
   padding: 2rem;
-  &:before
-  {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: .9rem;
-    height: 8rem;
-    background-color: $darkerColor;
-
+  //&:before
+  //{
+  //  content: "";
+  //  position: absolute;
+  //  left: 0;
+  //  top: 0;
+  //  width: .9rem;
+  //  height: 8rem;
+  //  background-color: $darkerColor;
+  //}
+  h3 {
+    font-size: 18px;
+    font-family: $bold;
   }
   .content
   {
     font-size:1.5rem;
+    margin-top: 2.5rem;
     margin-bottom: 0.5rem;
     height: 9rem;
   }
@@ -179,6 +185,28 @@
     {
       margin: 0;
       margin-right: .5rem;
+      span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .picto {
+        display: inline-block;
+        width: 2rem;
+        height: 2.1rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 2rem 2.1rem;
+      }
+      &.like .picto {
+        background-image: url(../img/thumbs-up.png);
+      }
+      &.hate .picto {
+        background-image: url(../img/thumbs-down.png);
+      }
+      &:hover {
+        background-color: #fff;
+        color: $darkerColor;
+      }
     }
 
     a

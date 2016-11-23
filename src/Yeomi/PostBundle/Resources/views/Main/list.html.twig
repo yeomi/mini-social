@@ -5,22 +5,24 @@
         <table>
             <tr>
                 <td class="left">
-                    <a href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">
-                    <div class="content"><p>{{ truncatePost(post.content, 200) }}</p></div>
+
+                    <a href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">
+                        <h3>Yootips publies la photo ou la vidéo la plus fun de ton animal de compagnie !</h3>
+                        <div class="content"><p>{{ truncatePost(post.content, 400) }}</p></div>
                     </a>
                 </td>
 
 
                 {% if post.video.video is defined %}
                     <td class="right">
-                        <a class="image" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">
+                        <a class="image" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">
                             <span class="thumb-video"></span>
                         </a>
                     </td>
                 {% elseif post.images[0] is defined %}
                     <td class="right">
-                        <a class="image" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">
-                            <img src="{{ web_image(asset('uploads/img/post/' ~ post.images[0].id ~ '.' ~ post.images[0].value)).fixOrientation().zoomCrop(90,90)}}" alt=""/>
+                        <a class="image" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">
+                            <img src="{{ web_image(asset('uploads/img/post/' ~ post.images[0].id ~ '.' ~ post.images[0].value)).fixOrientation().zoomCrop(195,195)}}" alt=""/>
                         </a>
                     </td>
                 {% endif %}
@@ -41,17 +43,12 @@
         </table>
 
         <div class="actions-btn">
-            {% if post.type.slug == "defi" %}
-                <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >Jkiff ton défi ! (<span>{{ post.likes.positives }}</span>)</a>
-                <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >Ouais pourri... (<span>{{ post.likes.negatives }}</span>)</a>
-            {% else %}
-                <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >Jkiff ton blabla ! (<span>{{ post.likes.positives }}</span>)</a>
-                <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >Zéro, null... (<span>{{ post.likes.negatives }}</span>)</a>
-            {% endif %}
-            <a class="comments" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">({{ post.comments|length }})</a>
+            <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" ><span class="picto"></span> <span class="count">({{ post.likes.positives }})</span></a>
+            <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" ><span class="picto"></span> <span class="count">({{ post.likes.negatives }})</span></a>
+            <a class="comments" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">({{ post.comments|length }})</a>
 
 
-            <a class="readmore" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": post.id}) }}">{% trans %}Read More{% endtrans %}</a>
+            <a class="readmore" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">{% trans %}Read More{% endtrans %}</a>
         </div>
 
 

@@ -1,7 +1,7 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
 {% block metaTitle %}TPC - {{ truncatePost(post.content, 55) }}{% endblock %}
-{% block metaDescription %}{{ post.type.name~" - "~post.categories[0].name }} : {{ truncatePost(post.content, 110) }}{% endblock %}
+{% block metaDescription %}{{ post.categories[0].name }} : {{ truncatePost(post.content, 110) }}{% endblock %}
 
 {% block jsPlugin %}
     {{ parent() }}
@@ -21,17 +21,15 @@
     <header class="breadcrumb-ban">
         <ul class="breadcrumb left">
             <li><a href="{{ path("yeomi_post_index") }}">Accueil ></a></li>
-            <li><a href="{{ path("yeomi_post_view_type", {"slug": post.type.slug}) }}">{{ post.type.name }} ></a></li>
             <li><a href="{{ path("yeomi_post_view_category", {"slug": post.categories[0].slug}) }}">{{ post.categories[0].name }}</a></li>
         </ul>
 
         <ul class="right">
-            <li><a class="btn-dark" href="{{ path("yeomi_post_view_type", {"slug": post.type.slug}) }}">Retour aux {{ post.type.name }}s</a></li>
             {% if prevPostId %}
-                <li><a class="prev-post" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": prevPostId}) }}">< {{ post.type.name }} précédent</a></li>
+                <li><a class="prev-post" href="{{ path("yeomi_post_view_full", {"id": prevPostId}) }}">< Post précédent</a></li>
             {% endif %}
             {% if nextPostId %}
-                <li><a class="next-post" href="{{ path("yeomi_post_view_full", {"type": post.type.slug, "id": nextPostId}) }}">{{ post.type.name }} suivant ></a></li>
+                <li><a class="next-post" href="{{ path("yeomi_post_view_full", {"id": nextPostId}) }}">Post suivant ></a></li>
             {% endif %}
         </ul>
 
@@ -61,13 +59,8 @@
                 </div>
                 <div class="actions-btn">
                     <a class="comments" href="">({{ post.comments|length }})</a>
-                    {% if post.type.slug == "defi" %}
-                        <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >Jkiff ton défi ! (<span>{{ post.likes.positives }}</span>)</a>
-                        <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >Ouais pourri... (<span>{{ post.likes.negatives }}</span>)</a>
-                    {% else %}
-                        <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >Jkiff ton blabla ! (<span>{{ post.likes.positives }}</span>)</a>
-                        <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >Zéro, null... (<span>{{ post.likes.negatives }}</span>)</a>
-                    {% endif %}
+                    <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >Jkiff ton blabla ! (<span>{{ post.likes.positives }}</span>)</a>
+                    <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >Zéro, null... (<span>{{ post.likes.negatives }}</span>)</a>
                 </div>
             </div>
 
@@ -104,11 +97,7 @@
                 <div class="comment-intro">
                     <p>
                     <span class="hide-mobile">Toi aussi, </span><a href="{{ path("yeomi_user_profile", {"username":app.user.username}) }}" class="username">{{ app.user.displayUsername }}</a>,
-                    {% if post.type.slug == "defi" %}
-                        participe au défi !
-                    {% else %}
-                     commente cette histoire
-                    {% endif %}
+                        commente cette histoire
                     </p>
                 </div>
                 {{ render(controller("YeomiPostBundle:Main:addComment", {"postId" : post.id})) }}
@@ -117,13 +106,8 @@
 
         {% else %}
             <p class="simple-message">
-                {% if post.type.slug == "defi" %}
-                    Connectez-vous pour commenter ou participer à ce défi...<br> Quoi vous n'êtes pas encore membre ?
-                    <a href="{{ path("yeomi_user_register") }}">S’inscrire en 30 sec.</a>
-                {% else %}
-                    Connectez-vous pour pouvoir commenter ce blabla...<br> Quoi vous n'êtes pas encore membre ?
-                    <a href="{{ path("yeomi_user_register") }}">S’inscrire en 30 sec.</a>
-                {% endif %}
+                Connectez-vous pour pouvoir commenter ce blabla...<br> Quoi vous n'êtes pas encore membre ?
+                <a href="{{ path("yeomi_user_register") }}">S’inscrire en 30 sec.</a>
             </p>
         {% endif %}
             {{ render(controller("YeomiPostBundle:Main:listComment", {"postId" : post.id})) }}

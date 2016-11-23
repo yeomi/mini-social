@@ -62,12 +62,20 @@ class Post
      * @ORM\OneToMany(targetEntity="Yeomi\PostBundle\Entity\Vote", mappedBy="post", cascade={"remove"})
      */
     private $votes;
+    
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=255, nullable=true)
+     */
+    private $link;
 
     /**
      * @var string
@@ -87,7 +95,6 @@ class Post
      * @var \Yeomi\PostBundle\Entity\Type
      *
      * @ORM\ManyToOne(targetEntity="Yeomi\PostBundle\Entity\Type", inversedBy="posts")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $type;
 
@@ -531,5 +538,29 @@ class Post
                 ->atPath('content')
                 ->addViolation();
         }
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     *
+     * @return Post
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
     }
 }

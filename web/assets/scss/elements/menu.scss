@@ -1,40 +1,86 @@
-nav.category-nav
-{
-  background-color: $thirdFontColor;
+.category-nav-wrapper {
+  background-color: #ffffff;
   position: fixed;
-  overflow: auto;
-  left: -24.5rem;
+  margin-top: 8.7rem;
+  height: 4.1rem;
+  width: 100%;
+  left: 0;
+  z-index: 10;
   top: 0;
-  height: 100%;
-  z-index: 5;
-  width: 24.5rem;
-  @include boxShadow(-3px 0 6px rgba(0,0,0,0.3) inset);
-  padding-top: 3.5rem;
-  @include transition(left 0.4s ease);
-  &.open {left: 0;}
-  .close
+  nav.category-nav
   {
-    width: 1.6rem;
-    height: 1.6rem;
-    display: block;
-    background-image: url(../img/menu-close.png);
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background-position: center;
+    @include setContainer();
+    ul {
+      list-style-type: none;
+      display: table;
+      width: 100%;
+    }
+    li {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    a
+    {
+      display: block;
+      @include transition(all 0.4s ease);
+      color: $darkerColor;
+      line-height: 4.1rem;
+      font-family: $semiBold;
+      font-size: 1.3rem;
+      text-align: center;
+      -ms-transform: scale(1); /* IE 9 */
+      -webkit-transform: scale(1); /* Safari */
+      transform: scale(1);
+    }
+    a:hover {
+      -ms-transform: scale(1.2); /* IE 9 */
+      -webkit-transform: scale(1.2); /* Safari */
+      transform: scale(1.2);
+    }
   }
-  ul { list-style-type: none;}
-  li a
-  {
-    display: block;
-    border-bottom: 1px solid #d7d7d7;
-    line-height: 4rem;
-    font-family: $semiBold;
-    font-size: 1.4rem;
-    padding: 0 2rem
 
+}
+
+.responsive-category-nav-wrapper {
+  nav.category-nav
+  {
+    background-color: $thirdFontColor;
+    position: fixed;
+    overflow: auto;
+    left: -24.5rem;
+    top: 0;
+    height: 100%;
+    z-index: 5;
+    width: 24.5rem;
+    @include boxShadow(-3px 0 6px rgba(0,0,0,0.3) inset);
+    padding-top: 3.5rem;
+    @include transition(left 0.4s ease);
+    &.open {left: 0;}
+    .close
+    {
+      width: 1.6rem;
+      height: 1.6rem;
+      display: block;
+      background-image: url(../img/menu-close.png);
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-position: center;
+    }
+    ul { list-style-type: none;}
+    li a
+    {
+      display: block;
+      border-bottom: 1px solid #d7d7d7;
+      line-height: 4rem;
+      font-family: $semiBold;
+      font-size: 1.4rem;
+      padding: 0 2rem
+
+    }
+    li:first-child a {border-top: 1px solid #d7d7d7;}
   }
-  li:first-child a {border-top: 1px solid #d7d7d7;}
+
 }

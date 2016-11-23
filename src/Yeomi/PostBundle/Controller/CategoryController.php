@@ -26,9 +26,9 @@ class CategoryController extends Controller{
         ));
     }
 
-    public function listCategoryAction(Request $request, $categoryId, $type, $limit = 3, $offset = 0)
+    public function listCategoryAction(Request $request, $categoryId, $limit = 3, $offset = 0)
     {
-        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug($type, $limit, $offset, $categoryId);
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findWithOffsetLimit($limit, $offset, $categoryId);
 
         if($request->isXmlHttpRequest()) {
 

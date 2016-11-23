@@ -26,7 +26,7 @@ class TypeController extends Controller{
 
     public function listTypeAction(Request $request, $type, $limit = 3, $offset = 0)
     {
-        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findByTypeSlug($type, $limit, $offset);
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findWithOffsetLimit($limit, $offset);
 
         if($request->isXmlHttpRequest()) {
 

@@ -39,32 +39,15 @@
         <div class="left column-container">
           <div class="index-menu" data-offset="0" data-quantity="5">
             <div class="tab defi active"><a class="loader-list"
-                                            data-target="{{ path("yeomi_post_view_list", {"type": "defi"}) }}" href="">Les
+                                            data-target="{{ path("yeomi_post_view_list") }}" href="">Les
                 défis</a></div>
             <div class="tab histoire"><a class="loader-list"
-                                         data-target="{{ path("yeomi_post_view_list", {"type": "histoire"}) }}" href="">Les
+                                         data-target="{{ path("yeomi_post_view_list") }}" href="">Les
                 histoires</a></div>
           </div>
 
           <div class="ajax-wrapper">
-            {{ render(controller("YeomiPostBundle:Main:list", {"type": "defi", "limit": 5})) }}
-          </div>
-          <div class="more-posts">
-            <a href="">{% trans %}See more posts{% endtrans %}</a>
-          </div>
-        </div>
-
-        <div class="right column-container">
-          <div class="index-menu" data-offset="0" data-quantity="5">
-            <div class="tab popular active"><a class="loader-list"
-                                               data-target="{{ path("yeomi_post_view_list_popular") }}" href="">Les +
-                populaires</a></div>
-            <div class="tab latest"><a class="loader-list" data-target="{{ path("yeomi_post_view_list_recents") }}"
-                                       href="">Les + récents</a></div>
-          </div>
-
-          <div class="ajax-wrapper">
-            {{ render(controller("YeomiPostBundle:Main:listPopular", {"limit": 5})) }}
+            {{ render(controller("YeomiPostBundle:Main:list", {"limit": 5})) }}
           </div>
           <div class="more-posts">
             <a href="">{% trans %}See more posts{% endtrans %}</a>
@@ -95,24 +78,9 @@
         </div>
       </div>
 
-
-      {{ render(controller('YeomiAppBundle:App:newsletterSubscribe', {'request': app.request})) }}
-
-      <div id="social-block">
-        <h4>TpasChiche de nous suivre</h4>
-        <div class="buttons-area">
-          <a class="fb" target="_blank" href="https://www.facebook.com/Tpaschiche">Facebook</a>
-          <a class="tw" target="_blank" href="https://twitter.com/tpaschiche">Twitter</a>
-          <a class="pin" target="_blank" href="https://www.pinterest.com/Tpaschiche/">Pinterest</a>
-          <a class="you" target="_blank" href="https://www.youtube.com/user/Tpaschiche">Youtube</a>
-          <a class="gplus" target="_blank" href="https://plus.google.com/112662265687757220357"
-             rel="publisher">Google+</a>
-        </div>
-
-        <div class="facebook-module">
-          <div class="fb-like-box" data-href="https://www.facebook.com/Tpaschiche" data-width="240" data-height="240"
-               data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false"
-               data-show-border="false"></div>
+      <div id="highlight-block">
+        <div class="article-highlight-teaser">
+          <h3>Aide un SDF</h3>
         </div>
       </div>
     </div>

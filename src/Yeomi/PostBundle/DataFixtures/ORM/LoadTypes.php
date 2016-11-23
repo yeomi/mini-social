@@ -17,9 +17,7 @@ class LoadTypes implements FixtureInterface
 {
 
     /**
-     * Load data fixtures with the passed EntityManager
-     *
-     * @param Doctrine\Common\Persistence\ObjectManager $manager
+     * @param \Doctrine\Common\Persistence\ObjectManager $manager
      */
     function load(ObjectManager $manager)
     {
