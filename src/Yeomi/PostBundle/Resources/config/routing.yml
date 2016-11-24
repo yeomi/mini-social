@@ -35,16 +35,33 @@ yeomi_post_view_list:
         limit: \d+
         offset: \d+
 
-yeomi_post_view_list_popular:
-    path:     /list-popular/{limit}/{offset}
+yeomi_post_view_list_category_popular:
+    path:     /list-popular-category/{category}/{limit}/{offset}
     defaults: { _controller: YeomiPostBundle:Main:listPopular, limit: 3, offset: 0 }
     requirements:
         limit: \d+
         offset: \d+
+        category: \d+
+
+yeomi_post_view_list_popular:
+    path:     /list-popular/{limit}/{offset}
+    defaults: { _controller: YeomiPostBundle:Main:listPopular, category: null, limit: 3, offset: 0 }
+    requirements:
+        limit: \d+
+        offset: \d+
+
+yeomi_post_view_list_category_recents:
+    path:     /list-recent-category/{category}/{limit}/{offset}
+    defaults: { _controller: YeomiPostBundle:Main:listMostRecent, limit: 3, offset: 0 }
+    requirements:
+        limit: \d+
+        offset: \d+
+        category: \d+
+
 
 yeomi_post_view_list_recents:
     path:     /list-recent/{limit}/{offset}
-    defaults: { _controller: YeomiPostBundle:Main:listMostRecent, limit: 3, offset: 0 }
+    defaults: { _controller: YeomiPostBundle:Main:listMostRecent, category: null, limit: 3, offset: 0 }
     requirements:
         limit: \d+
         offset: \d+

@@ -41,9 +41,9 @@ class PostRepository extends EntityRepository
     }
 
 
-    public function findMostRecents($limit, $offset)
+    public function findMostRecents($limit, $offset, $category = null)
     {
-        $query = $this->createQueryBuilder("p")
+        $qb = $this->createQueryBuilder("p")
             ->leftJoin("p.comments", "c")
             ->leftJoin("p.images", "img")
             ->leftJoin("p.user", "user")
@@ -56,17 +56,22 @@ class PostRepository extends EntityRepository
             ->addSelect("cat")
             ->orderBy("p.lastAction", "DESC")
             ->setFirstResult($offset)
-            ->setMaxResults($limit)
-            ->getQuery();
+            ->setMaxResults($limit);
+
+        if ($category) {
+            $qb->andWhere('cat.id = :category');
+            $qb->setParameter('category', $category);
+        }
+        $query = $qb->getQuery();
 
         return new Paginator($query, true);
 
     }
 
-    public function findPopularPost($limit, $offset)
+    public function findPopularPost($limit, $offset, $category = null)
     {
 
-        $query = $this->createQueryBuilder("p")
+        $qb = $this->createQueryBuilder("p")
             ->leftJoin("p.comments", "c")
             ->leftJoin("p.images", "img")
             ->leftJoin("p.user", "user")
@@ -79,8 +84,13 @@ class PostRepository extends EntityRepository
             ->groupBy("p.id")
             ->setFirstResult($offset)
             ->setMaxResults($limit)
-            ->orderBy("pop", "DESC")
-            ->getQuery();
+            ->orderBy("pop", "DESC");
+        
+        if ($category) {
+            $qb->andWhere('cat.id = :category');
+            $qb->setParameter('category', $category);
+        }
+        $query = $qb->getQuery();
 
         /* problem when we addSelect votes and comments, because of the group by, only one result is selected) */
 

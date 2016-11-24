@@ -93,9 +93,9 @@ class MainController extends Controller
     }
 
 
-    public function listPopularAction(Request $request, $limit = 3, $offset = 0)
+    public function listPopularAction(Request $request, $category = null, $limit = 3, $offset = 0)
     {
-        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findPopularPost($limit, $offset);
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findPopularPost($limit, $offset, $category);
 
         $cleanArrayPosts = array();
         foreach($posts as $post)
@@ -123,9 +123,9 @@ class MainController extends Controller
         ));
     }
 
-    public function listMostRecentAction(Request $request, $limit = 3, $offset = 0)
+    public function listMostRecentAction(Request $request, $category = null, $limit = 3, $offset = 0)
     {
-        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findMostRecents($limit, $offset);
+        $posts = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findMostRecents($limit, $offset, $category);
 
         if($request->isXmlHttpRequest()) {
 
