@@ -1,13 +1,8 @@
 
 @media screen and  (max-width: 1099px)
 {
-  #social-block
+  #highlight-block
   {
-    iframe
-    {
-      height: 204px !important;
-      width: 200px !important;
-    }
   }
 }
 
@@ -31,7 +26,7 @@
       float: none;
       margin: auto;
     }
-    #social-block
+    #highlight-block
     {
       display: none;
     }

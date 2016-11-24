@@ -149,7 +149,9 @@
       }
       .social-network-action
       {
-        display: none;
+        position: static;
+        text-align: center;
+        margin-top: 1rem;
       }
     }
     .comment-area .add-comment-block

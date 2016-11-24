@@ -7,8 +7,8 @@
                 <td class="left">
 
                     <a href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">
-                        <h3>Yootips publies la photo ou la vidéo la plus fun de ton animal de compagnie !</h3>
                         <div class="content"><p>{{ truncatePost(post.content, 400) }}</p></div>
+                        <div class="mobile-content"><p>{{ truncatePost(post.content, 200) }}</p></div>
                     </a>
                 </td>
 

@@ -17,36 +17,59 @@
       float: right;
     }
   }
+  .index-menu-wrapper {
+    border: 1px solid #d7d7d7;
+    position: relative;
+    background-color: $thirdFontColor;
+    height: 6rem;
+  }
   .index-menu
   {
-    @include boxShadow(0 0 6px rgba(0,0,0,0.2));
     background-color: $thirdFontColor;
     font-size: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8;
+    &:hover {
+      @include boxShadow(0 0 6px rgba(0,0,0,0.2));
+      .tab {
+        height: 5rem;
+      }
+    }
     .tab
     {
-      display: inline-block;
+      @include transition(all 0.4s ease);
+      height: 0;
+      overflow: hidden;
       vertical-align: top;
-      width: 50%;
       text-align: center;
       a
       {
+        padding: 1rem 7rem 1rem 2rem;
         position: relative;
         display: block;
-        padding: 2.3rem 1rem 1.7rem 1rem;
         font-size: 2.2rem;
         font-family: $semiBold;
         color: $secondFontColor;
-        &:before
-        {
-          display:none;
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 1rem;
-          background-color: $darkerColor;
-        }
+        //&:before
+        //{
+        //  display:none;
+        //  content: "";
+        //  position: absolute;
+        //  top: 0;
+        //  left: 0;
+        //  width: 100%;
+        //  height: 1rem;
+        //  background-color: $darkerColor;
+        //}
+      }
+      &.active {
+        height: 5rem;
+        background-image: url('../img/arrow-down-blue.png');
+        background-repeat: no-repeat;
+        background-position: right 2.5rem center;
+        background-size: 3.4rem 1.7rem;
       }
       &.active, &:hover
       {
@@ -88,34 +111,7 @@
   }
 
 }
-.container.container-lists
-{
-  overflow: hidden;
-  .full.column-container
-  {
-    .ajax-wrapper
-    {
-      font-size: 0;
-    }
-    .list-view
-    {
-      font-size: 1.6rem;
-      width: 50%;
-      display: inline-block;
-      vertical-align: top;
-      border: 3px solid $bgColor;
-      &:nth-of-type(even)
-      {
-        border-right: none;
-        float: right;
-      }
-      &:nth-of-type(odd)
-      {
-        border-left: none;
-      }
-    }
-  }
-}
+
 .list-view
 {
   margin-top: 20px;
@@ -143,6 +139,9 @@
     margin-top: 2.5rem;
     margin-bottom: 0.5rem;
     height: 9rem;
+  }
+  .mobile-content {
+    display: none;
   }
   .details
   {

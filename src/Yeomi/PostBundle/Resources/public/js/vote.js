@@ -29,16 +29,16 @@ $(function() {
 
   function removeOne(btn)
   {
-    var cur = btn.find("span").html();
+    var cur = btn.find("span.count").html();
     cur--;
-    btn.find("span").html(cur);
+    btn.find("span.count").html(cur);
   }
 
   function addOne(btn)
   {
-    var cur = btn.find("span").html();
+    var cur = btn.find("span.count").html();
     cur++;
-    btn.find("span").html(cur);
+    btn.find("span.count").html(cur);
   }
 
 });

@@ -116,24 +116,28 @@
 
         {% block footer %}
             <div class="sentence-footer">
+                Suis-je obligé de Tipser 5 min par jour?<br>
+                Oui pour te coucher moins bête...
             </div>
 
             <footer id="site-footer">
-                <nav class="footer-nav">
-                    {{ render(controller("YeomiCMSBundle:Main:getListOfPage")) }}
-                </nav>
+                <div class="footer-container">
+                    <nav class="footer-nav">
+                        {{ render(controller("YeomiCMSBundle:Main:getListOfPage")) }}
+                    </nav>
 
-                <div class="newsletter-subscription">
-                    {{ render(controller('YeomiAppBundle:App:newsletterSubscribe', {'request': app.request})) }}
+                    <div class="newsletter-subscription">
+                        {{ render(controller('YeomiAppBundle:App:newsletterSubscribe', {'request': app.request})) }}
+                    </div>
+                    {# can be taken out on the next dev
+                    <nav class="sub-footer-nav">
+                        <ul class="left">
+                            <li><a href="#">Faire une publication</a></li>
+                            <li><a href="{{ path("yeomi_user_register") }}">Inscription rapide</a></li>
+                        </ul>
+                    </nav>
+                    #}
                 </div>
-                {# can be taken out on the next dev
-                <nav class="sub-footer-nav">
-                    <ul class="left">
-                        <li><a href="#">Faire une publication</a></li>
-                        <li><a href="{{ path("yeomi_user_register") }}">Inscription rapide</a></li>
-                    </ul>
-                </nav>
-                #}
             </footer>
         {% endblock %}
         {% block javascripts %}

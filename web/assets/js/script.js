@@ -1,6 +1,9 @@
 $(function() {
 
 
+  if (isMobile.phone) {
+    $("body").addClass('mobile');
+  }
   if(isMobile.tablet || isMobile.phone) {
 
     $("body").on('touchend', function (e)

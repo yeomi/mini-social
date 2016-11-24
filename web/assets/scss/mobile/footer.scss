@@ -22,5 +22,13 @@
   footer#site-footer
   {
     margin-top: 0;
+    .footer-nav {
+      display: block;
+      width: 100%;
+    }
+    .newsletter-subscription {
+      display: block;
+      width: 100%;
+    }
   }
 }

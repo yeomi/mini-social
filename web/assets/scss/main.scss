@@ -4,7 +4,7 @@ html
 }
 body
 {
-  padding-top: 8.7rem;
+  padding-top: 13.7rem;
   background-color: $bgColor;
   font-family: $font;
   font-size: 1.6rem;
@@ -143,9 +143,31 @@ a
     display: inline-block;
     padding: .5rem 1rem;
     border-radius: .4rem;
+    .picto {
+      display: inline-block;
+      width: 2rem;
+      height: 2.1rem;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 2rem 2.1rem;
+    }
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
     &:hover {
       color: $thirdFontColor;
       background: $darkerColor;
+    }
+    &.like .picto {
+      background-image: url(../img/thumbs-up.png);
+    }
+    &.hate .picto {
+      background-image: url(../img/thumbs-down.png);
+    }
+    &:hover {
+      background-color: #fff;
+      color: $darkerColor;
     }
   }
 

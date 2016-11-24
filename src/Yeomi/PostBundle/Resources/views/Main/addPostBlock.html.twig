@@ -9,9 +9,6 @@
 
         {{ form_start(form, {"action": path("yeomi_post_add_post")}) }}
 
-        <div class="post-title">
-            {{ form_widget(form.title, {'attr': {'placeholder' : "Donnez un titre à votre tips"|trans}}) }}
-        </div>
 
         <div class="post-body">
             {{ form_widget(form.content, {'attr': {'placeholder' : "Tipsez quelque chose"|trans}}) }}

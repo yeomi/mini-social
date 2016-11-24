@@ -1,24 +1,47 @@
 .sentence-footer
 {
   clear: both;
-  background-image: url(../img/sentence-footer.png);
-  background-repeat: no-repeat;
-  background-size: 47.7rem auto;
-  background-position: center;
   margin: auto;
   margin-top: 5rem;
   width: 47.7rem;
-  height: 9.6rem;
+  position: relative;
+  text-align: center;
+  font-size: 2rem;
+  color: #9b9b9b;
+  font-style: italic;
+  padding: 0 5.5rem;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 3.5rem;
+    height: 2.8rem;
+    background-size: 3.5rem 2.8rem;
+  }
+  &:before {
+    left: 0;
+    top: 0;
+    background-image: url(../img/quote-before.png);
+  }
+  &:after {
+    bottom: 0;
+    right: 0;
+    background-image: url(../img/quote-after.png);
+  }
 }
 
 footer#site-footer
 {
   background-color: #d3d3d3;
   margin-top: 5rem;
-  nav
+  font-size: 0;
+  .footer-container {
+    @include setContainer();
+  }
+  .footer-nav
   {
-    max-width: 83rem;
-    margin: auto;
+    display: inline-block;
+    width: 60%;
     font-size: 1.4rem;
     a
     {
@@ -39,6 +62,57 @@ footer#site-footer
         display: inline-block;
         vertical-align: top;
       }
+    }
+  }
+  .newsletter-subscription {
+    font-size: 1.4rem;
+    height: 12.4rem;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    color: #fff;
+    background-color: $darkerColor;
+
+    h2 {
+      padding-top: 14px;
+      font-size: 18px;
+      font-family: $semiBold;
+    }
+    form {
+      margin-top: 14px;
+      display: inline-block;
+      position:relative;
+      width: 33rem;
+    }
+    input[type="text"], input[type="email"]
+    {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      border: 0;
+      font-size: 1.5rem;
+      background-color: #efefef;
+      border-radius: .4rem;
+      padding: .7rem 1.5rem;
+    }
+    button
+    {
+
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 3.5rem;
+      width: 3.5rem;
+      font-size: 1.5rem;
+      background: $lighterColor;
+      border: 0;
+      border-radius: 0 .4rem .4rem 0;
+      color: white;
+      font-family: $semiBold;
     }
   }
   .sub-footer-nav

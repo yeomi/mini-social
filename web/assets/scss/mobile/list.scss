@@ -1,31 +1,4 @@
 
-@media screen and  (min-width: 820px) and  (max-width: 969px)
-{
-  .container.container-lists .column-container
-  {
-    width: 50%;
-    &.left .index-menu
-    {
-      @include boxShadow(none);
-      border-right: 1px solid #d7d7d7;
-    }
-    &.right .index-menu
-    {
-      @include boxShadow(none);
-      border-left: 1px solid #d7d7d7;
-    }
-  }
-  .post.list-view, .article.list-view
-  {
-    padding: 1rem 2rem;
-    .details
-    {
-      padding-top: 1rem;
-    }
-    .content { height: 11rem; }
-    .post-date { display: none;}
-  }
-}
 
 @media screen and  (max-width: 819px)
 {
@@ -57,6 +30,12 @@
     {
       border-right: 1px solid #d7d7d7;
       float: none;
+    }
+    .content {
+      display: none;
+    }
+    .mobile-content {
+      display: block;
     }
     .actions-btn .readmore
     {

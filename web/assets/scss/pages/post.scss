@@ -1,3 +1,6 @@
+.mobile .page-post .post.full-view .social-network-action .sms-share {
+  display: inline-block;
+}
 .page-post
 {
   @include setContainer();
@@ -39,14 +42,26 @@
     }
     .social-network-action
     {
-      position: absolute;;
+      position: absolute;
       left: 0;
       bottom: 0;
-      >div, >iframe
-      {
-        font-size: 0;
-        vertical-align: top;
+      a {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
         margin-right: 1rem;
+        background-size: 3rem 3rem;
+        background-repeat: no-repeat;
+      }
+      .facebook-share {
+        background-image: url('../img/facebook.png');
+      }
+      .twitter-share {
+        background-image: url('../img/twitter.png');
+      }
+      .sms-share {
+        display: none;
+        background-image: url('../img/sms.png');
       }
     }
     .actions-btn

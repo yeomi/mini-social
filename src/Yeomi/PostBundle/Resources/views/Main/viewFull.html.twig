@@ -53,14 +53,14 @@
 
 
                 <div class="social-network-action">
-                    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div>
-                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri|url_encode }}" class="facebook-share"></a>
+                    <a href="https://twitter.com/home?status={{ app.request.uri|url_encode }}" class="twitter-share"></a>
+                    <a href="sms:&body={{ app.request.uri|url_encode }}" class="mobile-only sms-share"></a>
                 </div>
                 <div class="actions-btn">
                     <a class="comments" href="">({{ post.comments|length }})</a>
-                    <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" >Jkiff ton blabla ! (<span>{{ post.likes.positives }}</span>)</a>
-                    <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" >Zéro, null... (<span>{{ post.likes.negatives }}</span>)</a>
+                    <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" ><span class="picto"></span> <span class="count">({{ post.likes.positives }})</span></a>
+                    <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" ><span class="picto"></span> <span class="count">({{ post.likes.negatives }})</span></a>
                 </div>
             </div>
 

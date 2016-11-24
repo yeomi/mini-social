@@ -63,65 +63,49 @@
   }
   .container.container-home-block
   {
-    margin-top: 3rem;
+    padding-top: 3rem;
     overflow: hidden;
     clear: both;
   }
   
-  #social-block
+  #highlight-block
   {
+    position: relative;
     float: right;
     text-align: center;
     width: 28rem;
     height: 46.5rem;
-    background-color: #fff;
+    background-image: url(../img/homeless.jpg);
+    background-position: center;
+    background-size: cover;
     border: 1px solid #bcbcbc;
     padding: 1.7rem;
     padding-bottom: 6rem;
-    h4
+    h3
     {
-      text-transform: uppercase;
+      padding: 2rem 2.7rem;
+      color: white;
+      background-color: rgba(0,0,0,0.8);
+      font-size: 2.2rem;
       font-family: $semiBold;
-      color: $darkerColor;
-      font-size: 1.7rem;
-      margin-bottom: 1.3rem;
     }
-    .buttons-area
+    .readmore
     {
-      font-size: 0;
-      margin-bottom: 5rem;
-      a
+      background-color: $lighterColor;
+      font-size: 1.8rem;
+      position: absolute;
+      right: 2rem;
+      padding-left: 4.5rem;
+      line-height: 2.7rem;
+      bottom: 2rem;
+      background-image: url(../img/big-arrow-right.png);
+      background-repeat: no-repeat;
+      background-position: 1rem center;
+      background-size: 2.7rem auto;
+      @include boxShadow(0 0.4rem 0 $darkerColor);
+      &:hover, &.active
       {
-        text-indent: -999rem;
-        overflow: hidden;
-        display: inline-block;
-        vertical-align: top;
-        width: 4.3rem;
-        height: 4.3rem;
-        background-repeat: no-repeat;
-        background-size: 4.3rem 4.3rem;
-        background-position: center;
-        margin: 0 .1rem;
-      }
-      .fb
-      {
-        background-image: url(../img/socials/fb.jpg);
-      }
-      .tw
-      {
-        background-image: url(../img/socials/tw.jpg);
-      }
-      .pin
-      {
-        background-image: url(../img/socials/pin.jpg);
-      }
-      .you
-      {
-        background-image: url(../img/socials/you.jpg);
-      }
-      .gplus
-      {
-        background-image: url(../img/socials/gplus.jpg);
+        top: auto;
       }
     }
   }

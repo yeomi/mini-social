@@ -24,7 +24,7 @@ class AppController extends Controller
     public function newsletterSubscribeAction(Request $request) {
 
         /** @var User $user */
-        $user = $this->getUser();
+        $user = null; // for now we do not do this.
         $userEmail = null;
         $em = $this->getDoctrine()->getEntityManager();
         $newsletterRepository = $em->getRepository('YeomiAppBundle:NewsletterSubscription');
