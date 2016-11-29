@@ -41,9 +41,11 @@
 
             <div class="left">
                 <div class="body"><p>{{ post.content }}</p></div>
+                {% if post.link %}
                 <div class="link">
-                    Lien : <a href="http://test.com">Hello cookie</a>
+                    Lien : <a rel="nofollow" href="{{ post.link }}">{{ post.link }}</a>
                 </div>
+                {% endif %}
                 <div class="details">
                     <span class="post-date">{{ post.created|date("d/m/y \\à G\\hi") }}</span>
                     {% if  post.user %}
