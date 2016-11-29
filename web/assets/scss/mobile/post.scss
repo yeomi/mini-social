@@ -136,16 +136,18 @@
     padding: 1.5rem .5rem 2rem;
     article.post.full-view
     {
-
       .left
       {
         padding-bottom: 0;
-        .body, .details {padding: 0 1rem};
+        .body, .details, .link {padding: 0 1rem};
         .actions-btn
         {
           text-align: center;
           position: static;
         }
+      }
+      .hide-on-mobile {
+        display: none;
       }
       .social-network-action
       {

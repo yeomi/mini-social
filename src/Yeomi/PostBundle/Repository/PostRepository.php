@@ -129,7 +129,7 @@ class PostRepository extends EntityRepository
     }
 
 
-    public function getSiblingPost($operator, $typeId, $postId)
+    public function getSiblingPost($operator, $postId)
     {
         $direction = $operator == "<" ? "DESC" : "ASC";
         $query = $this->createQueryBuilder("p")

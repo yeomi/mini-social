@@ -30,7 +30,6 @@ header#site-header
   {
     margin-top: 2.4rem;
     text-align: left;
-
     &.left
     {
       float: left;
@@ -44,6 +43,14 @@ header#site-header
       display: inline-block;
       vertical-align: middle;
       margin: 0 0.4rem;
+    }
+    .login {
+      background-image: url('../img/user-icon.png');
+      background-size: 2.6rem auto;
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-color: transparent;
+      padding-left: 4rem
     }
     .responsive-menu-toggle-wrapper
     {
@@ -72,7 +79,7 @@ header#site-header
     }
     .add-btn
     {
-      margin-left: 25px;
+      margin-left: .2rem;
       font-family: $bold;
       font-size: 1.8rem;
       padding: 0 29px 0 42px;
@@ -96,6 +103,7 @@ header#site-header
       background-repeat: no-repeat;
       background-position: .6rem center;
       background-size: 1.7rem auto;
+      background-color: transparent;
     }
   }
 

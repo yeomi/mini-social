@@ -43,8 +43,8 @@
         </table>
 
         <div class="actions-btn">
-            <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" ><span class="picto"></span> <span class="count">({{ post.likes.positives }})</span></a>
-            <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" ><span class="picto"></span> <span class="count">({{ post.likes.negatives }})</span></a>
+            <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "positive"}) }}" ><span class="picto"></span> <span class="count">(<span class="count-value">{{ post.likes.positives }}</span>)</span></a>
+            <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "post", "entityId": post.id, "type": "negative"}) }}" ><span class="picto"></span> <span class="count">(<span class="count-value">{{ post.likes.negatives }}</span>)</span></a>
             <a class="comments" href="{{ path("yeomi_post_view_full", {"id": post.id}) }}">({{ post.comments|length }})</a>
 
 

@@ -25,9 +25,6 @@
             <span class="top">Une envie, un partage, un défi...</span>
             <span class="middle">Partagez vos défis et histoires en toute liberté </span>
           </div>
-          {% if is_granted("ROLE_USER") == false %}
-            <a class="btn big register" href="{{ path("yeomi_user_register") }}">{% trans %}Register{% endtrans %}</a>
-          {% endif %}
 
         </aside>
       </div>
@@ -76,14 +73,17 @@
         </div>
       </div>
 
-      <div id="highlight-block">
+      {% if highlight %}
+      <div id="highlight-block" style="background-image: url({{ asset('uploads/img/article/' ~ highlight.image.id ~ '.' ~ highlight.image.value) }})">
         <div class="article-highlight-teaser">
-          <h3>Aide un SDF</h3>
+          <h3>{{ highlight.title }}</h3>
 
-          <a class="btn-3d readmore" href="">Lire la
+
+          <a class="btn-3d readmore" href="{% if highlight.link %}{{ highlight.link }}{% else %}{{ path("yeomi_cms_view_article", {"slug": highlight.slug}) }}{% endif %}">Lire la
             suite</a>
         </div>
       </div>
+      {% endif %}
     </div>
 
   </div>

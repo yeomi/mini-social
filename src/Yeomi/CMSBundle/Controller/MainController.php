@@ -39,16 +39,22 @@ class MainController extends Controller
 
     public function createArticleAction(Request $request, $id = null)
     {
+        $manager = $this->getDoctrine()->getManager();
         $article = new Article();
 
         if($id) {
-            $article = $this->getDoctrine()->getRepository("YeomiCMSBundle:Article")->find($id);
+            $article = $manager->getRepository("YeomiCMSBundle:Article")->find($id);
         }
         $form = $this->createForm(new ArticleType(), $article);
 
         if($form->handleRequest($request)->isValid()) {
-            $manager = $this->getDoctrine()->getManager();
             $manager->persist($article);
+            if ($article->getHighlight()) {
+                $existingArticles = $manager->getRepository('YeomiCMSBundle:Article')->findBy(array('highlight' => true));
+                foreach ($existingArticles as $existingArticle) {
+                    $existingArticle->setHighlight(false);
+                }
+            }
             $manager->flush();
             return $this->redirect($this->generateUrl("yeomi_cms_list_content", array("contentType" => "article")));
         }

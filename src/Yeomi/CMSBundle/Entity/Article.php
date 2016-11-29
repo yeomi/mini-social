@@ -60,14 +60,29 @@ class Article
     private $created;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=255, nullable=true)
+     */
+    private $link;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="published", type="boolean")
      */
     private $published;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="highlight", type="boolean", nullable=true)
+     */
+    private $highlight;
+
     public function __construct()
     {
+        $this->setHighlight(false);
         $this->setCreated(new \DateTime());
         $this->setPublished(true);
     }
@@ -237,5 +252,53 @@ class Article
         $idForTarget = preg_replace($debutFin, $tiretDebutFin, $idForTarget); // change spaces to hyphen
 
         return $idForTarget;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     *
+     * @return Article
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * Set highlight
+     *
+     * @param boolean $highlight
+     *
+     * @return Article
+     */
+    public function setHighlight($highlight)
+    {
+        $this->highlight = $highlight;
+
+        return $this;
+    }
+
+    /**
+     * Get highlight
+     *
+     * @return boolean
+     */
+    public function getHighlight()
+    {
+        return $this->highlight;
     }
 }

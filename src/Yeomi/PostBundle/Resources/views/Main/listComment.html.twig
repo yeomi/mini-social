@@ -30,8 +30,8 @@
 
                     <div class="actions-btn">
                         {% if is_granted("ROLE_USER") %}
-                            <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "positive"}) }}" >(<span>{{ comment.likes.positives }}</span>)</a>
-                            <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "negative"}) }}" >(<span>{{ comment.likes.negatives }}</span>)</a>
+                            <a href="" class="vote-btn like" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "positive"}) }}" >(<span class="count-value">{{ comment.likes.positives }}</span>)</a>
+                            <a href="" class="vote-btn hate" data-target="{{ path("yeomi_post_vote_ajax", {"entityType": "comment", "entityId": comment.id, "type": "negative"}) }}" >(<span class="count-value">{{ comment.likes.negatives }}</span>)</a>
                         {% else %}
                             <span title="Vous devez disposer d'un compte TPC pour utiliser cette fonctionnalité" class="vote-btn-disable like">(<span>{{ comment.likes.positives }}</span>)</span>
                             <span title="Vous devez disposer d'un compte TPC pour utiliser cette fonctionnalité" class="vote-btn-disable hate">(<span>{{ comment.likes.negatives }}</span>)</span>

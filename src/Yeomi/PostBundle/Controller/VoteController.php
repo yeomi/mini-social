@@ -21,15 +21,12 @@ class VoteController extends Controller
             return new Response("");
         }
         $response = new Response();
-
-
-        $cookieNewEntry = false;
         $cookieDeleteEntry = false;
-
-
+        
         if (!in_array($entityType, array("post", "comment"))) {
             throw new NotFoundHttpException("This entity type is not allowed");
         }
+
         $manager = $this->getDoctrine()->getManager();
         $ucEntityType = ucfirst($entityType);
         $entity = $manager->getRepository("YeomiPostBundle:" . $ucEntityType)->find($entityId);
@@ -57,7 +54,6 @@ class VoteController extends Controller
                 $cookieDeleteEntry = true;
                 unset($cookie[$entityType][$entityId]);
             } else {
-                $cookieNewEntry = true;
                 $cookie[$entityType][$entityId] = $type == "positive" ? 1: 0;
             }
 

@@ -16,6 +16,14 @@
         {{ form_widget(form.image.file) }}
         <p class="help-block">Choisissez une image pour illustrer l'article.</p>
     </div>
+    <div class="form-group">
+        {{ form_widget(form.link) }}
+        <p class="help-block">Indiquer un lien (facultatif).</p>
+    </div>
+    <div class="form-group">
+        {{ form_widget(form.highlight) }}
+        <p class="help-block">Mettre en avant cette article ?</p>
+    </div>
     {{ form_widget(form.save, {"attr" : {"class": "btn btn-default"}, "label": "Enregistrer l'article"}) }}
     {{ form_end(form) }}
 

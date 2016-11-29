@@ -60,3 +60,14 @@
     }
   }
 }
+
+@media screen and  (max-width: 615px)
+{
+  .page-index
+  {
+    #home-ban
+    {
+      display: none;
+    }
+  }
+}

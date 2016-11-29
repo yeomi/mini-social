@@ -16,6 +16,8 @@ class ArticleRepository extends EntityRepository
     public function findFive() {
         $query =$this->createQueryBuilder("a")
             ->setMaxResults(5)
+            ->where('a.highlight != :true')
+            ->setParameter('true', true)
             ->orderBy("a.created", "DESC")
             ->getQuery();
 

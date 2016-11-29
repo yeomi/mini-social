@@ -19,6 +19,8 @@ class ArticleType extends AbstractType
             ->add('title', "text")
             ->add('body', "textarea")
             ->add('image', new ImageType(), array("required" => false))
+            ->add('link', "url", array('required' => false))
+            ->add('highlight', "checkbox", array('required' => false))
             ->add("save", "submit")
         ;
     }

@@ -28,13 +28,16 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        $defis = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->findWithOffsetLimit(2, 0);
+        $em = $this->getDoctrine()->getEntityManager();
+        $defis = $em->getRepository("YeomiPostBundle:Post")->findWithOffsetLimit(2, 0);
 
-        $articles = $this->getDoctrine()->getRepository("YeomiCMSBundle:Article")->findFive();
+        $highlight = $em->getRepository('YeomiCMSBundle:Article')->findOneBy(array('highlight' => true));
+        $articles = $em->getRepository("YeomiCMSBundle:Article")->findFive();
 
         return $this->render("YeomiPostBundle:Main:index.html.twig", array(
             "defis" => $defis,
             "articles" => $articles,
+            'highlight' => $highlight,
         ));
     }
 
@@ -151,8 +154,8 @@ class MainController extends Controller
     {
         $post = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getPostComplete($id);
 
-        $prevPost = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getSiblingPost("<", $post->getType()->getId(), $post->getId());
-        $nextPost = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getSiblingPost(">", $post->getType()->getId(), $post->getId());
+        $prevPost = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getSiblingPost("<", $post->getId());
+        $nextPost = $this->getDoctrine()->getRepository("YeomiPostBundle:Post")->getSiblingPost(">", $post->getId());
 
         $prevPostId = is_null($prevPost) ? null : $prevPost->getId();
         $nextPostId = is_null($nextPost) ? null : $nextPost->getId();
