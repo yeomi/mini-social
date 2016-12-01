@@ -125,18 +125,20 @@
                         {{ render(controller("YeomiCMSBundle:Main:getListOfPage")) }}
                     </nav>
 
-                    <div class="newsletter-subscription">
-                        {{ render(controller('YeomiAppBundle:App:newsletterSubscribe', {'request': app.request})) }}
+                    <div class="sub-footer-container">
+                        <div class="newsletter-subscription">
+                            {{ render(controller('YeomiAppBundle:App:newsletterSubscribe', {'request': app.request})) }}
+                        </div>
+                        <div class="social-links">
+                            <h2>Suivez-nous sur les réseaux</h2>
+                            <a href="" class="facebook">Facebook</a>
+                            <a href="" class="twitter">Twitter</a>
+                            <a href="" class="google-plus">Google +</a>
+                            <a href="" class="instagram">Instagram</a>
+                        </div>
                     </div>
-                    {# can be taken out on the next dev
-                    <nav class="sub-footer-nav">
-                        <ul class="left">
-                            <li><a href="#">Faire une publication</a></li>
-                            <li><a href="{{ path("yeomi_user_register") }}">Inscription rapide</a></li>
-                        </ul>
-                    </nav>
-                    #}
                 </div>
+
             </footer>
         {% endblock %}
         {% block javascripts %}

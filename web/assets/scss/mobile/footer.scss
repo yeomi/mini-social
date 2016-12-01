@@ -26,9 +26,18 @@
       display: block;
       width: 100%;
     }
-    .newsletter-subscription {
+
+    .newsletter-subscription, .social-links {
       display: block;
-      width: 100%;
+      width: 100%
+    }
+    .newsletter-subscription {
+      margin-bottom: 1.5rem;
+      border-right: 0;
+      border-bottom: 1px solid #bcbcbc;
+      form {
+        width: 27rem;
+      }
     }
   }
 }

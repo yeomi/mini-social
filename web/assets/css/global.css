@@ -473,8 +473,10 @@ footer#site-footer {
     margin: auto; }
   footer#site-footer .footer-nav {
     display: inline-block;
-    width: 60%;
-    font-size: 1.4rem; }
+    width: 100%;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #bcbcbc;
+    margin-bottom: 15px; }
     footer#site-footer .footer-nav a {
       color: #818181; }
       footer#site-footer .footer-nav a:hover {
@@ -483,23 +485,52 @@ footer#site-footer {
       list-style-type: none; }
     footer#site-footer .footer-nav .page-list {
       text-align: center;
-      padding: 1.5rem 0; }
+      padding: 1.5rem 0;
+      color: #818181; }
       footer#site-footer .footer-nav .page-list li {
         margin: 0 2rem;
         display: inline-block;
         vertical-align: top; }
+  footer#site-footer .social-links {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 1.4rem;
+    text-align: center;
+    padding-bottom: 1.5rem; }
+    footer#site-footer .social-links h2 {
+      font-size: 1.8rem;
+      font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+      margin-bottom: 1.3rem; }
+    footer#site-footer .social-links a {
+      display: inline-block;
+      vertical-align: middle;
+      text-indent: -99rem;
+      overflow: hidden;
+      width: 4.3rem;
+      height: 4.3rem;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 4.3rem auto; }
+    footer#site-footer .social-links .facebook {
+      background-image: url(../img/facebook-normal.png); }
+    footer#site-footer .social-links .twitter {
+      background-image: url(../img/twitter-normal.png); }
+    footer#site-footer .social-links .google-plus {
+      background-image: url(../img/gplus-normal.png); }
+    footer#site-footer .social-links .instagram {
+      background-image: url(../img/instagram-normal.png); }
   footer#site-footer .newsletter-subscription {
     font-size: 1.4rem;
     height: 12.4rem;
     text-align: center;
     display: inline-block;
     vertical-align: top;
-    width: 40%;
-    color: #fff;
-    background-color: #175da3; }
+    width: 50%;
+    color: #818181;
+    border-right: 1px solid #bcbcbc; }
     footer#site-footer .newsletter-subscription h2 {
-      padding-top: 14px;
-      font-size: 18px;
+      font-size: 1.8rem;
       font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
     footer#site-footer .newsletter-subscription form {
       margin-top: 14px;
@@ -2097,9 +2128,15 @@ footer#site-footer {
     footer#site-footer .footer-nav {
       display: block;
       width: 100%; }
-    footer#site-footer .newsletter-subscription {
+    footer#site-footer .newsletter-subscription, footer#site-footer .social-links {
       display: block;
-      width: 100%; } }
+      width: 100%; }
+    footer#site-footer .newsletter-subscription {
+      margin-bottom: 1.5rem;
+      border-right: 0;
+      border-bottom: 1px solid #bcbcbc; }
+      footer#site-footer .newsletter-subscription form {
+        width: 27rem; } }
 @media screen and (max-width: 820px) {
   .page-login, .page-register.style-login {
     margin-top: 0; }
