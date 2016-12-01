@@ -21,6 +21,14 @@
             <section>
 
 
+                <div class="login-facebook">
+                    <h3>Vous avez un compte Facebook ?</h3>
+                    {% for owner in hwi_oauth_resource_owners() %}
+                        <a class="btn" href="{{ hwi_oauth_login_url(owner) }}">Se connecter avec Facebook</a>
+                    {% endfor %}
+                </div>
+
+
                 <h3>{% trans %}Create an account{% endtrans %}</h3>
 
 
