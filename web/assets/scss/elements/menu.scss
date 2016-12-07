@@ -18,6 +18,16 @@
     li {
       display: table-cell;
       vertical-align: middle;
+      &:first-of-type {
+        a {
+          width: 4rem;
+          text-indent: -99rem;
+          background-image: url(../img/house.png);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 2.5rem 2.5rem;
+        }
+      }
     }
     a
     {

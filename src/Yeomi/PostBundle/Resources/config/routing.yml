@@ -23,7 +23,7 @@ yeomi_post_edit_comment:
     defaults: { _controller: YeomiPostBundle:Main:editComment }
 
 yeomi_post_view_full:
-    path:     /post/{id}
+    path:     /tips/{id}
     defaults: { _controller: YeomiPostBundle:Main:viewFull }
     requirements:
         id: \d+
@@ -85,8 +85,6 @@ yeomi_post_add_category:
 yeomi_post_view_category:
     path:     /category/{slug}
     defaults: { _controller: YeomiPostBundle:Category:view }
-    requirements:
-        id: \d+
 
 yeomi_post_view_list_category:
     path:     /list-cat/{categoryId}/{limit}/{offset}

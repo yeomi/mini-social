@@ -1,19 +1,7 @@
 {% extends("YeomiPostBundle::layout.html.twig") %}
 
-{% block metaTitle %}TPC - {{ truncatePost(post.content, 55) }}{% endblock %}
-{% block metaDescription %}{{ post.categories[0].name }} : {{ truncatePost(post.content, 110) }}{% endblock %}
-
-{% block jsPlugin %}
-    {{ parent() }}
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-{% endblock %}
+{% block metaTitle %}Tips - {{ truncatePost(post.content, 55) }}{% endblock %}
+{% block metaDescription %}Tips - {{ post.categories[0].name }} : {{ truncatePost(post.content, 110) }}{% endblock %}
 
 {% block body %}
 
@@ -26,10 +14,10 @@
 
         <ul class="right">
             {% if prevPostId %}
-                <li><a class="prev-post" href="{{ path("yeomi_post_view_full", {"id": prevPostId}) }}">< Post précédent</a></li>
+                <li><a class="prev-post" href="{{ path("yeomi_post_view_full", {"id": prevPostId}) }}">< Tips précédent</a></li>
             {% endif %}
             {% if nextPostId %}
-                <li><a class="next-post" href="{{ path("yeomi_post_view_full", {"id": nextPostId}) }}">Post suivant ></a></li>
+                <li><a class="next-post" href="{{ path("yeomi_post_view_full", {"id": nextPostId}) }}">Tips suivant ></a></li>
             {% endif %}
         </ul>
 
@@ -106,10 +94,7 @@
                 </a>
 
                 <div class="comment-intro">
-                    <p>
-                    <span class="hide-mobile">Toi aussi, </span><a href="{{ path("yeomi_user_profile", {"username":app.user.username}) }}" class="username">{{ app.user.displayUsername }}</a>,
-                        commente cette histoire
-                    </p>
+                    <p><span class="hide-mobile">Commenter ce TIPS</span></p>
                 </div>
                 {{ render(controller("YeomiPostBundle:Main:addComment", {"postId" : post.id})) }}
 
@@ -117,7 +102,7 @@
 
         {% else %}
             <p class="simple-message">
-                Connectez-vous pour pouvoir commenter ce blabla...<br> Quoi vous n'êtes pas encore membre ?
+                Commenter ce TIPS<br> <em>(Vous devez être connecté pour commenter...)</em>
                 <a href="{{ path("yeomi_user_register") }}">S’inscrire en 30 sec.</a>
             </p>
         {% endif %}

@@ -2,11 +2,11 @@
 {% if existing %}
     <h2>Vous êtes déjà inscrit a la newsletter</h2>
 {% else %}
-    <h2>Inscrivez vous a la newsletter</h2>
+    <h2>Inscrivez-vous à la newsletter</h2>
     {{ form_start(form) }}
     {{ form_widget(form.email, {'attr' : {'placeholder': 'Saisissez votre adresse e-mail'}}) }}
     {{ form_rest(form) }}
-      <button type="submit">Ok</button>
+      <input type="submit" value="Ok" />
     {{ form_end(form) }}
 
 {% endif %}

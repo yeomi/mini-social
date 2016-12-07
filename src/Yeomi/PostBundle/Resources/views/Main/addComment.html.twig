@@ -3,7 +3,7 @@
     {{ form_start(form, {"action": path("yeomi_post_add_comment", {"postId": postId}), "attr": {"class": "classic-form"}}) }}
 
     <div class="comment-body">
-        {% set textareaPlaceholder = "Laisse ton commentaire, une réaction, un coup de gueule..." %}
+        {% set textareaPlaceholder = "Votre commentaire..." %}
 
     {{ form_widget(form.content, {'attr': {'placeholder' : textareaPlaceholder }}) }}
     </div>

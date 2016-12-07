@@ -120,6 +120,7 @@ class MainController extends Controller
         ));
     }
 
+    // @todo not used, only used one time.
     public function sendActivationEmail(User $user)
     {
         $body = "Bonjour " . $user->getDisplayUsername() . " !\n"

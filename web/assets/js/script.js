@@ -116,7 +116,9 @@ $(function() {
 
   $('.yeo-detailed-slideshow').slick({
     infinite: true,
-    dots: true
+    dots: true,
+    autoplay: true,
+    autoplaySpeed: 4500
   });
 
 
