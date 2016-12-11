@@ -1,7 +1,7 @@
 <ul class="page-list">
 {% for page in pages %}
     {% if loop.index == 2 %}
-    <li><a href="{{ path("yeomi_cms_list_article") }}">Actualités Tpaschiche</a></li>
+    <li><a href="{{ path("yeomi_cms_list_article") }}">Actualités</a></li>
     {% endif %}
     <li><a href="{{ path("yeomi_cms_view_page", {"slug": page.slug}) }}">{{ page.title }}</a></li>
 {% endfor %}

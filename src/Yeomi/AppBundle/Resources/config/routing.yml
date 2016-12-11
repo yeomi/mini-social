@@ -6,6 +6,6 @@ yeomi_app_newsletter_unsubscription:
     path:     /newsletter/unsubscribe
     defaults: { _controller: YeomiAppBundle:App:newsletterUnsubscribe }
 
-yeomi_app_newsletter_subscription_admin_view_all:
+yeomi_admin_list_newsletter_subscription:
     path:     /admin/newsletter-subscriptions
     defaults: { _controller: YeomiAppBundle:App:newsletterViewAllAdmin }

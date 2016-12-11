@@ -7,6 +7,7 @@
             <tr>
                 <th>Ref</th>
                 <th>Email</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -14,6 +15,11 @@
         <tr>
             <th>{{ newsletterSubscription.id }}</th>
             <td>{{ newsletterSubscription.email }}</td>
+            <td>
+                <a class="need-confirmation" href="{{ path("yeomi_admin_delete_entity", {"type": "newsletter_subscription", "id": newsletterSubscription.id}) }}">
+                    Supprimer
+                </a>
+            </td>
         </tr>
     {% endfor %}
         </tbody>

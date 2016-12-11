@@ -1,3 +1,17 @@
+@media screen and (max-width: 1099px)
+{
+
+  .page-post {
+    article.post.full-view {
+
+      .body {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
+
 @media screen and (max-width: 969px)
 {
   .page-post
@@ -5,6 +19,9 @@
     padding: 2.5rem 4.5rem 3rem;
     article.post.full-view
     {
+      .body {
+        font-size: 1.5rem;
+      }
       .left
       {
         width: 100% !important;

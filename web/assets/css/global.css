@@ -1996,9 +1996,14 @@ footer#site-footer {
   .add-defi-popup .link-attach-file, .add-histoire-popup .link-attach-file {
     margin-right: 0;
     width: 2.6rem; } }
+@media screen and (max-width: 1099px) {
+  .page-post article.post.full-view .body {
+    font-size: 1.8rem; } }
 @media screen and (max-width: 969px) {
   .page-post {
     padding: 2.5rem 4.5rem 3rem; }
+    .page-post article.post.full-view .body {
+      font-size: 1.5rem; }
     .page-post article.post.full-view .left {
       width: 100% !important;
       min-height: 0 !important; }

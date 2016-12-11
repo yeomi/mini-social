@@ -2,9 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block metaTitle %} - Tpaschiche - {% endblock %}</title>
+        <title>{% block metaTitle %} - YooTips - {% endblock %}</title>
         {% block stylesheets %}
-            <meta name="description" content="{% block metaDescription %} Site communautaire Tpaschiche ! {% endblock %}">
+            <meta name="description" content="{% block metaDescription %} Site communautaire YooTips ! {% endblock %}">
             <meta name="MobileOptimized" content="width">
             <meta name="HandheldFriendly" content="true">
             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
@@ -78,7 +78,7 @@
 
                 {% block logo %}
                     <a id="main-logo" href="{{ url("yeomi_post_index") }}">
-                        <img src="{{ asset('assets/img/main-logo-new.png') }}" alt="Tpaschiche"/>
+                        <img src="{{ asset('assets/img/main-logo-new.png') }}" alt="YooTips"/>
                     </a>
                 {% endblock %}
 
@@ -131,16 +131,17 @@
                         </div>
                         <div class="social-links">
                             <h2>Suivez-nous sur les réseaux</h2>
-                            <a href="" class="facebook">Facebook</a>
-                            <a href="" class="twitter">Twitter</a>
-                            <a href="" class="google-plus">Google +</a>
-                            <a href="" class="instagram">Instagram</a>
+                            <a href="https://www.facebook.com/YooTips" class="facebook">Facebook</a>
+                            <a href="https://twitter.com/YooTips" class="twitter">Twitter</a>
+                            <a href="https://plus.google.com/b/112662265687757220357/112662265687757220357?hl=fr" class="google-plus">Google +</a>
+                            <a href="https://www.instagram.com/yootips" class="instagram">Instagram</a>
                         </div>
                     </div>
                 </div>
 
             </footer>
         {% endblock %}
+
         {% block javascripts %}
 
             <script src="{{ asset("assets/js/libs/jquery-1.11.2.js") }}"></script>

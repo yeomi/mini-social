@@ -22,7 +22,7 @@ yeomi_admin_delete_entity:
     path:     /delete/{type}/{id}
     defaults: { _controller: YeomiAdminBundle:Main:deleteEntity }
     requirements:
-        type: comment|post|user|category
+        type: comment|post|user|category|newsletter_subscription
         id: \d+
 
 yeomi_admin_block_user:
