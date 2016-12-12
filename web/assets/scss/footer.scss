@@ -147,9 +147,13 @@ footer#site-footer
       font-size: 1.5rem;
       background: $lighterColor;
       border: 0;
+      padding: 0;
+      margin: 0;
+      text-align: center;
       border-radius: 0 .4rem .4rem 0;
       color: white;
       font-family: $semiBold;
+      -webkit-appearance: none;
     }
   }
   .sub-footer-nav

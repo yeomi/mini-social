@@ -558,9 +558,13 @@ footer#site-footer {
       font-size: 1.5rem;
       background: #1293f1;
       border: 0;
+      padding: 0;
+      margin: 0;
+      text-align: center;
       border-radius: 0 .4rem .4rem 0;
       color: white;
-      font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif; }
+      font-family: "open_sanssemibold", "open_sansregular", Arial, Helvetica, sans-serif;
+      -webkit-appearance: none; }
   footer#site-footer .sub-footer-nav {
     overflow: hidden; }
     footer#site-footer .sub-footer-nav .left {
