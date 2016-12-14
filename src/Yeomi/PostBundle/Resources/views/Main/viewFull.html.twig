@@ -28,7 +28,7 @@
         <article class="post full-view{% if post.video.video is defined %} with-video{% elseif post.images[0] is defined %} with-img{% endif %}">
 
             <div class="left">
-                <div class="body"><p>{{ post.content }}</p></div>
+                <div class="body"><p>{{ post.content|nl2br }}</p></div>
                 {% if post.link %}
                 <div class="link">
                     Lien : <a rel="nofollow" href="{{ post.link }}">{{ post.link }}</a>
