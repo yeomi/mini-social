@@ -46,8 +46,8 @@
 
 
                 <div class="social-network-action hide-on-mobile">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri|url_encode }}" class="facebook-share"></a>
-                    <a href="https://twitter.com/home?status={{ app.request.uri|url_encode }}" class="twitter-share"></a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri|url_encode }}" class="facebook-share"></a>
+                    <a target="_blank" href="https://twitter.com/intent/tweet?url={{ app.request.uri|url_encode }}&text={{ 'Tips - '~truncatePost(post.content, 55)|url_encode}}" class="twitter-share"></a>
                     <a href="sms:&body={{ app.request.uri|url_encode }}" class="mobile-only sms-share"></a>
                 </div>
                 <div class="actions-btn">
@@ -57,8 +57,8 @@
                 </div>
 
                 <div class="social-network-action mobile-only">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri|url_encode }}" class="facebook-share"></a>
-                    <a href="https://twitter.com/home?status={{ app.request.uri|url_encode }}" class="twitter-share"></a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri|url_encode }}" class="facebook-share"></a>
+                    <a target="_blank" href="https://twitter.com/intent/tweet?url={{ app.request.uri|url_encode }}&text={{ 'Tips - '~truncatePost(post.content, 55)|url_encode}}" class="twitter-share"></a>
                     <a href="sms:&body={{ app.request.uri|url_encode }}" class="mobile-only sms-share"></a>
                 </div>
             </div>
